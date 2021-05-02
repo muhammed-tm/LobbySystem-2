@@ -20,7 +20,6 @@ public class Constants {
           config.copyDefaults();
           prefix = config.getString("prefix");
           pvpWorld = config.getString("pvpworld");
-
           new MySQL("185.194.236.246", "muhammedtuerkmen_minecraft", "a73n0bX&", "muhammedtuerkmen_minecraft");
      }
 

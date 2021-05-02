@@ -7,14 +7,14 @@ group 'eu.hypetime.spigot.hypelobby'
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenCentral()
     mavenLocal()
+    mavenCentral()
     jcenter()
     maven {
         url 'https://papermc.io/repo/repository/maven-public/'
     }
     maven {
-        url 'https://cloudnetservice.eu/repositories/'
+        url 'https://repo.cloudnetservice.eu/repository/releases/'
     }
     maven {
         url 'https://jitpack.io'
@@ -27,9 +27,13 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compileOnly group: 'com.destroystokyo.paper' , name: 'paper-api', version: '1.16.5-R0.1-SNAPSHOT'
-    compileOnly 'de.dytanic.cloudnet:cloudnet-cloudperms:3.2.0-RELEASE'
     compileOnly 'de.dytanic.cloudnet:cloudnet-driver:3.3.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-cloudperms:3.3.0-RELEASE'
     compileOnly 'org.spigotmc:spigot:1.16.5-R0.1-SNAPSHOT'
+    compileOnly 'de.dytanic.cloudnet:cloudnet:3.3.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-bridge:3.3.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-common:3.3.0-RELEASE'
+
 }
 
 compileJava.options.encoding = 'UTF-8'
@@ -39,5 +43,5 @@ jar {
     archiveBaseName.set("HypeLobby")
     archiveClassifier.set("SNAPSHOT")
     archiveVersion.set("1.0")
-    destinationDir("C:/Users/Andre/Desktop/Programmieren/HypeCloudTestServer/local/services/Lobby-1/plugins/" as File)
+    destinationDir("D:\\Muhammed\\programming\\Minecraft\\Localhost\\Paper-VIP\\plugins" as File)
 }

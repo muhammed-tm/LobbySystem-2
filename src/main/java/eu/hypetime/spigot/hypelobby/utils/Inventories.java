@@ -26,14 +26,15 @@ public class Inventories {
           inventory.setLeggings(new ItemStack(Material.AIR));
           inventory.setBoots(new ItemStack(Material.AIR));
 
-          inventory.setItem(3, new ItemAPI("§8» §6Navigator", Material.MUSIC_DISC_13, 1).build());
+          inventory.setItem(4, new ItemAPI("§8» §6Navigator", Material.MUSIC_DISC_13, 1).build());
+          inventory.setItem(2, new ItemAPI("§8» §6LobbySwitcher", Material.BEACON, 1).build());
           int random = new Random().nextInt(2);
           switch (random) {
                case 0:
-                    inventory.setItem(5, new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build());
+                    inventory.setItem(6, new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build());
                     break;
                case 1:
-                    inventory.setItem(5, new ItemAPI("§8» §5Grappling hook", Material.FISHING_ROD, 1).build());
+                    inventory.setItem(6, new ItemAPI("§8» §5Grappling hook", Material.FISHING_ROD, 1).build());
                     break;
 
           }
@@ -104,5 +105,36 @@ public class Inventories {
 
 
      }
+     public static void DailyRewardInventory(Player player) {
+          Inventory inventory = Bukkit.createInventory(null, 9 * 3,  "§8» §6Daily Rewards §8«");
+          for (int i = 0; i < inventory.getSize(); i++) {
+               inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
+          }
 
+          inventory.setItem(9, new ItemBuilder(Material.PLAYER_HEAD)
+                  .setName("§7Player Belohnung")
+                  .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzI3NDcxMzlmMzM4YTQ2YTQ1OTAzYjc2MzNmMjcwNTAyZDY0ZjA2NjUxNWY0ZDJmOWRlZjgwY2ZmOTExNTBmZiJ9fX0===")
+                  .toItemStack());
+
+          inventory.setItem(11, new ItemBuilder(Material.PLAYER_HEAD)
+                  .setName("§eHyper Belohnung")
+                  .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWZjZTVkODViNDg5NTY2MmYzMzY0MjljNWJmNWNhMmNhMzNmNjE5NWJmMjQ3NjIyMjQxMjM4NDEwOTY3NTgifX19=")
+                  .toItemStack());
+
+          inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD)
+                  .setName("§dWarrior Belohnung")
+                  .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Q1ZWUyNGFmYjQ0OTg0ZmE4OTU0YmFkYjdlMjg5NzY4MTUwZTJiMjkwODRjODE3NjhlMjhhNjc3ZGRlODkifX19=")
+                  .toItemStack());
+          inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
+                  .setName("§6VIP Belohnung")
+                  .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzkyZTFlNjA3NWY0YjJlYTZjOTI5YTg2ZDU4MzY3NDI5OThjYWJhMGMwYTI3Mzc5YzY4MWE3Y2UzNTZmYjIzZSJ9fX0==")
+                  .toItemStack());
+          inventory.setItem(17, new ItemBuilder(Material.PLAYER_HEAD)
+                  .setName("§f§lNameMC Reward")
+                  .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTJiY2YwNTYwNWNmMjZjYWJjMzFjNjhlNzU3MTZiNjRhZGVjOTM1MTUzMGYzNjUwODI5ODFiZTcwMWUwMTZiYSJ9fX0==")
+                  .toItemStack());
+          player.openInventory(inventory);
+
+
+     }
 }

@@ -1,54 +1,66 @@
-eu/hypetime/spigot/hypelobby/listener/RodListener.java
- eu.hypetime.spigot.hypelobby.listener.RodListener
-eu/hypetime/spigot/hypelobby/utils/Inventories.java
- eu.hypetime.spigot.hypelobby.utils.Inventories
-eu/hypetime/spigot/hypelobby/tictactoe/utils/Queue.java
- eu.hypetime.spigot.hypelobby.tictactoe.utils.Queue
-eu/hypetime/spigot/hypelobby/listener/ChatListener.java
- eu.hypetime.spigot.hypelobby.listener.ChatListener
-eu/hypetime/spigot/hypelobby/utils/banner/BannerPattern.java
- eu.hypetime.spigot.hypelobby.utils.banner.BannerPattern
-eu/hypetime/spigot/hypelobby/utils/banner/BannerAPI.java
- eu.hypetime.spigot.hypelobby.utils.banner.BannerAPI
-eu/hypetime/spigot/hypelobby/utils/Config.java
- eu.hypetime.spigot.hypelobby.utils.Config
-eu/hypetime/spigot/hypelobby/listener/MainListener.java
- eu.hypetime.spigot.hypelobby.listener.MainListener
-eu/hypetime/spigot/hypelobby/listener/NavListener.java
- eu.hypetime.spigot.hypelobby.listener.NavListener
-eu/hypetime/spigot/hypelobby/utils/ItemAPI.java
- eu.hypetime.spigot.hypelobby.utils.ItemAPI
-eu/hypetime/spigot/hypelobby/tictactoe/utils/Game.java
- eu.hypetime.spigot.hypelobby.tictactoe.utils.Game
-eu/hypetime/spigot/hypelobby/utils/CoinsAPI.java
- eu.hypetime.spigot.hypelobby.utils.CoinsAPI
-eu/hypetime/spigot/hypelobby/utils/MySQL.java
- eu.hypetime.spigot.hypelobby.utils.MySQL
-eu/hypetime/spigot/hypelobby/utils/NPC.java
- eu.hypetime.spigot.hypelobby.utils.NPC
-eu/hypetime/spigot/hypelobby/listener/JoinListener.java
- eu.hypetime.spigot.hypelobby.listener.JoinListener
-eu/hypetime/spigot/hypelobby/utils/WarpAPI.java
- eu.hypetime.spigot.hypelobby.utils.WarpAPI
-eu/hypetime/spigot/hypelobby/tictactoe/listener/GameListener.java
- eu.hypetime.spigot.hypelobby.tictactoe.listener.GameListener
-eu/hypetime/spigot/hypelobby/utils/ScoreAPI.java
- eu.hypetime.spigot.hypelobby.utils.ScoreAPI
 eu/hypetime/spigot/hypelobby/commands/BuildCommand.java
  eu.hypetime.spigot.hypelobby.commands.BuildCommand
 eu/hypetime/spigot/hypelobby/utils/Constants.java
  eu.hypetime.spigot.hypelobby.utils.Constants
-eu/hypetime/spigot/hypelobby/listener/EnderpearlListener.java
- eu.hypetime.spigot.hypelobby.listener.EnderpearlListener
- eu.hypetime.spigot.hypelobby.listener.EnderpearlListener$1
- eu.hypetime.spigot.hypelobby.listener.EnderpearlListener$2
 eu/hypetime/spigot/hypelobby/commands/SetCommand.java
  eu.hypetime.spigot.hypelobby.commands.SetCommand
-eu/hypetime/spigot/hypelobby/listener/BuildListener.java
- eu.hypetime.spigot.hypelobby.listener.BuildListener
 eu/hypetime/spigot/hypelobby/listener/PVPListener.java
  eu.hypetime.spigot.hypelobby.listener.PVPListener
+eu/hypetime/spigot/hypelobby/listener/MainListener.java
+ eu.hypetime.spigot.hypelobby.listener.MainListener
+eu/hypetime/spigot/hypelobby/utils/CloudServer.java
+ eu.hypetime.spigot.hypelobby.utils.CloudServer
+eu/hypetime/spigot/hypelobby/listener/NavListener.java
+ eu.hypetime.spigot.hypelobby.listener.NavListener
+eu/hypetime/spigot/hypelobby/utils/ItemAPI.java
+ eu.hypetime.spigot.hypelobby.utils.ItemAPI
+eu/hypetime/spigot/hypelobby/utils/RewardAPI.java
+ eu.hypetime.spigot.hypelobby.utils.RewardAPI
+eu/hypetime/spigot/hypelobby/utils/WarpAPI.java
+ eu.hypetime.spigot.hypelobby.utils.WarpAPI
+eu/hypetime/spigot/hypelobby/utils/ScoreAPI.java
+ eu.hypetime.spigot.hypelobby.utils.ScoreAPI
+eu/hypetime/spigot/hypelobby/utils/NPC.java
+ eu.hypetime.spigot.hypelobby.utils.NPC
+eu/hypetime/spigot/hypelobby/utils/RewardType.java
+ eu.hypetime.spigot.hypelobby.utils.RewardType
+eu/hypetime/spigot/hypelobby/utils/banner/BannerPattern.java
+ eu.hypetime.spigot.hypelobby.utils.banner.BannerPattern
+eu/hypetime/spigot/hypelobby/listener/JoinListener.java
+ eu.hypetime.spigot.hypelobby.listener.JoinListener
 eu/hypetime/spigot/hypelobby/HypeLobby.java
  eu.hypetime.spigot.hypelobby.HypeLobby
 eu/hypetime/spigot/hypelobby/utils/ItemBuilder.java
  eu.hypetime.spigot.hypelobby.utils.ItemBuilder
+eu/hypetime/spigot/hypelobby/listener/ChatListener.java
+ eu.hypetime.spigot.hypelobby.listener.ChatListener
+eu/hypetime/spigot/hypelobby/utils/banner/BannerAPI.java
+ eu.hypetime.spigot.hypelobby.utils.banner.BannerAPI
+eu/hypetime/spigot/hypelobby/utils/CoinsAPI.java
+ eu.hypetime.spigot.hypelobby.utils.CoinsAPI
+eu/hypetime/spigot/hypelobby/listener/RodListener.java
+ eu.hypetime.spigot.hypelobby.listener.RodListener
+eu/hypetime/spigot/hypelobby/tictactoe/utils/Game.java
+ eu.hypetime.spigot.hypelobby.tictactoe.utils.Game
+eu/hypetime/spigot/hypelobby/listener/EnderpearlListener.java
+ eu.hypetime.spigot.hypelobby.listener.EnderpearlListener
+ eu.hypetime.spigot.hypelobby.listener.EnderpearlListener$1
+ eu.hypetime.spigot.hypelobby.listener.EnderpearlListener$2
+eu/hypetime/spigot/hypelobby/listener/DailyRewardListener.java
+ eu.hypetime.spigot.hypelobby.listener.DailyRewardListener
+eu/hypetime/spigot/hypelobby/tictactoe/listener/GameListener.java
+ eu.hypetime.spigot.hypelobby.tictactoe.listener.GameListener
+eu/hypetime/spigot/hypelobby/utils/Config.java
+ eu.hypetime.spigot.hypelobby.utils.Config
+eu/hypetime/spigot/hypelobby/tictactoe/utils/Queue.java
+ eu.hypetime.spigot.hypelobby.tictactoe.utils.Queue
+eu/hypetime/spigot/hypelobby/listener/BuildListener.java
+ eu.hypetime.spigot.hypelobby.listener.BuildListener
+eu/hypetime/spigot/hypelobby/listener/LobbySwitcherListener.java
+ eu.hypetime.spigot.hypelobby.listener.LobbySwitcherListener
+eu/hypetime/spigot/hypelobby/listener/DailyRewardGUIListener.java
+ eu.hypetime.spigot.hypelobby.listener.DailyRewardGUIListener
+eu/hypetime/spigot/hypelobby/utils/MySQL.java
+ eu.hypetime.spigot.hypelobby.utils.MySQL
+eu/hypetime/spigot/hypelobby/utils/Inventories.java
+ eu.hypetime.spigot.hypelobby.utils.Inventories

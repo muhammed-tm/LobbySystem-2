@@ -18,20 +18,20 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class JoinListener implements Listener {
 
-     @EventHandler
-     public void onJoin(PlayerJoinEvent event) {
-          Player player = event.getPlayer();
-          event.setJoinMessage(null);
-          for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-               ScoreAPI.setScoreboard(onlinePlayer);
-          }
-          Inventories.mainInventory(player);
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        event.setJoinMessage(null);
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+            ScoreAPI.setScoreboard(onlinePlayer);
+        }
+        Inventories.mainInventory(player);
 
-          player.teleport(WarpAPI.getLocation("Spawn"));
+        player.teleport(WarpAPI.getLocation("Spawn"));
 
-          if(NPC.getNPC() == null) return;
-          if(NPC.getNPC().isEmpty()) return;
-          NPC.addJoinPacket(player);
-     }
+        if (NPC.getNPC() == null) return;
+        if (NPC.getNPC().isEmpty()) return;
+        NPC.addJoinPacket(player);
+    }
 
 }

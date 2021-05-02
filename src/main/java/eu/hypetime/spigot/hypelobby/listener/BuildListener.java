@@ -1,5 +1,6 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
+import com.sun.jdi.event.StepEvent;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.commands.BuildCommand;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
@@ -10,6 +11,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 
@@ -56,6 +58,12 @@ public class BuildListener implements Listener {
      @EventHandler
      public void onDrop(PlayerDropItemEvent event) {
           if(!build.contains(event.getPlayer())) {
+               event.setCancelled(true);
+          }
+     }
+     @EventHandler
+     public void onStep(EntityChangeBlockEvent event) {
+          if(!build.contains(event.getEntity())) {
                event.setCancelled(true);
           }
      }

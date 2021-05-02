@@ -7,7 +7,6 @@ import com.mojang.authlib.properties.Property;
 import net.minecraft.server.v1_16_R3.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.craftbukkit.v1_16_R3.CraftServer;
 import org.bukkit.craftbukkit.v1_16_R3.CraftWorld;
 import org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer;
@@ -30,11 +29,11 @@ import java.util.UUID;
 */
 public class NPC {
 
-      private static List<EntityPlayer> NPC = new ArrayList<>();
+      private static List< EntityPlayer > NPC = new ArrayList<>();
 
       public static void createNPC(Location location) {
-           MinecraftServer server = ((CraftServer) Bukkit.getServer()).getServer();
-           WorldServer world = ((CraftWorld) location.getWorld()).getHandle();
+           MinecraftServer server = (( CraftServer ) Bukkit.getServer()).getServer();
+           WorldServer world = (( CraftWorld ) location.getWorld()).getHandle();
            GameProfile gameProfile = new GameProfile(UUID.randomUUID(), "§6Belohnung");
            EntityPlayer npc = new EntityPlayer(server, world, gameProfile, new PlayerInteractManager(world));
 
@@ -66,7 +65,7 @@ public class NPC {
                String signature = property.get("signature").getAsString();
                return new String[] {texture, signature};
            } catch(IOException exception) {
-                EntityPlayer entityPlayer = ((CraftPlayer) player).getHandle();
+                EntityPlayer entityPlayer = (( CraftPlayer ) player).getHandle();
                 GameProfile profile = entityPlayer.getProfile();
                 Property property = profile.getProperties().get("textures").iterator().next();
                 String texture = property.getValue();

@@ -41,7 +41,7 @@ public class PVPListener implements Listener {
                scoreboard.clearSlot(DisplaySlot.SIDEBAR);
                event.getPlayer().setScoreboard(scoreboard);
           } else {
-               ScoreAPI.setScoreboard(event.getPlayer());
+               //ScoreAPI.setScoreboard(event.getPlayer());
                Inventories.mainInventory(event.getPlayer());
           }
      }
