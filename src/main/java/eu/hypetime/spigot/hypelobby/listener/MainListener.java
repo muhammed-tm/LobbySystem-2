@@ -15,7 +15,7 @@ public class MainListener implements Listener {
 
      @EventHandler
      public void onSneak(PlayerToggleSneakEvent event) {
-          if(event.getPlayer().isSneaking()) {
+          if(!event.getPlayer().isSneaking()) {
                event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 99999, 1));
           } else {
                event.getPlayer().removePotionEffect(PotionEffectType.INVISIBILITY);

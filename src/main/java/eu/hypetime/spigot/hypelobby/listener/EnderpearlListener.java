@@ -11,11 +11,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
 import org.spigotmc.event.entity.EntityDismountEvent;
+import org.spigotmc.event.entity.EntityMountEvent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,11 +103,11 @@ public class EnderpearlListener implements Listener {
      public void onTeleport(PlayerTeleportEvent event) {
           Player player = event.getPlayer();
           if (event.getCause() == PlayerTeleportEvent.TeleportCause.ENDER_PEARL) {
-               event.setCancelled(true);
-          }
-          Location spawn = WarpAPI.getLocation("Spawn");
-          if(event.getTo().getY() < -5 || event.getPlayer().getLocation().getY() < (spawn.getY() - 2) && event.getPlayer().getLocation().distance(spawn) < 8) {
-               WarpAPI.tpWarp(player, "Spawn");
+               if(player.getVehicle() == null) {
+                    event.setCancelled(true);
+               } else {
+                    player.teleport(event.getTo().add(0, 2, 0));
+               }
           }
      }
 }
