@@ -1,7 +1,6 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
-import eu.hypetime.spigot.hypelobby.utils.NPC;
 import eu.hypetime.spigot.hypelobby.utils.ScoreAPI;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Bukkit;
@@ -28,10 +27,6 @@ public class JoinListener implements Listener {
         Inventories.mainInventory(player);
 
         player.teleport(WarpAPI.getLocation("Spawn"));
-
-        if (NPC.getNPC() == null) return;
-        if (NPC.getNPC().isEmpty()) return;
-        NPC.addJoinPacket(player);
     }
 
 }

@@ -2,10 +2,12 @@ package eu.hypetime.spigot.hypelobby.listener;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.CoinsAPI;
-import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import eu.hypetime.spigot.hypelobby.utils.RewardAPI;
 import eu.hypetime.spigot.hypelobby.utils.RewardType;
-import org.bukkit.*;
+import org.bukkit.Instrument;
+import org.bukkit.Material;
+import org.bukkit.Note;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,10 +19,12 @@ public class DailyRewardGUIListener implements Listener {
     public void onClick(InventoryClickEvent event) {
         String prefix = HypeLobby.getInstance().getConstants().getPrefix();
         Player player = ( Player ) event.getWhoClicked();
-        if(event.getView().getTitle().equalsIgnoreCase("§8» §6Daily Rewards §8«")) {
-        //if (player.getOpenInventory().getTitle().equals("§8» §6Daily Rewards §8«")) {
+        if (event.getInventory().getViewers().get(0).getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Daily Rewards §8«")) {
+
+            //if(player.getOpenInventory().getTopInventory().getViewers().get(0).getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Daily Rewards §8«")) {
+            //if (player.getOpenInventory().getTitle().equals("§8» §6Daily Rewards §8«")) {
+            event.setCancelled(true);
             if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
-                event.setCancelled(true);
                 player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
             }
             if (event.getSlot() == 9) {

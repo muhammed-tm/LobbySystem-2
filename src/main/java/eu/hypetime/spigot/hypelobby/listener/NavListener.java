@@ -37,7 +37,7 @@ public class NavListener implements Listener {
      @EventHandler
      public void onClick(InventoryClickEvent event) {
           Player player = (Player) event.getWhoClicked();
-          if(player.getOpenInventory().getTitle().equals("§8» §6Navigator §8«")) {
+          if(event.getInventory().getViewers().get(0).getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Navigator §8«")) {
                event.setCancelled(true);
                if(event.getCurrentItem() == null) return;
                if(event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
@@ -55,7 +55,7 @@ public class NavListener implements Listener {
 
                if(event.getSlot() == 15) {
                     player.closeInventory();
-                    WarpAPI.tpWarp(player, "KitPVP");
+                    WarpAPI.tpWarp(player, "GunBattle");
                }
 
           }

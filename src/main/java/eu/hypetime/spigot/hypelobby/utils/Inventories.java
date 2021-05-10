@@ -98,7 +98,7 @@ public class Inventories {
                .toItemStack());
 
           inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
-               .setName("§6KitPVP")
+               .setName("§6GunBattle")
                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTBkZmM4YTM1NjNiZjk5NmY1YzFiNzRiMGIwMTViMmNjZWIyZDA0Zjk0YmJjZGFmYjIyOTlkOGE1OTc5ZmFjMSJ9fX0=")
                .toItemStack());
           player.openInventory(inventory);
@@ -130,7 +130,7 @@ public class Inventories {
                   .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzkyZTFlNjA3NWY0YjJlYTZjOTI5YTg2ZDU4MzY3NDI5OThjYWJhMGMwYTI3Mzc5YzY4MWE3Y2UzNTZmYjIzZSJ9fX0==")
                   .toItemStack());
           inventory.setItem(17, new ItemBuilder(Material.PLAYER_HEAD)
-                  .setName("§f§lNameMC Reward")
+                  .setName("§dMedia Reward")
                   .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTJiY2YwNTYwNWNmMjZjYWJjMzFjNjhlNzU3MTZiNjRhZGVjOTM1MTUzMGYzNjUwODI5ODFiZTcwMWUwMTZiYSJ9fX0==")
                   .toItemStack());
           player.openInventory(inventory);

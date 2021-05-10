@@ -1,8 +1,5 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
-import com.destroystokyo.paper.event.player.PlayerJumpEvent;
-import eu.hypetime.spigot.hypelobby.utils.NPC;
-import net.minecraft.server.v1_16_R3.EntityPlayer;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -18,9 +15,11 @@ import org.bukkit.potion.PotionEffectType;
 public class MainListener implements Listener {
 
      @EventHandler
-     public void onSneak(PlayerMoveEvent event) {
+     public void onSneak(PlayerToggleSneakEvent event) {
           if(event.getPlayer().isSneaking()) {
-               event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 20, 1));
+               event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 99999, 1));
+          } else {
+               event.getPlayer().removePotionEffect(PotionEffectType.INVISIBILITY);
           }
      }
 }
