@@ -3,6 +3,7 @@ package eu.hypetime.spigot.hypelobby.listener;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
+import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -20,5 +21,10 @@ public class MainListener implements Listener {
           } else {
                event.getPlayer().removePotionEffect(PotionEffectType.INVISIBILITY);
           }
+     }
+
+     @EventHandler
+     public void onWeather(WeatherChangeEvent event) {
+          event.setCancelled(true);
      }
 }

@@ -13,6 +13,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.util.BoundingBox;
 
 /*
     Created by Andre
@@ -37,23 +38,23 @@ public class NavListener implements Listener {
      @EventHandler
      public void onClick(InventoryClickEvent event) {
           Player player = (Player) event.getWhoClicked();
-          if(event.getInventory().getViewers().get(0).getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Navigator §8«")) {
+          if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Navigator §8«")) {
                event.setCancelled(true);
                if(event.getCurrentItem() == null) return;
                if(event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
                     player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
                }
-               if(event.getSlot() == 11) {
+               if(event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6LobbyPVP")) {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "LobbyPVP");
                }
 
-               if(event.getSlot() == 13) {
+               if(event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Spawn")) {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "Spawn");
                }
 
-               if(event.getSlot() == 15) {
+               if(event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6GunBattle")) {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "GunBattle");
                }
