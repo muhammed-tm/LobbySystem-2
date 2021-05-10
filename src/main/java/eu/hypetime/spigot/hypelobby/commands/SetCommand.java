@@ -2,12 +2,14 @@ package eu.hypetime.spigot.hypelobby.commands;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -52,6 +54,13 @@ public class SetCommand implements CommandExecutor {
                ArmorStand armorStand = player.getLocation().getWorld().spawn(player.getLocation(), ArmorStand.class);
                armorStand.setCustomName("§6Daily Rewards");
                armorStand.setCustomNameVisible(true);
+               armorStand.setArms(true);
+               armorStand.setBasePlate(false);
+               armorStand.getEquipment().setHelmet(new ItemStack(Material.TURTLE_HELMET));
+               armorStand.getEquipment().setChestplate(new ItemStack(Material.NETHERITE_CHESTPLATE));
+               armorStand.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
+               armorStand.getEquipment().setBoots(new ItemStack(Material.IRON_BOOTS));
+               armorStand.setInvulnerable(true);
                armorStand.addDisabledSlots(EquipmentSlot.values());
           }
 

@@ -2,6 +2,8 @@ name: HypeLobby
 author: QuadrixYT
 version: 1.0
 api-version: 1.16
+depend:
+  - CloudNet-Bridge
 main: eu.hypetime.spigot.hypelobby.HypeLobby
 
 commands:

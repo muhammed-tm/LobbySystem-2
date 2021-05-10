@@ -24,14 +24,17 @@ public class LobbySwitcherListener implements Listener {
         lobbySwitcher = new ItemBuilder(Material.BEACON).setName("§8» §6LobbySwitcher").toItemStack();
         inventory = Bukkit.createInventory(null, 9, "§8» §6LobbySwitcher");
 
-        CloudServer.getLobbys().forEach(itemStack -> {
+        CloudServer.loadLobbys();
+
+        CloudServer.list.forEach(itemStack -> {
             inventory.addItem(itemStack);
         });
     }
 
     public void updateInventory() {
-        this.inventory = Bukkit.createInventory(null, 9, "§8» §6LobbySwitcher");
-        CloudServer.getLobbys().forEach(itemStack -> {
+        inventory.clear();
+
+        CloudServer.list.forEach(itemStack -> {
             inventory.addItem(itemStack);
         });
     }
@@ -55,12 +58,7 @@ public class LobbySwitcherListener implements Listener {
         if (player.getOpenInventory().getTitle().equals("§8» §6LobbySwitcher")) {
             event.setCancelled(true);
             if (event.getCurrentItem() == null) return;
-            ByteArrayDataOutput out = ByteStreams.newDataOutput();
-            out.writeUTF("ConnectOther");
-            out.writeUTF(player.getName());
-            out.writeUTF(event.getCurrentItem().getItemMeta().getDisplayName());
-            Player sendPlayer = Bukkit.getPlayerExact(player.getName());
-            sendPlayer.sendPluginMessage(HypeLobby.getInstance(), "BungeeCord", out.toByteArray());
+            new CloudServer().sendPlayer(player, event.getCurrentItem().getItemMeta().getDisplayName());
 
         }
     }

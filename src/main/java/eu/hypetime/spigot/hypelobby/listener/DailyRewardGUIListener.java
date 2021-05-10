@@ -28,8 +28,8 @@ public class DailyRewardGUIListener implements Listener {
                     if (RewardAPI.canReward(player, RewardType.PLAYER)) {
                          player.sendMessage(prefix + "§7Du hast §6§l100 Coins §7erhalten.");
                          CoinsAPI.addCoins(player.getName(), 100);
-                         RewardAPI.setUUID(player, RewardType.PLAYER);
                          player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
+                         RewardAPI.setUUID(player, RewardType.PLAYER);
                     } else {
                          player.closeInventory();
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -45,8 +45,8 @@ public class DailyRewardGUIListener implements Listener {
                          if (RewardAPI.canReward(player, RewardType.HYPER)) {
                               player.sendMessage(prefix + "§7Du hast §6§l250 Coins §7erhalten.");
                               CoinsAPI.addCoins(player.getName(), 250);
-                              RewardAPI.setUUID(player, RewardType.HYPER);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
+                              RewardAPI.setUUID(player, RewardType.HYPER);
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -64,8 +64,8 @@ public class DailyRewardGUIListener implements Listener {
                          if (RewardAPI.canReward(player, RewardType.WARRIOR)) {
                               player.sendMessage(prefix + "§7Du hast §6§l500 Coins §7erhalten.");
                               CoinsAPI.addCoins(player.getName(), 500);
-                              RewardAPI.setUUID(player, RewardType.WARRIOR);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
+                              RewardAPI.setUUID(player, RewardType.WARRIOR);
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -81,9 +81,9 @@ public class DailyRewardGUIListener implements Listener {
                     if (player.hasPermission("Lobby.VIP")) {
                          if (RewardAPI.canReward(player, RewardType.VIP)) {
                               player.sendMessage(prefix + "§7Du hast §6§l750 Coins §7erhalten.");
-                              CoinsAPI.addCoins(player.getName(), 500);
-                              RewardAPI.setUUID(player, RewardType.VIP);
+                              CoinsAPI.addCoins(player.getName(), 750);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
+                              RewardAPI.setUUID(player, RewardType.VIP);
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -99,9 +99,9 @@ public class DailyRewardGUIListener implements Listener {
                     if (player.hasPermission("Lobby.Media")) {
                          if (RewardAPI.canReward(player, RewardType.MEDIA)) {
                               player.sendMessage(prefix + "§7Du hast §6§l1000 Coins §7erhalten.");
-                              CoinsAPI.addCoins(player.getName(), 500);
-                              RewardAPI.setUUID(player, RewardType.MEDIA);
+                              CoinsAPI.addCoins(player.getName(), 1000);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
+                              RewardAPI.setUUID(player, RewardType.MEDIA);
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()

@@ -1,6 +1,7 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
+import eu.hypetime.spigot.hypelobby.utils.RewardAPI;
 import eu.hypetime.spigot.hypelobby.utils.ScoreAPI;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Bukkit;
@@ -25,6 +26,7 @@ public class JoinListener implements Listener {
             ScoreAPI.setScoreboard(onlinePlayer);
         }
         Inventories.mainInventory(player);
+        RewardAPI.createIfNotExist(player);
 
         player.teleport(WarpAPI.getLocation("Spawn"));
     }

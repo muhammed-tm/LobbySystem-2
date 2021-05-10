@@ -8,9 +8,9 @@ public enum RewardType {
     MEDIA("Media", 1000 * 60 * 60 * 24);
 
     public String name;
-    public int time;
+    public long time;
 
-    RewardType(String name, int time) {
+    RewardType(String name, long time) {
         this.name = name;
         this.time = time;
     }
