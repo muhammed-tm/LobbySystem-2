@@ -42,23 +42,6 @@ public class HypeLobby extends JavaPlugin {
 
           getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
-          /*if(WarpAPI.getLocation("Belohnung") != null) {
-               ResultSet resultSet = MySQL.getResult("SELECT * FROM npc WHERE Location = '" + WarpAPI.getLocation("Belohnung") + "'");
-               while (true) {
-                    try {
-                         if (!resultSet.next()) break;
-                         EntityPlayer npc = (EntityPlayer) resultSet.getObject("NPC");
-                         NPC.getNPC().add(npc);
-                         for (Player all : Bukkit.getOnlinePlayers()) {
-                              NPC.addJoinPacket(all);
-                         }
-                    } catch (SQLException ignored) {
-
-                    }
-               }
-          }
-          */
-
      }
 
      public static HypeLobby getInstance() {
