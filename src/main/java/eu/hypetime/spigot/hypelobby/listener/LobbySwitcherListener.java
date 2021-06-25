@@ -1,12 +1,10 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
-import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.CloudServer;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,6 +13,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class LobbySwitcherListener implements Listener {
 
     public ItemStack lobbySwitcher;
@@ -22,21 +23,29 @@ public class LobbySwitcherListener implements Listener {
 
     public LobbySwitcherListener() {
         lobbySwitcher = new ItemBuilder(Material.BEACON).setName("§8» §6LobbySwitcher").toItemStack();
+        CloudServer.initLobbys();
+    }
+
+    public void openInventory(Player player) {
         inventory = Bukkit.createInventory(null, 9, "§8» §6LobbySwitcher");
-
-        CloudServer.loadLobbys();
-
+        CloudServer.initLobbys();
+        inventory.clear();
         CloudServer.list.forEach(itemStack -> {
             inventory.addItem(itemStack);
         });
+        player.openInventory(inventory);
     }
 
     public void updateInventory() {
-        inventory.clear();
+        List<HumanEntity> entityList = new ArrayList<>();
+        for (HumanEntity viewer : inventory.getViewers()) {
+            entityList.add(viewer);
+            viewer.closeInventory();
+        }
 
-        CloudServer.list.forEach(itemStack -> {
-            inventory.addItem(itemStack);
-        });
+        for (HumanEntity humanEntity : entityList) {
+            openInventory((Player) humanEntity);
+        }
     }
 
     @EventHandler
@@ -47,7 +56,7 @@ public class LobbySwitcherListener implements Listener {
             if (!event.getItem().hasItemMeta()) return;
             if (!event.getItem().getItemMeta().hasDisplayName()) return;
             if (event.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §6LobbySwitcher")) {
-                event.getPlayer().openInventory(inventory);
+                openInventory(event.getPlayer());
             }
         }
     }

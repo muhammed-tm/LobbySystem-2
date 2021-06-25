@@ -94,6 +94,10 @@ public class EnderpearlListener implements Listener {
                     Location spawn = WarpAPI.getLocation("Spawn");
                     if(player.getLocation().getY() < -5 || (player.getLocation().getY() <= spawn.getY() && player.getLocation().subtract(0, -2, 0).distanceSquared(spawn) <= 8)) {
                          WarpAPI.tpWarp(player, "Spawn");
+                    } else if(player.getLocation().getBlock().getType() != Material.AIR
+                         || player.getLocation().subtract(0, 1, 0).getBlock().getType() != Material.AIR
+                         || player.getLocation().add(0, 1, 0).getBlock().getType() != Material.AIR) {
+                         WarpAPI.tpWarp(player, "Spawn");
                     }
                }
           }

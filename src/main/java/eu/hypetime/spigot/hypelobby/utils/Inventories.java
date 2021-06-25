@@ -87,17 +87,17 @@ public class Inventories {
                inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
           }
 
-          inventory.setItem(11, new ItemBuilder(Material.PLAYER_HEAD)
+          /*inventory.setItem(11, new ItemBuilder(Material.PLAYER_HEAD)
                .setName("§6LobbyPVP")
                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGQyZjc4ZDAxNTE5OTc3NjhlZDBjNTM0Yjc2YzI0YjMyOGViZTg0NDg2YjQzYzA4M2JiYzUyODM0MGUyIn19fQ==")
                .toItemStack());
-
-          inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD)
+*/
+          inventory.setItem(12, new ItemBuilder(Material.PLAYER_HEAD)
                .setName("§6Spawn")
                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGViMDdlZWEzODBhZjU4ZGM5MWVlZWUxNWQ5NWQ4NzkwYTA3ODFjNjk1ZWMwYThmZDhmZTMxZDQ4MzljYTU2MiJ9fX0=")
                .toItemStack());
 
-          inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
+          inventory.setItem(14, new ItemBuilder(Material.PLAYER_HEAD)
                .setName("§6GunBattle")
                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTBkZmM4YTM1NjNiZjk5NmY1YzFiNzRiMGIwMTViMmNjZWIyZDA0Zjk0YmJjZGFmYjIyOTlkOGE1OTc5ZmFjMSJ9fX0=")
                .toItemStack());

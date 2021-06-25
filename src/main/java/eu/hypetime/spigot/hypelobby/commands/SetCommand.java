@@ -31,7 +31,7 @@ public class SetCommand implements CommandExecutor {
                return false;
           }
           Player player = (Player) sender;
-          if (!player.hasPermission("system.build")) {
+          if (!player.hasPermission("system.set")) {
                player.sendMessage(prefix + "§cNicht §7genug Rechte§8.");
                return false;
           }
@@ -40,11 +40,11 @@ public class SetCommand implements CommandExecutor {
                return false;
           }
           if(!args[0].equalsIgnoreCase("Spawn")
-               && !args[0].equalsIgnoreCase("KitPVP")
+               && !args[0].equalsIgnoreCase("GunBattle")
                && !args[0].equalsIgnoreCase("LobbyPVP")
                && !args[0].equalsIgnoreCase("Belohnung")) {
                player.sendMessage(prefix + "Bitte gebe eine gültige Location an§8. §6Locations§8:");
-               player.sendMessage("§6Spawn\n§6KitPVP\n§6LobbyPVP\n§6Belohnung");
+               player.sendMessage("§6Spawn\n§6GunBattle\n§6LobbyPVP\n§6Belohnung");
                return false;
           }
 

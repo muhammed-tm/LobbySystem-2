@@ -1,20 +1,14 @@
 package eu.hypetime.spigot.hypelobby.utils;
 
 import de.dytanic.cloudnet.driver.CloudNetDriver;
-import de.dytanic.cloudnet.driver.event.EventListener;
-import de.dytanic.cloudnet.driver.event.events.service.CloudServiceStartEvent;
-import de.dytanic.cloudnet.driver.event.events.service.CloudServiceStopEvent;
-import de.dytanic.cloudnet.driver.service.ServiceInfoSnapshot;
 import de.dytanic.cloudnet.ext.bridge.BridgeServiceProperty;
 import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
-import eu.hypetime.spigot.hypelobby.HypeLobby;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class CloudServer implements Listener {
 
@@ -37,32 +31,28 @@ public class CloudServer implements Listener {
           });
      }
 
-     @EventListener
-     public void onStart(CloudServiceStartEvent event) {
-          CloudServer.loadLobbys();
-          HypeLobby.getInstance().lobbySwitcherListener.updateInventory();
-
-     }
-
-     @EventListener
-     public void onStop(CloudServiceStopEvent event) {
-          CloudServer.loadLobbys();
-          HypeLobby.getInstance().lobbySwitcherListener.updateInventory();
-     }
-
-     public static void loadLobbys() {
-          Collection<ServiceInfoSnapshot> serviceInfoSnapshots = CloudNetDriver.getInstance().getCloudServiceProvider().getStartedCloudServices();
+     public static void initLobbys() {
           list.clear();
-          for (ServiceInfoSnapshot serviceInfoSnapshot : serviceInfoSnapshots) {
-               if (serviceInfoSnapshot.getName().contains("Lobby")) {
-                    if (serviceInfoSnapshot.getName().contains("VIPLobby")) {
-                         list.add(new ItemBuilder(Material.GLOWSTONE_DUST, serviceInfoSnapshot.getProperty(BridgeServiceProperty.ONLINE_COUNT).get())
-                              .setName(serviceInfoSnapshot.getServiceId().getName()).toItemStack());
-                    } else {
-                         list.add(new ItemBuilder(Material.GUNPOWDER, serviceInfoSnapshot.getProperty(BridgeServiceProperty.ONLINE_COUNT).get())
-                              .setName(serviceInfoSnapshot.getServiceId().getName()).toItemStack());
+          CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServices().forEach(serviceInfoSnapshot -> {
+               if(serviceInfoSnapshot.isConnected()) {
+                    if (serviceInfoSnapshot.getServiceId().getTaskName().equalsIgnoreCase("Lobby")) {
+                         if (BridgeServiceProperty.PLAYERS.get(serviceInfoSnapshot).isPresent()) {
+                              list.add(new ItemBuilder(Material.GUNPOWDER, BridgeServiceProperty.PLAYERS.get(serviceInfoSnapshot).get().size())
+                                   .setName(serviceInfoSnapshot.getServiceId().getName()).toItemStack());
+                         } else {
+                              list.add(new ItemBuilder(Material.GUNPOWDER, 1)
+                                   .setName(serviceInfoSnapshot.getServiceId().getName()).toItemStack());
+                         }
+                    } else if (serviceInfoSnapshot.getServiceId().getTaskName().equalsIgnoreCase("VIPLobby")) {
+                         if (BridgeServiceProperty.PLAYERS.get(serviceInfoSnapshot).isPresent()) {
+                              list.add(new ItemBuilder(Material.GLOWSTONE_DUST, BridgeServiceProperty.PLAYERS.get(serviceInfoSnapshot).get().size())
+                                   .setName(serviceInfoSnapshot.getServiceId().getName()).toItemStack());
+                         } else {
+                              list.add(new ItemBuilder(Material.GLOWSTONE_DUST, 1)
+                                   .setName(serviceInfoSnapshot.getServiceId().getName()).toItemStack());
+                         }
                     }
                }
-          }
+          });
      }
 }

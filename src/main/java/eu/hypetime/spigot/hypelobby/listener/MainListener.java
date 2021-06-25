@@ -26,7 +26,5 @@ public class MainListener implements Listener {
      @EventHandler
      public void onWeather(WeatherChangeEvent event) {
           event.setCancelled(true);
-          event.getWorld().setStorm(false);
-          event.getWorld().setThundering(false);
      }
 }

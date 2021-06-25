@@ -44,17 +44,17 @@ public class NavListener implements Listener {
                if(event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
                     player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
                }
-               if(event.getSlot() == 11) {
+               /*if(event.getSlot() == 11) {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "LobbyPVP");
-               }
+               }*/
 
-               if(event.getSlot() == 13) {
+               if(event.getSlot() == 12) {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "Spawn");
                }
 
-               if(event.getSlot() == 15) {
+               if(event.getSlot() == 14) {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "GunBattle");
                }

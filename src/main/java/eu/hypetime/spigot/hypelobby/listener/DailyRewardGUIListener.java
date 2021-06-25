@@ -40,7 +40,6 @@ public class DailyRewardGUIListener implements Listener {
                }
 
                if (event.getSlot() == 11) {
-                    event.setCancelled(true);
                     if (player.hasPermission("Lobby.Hyper")) {
                          if (RewardAPI.canReward(player, RewardType.HYPER)) {
                               player.sendMessage(prefix + "§7Du hast §6§l250 Coins §7erhalten.");
@@ -59,7 +58,6 @@ public class DailyRewardGUIListener implements Listener {
                }
 
                if (event.getSlot() == 13) {
-                    event.setCancelled(true);
                     if (player.hasPermission("Lobby.Warrior")) {
                          if (RewardAPI.canReward(player, RewardType.WARRIOR)) {
                               player.sendMessage(prefix + "§7Du hast §6§l500 Coins §7erhalten.");
@@ -77,7 +75,6 @@ public class DailyRewardGUIListener implements Listener {
                     }
                }
                if (event.getSlot() == 15) {
-                    event.setCancelled(true);
                     if (player.hasPermission("Lobby.VIP")) {
                          if (RewardAPI.canReward(player, RewardType.VIP)) {
                               player.sendMessage(prefix + "§7Du hast §6§l750 Coins §7erhalten.");
@@ -95,7 +92,6 @@ public class DailyRewardGUIListener implements Listener {
                     }
                }
                if (event.getSlot() == 17) {
-                    event.setCancelled(true);
                     if (player.hasPermission("Lobby.Media")) {
                          if (RewardAPI.canReward(player, RewardType.MEDIA)) {
                               player.sendMessage(prefix + "§7Du hast §6§l1000 Coins §7erhalten.");

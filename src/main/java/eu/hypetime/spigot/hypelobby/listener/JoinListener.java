@@ -1,5 +1,6 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
+import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
 import eu.hypetime.spigot.hypelobby.utils.RewardAPI;
 import eu.hypetime.spigot.hypelobby.utils.ScoreAPI;
