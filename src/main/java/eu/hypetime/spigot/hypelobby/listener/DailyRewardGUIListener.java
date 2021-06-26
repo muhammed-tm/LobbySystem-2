@@ -20,10 +20,14 @@ public class DailyRewardGUIListener implements Listener {
           String prefix = HypeLobby.getInstance().getConstants().getPrefix();
           Player player = (Player) event.getWhoClicked();
           if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Daily Rewards §8«")) {
+               if(event.getCurrentItem() == null) return;
+               if(event.getCurrentItem().getType() == Material.AIR) return;
                event.setCancelled(true);
                if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
                     player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
+                    return;
                }
+               event.setCancelled(true);
                if (event.getSlot() == 9) {
                     if (RewardAPI.canReward(player, RewardType.PLAYER)) {
                          player.sendMessage(prefix + "§7Du hast §6§l100 Coins §7erhalten.");
@@ -35,7 +39,6 @@ public class DailyRewardGUIListener implements Listener {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
                               + "Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.PLAYER) + " §7abholen§8.");
                     }
-                    //WarpAPI.setLocation(player, args[0]);
 
                }
 

@@ -15,12 +15,14 @@ public class DailyRewardListener implements Listener {
 
     @EventHandler
     public void onPlayerInteractAtEntity(PlayerInteractAtEntityEvent event) {
-        ArmorStand armorStand = (ArmorStand) event.getRightClicked();
-        if (armorStand.getType().equals(EntityType.ARMOR_STAND)) {
-            if(event.getRightClicked().getCustomName().equalsIgnoreCase("§6Daily Rewards")) {
-                Inventories.DailyRewardInventory(event.getPlayer());
+        if (event.getRightClicked().getType() == EntityType.ARMOR_STAND) {
+            ArmorStand armorStand = (ArmorStand) event.getRightClicked();
+            if (armorStand.getType().equals(EntityType.ARMOR_STAND)) {
+                if (event.getRightClicked().getCustomName().equalsIgnoreCase("§6Daily Rewards")) {
+                    Inventories.DailyRewardInventory(event.getPlayer());
+                }
+                event.setCancelled(true);
             }
-            event.setCancelled(true);
         }
     }
 

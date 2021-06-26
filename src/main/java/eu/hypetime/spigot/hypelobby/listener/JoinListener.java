@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 /*
     Created by Andre
@@ -22,7 +23,7 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        event.setJoinMessage(null);
+        event.joinMessage(null);
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
             ScoreAPI.setScoreboard(onlinePlayer);
         }
@@ -30,6 +31,11 @@ public class JoinListener implements Listener {
         RewardAPI.createIfNotExist(player);
 
         player.teleport(WarpAPI.getLocation("Spawn"));
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event) {
+        event.quitMessage(null);
     }
 
 }
