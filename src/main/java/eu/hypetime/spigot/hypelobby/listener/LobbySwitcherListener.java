@@ -67,7 +67,7 @@ public class LobbySwitcherListener implements Listener {
         if (player.getOpenInventory().getTitle().equals("§8» §6LobbySwitcher")) {
             event.setCancelled(true);
             if (event.getCurrentItem() == null) return;
-            new CloudServer().sendPlayer(player, event.getCurrentItem().getItemMeta().getDisplayName());
+            new CloudServer().sendPlayer(player, event.getCurrentItem().getItemMeta().getDisplayName().replace("§7", ""));
 
         }
     }

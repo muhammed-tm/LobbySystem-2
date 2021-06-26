@@ -1,17 +1,17 @@
 eu/hypetime/spigot/hypelobby/utils/MySQL.java
  eu.hypetime.spigot.hypelobby.utils.MySQL
-eu/hypetime/spigot/hypelobby/utils/Constants.java
- eu.hypetime.spigot.hypelobby.utils.Constants
+eu/hypetime/spigot/hypelobby/utils/CloudServer.java
+ eu.hypetime.spigot.hypelobby.utils.CloudServer
 eu/hypetime/spigot/hypelobby/utils/Inventories.java
  eu.hypetime.spigot.hypelobby.utils.Inventories
-eu/hypetime/spigot/hypelobby/listener/LobbySwitcherListener.java
- eu.hypetime.spigot.hypelobby.listener.LobbySwitcherListener
+eu/hypetime/spigot/hypelobby/listener/DailyRewardListener.java
+ eu.hypetime.spigot.hypelobby.listener.DailyRewardListener
 eu/hypetime/spigot/hypelobby/utils/RestAPI.java
  eu.hypetime.spigot.hypelobby.utils.RestAPI
 eu/hypetime/spigot/hypelobby/listener/MainListener.java
  eu.hypetime.spigot.hypelobby.listener.MainListener
-eu/hypetime/spigot/hypelobby/utils/CloudServer.java
- eu.hypetime.spigot.hypelobby.utils.CloudServer
+eu/hypetime/spigot/hypelobby/listener/JoinListener.java
+ eu.hypetime.spigot.hypelobby.listener.JoinListener
 eu/hypetime/spigot/hypelobby/utils/Config.java
  eu.hypetime.spigot.hypelobby.utils.Config
 eu/hypetime/spigot/hypelobby/utils/ItemAPI.java
@@ -58,9 +58,9 @@ eu/hypetime/spigot/hypelobby/listener/NavListener.java
  eu.hypetime.spigot.hypelobby.listener.NavListener
 eu/hypetime/spigot/hypelobby/listener/DailyRewardGUIListener.java
  eu.hypetime.spigot.hypelobby.listener.DailyRewardGUIListener
-eu/hypetime/spigot/hypelobby/listener/JoinListener.java
- eu.hypetime.spigot.hypelobby.listener.JoinListener
-eu/hypetime/spigot/hypelobby/listener/DailyRewardListener.java
- eu.hypetime.spigot.hypelobby.listener.DailyRewardListener
+eu/hypetime/spigot/hypelobby/utils/Constants.java
+ eu.hypetime.spigot.hypelobby.utils.Constants
+eu/hypetime/spigot/hypelobby/listener/LobbySwitcherListener.java
+ eu.hypetime.spigot.hypelobby.listener.LobbySwitcherListener
 eu/hypetime/spigot/hypelobby/HypeLobby.java
  eu.hypetime.spigot.hypelobby.HypeLobby
