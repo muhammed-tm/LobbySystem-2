@@ -1,5 +1,7 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
+import io.papermc.paper.event.entity.EntityMoveEvent;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
@@ -20,6 +22,13 @@ public class MainListener implements Listener {
                event.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 99999, 1));
           } else {
                event.getPlayer().removePotionEffect(PotionEffectType.INVISIBILITY);
+          }
+     }
+
+     @EventHandler
+     public void onMove(EntityMoveEvent event) {
+          if(event.getEntityType() == EntityType.ARMOR_STAND) {
+               event.setCancelled(true);
           }
      }
 
