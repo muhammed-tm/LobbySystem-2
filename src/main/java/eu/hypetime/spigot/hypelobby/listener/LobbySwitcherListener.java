@@ -38,7 +38,7 @@ public class LobbySwitcherListener implements Listener {
             integer.getAndAdd(1);
         });
         for (int i = 0; i < inventory.getSize(); i++) {
-            if(inventory.getItem(i) != null && inventory.getItem(i).getType() != Material.AIR) {
+            if (inventory.getItem(i) != null && inventory.getItem(i).getType() != Material.AIR) {
                 inventory.setItem(i, new ItemAPI("§7", Material.GRAY_STAINED_GLASS_PANE, 1).build());
             }
         }
@@ -72,13 +72,11 @@ public class LobbySwitcherListener implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {
-        Player player = ( Player ) event.getWhoClicked();
+        Player player = (Player) event.getWhoClicked();
         if (player.getOpenInventory().getTitle().equals("§8» §6LobbySwitcher")) {
             event.setCancelled(true);
             if (event.getCurrentItem() == null) return;
             new CloudServer().sendPlayer(player, event.getCurrentItem().getItemMeta().getDisplayName().replace("§7", ""));
-
         }
     }
-
 }
