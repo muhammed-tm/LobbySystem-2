@@ -43,5 +43,5 @@ jar {
     archiveBaseName.set("HypeLobby")
     archiveClassifier.set("SNAPSHOT")
     archiveVersion.set("1.0")
-    destinationDir("D:\\Muhammed\\programming\\Minecraft\\Localhost\\Paper-VIP\\plugins" as File)
+    destinationDir("C:\\Muhammed\\programming\\Minecraft\\Localhost\\Paper-VIP\\plugins" as File)
 }
