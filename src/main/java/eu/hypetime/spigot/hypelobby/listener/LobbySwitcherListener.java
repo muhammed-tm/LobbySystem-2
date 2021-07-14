@@ -32,11 +32,11 @@ public class LobbySwitcherListener implements Listener {
         inventory = Bukkit.createInventory(null, 9, "§8» §6LobbySwitcher");
         CloudServer.initLobby();
         inventory.clear();
-        AtomicInteger integer = new AtomicInteger(14);
-        CloudServer.list.forEach(itemStack -> {
-            inventory.setItem(integer.get(), itemStack);
-            integer.getAndAdd(1);
-        });
+        for (int i = 14; i < 17; i++) {
+            if(CloudServer.list.get(i) != null) {
+                inventory.setItem(i, CloudServer.list.get(i));
+            }
+        }
         for (int i = 0; i < inventory.getSize(); i++) {
             if (inventory.getItem(i) != null && inventory.getItem(i).getType() != Material.AIR) {
                 inventory.setItem(i, new ItemAPI("§7", Material.GRAY_STAINED_GLASS_PANE, 1).build());
