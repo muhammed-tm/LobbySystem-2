@@ -33,7 +33,7 @@ public class CloudServer implements Listener {
           });
      }
 
-     public static void initLobbys() {
+     public static void initLobby() {
           list.clear();
           for (ServiceInfoSnapshot lobby : CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServices("Lobby")) {
                if(lobby.isConnected()) {

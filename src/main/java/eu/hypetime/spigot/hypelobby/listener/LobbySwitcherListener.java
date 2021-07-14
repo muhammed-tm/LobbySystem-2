@@ -1,6 +1,7 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
 import eu.hypetime.spigot.hypelobby.utils.CloudServer;
+import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -15,6 +16,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class LobbySwitcherListener implements Listener {
 
@@ -23,16 +25,23 @@ public class LobbySwitcherListener implements Listener {
 
     public LobbySwitcherListener() {
         lobbySwitcher = new ItemBuilder(Material.BEACON).setName("§8» §6LobbySwitcher").toItemStack();
-        CloudServer.initLobbys();
+        CloudServer.initLobby();
     }
 
     public void openInventory(Player player) {
         inventory = Bukkit.createInventory(null, 9, "§8» §6LobbySwitcher");
-        CloudServer.initLobbys();
+        CloudServer.initLobby();
         inventory.clear();
+        AtomicInteger integer = new AtomicInteger(14);
         CloudServer.list.forEach(itemStack -> {
-            inventory.addItem(itemStack);
+            inventory.setItem(integer.get(), itemStack);
+            integer.getAndAdd(1);
         });
+        for (int i = 0; i < inventory.getSize(); i++) {
+            if(inventory.getItem(i) != null && inventory.getItem(i).getType() != Material.AIR) {
+                inventory.setItem(i, new ItemAPI("§7", Material.GRAY_STAINED_GLASS_PANE, 1).build());
+            }
+        }
         player.openInventory(inventory);
     }
 
