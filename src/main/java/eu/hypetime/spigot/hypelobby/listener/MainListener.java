@@ -2,6 +2,7 @@ package eu.hypetime.spigot.hypelobby.listener;
 
 import eu.hypetime.spigot.hypelobby.commands.BuildCommand;
 import io.papermc.paper.event.entity.EntityMoveEvent;
+import org.bukkit.GameMode;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -38,8 +39,13 @@ public class MainListener implements Listener {
 
      @EventHandler
      public void onClick(InventoryClickEvent event) {
-          if (event.getInventory().getType() == InventoryType.PLAYER) {
-               event.setCancelled(!BuildCommand.build.contains((Player) event.getWhoClicked()));
+          if(event.getWhoClicked().getGameMode() == GameMode.SURVIVAL) {
+               event.setCancelled(true);
+          } else if(event.getWhoClicked() instanceof Player) {
+               Player player = (Player) event.getWhoClicked();
+               if(!BuildCommand.build.contains(player)) {
+                    event.setCancelled(true);
+               }
           }
      }
 
