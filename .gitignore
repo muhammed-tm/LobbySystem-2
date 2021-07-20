@@ -1,0 +1,37 @@
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+/*/nb-configuration.xml
+/nbproject/
+/*/nbproject/
+/*/target/
+/*/build/
+/netbeans-gradle-default-models/gradle-api/
+.gradle/
+/.nb-gradle-properties
+.nb-gradle/
+*.class
+*.jar
+*.war
+*.ear
+# generated files
+gen/**
+# project based files
+.idea/
+*.iml
+*.ipr
+*.iws
+.gradletasknamecache
+build/
+bin/

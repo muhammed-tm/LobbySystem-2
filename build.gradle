@@ -33,7 +33,6 @@ dependencies {
     compileOnly 'de.dytanic.cloudnet:cloudnet:3.3.0-RELEASE'
     compileOnly 'de.dytanic.cloudnet:cloudnet-bridge:3.3.0-RELEASE'
     compileOnly 'de.dytanic.cloudnet:cloudnet-common:3.3.0-RELEASE'
-
 }
 
 compileJava.options.encoding = 'UTF-8'
