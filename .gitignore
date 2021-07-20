@@ -1,7 +1,5 @@
 *.pydevproject
 .project
-.gradle
-.idea
 build/
 cache/
 gradle/
