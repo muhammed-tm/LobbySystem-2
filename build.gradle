@@ -33,6 +33,7 @@ dependencies {
     compileOnly 'de.dytanic.cloudnet:cloudnet:3.3.0-RELEASE'
     compileOnly 'de.dytanic.cloudnet:cloudnet-bridge:3.3.0-RELEASE'
     compileOnly 'de.dytanic.cloudnet:cloudnet-common:3.3.0-RELEASE'
+    compileOnly 'com.github.koca2000:NoteBlockAPI:1.6.1'
 }
 
 compileJava.options.encoding = 'UTF-8'

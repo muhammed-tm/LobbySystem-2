@@ -2,8 +2,6 @@ package eu.hypetime.spigot.hypelobby.listener;
 
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
-import org.bukkit.Effect;
-import org.bukkit.EntityEffect;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
