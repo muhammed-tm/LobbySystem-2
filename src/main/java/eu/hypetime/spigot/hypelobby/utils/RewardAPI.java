@@ -3,8 +3,12 @@ package eu.hypetime.spigot.hypelobby.utils;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.collect.LinkedHashMultimap;
+import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
+import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
+import eu.hypetime.spigot.hypelobby.HypeLobby;
 import org.bukkit.entity.Player;
 
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -26,6 +30,10 @@ public class RewardAPI {
                isExist = false;
           }
           if (!isExist) {
+               HypeLobby.sp.addPlayer(player);
+               if(!HypeLobby.sp.isPlaying()) {
+                    HypeLobby.sp.setPlaying(true);
+               }
                MySQL.update("INSERT INTO dailyreward (UUID, Spielerwaiting, Hyperwaiting, Warriorwaiting, Vipwaiting, Mediawaiting) " +
                     "VALUES ('" + player.getUniqueId() + "', '0', '0', '0', '0', '0')");
                System.out.println("Player created");

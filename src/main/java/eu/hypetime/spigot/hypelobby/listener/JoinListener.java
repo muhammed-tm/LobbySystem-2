@@ -11,6 +11,7 @@ import eu.hypetime.spigot.hypelobby.utils.RewardAPI;
 import eu.hypetime.spigot.hypelobby.utils.ScoreAPI;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,6 +29,8 @@ import java.io.File;
 */
 
 public class JoinListener implements Listener {
+
+
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -38,21 +41,18 @@ public class JoinListener implements Listener {
         Inventories.mainInventory(player);
         RewardAPI.createIfNotExist(player);
 
+        player.setGameMode(GameMode.SURVIVAL);
         player.teleport(WarpAPI.getLocation("Spawn"));
-
-            Song s = NBSDecoder.parse(new File(HypeLobby.getInstance().getDataFolder(), "Song.nbs"));
-            SongPlayer sp = new RadioSongPlayer(s);
-            sp.setAutoDestroy(true);
-            sp.addPlayer(event.getPlayer());
-            sp.setPlaying(true);
-            player.sendTitle("§aWillkommen!", "§aauf §6§lHypeTime.EU", 20, 40, 20);
-
+        player.sendTitle("§aWillkommen!", "§aauf §6§lHypeTime", 20, 40, 20);
 
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         event.quitMessage(null);
+        if(HypeLobby.sp.getPlayerUUIDs().contains(event.getPlayer().getUniqueId())) {
+            HypeLobby.sp.removePlayer(event.getPlayer());
+        }
     }
 
 }

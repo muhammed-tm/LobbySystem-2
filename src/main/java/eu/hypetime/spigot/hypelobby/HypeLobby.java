@@ -1,5 +1,9 @@
 package eu.hypetime.spigot.hypelobby;
 
+import com.xxmicloxx.NoteBlockAPI.model.Song;
+import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
+import com.xxmicloxx.NoteBlockAPI.songplayer.SongPlayer;
+import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
 import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.driver.event.IEventManager;
 import eu.hypetime.spigot.hypelobby.commands.BuildCommand;
@@ -11,6 +15,8 @@ import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.io.File;
 
 /*
     Created by Andre
@@ -25,10 +31,15 @@ public class HypeLobby extends JavaPlugin {
      private Config config;
      private Constants constants;
      public boolean broadcast;
+     public static Song s;
+     public static SongPlayer sp;
+
 
      @Override
      public void onEnable() {
           instance = this;
+          s = NBSDecoder.parse(new File(getDataFolder(), "Song.nbs"));
+          sp = new RadioSongPlayer(s);
 
           config = new Config(getDataFolder().getAbsolutePath(), "config.yml");
           constants = new Constants(this);
