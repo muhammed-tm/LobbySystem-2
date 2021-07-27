@@ -34,7 +34,6 @@ public class HypeLobby extends JavaPlugin {
      public static Song s;
      public static SongPlayer sp;
 
-
      @Override
      public void onEnable() {
           instance = this;

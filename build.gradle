@@ -1,6 +1,7 @@
 plugins {
+    id 'maven-publish'
     id 'java'
-    id 'maven'
+    id 'idea'
 }
 
 group 'eu.hypetime.spigot.hypelobby'
@@ -25,14 +26,13 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compileOnly "com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT"
-    compileOnly 'de.dytanic.cloudnet:cloudnet-driver:3.3.0-RELEASE'
-    compileOnly 'de.dytanic.cloudnet:cloudnet-cloudperms:3.3.0-RELEASE'
-    compileOnly 'org.spigotmc:spigot:1.16.5-R0.1-SNAPSHOT'
-    compileOnly 'de.dytanic.cloudnet:cloudnet:3.3.0-RELEASE'
-    compileOnly 'de.dytanic.cloudnet:cloudnet-bridge:3.3.0-RELEASE'
-    compileOnly 'de.dytanic.cloudnet:cloudnet-common:3.3.0-RELEASE'
+    compileOnly 'io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-driver:3.4.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-cloudperms:3.4.0-RELEASE'
+    compileOnly 'org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT'
+    compileOnly 'de.dytanic.cloudnet:cloudnet:3.4.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-bridge:3.4.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-common:3.4.0-RELEASE'
     compileOnly 'com.github.koca2000:NoteBlockAPI:1.6.1'
 }
 
@@ -45,3 +45,10 @@ jar {
     archiveVersion.set("1.0")
     destinationDir("D:\\Muhammed\\programming\\Minecraft\\Localhost\\Paper-VIP\\plugins" as File)
 }
+configurations {
+    testCompile
+}
+
+
+apply plugin: 'java'
+apply plugin: 'idea'
