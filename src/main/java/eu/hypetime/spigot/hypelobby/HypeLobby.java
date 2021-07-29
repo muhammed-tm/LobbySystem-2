@@ -8,6 +8,8 @@ import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.driver.event.IEventManager;
 import eu.hypetime.spigot.hypelobby.commands.BuildCommand;
 import eu.hypetime.spigot.hypelobby.commands.SetCommand;
+import eu.hypetime.spigot.hypelobby.commands.StatsCommand;
+import eu.hypetime.spigot.hypelobby.commands.Top5Command;
 import eu.hypetime.spigot.hypelobby.listener.*;
 import eu.hypetime.spigot.hypelobby.utils.Config;
 import eu.hypetime.spigot.hypelobby.utils.Constants;
@@ -50,6 +52,8 @@ public class HypeLobby extends JavaPlugin {
 
           ScoreAPI.startScheduler();
 
+          new SQLStats();
+
           getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
      }
@@ -88,5 +92,7 @@ public class HypeLobby extends JavaPlugin {
      private void registerCommands() {
           getCommand("build").setExecutor(new BuildCommand());
           getCommand("set").setExecutor(new SetCommand());
+          getCommand("top5").setExecutor(new Top5Command());
+          getCommand("stats").setExecutor(new StatsCommand());
      }
 }

@@ -11,3 +11,7 @@ commands:
     description: Build Command
   set:
     description: Set Location Command
+  top5:
+    description: GunBattle top5
+  stats:
+    description: GunBattle Stats
