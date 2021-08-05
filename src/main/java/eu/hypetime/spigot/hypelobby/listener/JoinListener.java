@@ -44,7 +44,6 @@ public class JoinListener implements Listener {
         player.setGameMode(GameMode.SURVIVAL);
         player.teleport(WarpAPI.getLocation("Spawn"));
         player.sendTitle("§aWillkommen!", "§aauf §6§lHypeTime", 20, 40, 20);
-
     }
 
     @EventHandler

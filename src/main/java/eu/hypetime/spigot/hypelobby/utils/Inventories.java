@@ -120,7 +120,6 @@ public class Inventories {
                   .setName("§eHyper Belohnung")
                   .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWZjZTVkODViNDg5NTY2MmYzMzY0MjljNWJmNWNhMmNhMzNmNjE5NWJmMjQ3NjIyMjQxMjM4NDEwOTY3NTgifX19=")
                   .toItemStack());
-
           inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD)
                   .setName("§dWarrior Belohnung")
                   .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Q1ZWUyNGFmYjQ0OTg0ZmE4OTU0YmFkYjdlMjg5NzY4MTUwZTJiMjkwODRjODE3NjhlMjhhNjc3ZGRlODkifX19=")
@@ -135,6 +134,29 @@ public class Inventories {
                   .toItemStack());
           player.openInventory(inventory);
 
+
+     }
+     public static void NameMCInventory(Player player) {
+          Inventory inventory = Bukkit.createInventory(null, 9 * 3,  "§8» §6NameMC §8«");
+          for (int i = 0; i < inventory.getSize(); i++) {
+               inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
+          }
+          inventory.setItem(11, new ItemBuilder(Material.PLAYER_HEAD)
+                  .setName("§6NameMC Reward")
+                  .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTZjYjY1NzM4MWVlOTZmNWVhZGU0YzczMGVlMWExYjE0NTUyNzY1ZjFkZWUyYmNmZGFlMTc1NzkyYjAxNmZiIn19fQ===")
+                  .addLoreLine("§cNicht angefordert")
+                  .toItemStack());
+
+          inventory.setItem(13, new ItemBuilder(Material.PAPER)
+                  .setName("§7www.hypetime.eu/namemc")
+                  .toItemStack());
+
+          inventory.setItem(15, new ItemBuilder(Material.GOLD_INGOT)
+                  .setName("§aReward")
+                  .addLoreLine("§cX.X.X")
+                  .toItemStack());
+
+          player.openInventory(inventory);
 
      }
 }

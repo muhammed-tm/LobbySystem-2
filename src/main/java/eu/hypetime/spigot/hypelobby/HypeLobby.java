@@ -13,10 +13,15 @@ import eu.hypetime.spigot.hypelobby.utils.Config;
 import eu.hypetime.spigot.hypelobby.utils.Constants;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
 
 /*
     Created by Andre
@@ -51,9 +56,10 @@ public class HypeLobby extends JavaPlugin {
 
           ScoreAPI.startScheduler();
 
-          getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
 
+          getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
      }
+
 
      public static HypeLobby getInstance() {
           return instance;
@@ -81,6 +87,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(lobbySwitcherListener, this);
           pluginManager.registerEvents(new DailyRewardListener(), this);
           pluginManager.registerEvents(new DailyRewardGUIListener(), this);
+          pluginManager.registerEvents(new NPCListener(), this);
 
           IEventManager eventManager = CloudNetDriver.getInstance().getEventManager();
           eventManager.registerListener(new CloudServer());
@@ -90,4 +97,5 @@ public class HypeLobby extends JavaPlugin {
           getCommand("build").setExecutor(new BuildCommand());
           getCommand("set").setExecutor(new SetCommand());
      }
+
 }

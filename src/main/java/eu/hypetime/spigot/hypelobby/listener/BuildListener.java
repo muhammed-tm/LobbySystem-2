@@ -14,6 +14,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 
 import java.util.List;
 
@@ -24,14 +25,16 @@ import java.util.List;
 */
 public class BuildListener implements Listener {
 
+
      String prefix = HypeLobby.getInstance().getConstants().getPrefix();
-     List<Player> build  = BuildCommand.build;
+
+     List < Player > build = BuildCommand.build;
 
      @EventHandler
      public void onPlace(BlockPlaceEvent event) {
-          if(!build.contains(event.getPlayer())) {
-               if(event.getPlayer().getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())) {
-                    if(event.getItemInHand().getType() != Material.PLAYER_HEAD) {
+          if (!build.contains(event.getPlayer())) {
+               if (event.getPlayer().getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())) {
+                    if (event.getItemInHand().getType() != Material.PLAYER_HEAD) {
                          if ((event.getPlayer().getLocation().distance(WarpAPI.getLocation("LobbyPVP")) <= 3) || (event.getBlock().getLocation().distance(WarpAPI.getLocation("LobbyPVP")) <= 3)) {
                               event.setCancelled(true);
                          } else {
@@ -50,27 +53,28 @@ public class BuildListener implements Listener {
 
      @EventHandler
      public void onBreak(BlockBreakEvent event) {
-          if(!build.contains(event.getPlayer())) {
+          if (!build.contains(event.getPlayer())) {
                event.setCancelled(true);
           }
      }
 
      @EventHandler
      public void onDrop(PlayerDropItemEvent event) {
-          if(!build.contains(event.getPlayer())) {
+          if (!build.contains(event.getPlayer())) {
                event.setCancelled(true);
           }
      }
+
      @EventHandler
      public void onStep(EntityChangeBlockEvent event) {
-          if(!build.contains(event.getEntity())) {
+          if (!build.contains(event.getEntity())) {
                event.setCancelled(true);
           }
      }
 
      @EventHandler
      public void onPickUp(PlayerAttemptPickupItemEvent event) {
-          if(!build.contains(event.getPlayer())) {
+          if (!build.contains(event.getPlayer())) {
                event.setCancelled(true);
           }
      }
