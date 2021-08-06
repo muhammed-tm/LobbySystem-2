@@ -34,6 +34,7 @@ public class RewardAPI {
                if(!HypeLobby.sp.isPlaying()) {
                     HypeLobby.sp.setPlaying(true);
                }
+               player.sendTitle("§aWillkommen!", "§aauf §6§lHypeTime", 20, 40, 20);
                MySQL.update("INSERT INTO dailyreward (UUID, Spielerwaiting, Hyperwaiting, Warriorwaiting, Vipwaiting, Mediawaiting) " +
                     "VALUES ('" + player.getUniqueId() + "', '0', '0', '0', '0', '0')");
                System.out.println("Player created");

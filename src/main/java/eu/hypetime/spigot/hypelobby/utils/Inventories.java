@@ -10,6 +10,7 @@ import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import javax.naming.Name;
 import java.util.Random;
 
 /*
@@ -141,19 +142,48 @@ public class Inventories {
           for (int i = 0; i < inventory.getSize(); i++) {
                inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
           }
-          inventory.setItem(11, new ItemBuilder(Material.PLAYER_HEAD)
-                  .setName("§6NameMC Reward")
-                  .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTZjYjY1NzM4MWVlOTZmNWVhZGU0YzczMGVlMWExYjE0NTUyNzY1ZjFkZWUyYmNmZGFlMTc1NzkyYjAxNmZiIn19fQ===")
-                  .addLoreLine("§cNicht angefordert")
-                  .toItemStack());
-
-          inventory.setItem(13, new ItemBuilder(Material.PAPER)
-                  .setName("§7www.hypetime.eu/namemc")
-                  .toItemStack());
-
+          if(NameMCReward.hasAccept(player)) {
+               inventory.setItem(11, new ItemBuilder(Material.PLAYER_HEAD)
+                       .setName("§6NameMC Reward")
+                       .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTZjYjY1NzM4MWVlOTZmNWVhZGU0YzczMGVlMWExYjE0NTUyNzY1ZjFkZWUyYmNmZGFlMTc1NzkyYjAxNmZiIn19fQ===")
+                       .addLoreLine("§aBelohnung Angefordert")
+                       .toItemStack());
+          }else {
+               if (NameMCReward.check(player)) {
+                    inventory.setItem(11, new ItemBuilder(Material.PLAYER_HEAD)
+                            .setName("§6NameMC Reward")
+                            .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTZjYjY1NzM4MWVlOTZmNWVhZGU0YzczMGVlMWExYjE0NTUyNzY1ZjFkZWUyYmNmZGFlMTc1NzkyYjAxNmZiIn19fQ===")
+                            .addLoreLine("§cBelohnung nicht angefordert")
+                            .addLoreLine("§7Befehl: §6/vote get")
+                            .toItemStack());
+               } else {
+                    inventory.setItem(11, new ItemBuilder(Material.PLAYER_HEAD)
+                            .setName("§6NameMC Reward")
+                            .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTZjYjY1NzM4MWVlOTZmNWVhZGU0YzczMGVlMWExYjE0NTUyNzY1ZjFkZWUyYmNmZGFlMTc1NzkyYjAxNmZiIn19fQ===")
+                            .addLoreLine("§cBelohnung nicht angefordert")
+                            .toItemStack());
+               }
+          }
+          if(NameMCReward.check(player)) {
+               inventory.setItem(13, new ItemBuilder(Material.PAPER)
+                       .setName("§7https://namemc.com/server/hypetime.eu")
+                               .addLoreLine("§aDu hast den Server geliked")
+                       .toItemStack());
+          }else {
+               inventory.setItem(13, new ItemBuilder(Material.PAPER)
+                       .setName("§7https://namemc.com/server/hypetime.eu")
+                       .addLoreLine("§cDu hast nicht den Server geliked")
+                       .toItemStack());
+          }
           inventory.setItem(15, new ItemBuilder(Material.GOLD_INGOT)
                   .setName("§aReward")
-                  .addLoreLine("§cX.X.X")
+                  .addLoreLine("")
+                  .addLoreLine("§8» §77 Tage den §eHyper Rang")
+                  .addLoreLine("§8» §e2500 Coins")
+                  .addLoreLine("§8» §7Eine Nachricht an alle Spieler")
+                  .addLoreLine("§8(§7Discord §6&§7 Minecraft§8)§7.")
+                  .addLoreLine("")
+                  .addLoreLine("§6/reward get§7/§6check§7/§6info")
                   .toItemStack());
 
           player.openInventory(inventory);

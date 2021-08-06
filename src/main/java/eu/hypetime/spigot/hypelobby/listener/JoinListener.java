@@ -12,6 +12,7 @@ import eu.hypetime.spigot.hypelobby.utils.ScoreAPI;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -43,7 +44,7 @@ public class JoinListener implements Listener {
 
         player.setGameMode(GameMode.SURVIVAL);
         player.teleport(WarpAPI.getLocation("Spawn"));
-        player.sendTitle("§aWillkommen!", "§aauf §6§lHypeTime", 20, 40, 20);
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F);
     }
 
     @EventHandler
