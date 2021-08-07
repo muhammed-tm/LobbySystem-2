@@ -27,12 +27,12 @@ repositories {
 
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.17.1-R0.1-SNAPSHOT'
-    compileOnly 'de.dytanic.cloudnet:cloudnet-driver:3.3.0-RELEASE'
-    compileOnly 'de.dytanic.cloudnet:cloudnet-cloudperms:3.3.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-driver:3.4.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-cloudperms:3.4.0-RELEASE'
     compileOnly 'org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT'
-    compileOnly 'de.dytanic.cloudnet:cloudnet:3.3.0-RELEASE'
-    compileOnly 'de.dytanic.cloudnet:cloudnet-bridge:3.3.0-RELEASE'
-    compileOnly 'de.dytanic.cloudnet:cloudnet-common:3.3.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet:3.4.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-bridge:3.4.0-RELEASE'
+    compileOnly 'de.dytanic.cloudnet:cloudnet-common:3.4.0-RELEASE'
     compileOnly 'com.github.koca2000:NoteBlockAPI:1.6.1'
     compileOnly group: 'com.github.juliarn', name: 'npc-lib', version: 'development-SNAPSHOT'
 }

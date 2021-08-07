@@ -33,13 +33,17 @@ public class StatsCommand implements CommandExecutor {
           } else if (args.length == 1) {
                try {
                     try {
-                         String target = args[0];
-                         player.sendMessage("§8§m          §8[§aStats§8]§8§m          ");
-                         player.sendMessage("§7Spieler§8: §a" + target);
-                         player.sendMessage("§7Kills§8: §a" + StatsManager.getKills(target));
-                         player.sendMessage("§7Deaths§8: §a" + StatsManager.getDeaths(target));
-                         player.sendMessage("§7Rank§8: §a" + SQLStats.getInstance().getRanking(target));
-                         player.sendMessage("§8§m          §8[§aStats§8]§8§m          ");
+                         String target = SQLStats.getInstance().getPlayerFromRank(Integer.parseInt(args[0]));
+                         if(!target.equals("null")) {
+                              player.sendMessage("§8§m          §8[§aStats§8]§8§m          ");
+                              player.sendMessage("§7Spieler§8: §a" + target);
+                              player.sendMessage("§7Kills§8: §a" + StatsManager.getKills(target));
+                              player.sendMessage("§7Deaths§8: §a" + StatsManager.getDeaths(target));
+                              player.sendMessage("§7Rank§8: §a" + SQLStats.getInstance().getRanking(target));
+                              player.sendMessage("§8§m          §8[§aStats§8]§8§m          ");
+                         } else {
+                              player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cFehler§8: §7Es sind nur §6" + SQLStats.getInstance().listSize() + " §7Spieler registriert§8.");
+                         }
                     } catch (NullPointerException exception) {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cFehler§8: §7Es sind nur §6" + SQLStats.getInstance().listSize() + " §7Spieler registriert§8.");
                     }

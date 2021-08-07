@@ -1,7 +1,6 @@
 package eu.hypetime.spigot.hypelobby.utils;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
-import org.bukkit.configuration.file.FileConfiguration;
 
 /*
     Created by Andre
