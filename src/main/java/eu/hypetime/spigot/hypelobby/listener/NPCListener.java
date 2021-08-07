@@ -3,7 +3,6 @@ package eu.hypetime.spigot.hypelobby.listener;
 import com.github.juliarn.npc.NPC;
 import com.github.juliarn.npc.event.PlayerNPCInteractEvent;
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
-import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -19,12 +18,18 @@ public class NPCListener implements Listener {
 
         // checking if the player hit the NPC
         if (event.getUseAction() == PlayerNPCInteractEvent.EntityUseAction.INTERACT) {
-            Inventories.NameMCInventory(player);
+            if (npc.getProfile().hasName() && npc.getProfile().getName() == "§6NameMC Reward") {
+                Inventories.NameMCInventory(player);
+            }
+            if (npc.getProfile().hasName() && npc.getProfile().getName() == "§6Daily Rewards") {
+                Inventories.DailyRewardInventory(player);
+            }
         }
     }
+
     @EventHandler
     public void onClick(InventoryClickEvent event) {
-        Player player = (Player) event.getWhoClicked();
+        Player player = ( Player ) event.getWhoClicked();
         if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6NameMC §8«")) {
             event.setCancelled(true);
             if (event.getCurrentItem() == null) return;
