@@ -13,6 +13,7 @@ import org.bukkit.Color;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
@@ -144,20 +145,24 @@ public class ItemBuilder {
 
 	public ItemBuilder addEnchant(Enchantment ench, int level) {
 		this.item.addEnchantment(ench, level);
+		this.item.addItemFlags(ItemFlag.values());
 		return this;
 	}
 
 	public ItemBuilder addUnsafeEnchantment(Enchantment ench, int level) {
 		this.item.addUnsafeEnchantment(ench, level);
+		this.item.addItemFlags(ItemFlag.values());
 		return this;
 	}
 
 	public ItemBuilder addEnchantItemMeta(Enchantment ench, int level, boolean hideEnch) {
 		this.item.getItemMeta().addEnchant(ench, level, hideEnch);
+		this.item.addItemFlags(ItemFlag.values());
 		return this;
 	}
 
 	public ItemBuilder addEnchantments(Map<Enchantment, Integer> ench) {
+		this.item.addItemFlags(ItemFlag.values());
 		this.item.addEnchantments(ench);
 		return this;
 	}

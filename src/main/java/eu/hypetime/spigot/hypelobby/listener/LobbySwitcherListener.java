@@ -10,6 +10,7 @@ import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -37,30 +38,80 @@ public class LobbySwitcherListener implements Listener {
      }
 
      public void openInventory(Player player) {
-          inventory = Bukkit.createInventory(null, 27, "§8» §6LobbySwitcher");
-          inventory.clear();
-          AtomicInteger i = new AtomicInteger(11);
-          CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServices("Lobby").stream().sorted().forEach(lobby -> {
-               if (lobby.isConnected()) {
-                    int players = 1;
-                    if(lobby.getProperty(BridgeServiceProperty.ONLINE_COUNT).isPresent()) {
-                         players = lobby.getProperty(BridgeServiceProperty.ONLINE_COUNT).get();
+          if(player.hasPermission("lobby.vip")) {
+               inventory = Bukkit.createInventory(null, 27, "§8» §6LobbySwitcher");
+               inventory.clear();
+
+               //LobbyPlus
+               AtomicInteger iPLobby = new AtomicInteger(0);
+               CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServices("LobbyPlus").stream().sorted().forEach(lobby -> {
+                    if (lobby.isConnected()) {
+                         int players = 1;
+                         if (lobby.getProperty(BridgeServiceProperty.ONLINE_COUNT).isPresent()) {
+                              players = lobby.getProperty(BridgeServiceProperty.ONLINE_COUNT).get();
+                         }
+                         if (lobby.getServiceId().equals(Wrapper.getInstance().getServiceId())) {
+                              inventory.setItem(iPLobby.getAndIncrement(), new ItemBuilder(Material.GLOWSTONE_DUST, players)
+                                   .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1).setName("§7" + lobby.getName()).toItemStack());
+                         } else {
+                              inventory.setItem(iPLobby.getAndIncrement(), new ItemBuilder(Material.GLOWSTONE_DUST, players).setName("§7" + lobby.getName()).toItemStack());
+                         }
                     }
-                    if (lobby.getServiceId().equals(Wrapper.getInstance().getServiceId())) {
-                         inventory.setItem(i.getAndIncrement(), new ItemBuilder(Material.GLOWSTONE_DUST, players).setName("§7" + lobby.getName()).toItemStack());
+               });
+
+               //Lobbys
+               AtomicInteger iLobby = new AtomicInteger(18);
+               CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServices("Lobby").stream().sorted().forEach(lobby -> {
+                    if (lobby.isConnected()) {
+                         int players = 1;
+                         if (lobby.getProperty(BridgeServiceProperty.ONLINE_COUNT).isPresent()) {
+                              players = lobby.getProperty(BridgeServiceProperty.ONLINE_COUNT).get();
+                         }
+                         if (lobby.getServiceId().equals(Wrapper.getInstance().getServiceId())) {
+                              inventory.setItem(iLobby.getAndIncrement(), new ItemBuilder(Material.GUNPOWDER, players)
+                                   .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1).setName("§7" + lobby.getName()).toItemStack());
+                         } else {
+                              inventory.setItem(iLobby.getAndIncrement(), new ItemBuilder(Material.GUNPOWDER, players).setName("§7" + lobby.getName()).toItemStack());
+                         }
+                    }
+               });
+
+               for (int i1 = 0; i1 < inventory.getSize(); i1++) {
+                    if (inventory.getItem(i1) == null || inventory.getItem(i1).getType() == Material.AIR) {
+                         inventory.setItem(i1, new ItemAPI("§7", Material.GRAY_STAINED_GLASS_PANE, 1).build());
                     } else {
-                         inventory.setItem(i.getAndIncrement(), new ItemBuilder(Material.GUNPOWDER, players).setName("§7" + lobby.getName()).toItemStack());
+                         continue;
                     }
                }
-          });
+          } else {
+               inventory = Bukkit.createInventory(null, 9, "§8» §6LobbySwitcher");
+               inventory.clear();
 
-          for (int i1 = 0; i1 < inventory.getSize(); i1++) {
-               if (inventory.getItem(i1) == null || inventory.getItem(i1).getType() == Material.AIR) {
-                    inventory.setItem(i1, new ItemAPI("§7", Material.GRAY_STAINED_GLASS_PANE, 1).build());
-               } else {
-                    continue;
+               AtomicInteger iLobby = new AtomicInteger(0);
+               CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServices("Lobby").stream().sorted().forEach(lobby -> {
+                    if (lobby.isConnected()) {
+                         int players = 1;
+                         if (lobby.getProperty(BridgeServiceProperty.ONLINE_COUNT).isPresent()) {
+                              players = lobby.getProperty(BridgeServiceProperty.ONLINE_COUNT).get();
+                         }
+                         if (lobby.getServiceId().equals(Wrapper.getInstance().getServiceId())) {
+                              inventory.setItem(iLobby.getAndIncrement(), new ItemBuilder(Material.GUNPOWDER, players)
+                                   .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1).setName("§7" + lobby.getName()).toItemStack());
+                         } else {
+                              inventory.setItem(iLobby.getAndIncrement(), new ItemBuilder(Material.GUNPOWDER, players).setName("§7" + lobby.getName()).toItemStack());
+                         }
+                    }
+               });
+
+               for (int i1 = 0; i1 < inventory.getSize(); i1++) {
+                    if (inventory.getItem(i1) == null || inventory.getItem(i1).getType() == Material.AIR) {
+                         inventory.setItem(i1, new ItemAPI("§7", Material.GRAY_STAINED_GLASS_PANE, 1).build());
+                    } else {
+                         continue;
+                    }
                }
           }
+
           player.openInventory(inventory);
      }
 
