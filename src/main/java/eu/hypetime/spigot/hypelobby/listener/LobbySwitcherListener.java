@@ -1,7 +1,10 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
 import de.dytanic.cloudnet.driver.CloudNetDriver;
-import eu.hypetime.spigot.hypelobby.HypeLobby;
+import de.dytanic.cloudnet.driver.service.property.ServiceProperty;
+import de.dytanic.cloudnet.ext.bridge.BridgeServiceProperty;
+import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
+import de.dytanic.cloudnet.wrapper.Wrapper;
 import eu.hypetime.spigot.hypelobby.utils.CloudServer;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
@@ -12,18 +15,21 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LobbySwitcherListener implements Listener {
 
      public ItemStack lobbySwitcher;
      public Inventory inventory;
+     public List<Player> inventoryViewers = new ArrayList<>();
 
      public LobbySwitcherListener() {
           lobbySwitcher = new ItemBuilder(Material.BEACON).setName("§8» §6LobbySwitcher").toItemStack();
@@ -34,9 +40,17 @@ public class LobbySwitcherListener implements Listener {
           inventory = Bukkit.createInventory(null, 27, "§8» §6LobbySwitcher");
           inventory.clear();
           AtomicInteger i = new AtomicInteger(11);
-          CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServices("Lobby").forEach(lobby -> {
+          CloudNetDriver.getInstance().getCloudServiceProvider().getCloudServices("Lobby").stream().sorted().forEach(lobby -> {
                if (lobby.isConnected()) {
-                    inventory.setItem(i.getAndIncrement(), new ItemBuilder(Material.GUNPOWDER).setName("§7" + lobby.getName()).toItemStack());
+                    int players = 1;
+                    if(lobby.getProperty(BridgeServiceProperty.ONLINE_COUNT).isPresent()) {
+                         players = lobby.getProperty(BridgeServiceProperty.ONLINE_COUNT).get();
+                    }
+                    if (lobby.getServiceId().equals(Wrapper.getInstance().getServiceId())) {
+                         inventory.setItem(i.getAndIncrement(), new ItemBuilder(Material.GLOWSTONE_DUST, players).setName("§7" + lobby.getName()).toItemStack());
+                    } else {
+                         inventory.setItem(i.getAndIncrement(), new ItemBuilder(Material.GUNPOWDER, players).setName("§7" + lobby.getName()).toItemStack());
+                    }
                }
           });
 
@@ -48,18 +62,6 @@ public class LobbySwitcherListener implements Listener {
                }
           }
           player.openInventory(inventory);
-     }
-
-     public void updateInventory() {
-          List<HumanEntity> entityList = new ArrayList<>();
-          for (HumanEntity viewer : inventory.getViewers()) {
-               entityList.add(viewer);
-               viewer.closeInventory();
-          }
-
-          for (HumanEntity humanEntity : entityList) {
-               openInventory((Player) humanEntity);
-          }
      }
 
      @EventHandler

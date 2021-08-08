@@ -31,14 +31,23 @@ public class ItemBuilder {
 	}
 
 	public ItemBuilder(Material material, int amount) {
+		if(amount < 1) {
+			amount = 1;
+		}
 		this.item = new ItemStack(material, amount);
 	}
 
 	public ItemBuilder(Material material, int amount, short durability) {
+		if(amount < 1) {
+			amount = 1;
+		}
 		this.item = new ItemStack(material, amount, durability);
 	}
 
 	public ItemBuilder(Material material, int amount, byte durability) {
+		if(amount < 1) {
+			amount = 1;
+		}
 		this.item = new ItemStack(material, amount, durability);
 	}
 

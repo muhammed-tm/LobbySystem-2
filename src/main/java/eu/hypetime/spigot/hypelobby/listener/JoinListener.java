@@ -41,6 +41,7 @@ public class JoinListener implements Listener {
         }
         Inventories.mainInventory(player);
         RewardAPI.createIfNotExist(player);
+        HypeLobby.getInstance().lobbySwitcherListener.updateInventory();
 
         player.setGameMode(GameMode.SURVIVAL);
         player.teleport(WarpAPI.getLocation("Spawn"));
@@ -50,6 +51,7 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         event.quitMessage(null);
+        HypeLobby.getInstance().lobbySwitcherListener.updateInventory();
         if(HypeLobby.sp.getPlayerUUIDs().contains(event.getPlayer().getUniqueId())) {
             HypeLobby.sp.removePlayer(event.getPlayer());
         }
