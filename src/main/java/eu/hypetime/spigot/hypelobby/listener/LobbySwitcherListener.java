@@ -105,7 +105,7 @@ public class LobbySwitcherListener implements Listener {
 
                for (int i1 = 0; i1 < inventory.getSize(); i1++) {
                     if (inventory.getItem(i1) == null || inventory.getItem(i1).getType() == Material.AIR) {
-                         inventory.setItem(i1, new ItemAPI("§7", Material.GRAY_STAINED_GLASS_PANE, 1).build());
+                         inventory.setItem(i1, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).build());
                     } else {
                          continue;
                     }
