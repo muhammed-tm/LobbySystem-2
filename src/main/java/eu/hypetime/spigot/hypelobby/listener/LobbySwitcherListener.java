@@ -1,9 +1,7 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
 import de.dytanic.cloudnet.driver.CloudNetDriver;
-import de.dytanic.cloudnet.driver.service.property.ServiceProperty;
 import de.dytanic.cloudnet.ext.bridge.BridgeServiceProperty;
-import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
 import de.dytanic.cloudnet.wrapper.Wrapper;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.CloudServer;
@@ -13,21 +11,17 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LobbySwitcherListener implements Listener {
@@ -42,7 +36,7 @@ public class LobbySwitcherListener implements Listener {
      }
 
      public void openInventory(Player player) {
-          if(player.hasPermission("lobby.vip")) {
+          if (player.hasPermission("lobby.vip")) {
                inventory = Bukkit.createInventory(null, 27, "§8» §6LobbySwitcher");
                inventory.clear();
 
@@ -136,16 +130,19 @@ public class LobbySwitcherListener implements Listener {
      public void onClick(InventoryClickEvent event) {
           Player player = (Player) event.getWhoClicked();
           if (player.getOpenInventory().getTitle().equals("§8» §6LobbySwitcher")) {
+               if (event.getCurrentItem().getType() == Material.GRAY_STAINED_GLASS_PANE) return;
                event.setCancelled(true);
                if (event.getCurrentItem() == null) return;
                player.closeInventory();
                player.sendTitle("", "§eVerbinde§7...", 2, 50, 2);
                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0F, 1.0F);
-               (new BukkitRunnable() {
-                    public void run() {
+               if (event.getCurrentItem().getItemMeta().hasEnchants()) {
+                    player.sendTitle("", "§cFehlgeschlagen§7!", 2, 50, 2);
+               } else {
+                    Bukkit.getScheduler().runTaskLater(HypeLobby.getInstance(), () -> {
                          new CloudServer().sendPlayer(player, event.getCurrentItem().getItemMeta().getDisplayName().replace("§7", ""));
-                    }
-               }).runTaskLater((Plugin)HypeLobby.getInstance(), 35L);
+                    }, 35L);
+               }
           }
      }
 }
