@@ -5,11 +5,13 @@ import de.dytanic.cloudnet.driver.service.property.ServiceProperty;
 import de.dytanic.cloudnet.ext.bridge.BridgeServiceProperty;
 import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
 import de.dytanic.cloudnet.wrapper.Wrapper;
+import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.CloudServer;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -20,6 +22,8 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -134,7 +138,14 @@ public class LobbySwitcherListener implements Listener {
           if (player.getOpenInventory().getTitle().equals("§8» §6LobbySwitcher")) {
                event.setCancelled(true);
                if (event.getCurrentItem() == null) return;
-               new CloudServer().sendPlayer(player, event.getCurrentItem().getItemMeta().getDisplayName().replace("§7", ""));
+               player.closeInventory();
+               player.sendTitle("", "§eVerbinde§7...", 2, 50, 2);
+               player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0F, 1.0F);
+               (new BukkitRunnable() {
+                    public void run() {
+                         new CloudServer().sendPlayer(player, event.getCurrentItem().getItemMeta().getDisplayName().replace("§7", ""));
+                    }
+               }).runTaskLater((Plugin)HypeLobby.getInstance(), 35L);
           }
      }
 }

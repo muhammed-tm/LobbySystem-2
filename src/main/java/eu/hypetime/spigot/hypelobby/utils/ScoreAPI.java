@@ -165,24 +165,27 @@ public class ScoreAPI {
             }
             for (Player on : Bukkit.getOnlinePlayers()) {
                 switch (count) {
-                    case 5:
+                    case 6:
                         on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6HypeTime.EU §8| §7Version §62.4"));
                         break;
-                    case 4:
+                    case 5:
                         on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§7Wir suchen §6Teammitglieder"));
                         break;
-                    case 3:
+                    case 4:
                         on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6Hacker? §8| §7/report"));
                         break;
+                    case 3:
+						on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§7Wir empfehlen die Version §61.17.1"));
+						break;
                     case 2:
-                        on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6Discord §8| §7www.hypetime.eu/discord"));
-                        break;
-                    case 1:
                         on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6TeamSpeak §8| §7ts.HypeTime.eu"));
                         break;
-                    case 0:
+                    case 1:
                         on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§7Wir unterstützen §b§lLabyMod"));
                         break;
+					case 0:
+						on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6Discord §8| §7www.hypetime.eu/discord"));
+						break;
                 }
             }
         }, 100, 100);
