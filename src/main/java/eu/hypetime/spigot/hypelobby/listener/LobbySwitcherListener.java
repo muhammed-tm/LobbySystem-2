@@ -138,7 +138,7 @@ public class LobbySwitcherListener implements Listener {
           if (player.getOpenInventory().getTitle().equals("§8» §6LobbySwitcher")) {
                event.setCancelled(true);
                if (event.getCurrentItem() == null) return;
-               player.sendTitle("", "§eVerbinde§7...", 2, 50, 15);
+               player.sendTitle("", "§eVerbinde§7...", 2, 50, 2);
                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0F, 1.0F);
                (new BukkitRunnable() {
                     public void run() {
