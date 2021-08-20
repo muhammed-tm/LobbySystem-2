@@ -12,9 +12,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerSwapHandItemsEvent;
 
 import java.util.List;
 
@@ -74,6 +76,13 @@ public class BuildListener implements Listener {
 
      @EventHandler
      public void onPickUp(PlayerAttemptPickupItemEvent event) {
+          if (!build.contains(event.getPlayer())) {
+               event.setCancelled(true);
+          }
+     }
+
+     @EventHandler
+     public void onSwitchHand(PlayerSwapHandItemsEvent event) {
           if (!build.contains(event.getPlayer())) {
                event.setCancelled(true);
           }

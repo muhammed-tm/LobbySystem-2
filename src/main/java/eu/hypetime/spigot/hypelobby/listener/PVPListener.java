@@ -2,9 +2,8 @@ package eu.hypetime.spigot.hypelobby.listener;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
+import eu.hypetime.spigot.hypelobby.utils.ScoreAPI;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
-import eu.hypetime.spigot.hypelobby.utils.*;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -33,7 +32,7 @@ public class PVPListener implements Listener {
 
      @EventHandler
      public void onWorldChange(PlayerChangedWorldEvent event) {
-          if(event.getPlayer().getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())) {
+          if (event.getPlayer().getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())) {
                Inventories.pvpInventory(event.getPlayer());
                Scoreboard scoreboard = event.getPlayer().getScoreboard();
                scoreboard.clearSlot(DisplaySlot.SIDEBAR);
@@ -46,12 +45,12 @@ public class PVPListener implements Listener {
 
      @EventHandler
      public void onLeave(PlayerInteractEvent event) {
-          if(event.getItem() == null) return;
-          if(!event.getItem().hasItemMeta()) return;
-          if(event.getItem().getType() == null) return;
-          if(event.getItem().getType() == Material.AIR) return;
-          if(event.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §cVerlassen")) {
-               if(!pvp.containsKey(event.getPlayer())) {
+          if (event.getItem() == null) return;
+          if (!event.getItem().hasItemMeta()) return;
+          if (event.getItem().getType() == null) return;
+          if (event.getItem().getType() == Material.AIR) return;
+          if (event.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §cVerlassen")) {
+               if (!pvp.containsKey(event.getPlayer())) {
                     WarpAPI.tpWarp(event.getPlayer(), "Spawn");
                } else {
                     event.getPlayer().sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Du bist noch im §cKampf§8.");
@@ -61,12 +60,13 @@ public class PVPListener implements Listener {
 
      @EventHandler
      public void onEntityDamage(EntityDamageEvent event) {
-          if(event.getEntity().getType() == EntityType.PLAYER) {
-               if(event.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
+          if (event.getEntity().getType() == EntityType.PLAYER) {
+               if (event.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
                     event.setCancelled(true);
                     WarpAPI.tpWarp((Player) event.getEntity(), "Spawn");
+                    return;
                }
-               if(event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.FALL) {
+               if (event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.FALL) {
                     event.setCancelled(!event.getEntity().getLocation().getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld()));
                } else {
                     event.setCancelled(true);
@@ -76,13 +76,13 @@ public class PVPListener implements Listener {
 
      @EventHandler
      public void onDamage(EntityDamageByEntityEvent event) {
-          if(event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
+          if (event.getEntity() instanceof Player && event.getDamager() instanceof Player) {
                Player getDamage = (Player) event.getEntity();
                Player attacker = (Player) event.getDamager();
-               if(getDamage.getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())
+               if (getDamage.getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())
                     && attacker.getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())) {
                     double distance = getDamage.getLocation().distance(attacker.getLocation());
-                    if(distance >= 4 && !attacker.getGameMode().equals(GameMode.CREATIVE)) {
+                    if (distance >= 4 && !attacker.getGameMode().equals(GameMode.CREATIVE)) {
                          event.setCancelled(true);
                     } else {
                          event.setCancelled(false);
