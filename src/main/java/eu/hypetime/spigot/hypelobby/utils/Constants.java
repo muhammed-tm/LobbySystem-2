@@ -17,7 +17,7 @@ public class Constants {
           config.addDefault("prefix", "&6HypeTime &8| &7");
           config.addDefault("pvpworld", "pvp");
           config.copyDefaults();
-          prefix = config.getString("prefix");
+          prefix = config.getString("prefix").replace("&", "§");
           pvpWorld = config.getString("pvpworld");
           new MySQL("185.194.236.246", "muhammedtuerkmen_minecraft", "a73n0bX&", "muhammedtuerkmen_minecraft");
      }

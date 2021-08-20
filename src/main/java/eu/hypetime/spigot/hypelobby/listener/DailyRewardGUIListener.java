@@ -37,7 +37,7 @@ public class DailyRewardGUIListener implements Listener {
                     } else {
                          player.closeInventory();
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                              + "Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.PLAYER) + " §7abholen§8.");
+                              + "§7Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.PLAYER) + " §7abholen§8.");
                     }
 
                }
@@ -52,7 +52,7 @@ public class DailyRewardGUIListener implements Listener {
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                                   + "Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.HYPER) + " §7abholen§8.");
+                                   + "§7Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.HYPER) + " §7abholen§8.");
                          }
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -70,7 +70,7 @@ public class DailyRewardGUIListener implements Listener {
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                                   + "Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.WARRIOR) + " §7abholen§8.");
+                                   + "§7Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.WARRIOR) + " §7abholen§8.");
                          }
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -87,7 +87,7 @@ public class DailyRewardGUIListener implements Listener {
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                                   + "Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.VIP) + " §7abholen§8.");
+                                   + "§7Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.VIP) + " §7abholen§8.");
                          }
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -104,7 +104,7 @@ public class DailyRewardGUIListener implements Listener {
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                                   + "Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.MEDIA) + " §7abholen§8.");
+                                   + "§7Du kannst deine Belohnung erst in " + RewardAPI.getRemaining(player, RewardType.MEDIA) + " §7abholen§8.");
                          }
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()

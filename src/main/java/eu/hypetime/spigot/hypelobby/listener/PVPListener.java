@@ -62,6 +62,10 @@ public class PVPListener implements Listener {
      @EventHandler
      public void onEntityDamage(EntityDamageEvent event) {
           if(event.getEntity().getType() == EntityType.PLAYER) {
+               if(event.getCause().equals(EntityDamageEvent.DamageCause.VOID)) {
+                    event.setCancelled(true);
+                    WarpAPI.tpWarp((Player) event.getEntity(), "Spawn");
+               }
                if(event.getCause() == EntityDamageEvent.DamageCause.ENTITY_ATTACK || event.getCause() == EntityDamageEvent.DamageCause.FALL) {
                     event.setCancelled(!event.getEntity().getLocation().getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld()));
                } else {

@@ -35,7 +35,7 @@ public class BuildListener implements Listener {
           if (!build.contains(event.getPlayer())) {
                if (event.getPlayer().getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())) {
                     if (event.getItemInHand().getType() != Material.PLAYER_HEAD) {
-                         if ((event.getPlayer().getLocation().distance(WarpAPI.getLocation("LobbyPVP")) <= 3) || (event.getBlock().getLocation().distance(WarpAPI.getLocation("LobbyPVP")) <= 3)) {
+                         if (event.getPlayer().getLocation().distance(WarpAPI.getLocation("LobbyPVP")) <= 3) {
                               event.setCancelled(true);
                          } else {
                               event.setCancelled(false);

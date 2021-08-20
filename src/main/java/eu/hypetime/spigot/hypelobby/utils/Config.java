@@ -6,18 +6,17 @@ package eu.hypetime.spigot.hypelobby.utils;
     Project HypeLobbySpigot
 */
 
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-
-import org.bukkit.ChatColor;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 
 public class Config {
 
@@ -29,7 +28,7 @@ public class Config {
           this.f = new File(DateiPfad, DateiName);
           this.c = YamlConfiguration.loadConfiguration(this.f);
           this.fc = YamlConfiguration.loadConfiguration(this.f);
-          if(!this.f.exists()) {
+          if (!this.f.exists()) {
                try {
                     this.f.createNewFile();
                } catch (IOException e) {
@@ -66,7 +65,7 @@ public class Config {
 
      public void addDefault(String name, Object value) {
           load();
-          if(c.get(name) == null) {
+          if (c.get(name) == null) {
                setValue(name, value);
                save();
           }
@@ -79,7 +78,7 @@ public class Config {
 
      public String getString(String name) {
           load();
-          return ChatColor.translateAlternateColorCodes('&', c.getString(name));
+          return c.getString(name);
      }
 
      public boolean getBoolean(String name) {
