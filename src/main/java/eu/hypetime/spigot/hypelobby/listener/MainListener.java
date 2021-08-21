@@ -7,6 +7,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
@@ -52,5 +53,10 @@ public class MainListener implements Listener {
      @EventHandler
      public void onWeather(WeatherChangeEvent event) {
           event.setCancelled(true);
+     }
+     @EventHandler
+     public void onFood(FoodLevelChangeEvent event) {
+          event.setCancelled(true);
+          event.setFoodLevel(20);
      }
 }

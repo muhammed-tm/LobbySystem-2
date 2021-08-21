@@ -42,6 +42,7 @@ public class EnderpearlListener implements Listener {
                     event.setCancelled(true);
 
                     toClay(player);
+                    player.setAllowFlight(true);
 
                     enderPearl = player.launchProjectile(EnderPearl.class);
                     enderPearl.setPassenger(player);

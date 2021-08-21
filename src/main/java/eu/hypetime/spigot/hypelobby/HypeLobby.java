@@ -88,6 +88,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new DailyRewardListener(), this);
           pluginManager.registerEvents(new DailyRewardGUIListener(), this);
           pluginManager.registerEvents(new NPCListener(), this);
+          pluginManager.registerEvents(new DoubleJumpListener(), this);
 
           IEventManager eventManager = CloudNetDriver.getInstance().getEventManager();
           eventManager.registerListener(new CloudServer());

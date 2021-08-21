@@ -49,8 +49,10 @@ public class WarpAPI {
 
      public static Location getLocation(String name) {
           name = name.toLowerCase();
-          Location loc = new Location(Bukkit.getWorld(getName("loc.world." + name)), getDouble("loc.x." + name), getDouble("loc.y." + name), getDouble("loc.z." + name),
-               getFloat("loc.yaw." + name), getFloat("loc.pitch." + name));
+          if (!isExist(name.toLowerCase())) {
+               return null;
+          }
+          Location loc = location.c.getLocation("loc." + name);
           return loc;
      }
 
@@ -71,6 +73,6 @@ public class WarpAPI {
      }
 
      public static boolean isExist(String name) {
-          return location.getString("loc.world." + name) != null;
+          return location.getString("loc." + name) != null;
      }
 }
