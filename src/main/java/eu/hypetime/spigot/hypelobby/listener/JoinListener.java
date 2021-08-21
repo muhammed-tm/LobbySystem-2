@@ -43,7 +43,7 @@ public class JoinListener implements Listener {
         RewardAPI.createIfNotExist(player);
 
         player.setGameMode(GameMode.SURVIVAL);
-        WarpAPI.tpWarp(player, "Spawn");
+        player.teleport(WarpAPI.getLocation("Spawn"));
         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F);
     }
 
