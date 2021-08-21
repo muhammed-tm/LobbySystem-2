@@ -6,12 +6,14 @@ import eu.hypetime.spigot.hypelobby.commands.BuildCommand;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Painting;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.player.PlayerAttemptPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -87,5 +89,4 @@ public class BuildListener implements Listener {
                event.setCancelled(true);
           }
      }
-
 }
