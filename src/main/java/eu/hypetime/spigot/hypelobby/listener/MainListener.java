@@ -12,8 +12,10 @@ import org.bukkit.entity.Painting;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
+import org.bukkit.event.hanging.HangingBreakEvent;
 import org.bukkit.event.hanging.HangingPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -82,5 +84,13 @@ public class MainListener implements Listener {
                if ( event.getRightClicked().getType() == EntityType.ITEM_FRAME )
                     event.setCancelled( true );
           }
+     }
+     public void onHangingBreakEvent(HangingBreakEvent event) {
+          if (event.getCause() == HangingBreakEvent.RemoveCause.ENTITY)
+               event.setCancelled(true);
+     }
+     public void onHangingBreakEvent(HangingBreakByEntityEvent event) {
+          if (event.getCause() == HangingBreakEvent.RemoveCause.ENTITY)
+               event.setCancelled(true);
      }
 }
