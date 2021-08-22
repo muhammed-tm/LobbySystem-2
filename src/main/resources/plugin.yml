@@ -15,3 +15,5 @@ commands:
     description: GunBattle top5
   stats:
     description: GunBattle Stats
+  sit:
+    description: sit command

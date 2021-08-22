@@ -46,7 +46,9 @@ public class MainListener implements Listener {
      @EventHandler
      public void onMove(EntityMoveEvent event) {
           if (event.getEntityType() == EntityType.ARMOR_STAND) {
-               event.setCancelled(true);
+               if(event.getEntity().getPassengers().size() == 0) {
+                    event.setCancelled(true);
+               }
           }
      }
 
@@ -71,42 +73,5 @@ public class MainListener implements Listener {
      public void onFood(FoodLevelChangeEvent event) {
           event.setCancelled(true);
           event.setFoodLevel(20);
-     }
-
-     public void HangingBreak(HangingPlaceEvent event) {
-          if (event.getEntity() instanceof Painting) {
-               event.setCancelled(true);
-
-          }
-     }
-
-     @EventHandler
-     public void onInteract( PlayerInteractAtEntityEvent event ) {
-          if ( event.getRightClicked() != null ) {
-               if ( event.getRightClicked().getType() == EntityType.ITEM_FRAME )
-                    event.setCancelled( true );
-          }
-     }
-     public void onHangingBreakEvent(HangingBreakEvent event) {
-          if (event.getCause() == HangingBreakEvent.RemoveCause.ENTITY)
-               event.setCancelled(true);
-     }
-     public void onHangingBreakEvent(HangingBreakByEntityEvent event) {
-          if (event.getCause() == HangingBreakEvent.RemoveCause.ENTITY)
-               event.setCancelled(true);
-     }
-     @EventHandler
-     public void onInteract(PlayerInteractEvent event) {
-          if(event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-               if(event.getClickedBlock().getType() == Material.OAK_TRAPDOOR
-                       || event.getClickedBlock().getType() == Material.SPRUCE_TRAPDOOR
-                       || event.getClickedBlock().getType() == Material.BIRCH_TRAPDOOR
-                       || event.getClickedBlock().getType() == Material.JUNGLE_TRAPDOOR
-                       || event.getClickedBlock().getType() == Material.ACACIA_TRAPDOOR
-                       || event.getClickedBlock().getType() == Material.DARK_OAK_TRAPDOOR
-                       || event.getClickedBlock().getType() == Material.CRIMSON_TRAPDOOR
-                       || event.getClickedBlock().getType() == Material.WARPED_TRAPDOOR);
-                    event.setCancelled(true);
-          }
      }
 }

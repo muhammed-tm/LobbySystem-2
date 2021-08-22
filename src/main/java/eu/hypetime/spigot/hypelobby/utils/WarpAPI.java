@@ -28,6 +28,12 @@ public class WarpAPI {
           player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Du hast §aerfolgreich §7den §6Spawnpunkt §7von §6" + name + " §7gesetzt§8.");
      }
 
+     public static void setLocation(Location locationSet, String name) {
+          Location loc = new Location(locationSet.getWorld(), locationSet.getX(), locationSet.getY(), locationSet.getZ(), locationSet.getYaw(), locationSet.getPitch());
+          location.setValue("loc." + name.toLowerCase(), loc);
+          location.save();
+     }
+
      public static void tpWarp(Player player, String name) {
           name = name.toLowerCase();
           if (!isExist(name.toLowerCase())) {
@@ -52,8 +58,7 @@ public class WarpAPI {
           if (!isExist(name.toLowerCase())) {
                return null;
           }
-          Location loc = location.c.getLocation("loc." + name);
-          return loc;
+          return location.c.getLocation("loc." + name);
      }
 
      public static String getName(String value) {

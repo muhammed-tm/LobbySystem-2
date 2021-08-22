@@ -6,27 +6,21 @@ import com.xxmicloxx.NoteBlockAPI.songplayer.SongPlayer;
 import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
 import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.driver.event.IEventManager;
-import eu.hypetime.spigot.hypelobby.commands.BuildCommand;
-import eu.hypetime.spigot.hypelobby.commands.SetCommand;
-import eu.hypetime.spigot.hypelobby.commands.StatsCommand;
-import eu.hypetime.spigot.hypelobby.commands.Top5Command;
+import eu.hypetime.spigot.hypelobby.commands.*;
 import eu.hypetime.spigot.hypelobby.listener.*;
-import eu.hypetime.spigot.hypelobby.utils.Config;
-import eu.hypetime.spigot.hypelobby.utils.Constants;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
+import org.bukkit.Material;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.concurrent.Executor;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /*
     Created by Andre
@@ -36,84 +30,106 @@ import java.util.concurrent.Executors;
 
 public class HypeLobby extends JavaPlugin {
 
-     private static HypeLobby instance;
-     public LobbySwitcherListener lobbySwitcherListener;
-     private Config config;
-     private Constants constants;
-     public boolean broadcast;
-     public static Song s;
-     public static SongPlayer sp;
-     private static ExecutorService executorService;
+    public static Song s;
+    public static SongPlayer sp;
+    private static HypeLobby instance;
+    private static ExecutorService executorService;
+    public LobbySwitcherListener lobbySwitcherListener;
+    public boolean broadcast;
+    private Config config;
+    private Constants constants;
 
+    public static HypeLobby getInstance() {
+        return instance;
+    }
 
-     @Override
-     public void onEnable() {
-          instance = this;
-          s = NBSDecoder.parse(new File(getDataFolder(), "Song.nbs"));
-          sp = new RadioSongPlayer(s);
+    public static ExecutorService getExecutorService() {
+        return executorService;
+    }
 
-          config = new Config(getDataFolder().getAbsolutePath(), "config.yml");
-          constants = new Constants(this);
+    @Override
+    public void onEnable() {
+        instance = this;
+        s = NBSDecoder.parse(new File(getDataFolder(), "Song.nbs"));
+        sp = new RadioSongPlayer(s);
 
-          executorService = Executors.newCachedThreadPool();
+        config = new Config(getDataFolder().getAbsolutePath(), "config.yml");
+        constants = new Constants(this);
 
-          getLogger().info(constants.getPrefix() + "Das System wurde aktiviert§8.");
+        executorService = Executors.newCachedThreadPool();
 
-          registerListener();
-          registerCommands();
+        getLogger().info(constants.getPrefix() + "Das System wurde aktiviert§8.");
 
-          ScoreAPI.startScheduler();
+        registerListener();
+        registerCommands();
 
+        ScoreAPI.startScheduler();
 
-          getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
-     }
+        List < Material > materials = new ArrayList <>();
+        materials.add(Material.TERRACOTTA);
+        materials.add(Material.WHITE_TERRACOTTA);
+        materials.add(Material.BLUE_TERRACOTTA);
+        materials.add(Material.CYAN_TERRACOTTA);
+        materials.add(Material.GREEN_TERRACOTTA);
+        materials.add(Material.LIGHT_BLUE_TERRACOTTA);
+        materials.add(Material.LIME_TERRACOTTA);
+        materials.add(Material.MAGENTA_TERRACOTTA);
+        final int[] i = {0};
+        final int[] i2 = {0};
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
+            if (i[0] == 8) {
+                i[0] = 0;
+                i2[0] += 1;
+                if (i2[0] == 8) {
+                    i2[0] = 0;
+                }
+            }
+            WarpAPI.getLocation("rgbblock." + i[0]).getBlock().setType(materials.get(i2[0]));
+            i[0] += 1;
+        }, 5, 5);
 
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+    }
 
-     public static HypeLobby getInstance() {
-          return instance;
-     }
+    public Config getConfigFile() {
+        return config;
+    }
 
-     public static ExecutorService getExecutorService() {
-          return executorService;
-     }
+    public Constants getConstants() {
+        return constants;
+    }
 
-     public Config getConfigFile() {
-          return config;
-     }
+    private void registerListener() {
+        new SQLStats();
+        StatsManager.Top3Scheduler();
 
-     public Constants getConstants() {
-          return constants;
-     }
+        PluginManager pluginManager = Bukkit.getPluginManager();
+        lobbySwitcherListener = new LobbySwitcherListener();
+        pluginManager.registerEvents(new JoinListener(), this);
+        pluginManager.registerEvents(new ChatListener(), this);
+        pluginManager.registerEvents(new NavListener(), this);
+        pluginManager.registerEvents(new MainListener(), this);
+        pluginManager.registerEvents(new BuildListener(), this);
+        pluginManager.registerEvents(new PVPListener(), this);
+        pluginManager.registerEvents(new EnderpearlListener(), this);
+        pluginManager.registerEvents(new RodListener(), this);
+        pluginManager.registerEvents(lobbySwitcherListener, this);
+        pluginManager.registerEvents(new DailyRewardListener(), this);
+        pluginManager.registerEvents(new DailyRewardGUIListener(), this);
+        pluginManager.registerEvents(new NPCListener(), this);
+        pluginManager.registerEvents(new DoubleJumpListener(), this);
+        pluginManager.registerEvents(new SitCommand(), this);
 
-     private void registerListener() {
-          new SQLStats();
-          StatsManager.Top3Scheduler();
+        IEventManager eventManager = CloudNetDriver.getInstance().getEventManager();
+        eventManager.registerListener(new CloudServer());
+    }
 
-          PluginManager pluginManager = Bukkit.getPluginManager();
-          lobbySwitcherListener = new LobbySwitcherListener();
-          pluginManager.registerEvents(new JoinListener(), this);
-          pluginManager.registerEvents(new ChatListener(), this);
-          pluginManager.registerEvents(new NavListener(), this);
-          pluginManager.registerEvents(new MainListener(), this);
-          pluginManager.registerEvents(new BuildListener(), this);
-          pluginManager.registerEvents(new PVPListener(), this);
-          pluginManager.registerEvents(new EnderpearlListener(), this);
-          pluginManager.registerEvents(new RodListener(), this);
-          pluginManager.registerEvents(lobbySwitcherListener, this);
-          pluginManager.registerEvents(new DailyRewardListener(), this);
-          pluginManager.registerEvents(new DailyRewardGUIListener(), this);
-          pluginManager.registerEvents(new NPCListener(), this);
-          pluginManager.registerEvents(new DoubleJumpListener(), this);
-
-          IEventManager eventManager = CloudNetDriver.getInstance().getEventManager();
-          eventManager.registerListener(new CloudServer());
-     }
-
-     private void registerCommands() {
-          getCommand("build").setExecutor(new BuildCommand());
-          getCommand("set").setExecutor(new SetCommand());
-          getCommand("stats").setExecutor(new StatsCommand());
-          getCommand("top5").setExecutor(new Top5Command());
-     }
+    private void registerCommands() {
+        getCommand("build").setExecutor(new BuildCommand());
+        getCommand("set").setExecutor(new SetCommand());
+        getCommand("stats").setExecutor(new StatsCommand());
+        getCommand("top5").setExecutor(new Top5Command());
+        getCommand("sit").setExecutor(new SitCommand());
+    }
 
 }
