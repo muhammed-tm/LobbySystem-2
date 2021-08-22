@@ -73,7 +73,7 @@ public class StatsManager {
                     three.setCustomName("§c???");
                 }
             }
-        }, 20, 20 * 15);
+        }, 20, 20 * 60 * 15);
     }
 
 }

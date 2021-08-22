@@ -158,7 +158,7 @@ public class SQLStats {
     }
 
     public String getPlayerFromRank(int rank) {
-        if (rank <= listSize()) {
+        if (rank < listSize()) {
             List<String> list = new ArrayList <>();
             try {
                 ResultSet rs = MySQL.getResult("SELECT * FROM gunbattle_stats ORDER BY Kills DESC");
