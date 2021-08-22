@@ -158,18 +158,18 @@ public class SQLStats {
     }
 
     public String getPlayerFromRank(int rank) {
-        List < String > list = new ArrayList <>();
-        try {
-            ResultSet rs = MySQL.getResult("SELECT * FROM gunbattle_stats ORDER BY Kills DESC");
-
-            while (rs.next()) {
-                list.add(rs.getString("UUID"));
-            }
-            rs.close();
-        } catch (SQLException ignored) {
-
-        }
         if (rank <= listSize()) {
+            List<String> list = new ArrayList <>();
+            try {
+                ResultSet rs = MySQL.getResult("SELECT * FROM gunbattle_stats ORDER BY Kills DESC");
+
+                while (rs.next()) {
+                    list.add(rs.getString("UUID"));
+                }
+                rs.close();
+            } catch (SQLException ignored) {
+
+            }
             return UUIDHelper.fetchName(UUID.fromString(list.get(rank)));
         } else {
             return "null";

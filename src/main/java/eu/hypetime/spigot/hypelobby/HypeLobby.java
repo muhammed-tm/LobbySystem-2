@@ -24,6 +24,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /*
     Created by Andre
@@ -40,6 +43,7 @@ public class HypeLobby extends JavaPlugin {
      public boolean broadcast;
      public static Song s;
      public static SongPlayer sp;
+     private static ExecutorService executorService;
 
 
      @Override
@@ -50,6 +54,8 @@ public class HypeLobby extends JavaPlugin {
 
           config = new Config(getDataFolder().getAbsolutePath(), "config.yml");
           constants = new Constants(this);
+
+          executorService = Executors.newCachedThreadPool();
 
           getLogger().info(constants.getPrefix() + "Das System wurde aktiviert§8.");
 
@@ -67,6 +73,10 @@ public class HypeLobby extends JavaPlugin {
           return instance;
      }
 
+     public static ExecutorService getExecutorService() {
+          return executorService;
+     }
+
      public Config getConfigFile() {
           return config;
      }
@@ -77,6 +87,7 @@ public class HypeLobby extends JavaPlugin {
 
      private void registerListener() {
           new SQLStats();
+          StatsManager.Top3Scheduler();
 
           PluginManager pluginManager = Bukkit.getPluginManager();
           lobbySwitcherListener = new LobbySwitcherListener();
