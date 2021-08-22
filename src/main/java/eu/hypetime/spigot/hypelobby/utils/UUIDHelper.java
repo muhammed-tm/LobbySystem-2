@@ -1,8 +1,18 @@
 package eu.hypetime.spigot.hypelobby.utils;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.HashMap;
+import java.util.UUID;
 
 /*
     Created by Andre
@@ -11,46 +21,12 @@ import java.util.HashMap;
 */
 public class UUIDHelper {
 
-     public static HashMap<String, String> uuidCache = new HashMap<>();
-     public static HashMap<String, String> nameCache = new HashMap<>();
+    public static String fetchName(UUID uuid) {
+        return UUIDFetcher.getName(uuid);
+    }
 
-     public static String getUUIDByName(String name) {
-          String returnValue = "";
-          if (uuidCache.containsKey(name)) {
-               returnValue = uuidCache.get(name);
-          } else {
-               ResultSet rs = MySQL.getResult("SELECT * FROM system_UUID WHERE Name='" + name + "'");
-               try {
-                    if (rs.next()) {
-                         returnValue = rs.getString("UUID");
-                    }
-                    rs.close();
-               } catch (SQLException e) {
-                    e.printStackTrace();
-               }
-               uuidCache.put(name, returnValue);
-          }
-          return returnValue;
-     }
-
-     public static String getNameByUUID(String uuid) {
-          String returnValue = "";
-          if (nameCache.containsKey(uuid)) {
-               returnValue = nameCache.get(uuid);
-          } else {
-               ResultSet rs = MySQL.getResult("SELECT * FROM system_UUID WHERE UUID='" + uuid + "'");
-               try {
-                    if (rs.next()) {
-                         returnValue = rs.getString("Name");
-                    }
-                    rs.close();
-               } catch (SQLException e) {
-                    e.printStackTrace();
-               }
-               nameCache.put(uuid, returnValue);
-          }
-          return returnValue;
-     }
-
+    public static UUID fetchUUID(String playerName) {
+        return UUIDFetcher.getUUID(playerName);
+    }
 
 }

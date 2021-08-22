@@ -33,7 +33,7 @@ public class StatsCommand implements CommandExecutor {
           } else if (args.length == 1) {
                try {
                     try {
-                         String target = SQLStats.getInstance().getPlayerFromRank(Integer.parseInt(args[0]));
+                         String target = SQLStats.getInstance().getPlayerFromRank(Integer.parseInt(args[0]) - 1);
                          if(!target.equals("null")) {
                               player.sendMessage("§8§m          §8[§aStats§8]§8§m          ");
                               player.sendMessage("§7Spieler§8: §a" + target);
@@ -49,7 +49,7 @@ public class StatsCommand implements CommandExecutor {
                     }
                } catch (NumberFormatException exception) {
                     String target = args[0];
-                    if (SQLStats.getInstance().isRegisteredUUID(target)) {
+                    if (SQLStats.getInstance().isRegisteredName(target)) {
                          player.sendMessage("§8§m          §8[§aStats§8]§8§m          ");
                          player.sendMessage("§7Spieler§8: §a" + target);
                          player.sendMessage("§7Kills§8: §a" + StatsManager.getKills(target));

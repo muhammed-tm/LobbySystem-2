@@ -12,6 +12,7 @@ import org.bukkit.entity.Painting;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockPistonRetractEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
@@ -20,6 +21,7 @@ import org.bukkit.event.hanging.HangingPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.potion.PotionEffect;
@@ -92,5 +94,19 @@ public class MainListener implements Listener {
      public void onHangingBreakEvent(HangingBreakByEntityEvent event) {
           if (event.getCause() == HangingBreakEvent.RemoveCause.ENTITY)
                event.setCancelled(true);
+     }
+     @EventHandler
+     public void onInteract(PlayerInteractEvent event) {
+          if(event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+               if(event.getClickedBlock().getType() == Material.OAK_TRAPDOOR
+                       || event.getClickedBlock().getType() == Material.SPRUCE_TRAPDOOR
+                       || event.getClickedBlock().getType() == Material.BIRCH_TRAPDOOR
+                       || event.getClickedBlock().getType() == Material.JUNGLE_TRAPDOOR
+                       || event.getClickedBlock().getType() == Material.ACACIA_TRAPDOOR
+                       || event.getClickedBlock().getType() == Material.DARK_OAK_TRAPDOOR
+                       || event.getClickedBlock().getType() == Material.CRIMSON_TRAPDOOR
+                       || event.getClickedBlock().getType() == Material.WARPED_TRAPDOOR);
+                    event.setCancelled(true);
+          }
      }
 }
