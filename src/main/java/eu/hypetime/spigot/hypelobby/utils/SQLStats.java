@@ -141,7 +141,7 @@ public class SQLStats {
         int i = -1;
         String uuid = UUIDHelper.fetchUUID(name).toString();
         try {
-            ResultSet rs = MySQL.getResult("SELECT * FROM gunbattle_stats ORDER BY Kills DESC");
+            ResultSet rs = MySQL.getResult("SELECT * FROM gunbattle_stats ORDER BY Kills, Deaths DESC");
             while (rs.next()) {
                 if (i == -1) {
                     i = 0;
@@ -161,7 +161,7 @@ public class SQLStats {
         if (rank < listSize()) {
             List<String> list = new ArrayList <>();
             try {
-                ResultSet rs = MySQL.getResult("SELECT * FROM gunbattle_stats ORDER BY Kills DESC");
+                ResultSet rs = MySQL.getResult("SELECT * FROM gunbattle_stats ORDER BY Kills, Deaths DESC");
 
                 while (rs.next()) {
                     list.add(rs.getString("UUID"));
@@ -179,7 +179,7 @@ public class SQLStats {
     public int listSize() {
         List < String > list = new ArrayList <>();
         try {
-            ResultSet rs = MySQL.getResult("SELECT * FROM gunbattle_stats ORDER BY Kills DESC");
+            ResultSet rs = MySQL.getResult("SELECT * FROM gunbattle_stats ORDER BY Kills, Deaths DESC");
 
             while (rs.next()) {
                 list.add(rs.getString("UUID"));
