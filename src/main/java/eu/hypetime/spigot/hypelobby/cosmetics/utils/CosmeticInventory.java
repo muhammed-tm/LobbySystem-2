@@ -40,6 +40,7 @@ public class CosmeticInventory {
                 .setName("§6Tiere")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
+        player.openInventory(inventory);
     }
 
     public static void ParticleInventory(Player player) {
@@ -49,6 +50,7 @@ public class CosmeticInventory {
                 .setName("§6Partikel")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
+        player.openInventory(inventory);
     }
 
     public static void GadgetsInventory(Player player) {
@@ -58,6 +60,7 @@ public class CosmeticInventory {
                 .setName("§6Gadgets")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
+        player.openInventory(inventory);
     }
 
     public static void ShoesInventory(Player player) {
@@ -67,6 +70,7 @@ public class CosmeticInventory {
                 .setName("§6Schuhe")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
+        player.openInventory(inventory);
     }
 
     public static void resetEnchantments(Inventory inventory) {
