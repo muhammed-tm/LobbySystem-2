@@ -60,6 +60,18 @@ public class CosmeticInventory {
                 .setName("§6Gadgets")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
+        inventory.setItem(10, new ItemBuilder(Material.FISHING_ROD)
+                .setName("§7Grappling hook")
+                .toItemStack());
+        inventory.setItem(11, new ItemBuilder(Material.ENDER_PEARL)
+                .setName("§7Enderpearl")
+                .toItemStack());
+        inventory.setItem(12, new ItemBuilder(Material.BOW)
+                .setName("§7Teleport Bow")
+                .toItemStack());
+        inventory.setItem(12, new ItemBuilder(Material.FEATHER)
+                .setName("§7Flight feather")
+                .toItemStack());
         player.openInventory(inventory);
     }
 
@@ -74,6 +86,9 @@ public class CosmeticInventory {
     }
 
     public static void resetEnchantments(Inventory inventory) {
+        for (int i = 0; i < inventory.getSize(); i++) {
+            inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
+        }
         inventory.setItem(46, new ItemBuilder(Material.SPAWNER)
                 .setName("§6Tiere")
                 .toItemStack());
