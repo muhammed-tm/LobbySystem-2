@@ -6,6 +6,7 @@ import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
 import com.xxmicloxx.NoteBlockAPI.songplayer.SongPlayer;
 import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
+import eu.hypetime.spigot.hypelobby.commands.SitCommand;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -47,6 +48,10 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         event.quitMessage(null);
+        if(SitCommand.sitting.contains(event.getPlayer().getUniqueId())) {
+            SitCommand.sitting.remove(event.getPlayer().getUniqueId());
+            event.getPlayer().getVehicle().remove();
+        }
         if(HypeLobby.sp.getPlayerUUIDs().contains(event.getPlayer().getUniqueId())) {
             HypeLobby.sp.removePlayer(event.getPlayer());
         }
