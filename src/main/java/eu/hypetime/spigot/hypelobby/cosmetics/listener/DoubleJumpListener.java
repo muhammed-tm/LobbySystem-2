@@ -1,4 +1,4 @@
-package eu.hypetime.spigot.hypelobby.listener;
+package eu.hypetime.spigot.hypelobby.cosmetics.listener;
 
 import eu.hypetime.spigot.hypelobby.commands.SitCommand;
 import org.bukkit.GameMode;
@@ -23,7 +23,7 @@ public class DoubleJumpListener implements Listener {
             player.setVelocity(player.getLocation().getDirection().setY(0.65).multiply(1.9));
 
 
-            player.playSound(player.getLocation(), Sound.ENTITY_CAT_HISS, 1, 1F);
+            player.playSound(player.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1, 2F);
         }
     }
 

@@ -27,10 +27,10 @@ public class Inventories {
           inventory.setLeggings(new ItemStack(Material.AIR));
           inventory.setBoots(new ItemStack(Material.AIR));
 
-          inventory.setItem(4, new ItemAPI("§8» §6Navigator", Material.MUSIC_DISC_13, 1).build());
-          inventory.setItem(2, new ItemAPI("§8» §6LobbySwitcher", Material.BEACON, 1).build());
+          inventory.setItem(0, new ItemAPI("§8» §6Navigator", Material.MUSIC_DISC_13, 1).build());
+          inventory.setItem(1, new ItemAPI("§8» §6LobbySwitcher", Material.BEACON, 1).build());
           int random = new Random().nextInt(2);
-          switch (random) {
+          /*switch (random) {
                case 0:
                     inventory.setItem(6, new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build());
                     break;
@@ -38,7 +38,10 @@ public class Inventories {
                     inventory.setItem(6, new ItemAPI("§8» §5Grappling hook", Material.FISHING_ROD, 1).build());
                     break;
 
-          }
+          }*/
+          inventory.setItem(4, new ItemAPI("§7Gadget §8» §c✖", Material.BARRIER, 1).build());
+          inventory.setItem(7, new ItemAPI("§8» §6Gadgets", Material.CHEST, 1).build());
+          inventory.setItem(8, new ItemBuilder(Material.PLAYER_HEAD).setName("§8» §6Profil").setSkullOwner(player.getName()).toItemStack());
      }
 
      public static void pvpInventory(Player player) {

@@ -1,4 +1,4 @@
-package eu.hypetime.spigot.hypelobby.listener;
+package eu.hypetime.spigot.hypelobby.cosmetics.listener;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
