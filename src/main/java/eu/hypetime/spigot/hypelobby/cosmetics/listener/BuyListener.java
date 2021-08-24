@@ -29,6 +29,7 @@ public class BuyListener implements Listener {
      public void onChat(AsyncPlayerChatEvent event) {
           Player player = event.getPlayer();
           if (buy.containsKey(player)) {
+               event.setCancelled(true);
                if (event.getMessage().equalsIgnoreCase("Ja")) {
                     Gadget gadget = Gadget.getGadgetByItem(buy.get(player));
                     Pet pet = Pet.getPetByItem(buy.get(player));
