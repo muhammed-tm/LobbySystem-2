@@ -6,7 +6,7 @@ import org.bukkit.entity.Player;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GadgetsManager {
+public class CosmeticsManager {
 
     public static boolean isPlayerRegistered(Player player) {
         try {

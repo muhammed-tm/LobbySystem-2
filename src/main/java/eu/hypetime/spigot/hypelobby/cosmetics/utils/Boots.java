@@ -36,7 +36,7 @@ public enum Boots {
         return category;
     }
 
-    public static Boots getGadgetByItem(String name) {
+    public static Boots getBootsByItem(String name) {
         Boots boots = null;
         for (Boots value : Boots.values()) {
             if(value.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(name)) {

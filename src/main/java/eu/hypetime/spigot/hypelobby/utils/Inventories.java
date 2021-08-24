@@ -29,8 +29,8 @@ public class Inventories {
 
           inventory.setItem(0, new ItemAPI("§8» §6Navigator", Material.MUSIC_DISC_13, 1).build());
           inventory.setItem(1, new ItemAPI("§8» §6LobbySwitcher", Material.BEACON, 1).build());
-          int random = new Random().nextInt(2);
-          /*switch (random) {
+          /*int random = new Random().nextInt(2);
+          switch (random) {
                case 0:
                     inventory.setItem(6, new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build());
                     break;

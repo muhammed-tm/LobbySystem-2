@@ -1,8 +1,9 @@
-package eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets;
+package eu.hypetime.spigot.hypelobby.cosmetics.listener.particle;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
-import eu.hypetime.spigot.hypelobby.cosmetics.utils.Gadget;
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.Boots;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticsManager;
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.Particle;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -10,26 +11,26 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-public class GadgetsInventory implements Listener {
+public class ParticleInventory implements Listener {
 
     @EventHandler
     public void onClick(InventoryClickEvent event) {
         Player player = ( Player ) event.getWhoClicked();
         String title = player.getOpenInventory().getTitle();
-        if (title.equals("§8» §6Cosmetics §8| §6Gadgets §8«")) {
+        if (title.equals("§8» §6Cosmetics §8| §6Particle §8«")) {
             if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
                 player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
                 return;
             }
             event.setCancelled(true);
-            Gadget gadget = Gadget.getGadgetByItem(event.getCurrentItem().getItemMeta().getDisplayName());
-            if(gadget != null) {
-                if (CosmeticsManager.hasGadget(player, gadget)) {
-                    player.getInventory().setItem(4, gadget.getItem());
+            Particle particle = Particle.getParticleByItem(event.getCurrentItem().getItemMeta().getDisplayName());
+            if(particle != null) {
+                if (CosmeticsManager.hasParticle(player, particle)) {
+                    player.getInventory().setItem(4, particle.getItem());
                     player.closeInventory();
                 } else {
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                         + "§7Du besitzt §7dieses §6Gadget §cnicht§8. \n§7Möchtest du es dir kaufen§8? §7Schreibe §aJa §7zum Kaufen und §cNein §7zum Abbrechen§8.");
+                         + "§7Du besitzt §7diese §6Particle §cnicht§8. \n§7Möchtest du es dir kaufen§8? §7Schreibe §aJa §7zum Kaufen und §cNein §7zum Abbrechen§8.");
                     player.closeInventory();
                 }
             }

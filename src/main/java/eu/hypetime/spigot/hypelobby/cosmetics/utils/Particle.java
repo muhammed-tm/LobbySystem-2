@@ -36,7 +36,7 @@ public enum Particle {
         return category;
     }
 
-    public static Particle getGadgetByItem(String name) {
+    public static Particle getParticleByItem(String name) {
         Particle particle = null;
         for (Particle value : Particle.values()) {
             if(value.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(name)) {

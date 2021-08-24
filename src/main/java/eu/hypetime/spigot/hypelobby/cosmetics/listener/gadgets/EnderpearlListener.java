@@ -56,7 +56,7 @@ public class EnderpearlListener implements Listener {
           Bukkit.getScheduler().runTaskLater(HypeLobby.getInstance(), new Runnable() {
                @Override
                public void run() {
-                    player.getInventory().setItem(6, new ItemAPI("§7Loading...", Material.FIREWORK_STAR, 1).build());
+                    player.getInventory().setItem(4, new ItemAPI("§7Loading...", Material.FIREWORK_STAR, 1).build());
                     toEnderPerl(player);
                }
           }, 1L);
@@ -67,10 +67,10 @@ public class EnderpearlListener implements Listener {
 
                @Override
                public void run() {
-                    if(player.getInventory().getItem(6) == null) return;
-                    if (player.getInventory().getItem(6)
+                    if(player.getInventory().getItem(4) == null) return;
+                    if (player.getInventory().getItem(4)
                          .isSimilar(new ItemAPI("§7Loading...", Material.FIREWORK_STAR, 1).build())) {
-                         player.getInventory().setItem(6, new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build());
+                         player.getInventory().setItem(4, new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build());
                          player.playNote(player.getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.B));
                          Bukkit.getScheduler().runTaskLater(HypeLobby.getInstance(), () -> {
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.natural(1, Note.Tone.D));

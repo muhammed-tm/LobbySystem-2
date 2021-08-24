@@ -1,6 +1,7 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.listener;
 
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticInventory;
+import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -28,24 +29,31 @@ public class CosmeticsListener implements Listener {
     public void onClick(InventoryClickEvent event) {
         Player player = ( Player ) event.getWhoClicked();
         if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Cosmetics §8«") || player.getOpenInventory().getTitle().contains("§8» §6Cosmetics §8| ")) {
-            if (event.getCurrentItem() == null) return;
             event.setCancelled(true);
+            if (event.getCurrentItem() == null) return;
             if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
                 player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
             }
             if (event.getSlot() == 46) {
                 player.openInventory(CosmeticInventory.PetsInventory());
+                return;
             }
             if (event.getSlot() == 47) {
                 player.openInventory(CosmeticInventory.ParticleInventory());
+                return;
             }
             if (event.getSlot() == 49) {
+                player.closeInventory();
+                player.getInventory().setItem(4, new ItemAPI("§7Gadget §8» §c✖", Material.BARRIER, 1).build());
+                return;
             }
             if (event.getSlot() == 51) {
                 player.openInventory(CosmeticInventory.GadgetsInventory());
+                return;
             }
             if (event.getSlot() == 52) {
                 player.openInventory(CosmeticInventory.BootsInventory());
+                return;
             }
         }
     }

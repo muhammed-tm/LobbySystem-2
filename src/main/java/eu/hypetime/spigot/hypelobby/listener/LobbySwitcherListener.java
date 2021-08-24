@@ -32,7 +32,6 @@ public class LobbySwitcherListener implements Listener {
 
      public LobbySwitcherListener() {
           lobbySwitcher = new ItemBuilder(Material.BEACON).setName("§8» §6LobbySwitcher").toItemStack();
-          CloudServer.initLobby();
      }
 
      public void openInventory(Player player) {

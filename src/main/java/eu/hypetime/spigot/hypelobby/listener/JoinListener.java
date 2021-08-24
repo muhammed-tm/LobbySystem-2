@@ -1,13 +1,8 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
-import com.xxmicloxx.NoteBlockAPI.NoteBlockAPI;
-import com.xxmicloxx.NoteBlockAPI.model.Song;
-import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
-import com.xxmicloxx.NoteBlockAPI.songplayer.SongPlayer;
-import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.commands.SitCommand;
-import eu.hypetime.spigot.hypelobby.cosmetics.utils.GadgetsManager;
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticsManager;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -17,8 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-
-import java.io.File;
 
 
 
@@ -40,7 +33,7 @@ public class JoinListener implements Listener {
         Inventories.mainInventory(player);
         RewardAPI.createIfNotExist(player);
         StatsManager.updatePlayer(player);
-        GadgetsManager.createPlayer(player);
+        CosmeticsManager.createPlayer(player);
 
         player.setGameMode(GameMode.SURVIVAL);
         player.teleport(WarpAPI.getLocation("Spawn"));

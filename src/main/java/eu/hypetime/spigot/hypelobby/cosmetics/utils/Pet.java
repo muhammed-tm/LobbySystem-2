@@ -36,7 +36,7 @@ public enum Pet {
         return category;
     }
 
-    public static Pet getGadgetByItem(String name) {
+    public static Pet getPetByItem(String name) {
         Pet pet = null;
         for (Pet value : Pet.values()) {
             if(value.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(name)) {

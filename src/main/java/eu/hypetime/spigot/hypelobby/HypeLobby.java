@@ -4,14 +4,15 @@ import com.xxmicloxx.NoteBlockAPI.model.Song;
 import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
 import com.xxmicloxx.NoteBlockAPI.songplayer.SongPlayer;
 import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
-import de.dytanic.cloudnet.driver.CloudNetDriver;
-import de.dytanic.cloudnet.driver.event.IEventManager;
 import eu.hypetime.spigot.hypelobby.commands.*;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.CosmeticsListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.boots.BootsInventory;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.DoubleJumpListener;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.EnderpearlListener;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.GadgetsInventory;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.RodListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.particle.ParticleInventory;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsInventory;
 import eu.hypetime.spigot.hypelobby.listener.*;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
@@ -82,7 +83,7 @@ public class HypeLobby extends JavaPlugin {
           Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
                if (i[0] == 8) {
                     i[0] = 0;
-                   i2[0] += 1;
+                    i2[0] += 1;
                     if (i2[0] == 8) {
                          i2[0] = 0;
                     }
@@ -114,21 +115,30 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new MainListener(), this);
           pluginManager.registerEvents(new BuildListener(), this);
           pluginManager.registerEvents(new PVPListener(), this);
-          pluginManager.registerEvents(new EnderpearlListener(), this);
-          pluginManager.registerEvents(new RodListener(), this);
           pluginManager.registerEvents(lobbySwitcherListener, this);
           pluginManager.registerEvents(new DailyRewardListener(), this);
           pluginManager.registerEvents(new DailyRewardGUIListener(), this);
           pluginManager.registerEvents(new NPCListener(), this);
-          pluginManager.registerEvents(new DoubleJumpListener(), this);
           pluginManager.registerEvents(new SitCommand(), this);
+          pluginManager.registerEvents(new DoubleJumpListener(), this);
 
           //Cosmetics
           pluginManager.registerEvents(new CosmeticsListener(), this);
+
+          //Gadgets
           pluginManager.registerEvents(new GadgetsInventory(), this);
 
-          IEventManager eventManager = CloudNetDriver.getInstance().getEventManager();
-          eventManager.registerListener(new CloudServer());
+          pluginManager.registerEvents(new RodListener(), this);
+          pluginManager.registerEvents(new EnderpearlListener(), this);
+
+          //Pets
+          pluginManager.registerEvents(new PetsInventory(), this);
+
+          //Boots
+          pluginManager.registerEvents(new BootsInventory(), this);
+
+          //Particle
+          pluginManager.registerEvents(new ParticleInventory(), this);
      }
 
      private void registerCommands() {
