@@ -1,7 +1,8 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
-import eu.hypetime.spigot.hypelobby.cosmetics.utils.Gadget;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.BuyListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.enums.Gadget;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticsManager;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -30,6 +31,7 @@ public class GadgetsInventory implements Listener {
                 } else {
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
                          + "§7Du besitzt §7dieses §6Gadget §cnicht§8. \n§7Möchtest du es dir kaufen§8? §7Schreibe §aJa §7zum Kaufen und §cNein §7zum Abbrechen§8.");
+                    BuyListener.buy.put(player, event.getCurrentItem().getItemMeta().getDisplayName());
                     player.closeInventory();
                 }
             }

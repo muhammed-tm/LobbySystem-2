@@ -1,6 +1,10 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.utils;
 
 import com.google.common.collect.Lists;
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.enums.Boots;
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.enums.Gadget;
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.enums.Particle;
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.enums.Pet;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
 import org.bukkit.Bukkit;

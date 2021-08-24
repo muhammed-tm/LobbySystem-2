@@ -1,5 +1,6 @@
-package eu.hypetime.spigot.hypelobby.cosmetics.utils;
+package eu.hypetime.spigot.hypelobby.cosmetics.utils.enums;
 
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.GadgetCategory;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

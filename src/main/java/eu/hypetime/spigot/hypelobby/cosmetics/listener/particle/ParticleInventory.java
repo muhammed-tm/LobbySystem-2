@@ -1,9 +1,9 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.listener.particle;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
-import eu.hypetime.spigot.hypelobby.cosmetics.utils.Boots;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.BuyListener;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticsManager;
-import eu.hypetime.spigot.hypelobby.cosmetics.utils.Particle;
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.enums.Particle;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -31,6 +31,7 @@ public class ParticleInventory implements Listener {
                 } else {
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
                          + "§7Du besitzt §7diese §6Particle §cnicht§8. \n§7Möchtest du es dir kaufen§8? §7Schreibe §aJa §7zum Kaufen und §cNein §7zum Abbrechen§8.");
+                    BuyListener.buy.put(player, event.getCurrentItem().getItemMeta().getDisplayName());
                     player.closeInventory();
                 }
             }

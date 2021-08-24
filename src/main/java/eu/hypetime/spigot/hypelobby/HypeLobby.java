@@ -5,6 +5,7 @@ import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
 import com.xxmicloxx.NoteBlockAPI.songplayer.SongPlayer;
 import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
 import eu.hypetime.spigot.hypelobby.commands.*;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.BuyListener;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.CosmeticsListener;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.boots.BootsInventory;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.DoubleJumpListener;
@@ -124,6 +125,7 @@ public class HypeLobby extends JavaPlugin {
 
           //Cosmetics
           pluginManager.registerEvents(new CosmeticsListener(), this);
+          pluginManager.registerEvents(new BuyListener(), this);
 
           //Gadgets
           pluginManager.registerEvents(new GadgetsInventory(), this);
