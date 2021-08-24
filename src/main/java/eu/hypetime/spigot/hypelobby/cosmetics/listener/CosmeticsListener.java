@@ -1,7 +1,6 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.listener;
 
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticInventory;
-import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -19,8 +18,8 @@ public class CosmeticsListener implements Listener {
         if (event.getItem().getType() == Material.CHEST) {
             if (!event.getItem().hasItemMeta()) return;
             if (!event.getItem().getItemMeta().hasDisplayName()) return;
-            if (event.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §6Gadgets")) {
-                CosmeticInventory.CosmeticsInventory(event.getPlayer());
+            if (event.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §6Cosmetics")) {
+                event.getPlayer().openInventory(CosmeticInventory.CosmeticsInventory());
             }
         }
     }
@@ -28,28 +27,28 @@ public class CosmeticsListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent event) {
         Player player = ( Player ) event.getWhoClicked();
-        if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Gadgets §8«")) {
+        if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Cosmetics §8«") || player.getOpenInventory().getTitle().contains("§8» §6Cosmetics §8| ")) {
             if (event.getCurrentItem() == null) return;
             event.setCancelled(true);
             if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
                 player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
             }
             if (event.getSlot() == 46) {
-                CosmeticInventory.PetsInventory(player);
+                player.openInventory(CosmeticInventory.PetsInventory());
             }
             if (event.getSlot() == 47) {
-                CosmeticInventory.ParticleInventory(player);
+                player.openInventory(CosmeticInventory.ParticleInventory());
             }
             if (event.getSlot() == 49) {
             }
             if (event.getSlot() == 51) {
-                CosmeticInventory.GadgetsInventory(player);
+                player.openInventory(CosmeticInventory.GadgetsInventory());
             }
             if (event.getSlot() == 52) {
-                CosmeticInventory.ShoesInventory(player);
+                player.openInventory(CosmeticInventory.BootsInventory());
             }
-
         }
     }
+
 
 }

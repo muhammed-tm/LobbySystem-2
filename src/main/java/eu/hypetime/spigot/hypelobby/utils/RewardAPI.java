@@ -38,6 +38,10 @@ public class RewardAPI {
                MySQL.update("INSERT INTO dailyreward (UUID, Spielerwaiting, Hyperwaiting, Warriorwaiting, Vipwaiting, Mediawaiting) " +
                     "VALUES ('" + player.getUniqueId() + "', '0', '0', '0', '0', '0')");
                System.out.println("Player created");
+          } else {
+               if(HypeLobby.sp.getPlayerUUIDs().contains(player.getUniqueId())) {
+                    HypeLobby.sp.removePlayer(player);
+               }
           }
      }
 

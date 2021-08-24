@@ -40,7 +40,7 @@ public class Inventories {
 
           }*/
           inventory.setItem(4, new ItemAPI("§7Gadget §8» §c✖", Material.BARRIER, 1).build());
-          inventory.setItem(7, new ItemAPI("§8» §6Gadgets", Material.CHEST, 1).build());
+          inventory.setItem(7, new ItemAPI("§8» §6Cosmetics", Material.CHEST, 1).build());
           inventory.setItem(8, new ItemBuilder(Material.PLAYER_HEAD).setName("§8» §6Profil").setSkullOwner(player.getName()).toItemStack());
      }
 

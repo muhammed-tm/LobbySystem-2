@@ -7,6 +7,7 @@ import com.xxmicloxx.NoteBlockAPI.songplayer.SongPlayer;
 import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.commands.SitCommand;
+import eu.hypetime.spigot.hypelobby.cosmetics.utils.GadgetsManager;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -39,6 +40,7 @@ public class JoinListener implements Listener {
         Inventories.mainInventory(player);
         RewardAPI.createIfNotExist(player);
         StatsManager.updatePlayer(player);
+        GadgetsManager.createPlayer(player);
 
         player.setGameMode(GameMode.SURVIVAL);
         player.teleport(WarpAPI.getLocation("Spawn"));

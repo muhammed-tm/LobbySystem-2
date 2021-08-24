@@ -1,4 +1,4 @@
-package eu.hypetime.spigot.hypelobby.cosmetics.listener;
+package eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets;
 
 import eu.hypetime.spigot.hypelobby.commands.SitCommand;
 import org.bukkit.GameMode;

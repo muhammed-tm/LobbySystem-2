@@ -1,4 +1,4 @@
-package eu.hypetime.spigot.hypelobby.cosmetics.listener;
+package eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets;
 
 import org.bukkit.Location;
 import org.bukkit.Material;

@@ -1,88 +1,94 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.utils;
 
+import com.google.common.collect.Lists;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CosmeticInventory {
-    public static void CosmeticsInventory(Player player) {
-        Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Gadgets §8«");
-        for (int i = 0; i < inventory.getSize(); i++) {
-            inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
+    public static Inventory CosmeticsInventory() {
+        Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Cosmetics §8«");
+        resetEnchantments(inventory);
+        return inventory;
+    }
+
+    public static Inventory PetsInventory() {
+        Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Cosmetics §8| §6Pets §8«");
+        resetEnchantments(inventory);
+        inventory.setItem(46, new ItemBuilder(Material.SPAWNER)
+                .setName("§6Pets")
+                .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
+                .toItemStack());
+        AtomicInteger integer = new AtomicInteger(10);
+        for (Pet pet : Pet.values()) {
+            ItemStack item = pet.getItem();
+            ItemMeta meta = item.getItemMeta();
+            meta.setLore(Lists.newArrayList("§6Preis§8: §6" + pet.getCoins()));
+            item.setItemMeta(meta);
+            inventory.setItem(integer.getAndIncrement(), item);
         }
-        inventory.setItem(46, new ItemBuilder(Material.SPAWNER)
-                .setName("§6Tiere")
-                .toItemStack());
-        inventory.setItem(47, new ItemBuilder(Material.COCOA_BEANS)
-                .setName("§6Partikel")
-                .toItemStack());
-        inventory.setItem(49, new ItemBuilder(Material.BARRIER)
-                .setName("§cablegen")
-                .toItemStack());
-        inventory.setItem(51, new ItemBuilder(Material.FISHING_ROD)
-                .setName("§6Gadgets")
-                .toItemStack());
-        inventory.setItem(52, new ItemBuilder(Material.LEATHER_BOOTS)
-                .setName("§6Schuhe")
-                .toItemStack());
-        player.openInventory(inventory);
-
+        return inventory;
     }
 
-    public static void PetsInventory(Player player) {
-        Inventory inventory = player.getOpenInventory().getTopInventory();
-        resetEnchantments(inventory);
-        inventory.setItem(46, new ItemBuilder(Material.SPAWNER)
-                .setName("§6Tiere")
-                .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
-                .toItemStack());
-        player.openInventory(inventory);
-    }
-
-    public static void ParticleInventory(Player player) {
-        Inventory inventory = player.getOpenInventory().getTopInventory();
+    public static Inventory ParticleInventory() {
+        Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Cosmetics §8| §6Particle §8«");
         resetEnchantments(inventory);
         inventory.setItem(47, new ItemBuilder(Material.COCOA_BEANS)
-                .setName("§6Partikel")
+                .setName("§6Particle")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
-        player.openInventory(inventory);
+        AtomicInteger integer = new AtomicInteger(10);
+        for (Particle particle : Particle.values()) {
+            ItemStack item = particle.getItem();
+            ItemMeta meta = item.getItemMeta();
+            meta.setLore(Lists.newArrayList("§6Preis§8: §6" + particle.getCoins()));
+            item.setItemMeta(meta);
+            inventory.setItem(integer.getAndIncrement(), item);
+        }
+        return inventory;
     }
 
-    public static void GadgetsInventory(Player player) {
-        Inventory inventory = player.getOpenInventory().getTopInventory();
+    public static Inventory GadgetsInventory() {
+        Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Cosmetics §8| §6Gadgets §8«");
         resetEnchantments(inventory);
         inventory.setItem(51, new ItemBuilder(Material.FISHING_ROD)
                 .setName("§6Gadgets")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
-        inventory.setItem(10, new ItemBuilder(Material.FISHING_ROD)
-                .setName("§7Grappling hook")
-                .toItemStack());
-        inventory.setItem(11, new ItemBuilder(Material.ENDER_PEARL)
-                .setName("§7Enderpearl")
-                .toItemStack());
-        inventory.setItem(12, new ItemBuilder(Material.BOW)
-                .setName("§7Teleport Bow")
-                .toItemStack());
-        inventory.setItem(12, new ItemBuilder(Material.FEATHER)
-                .setName("§7Flight feather")
-                .toItemStack());
-        player.openInventory(inventory);
+        AtomicInteger integer = new AtomicInteger(10);
+        for (Gadget gadget : Gadget.values()) {
+            ItemStack item = gadget.getItem();
+            ItemMeta meta = item.getItemMeta();
+            meta.setLore(Lists.newArrayList("§6Preis§8: §6" + gadget.getCoins()));
+            item.setItemMeta(meta);
+            inventory.setItem(integer.getAndIncrement(), item);
+        }
+        return inventory;
     }
 
-    public static void ShoesInventory(Player player) {
-        Inventory inventory = player.getOpenInventory().getTopInventory();
+    public static Inventory BootsInventory() {
+        Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Cosmetics §8| §6Boots §8«");
         resetEnchantments(inventory);
         inventory.setItem(52, new ItemBuilder(Material.LEATHER_BOOTS)
-                .setName("§6Schuhe")
+                .setName("§6Boots")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
-        player.openInventory(inventory);
+        AtomicInteger integer = new AtomicInteger(10);
+        for (Boots boots : Boots.values()) {
+            ItemStack item = boots.getItem();
+            ItemMeta meta = item.getItemMeta();
+            meta.setLore(Lists.newArrayList("§6Preis§8: §6" + boots.getCoins()));
+            item.setItemMeta(meta);
+            inventory.setItem(integer.getAndIncrement(), item);
+        }
+        return inventory;
     }
 
     public static void resetEnchantments(Inventory inventory) {

@@ -8,9 +8,10 @@ import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.driver.event.IEventManager;
 import eu.hypetime.spigot.hypelobby.commands.*;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.CosmeticsListener;
-import eu.hypetime.spigot.hypelobby.cosmetics.listener.DoubleJumpListener;
-import eu.hypetime.spigot.hypelobby.cosmetics.listener.EnderpearlListener;
-import eu.hypetime.spigot.hypelobby.cosmetics.listener.RodListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.DoubleJumpListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.EnderpearlListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.GadgetsInventory;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.RodListener;
 import eu.hypetime.spigot.hypelobby.listener.*;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
@@ -121,7 +122,10 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new NPCListener(), this);
           pluginManager.registerEvents(new DoubleJumpListener(), this);
           pluginManager.registerEvents(new SitCommand(), this);
+
+          //Cosmetics
           pluginManager.registerEvents(new CosmeticsListener(), this);
+          pluginManager.registerEvents(new GadgetsInventory(), this);
 
           IEventManager eventManager = CloudNetDriver.getInstance().getEventManager();
           eventManager.registerListener(new CloudServer());
