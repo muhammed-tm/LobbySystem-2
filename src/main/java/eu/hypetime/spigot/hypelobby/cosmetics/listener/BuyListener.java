@@ -39,6 +39,7 @@ public class BuyListener implements Listener {
                          if(CoinsAPI.getCoins(player) >= gadget.getCoins()) {
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Der §6Kauf §7wurde §aerfolgreich §7abgeschlossen§8.");
                               player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 1f);
+                              CoinsAPI.removeCoins(player, gadget.getCoins());
                               CosmeticsManager.addGadget(player, gadget);
                               buy.remove(player);
                          } else {
@@ -52,6 +53,7 @@ public class BuyListener implements Listener {
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Der §6Kauf §7wurde §aerfolgreich §7abgeschlossen§8.");
                               player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 1f);
                               CosmeticsManager.addPet(player, pet);
+                              CoinsAPI.removeCoins(player, pet.getCoins());
                               buy.remove(player);
                          } else {
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Der §6Kauf §7ist §cfehlgeschlagen§8. §7Du hast §cnicht §7genug §6Coins§8.");
@@ -64,6 +66,7 @@ public class BuyListener implements Listener {
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Der §6Kauf §7wurde §aerfolgreich §7abgeschlossen§8.");
                               player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 1f);
                               CosmeticsManager.addBoots(player, boots);
+                              CoinsAPI.removeCoins(player, boots.getCoins());
                               buy.remove(player);
                          } else {
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Der §6Kauf §7ist §cfehlgeschlagen§8. §7Du hast §cnicht §7genug §6Coins§8.");
@@ -76,6 +79,7 @@ public class BuyListener implements Listener {
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Der §6Kauf §7wurde §aerfolgreich §7abgeschlossen§8.");
                               player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1f, 1f);
                               CosmeticsManager.addParticle(player, particle);
+                              CoinsAPI.removeCoins(player, particle.getCoins());
                               buy.remove(player);
                          } else {
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Der §6Kauf §7ist §cfehlgeschlagen§8. §7Du hast §cnicht §7genug §6Coins§8.");
