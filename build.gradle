@@ -36,6 +36,7 @@ dependencies {
     compileOnly 'de.dytanic.cloudnet:cloudnet-wrapper-jvm:3.4.0-RELEASE'
     compileOnly 'com.github.koca2000:NoteBlockAPI:1.6.1'
     compileOnly group: 'com.github.juliarn', name: 'npc-lib', version: 'development-SNAPSHOT'
+    implementation 'com.elmakers.mine.bukkit:EffectLib:9.3'
 }
 
 compileJava.options.encoding = 'UTF-8'

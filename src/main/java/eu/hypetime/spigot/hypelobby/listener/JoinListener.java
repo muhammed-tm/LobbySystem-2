@@ -2,6 +2,8 @@ package eu.hypetime.spigot.hypelobby.listener;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.commands.SitCommand;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.boots.BootsPlayer;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsManager;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticsManager;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
@@ -50,6 +52,13 @@ public class JoinListener implements Listener {
         if(HypeLobby.sp.getPlayerUUIDs().contains(event.getPlayer().getUniqueId())) {
             HypeLobby.sp.removePlayer(event.getPlayer());
         }
+        if(PetsManager.petMap.containsKey(event.getPlayer())) {
+            PetsManager.removePet(PetsManager.getPet(event.getPlayer()));
+        }
+        if(BootsPlayer.bootsPlayers.containsKey(event.getPlayer())) {
+            BootsPlayer.bootsPlayers.remove(event.getPlayer());
+        }
+        BootsPlayer.stopParticle(event.getPlayer());
     }
 
 }

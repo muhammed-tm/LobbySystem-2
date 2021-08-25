@@ -12,7 +12,8 @@ public enum Pet {
     SHEEP("Schaf", new ItemAPI("§8» §5Sheep", Material.SHEEP_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.SHEEP),
     BLAZE("Blaze", new ItemAPI("§8» §5Blaze", Material.BLAZE_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.BLAZE),
     FOX("Fuchs", new ItemAPI("§8» §5Fox", Material.FOX_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.FOX),
-    CREEPER("Creeper", new ItemAPI("§8» §5Crepper", Material.CREEPER_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.CREEPER);
+    CREEPER("Creeper", new ItemAPI("§8» §5Creeper", Material.CREEPER_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.CREEPER),
+    WOLF("Wolf", new ItemAPI("§8» §5Wolf", Material.WOLF_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.WOLF);
 
     private String name;
     private ItemStack item;

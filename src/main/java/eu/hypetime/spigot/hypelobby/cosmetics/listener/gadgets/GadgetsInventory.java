@@ -2,6 +2,8 @@ package eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.BuyListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.boots.BootsPlayer;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsManager;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.enums.Gadget;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticsManager;
 import org.bukkit.Material;
@@ -26,6 +28,10 @@ public class GadgetsInventory implements Listener {
             Gadget gadget = Gadget.getGadgetByItem(event.getCurrentItem().getItemMeta().getDisplayName());
             if(gadget != null) {
                 if (CosmeticsManager.hasGadget(player, gadget)) {
+                    if(PetsManager.petMap.containsKey(player)) {
+                        PetsManager.removePet(PetsManager.petMap.get(player));
+                    }
+                    BootsPlayer.stopParticle(player);
                     player.getInventory().setItem(4, gadget.getItem());
                     player.closeInventory();
                 } else {

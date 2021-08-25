@@ -1,5 +1,6 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.listener.pets;
 
+import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.GuiBuilder;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
 import org.bukkit.Material;
@@ -20,9 +21,21 @@ public class PetSettingsInventory implements Listener {
 
      public static void openPetSettings(Player player) {
           GuiBuilder guiBuilder = new GuiBuilder(null, 1, "");
-          guiBuilder.setSlot(0, new ItemBuilder(Material.SADDLE).setName("§6Auf den Kopf setzen").toItemStack(), event -> {
+          guiBuilder.setSlot(0, new ItemBuilder(Material.SADDLE).setName("§6Reiten").toItemStack(), event -> {
                player.closeInventory();
-               player.addPassenger(PetsManager.getPet(player).getEntity());
+               Entity entity = PetsManager.getPet(player).getEntity();
+               if(!entity.getPassengers().contains(player)) {
+                    entity.addPassenger(player);
+               } else {
+                    entity.removePassenger(player);
+               }
+               return;
+          });
+          guiBuilder.setSlot(1, new ItemBuilder(Material.NAME_TAG).setName("§6Umbenennen").toItemStack(), event -> {
+               player.closeInventory();
+               Entity entity = PetsManager.getPet(player).getEntity();
+               RenameListener.renameMap.put(player, entity);
+               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Bitte schreibe den Namen für dein Pet in den Chat§8.");
                return;
           });
           guiBuilder.openInventory(player);
@@ -32,9 +45,11 @@ public class PetSettingsInventory implements Listener {
      public void onEntityClick(PlayerInteractAtEntityEvent event) {
           Player player = event.getPlayer();
           Entity entity = event.getRightClicked();
-          if (entity.getCustomName() != null) {
-               if (entity.getCustomName().equalsIgnoreCase("§6" + player.getName() + "´s Pet")) {
-                    openPetSettings(player);
+          if(PetsManager.petMap.containsKey(player)) {
+               if (entity.getCustomName() != null) {
+                    if (entity.equals(PetsManager.getPet(player).getEntity())) {
+                         openPetSettings(player);
+                    }
                }
           }
      }

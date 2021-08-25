@@ -1,5 +1,10 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.utils.enums;
 
+import de.slikey.effectlib.Effect;
+import de.slikey.effectlib.EffectType;
+import de.slikey.effectlib.effect.CircleEffect;
+import de.slikey.effectlib.effect.FountainEffect;
+import de.slikey.effectlib.effect.LineEffect;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.GadgetCategory;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import org.bukkit.Material;
@@ -7,7 +12,8 @@ import org.bukkit.inventory.ItemStack;
 
 public enum Particle {
 
-    FLAME_CIRCLE("Flame Circle", new ItemAPI("§8» §5Music Boots", Material.FLINT_AND_STEEL, 1).build(), 500, GadgetCategory.PARTICLE);
+    FLAME_CIRCLE("Flame Circle", new ItemAPI("§8» §5Flame Circle", Material.FLINT_AND_STEEL, 1).build(), 500, GadgetCategory.PARTICLE),
+    FOUNTAIN("Fountain", new ItemAPI("§8» §5Fountain", Material.FLINT_AND_STEEL, 1).build(), 500, GadgetCategory.PARTICLE);
 
     private String name;
     private ItemStack item;

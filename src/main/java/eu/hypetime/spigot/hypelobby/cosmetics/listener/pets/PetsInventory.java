@@ -2,6 +2,7 @@ package eu.hypetime.spigot.hypelobby.cosmetics.listener.pets;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.BuyListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.boots.BootsPlayer;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticsManager;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.enums.Pet;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
@@ -29,6 +30,7 @@ public class PetsInventory implements Listener {
                 if (CosmeticsManager.hasPet(player, pet)) {
                     player.getInventory().setItem(4, new ItemBuilder(Material.COMMAND_BLOCK).setName("§6Pet §7Einstellungen").toItemStack());
                     player.closeInventory();
+                    BootsPlayer.stopParticle(player);
                     PetsManager.createEntityByEntityType(player, pet.getEntityType());
                 } else {
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()

@@ -16,6 +16,7 @@ import eu.hypetime.spigot.hypelobby.cosmetics.listener.particle.ParticleInventor
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetSettingsInventory;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsInventory;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.RenameListener;
 import eu.hypetime.spigot.hypelobby.listener.*;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
@@ -139,6 +140,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new PetsInventory(), this);
           pluginManager.registerEvents(new PetsListener(), this);
           pluginManager.registerEvents(new PetSettingsInventory(), this);
+          pluginManager.registerEvents(new RenameListener(), this);
 
           //Boots
           pluginManager.registerEvents(new BootsInventory(), this);

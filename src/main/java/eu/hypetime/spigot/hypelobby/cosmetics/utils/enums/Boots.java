@@ -3,22 +3,25 @@ package eu.hypetime.spigot.hypelobby.cosmetics.utils.enums;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.GadgetCategory;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.inventory.ItemStack;
 
 public enum Boots {
 
-    MUSIC_BOOTS("Music", new ItemAPI("§8» §5Music Boots", Material.LEATHER_BOOTS, 1).build(), 500, GadgetCategory.BOOTS);
+    MUSIC_BOOTS("Music", new ItemAPI("§8» §5Music Boots", Material.LEATHER_BOOTS, 1).build(), 500, GadgetCategory.BOOTS, Particle.NOTE);
 
     private String name;
     private ItemStack item;
     private int coins;
     private GadgetCategory category;
+    private Particle particle;
 
-    Boots(String name, ItemStack item, int coins, GadgetCategory category) {
+    Boots(String name, ItemStack item, int coins, GadgetCategory category, Particle particle) {
         this.name = name;
         this.item = item;
         this.coins = coins;
         this.category = category;
+        this.particle = particle;
     }
 
     public String getName() {
@@ -35,6 +38,10 @@ public enum Boots {
 
     public GadgetCategory getCategory() {
         return category;
+    }
+
+    public Particle getParticle() {
+        return particle;
     }
 
     public static Boots getBootsByItem(String name) {

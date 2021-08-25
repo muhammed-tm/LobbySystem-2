@@ -2,14 +2,17 @@ package eu.hypetime.spigot.hypelobby.cosmetics.listener.boots;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.BuyListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsManager;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.enums.Boots;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticsManager;
+import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.EquipmentSlot;
 
 public class BootsInventory implements Listener {
 
@@ -26,7 +29,13 @@ public class BootsInventory implements Listener {
             Boots boots = Boots.getBootsByItem(event.getCurrentItem().getItemMeta().getDisplayName());
             if(boots != null) {
                 if (CosmeticsManager.hasBoots(player, boots)) {
-                    player.getInventory().setItem(4, boots.getItem());
+                    if(PetsManager.petMap.containsKey(player)) {
+                        PetsManager.removePet(PetsManager.petMap.get(player));
+                    }
+                    player.getInventory().setItem(EquipmentSlot.FEET, boots.getItem());
+                    player.getInventory().setItem(4, new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §6Schuhe").toItemStack());
+                    BootsPlayer.stopParticle(player);
+                    new BootsPlayer(player, boots.getParticle());
                     player.closeInventory();
                 } else {
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
