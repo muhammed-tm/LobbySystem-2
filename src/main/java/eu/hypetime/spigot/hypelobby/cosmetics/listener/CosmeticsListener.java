@@ -1,5 +1,7 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.listener;
 
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.boots.BootsPlayer;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsManager;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticInventory;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import org.bukkit.Material;
@@ -47,6 +49,10 @@ public class CosmeticsListener implements Listener {
                if (event.getSlot() == 49) {
                     player.closeInventory();
                     player.getInventory().setItem(4, new ItemAPI("§7Gadget §8» §c✖", Material.BARRIER, 1).build());
+                    if(PetsManager.petMap.containsKey(player)) {
+                         PetsManager.removePet(PetsManager.petMap.get(player));
+                    }
+                    BootsPlayer.stopParticle(player);
                     return;
                }
                if (event.getSlot() == 51) {

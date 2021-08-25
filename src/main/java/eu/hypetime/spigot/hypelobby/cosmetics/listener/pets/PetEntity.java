@@ -30,6 +30,7 @@ public class PetEntity {
           this.entity.setCustomName("§6" + player.getName() + "´s Pet");
           this.entity.setInvulnerable(true);
           ((LivingEntity) this.entity).setSilent(true);
+          ((LivingEntity) this.entity).setAI(true);
           startFollowTask();
      }
 

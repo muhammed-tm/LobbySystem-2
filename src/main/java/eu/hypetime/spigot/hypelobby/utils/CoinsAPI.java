@@ -37,8 +37,8 @@ public class CoinsAPI {
 
      public static void addCoins(Player player, int coins) {
           try {
-               int newCoins = ((coins) - (getCoins(player)));
-               MySQL.update("UPDATE Coins SET Coins = '" + newCoins + "' WHERE UUID= '" + player.getUniqueId() + "'");
+               int newCoins = ((getCoins(player)) + (coins));
+               setCoins(player, coins);
           } catch (Exception ex) {
                ex.printStackTrace();
           }
@@ -46,34 +46,8 @@ public class CoinsAPI {
 
      public static void removeCoins(Player player, int coins) {
           try {
-               int newCoins = ((coins) - (getCoins(player)));
-               MySQL.update("UPDATE Coins SET Coins = '" + newCoins + "' WHERE UUID= '" + player.getUniqueId() + "'");
-          } catch (Exception ex) {
-               ex.printStackTrace();
-          }
-     }
-
-     public static int getCoins(String name) {
-          try {
-               ResultSet resultSet = MySQL.getResult("SELECT * FROM Coins WHERE Spielername= '" + name + "'");
-               int coins = 0;
-               if (resultSet == null) {
-                    return coins;
-               }
-               while (resultSet.next()) {
-                    coins = resultSet.getInt("Coins");
-               }
-               resultSet.close();
-               return coins;
-          } catch (Exception ex) {
-               ex.printStackTrace();
-               return 0;
-          }
-     }
-
-     public static void setCoins(String name, int coins) {
-          try {
-               MySQL.update("UPDATE Coins SET Coins= '" + coins + "' WHERE Spielername= '" + name + "'");
+               int newCoins = ((getCoins(player)) - (coins));
+               setCoins(player, coins);
           } catch (Exception ex) {
                ex.printStackTrace();
           }

@@ -8,10 +8,7 @@ import eu.hypetime.spigot.hypelobby.commands.*;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.BuyListener;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.CosmeticsListener;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.boots.BootsInventory;
-import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.DoubleJumpListener;
-import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.EnderpearlListener;
-import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.GadgetsInventory;
-import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.RodListener;
+import eu.hypetime.spigot.hypelobby.cosmetics.listener.gadgets.*;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.particle.ParticleInventory;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetSettingsInventory;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsInventory;
@@ -135,6 +132,7 @@ public class HypeLobby extends JavaPlugin {
 
           pluginManager.registerEvents(new RodListener(), this);
           pluginManager.registerEvents(new EnderpearlListener(), this);
+          pluginManager.registerEvents(new TeleportBowListener(), this);
 
           //Pets
           pluginManager.registerEvents(new PetsInventory(), this);
