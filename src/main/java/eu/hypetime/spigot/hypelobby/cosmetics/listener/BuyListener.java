@@ -47,6 +47,7 @@ public class BuyListener implements Listener {
                               player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_FALL, 1f, 1f);
                               buy.remove(player);
                          }
+                         return;
                     }
                     if(pet != null) {
                          if(CoinsAPI.getCoins(player) >= pet.getCoins()) {
@@ -60,6 +61,7 @@ public class BuyListener implements Listener {
                               player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_FALL, 1f, 1f);
                               buy.remove(player);
                          }
+                         return;
                     }
                     if(boots != null) {
                          if(CoinsAPI.getCoins(player) >= boots.getCoins()) {
@@ -73,6 +75,7 @@ public class BuyListener implements Listener {
                               player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_FALL, 1f, 1f);
                               buy.remove(player);
                          }
+                         return;
                     }
                     if(particle != null) {
                          if(CoinsAPI.getCoins(player) >= particle.getCoins()) {
@@ -86,6 +89,7 @@ public class BuyListener implements Listener {
                               player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_FALL, 1f, 1f);
                               buy.remove(player);
                          }
+                         return;
                     }
                } else {
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Der §6Kauf §7wurde abgebrochen§8.");

@@ -106,7 +106,7 @@ public class CosmeticInventory {
                 .setName("§6Partikel")
                 .toItemStack());
         inventory.setItem(49, new ItemBuilder(Material.BARRIER)
-                .setName("§cablegen")
+                .setName("§7Gadget §cablegen")
                 .toItemStack());
         inventory.setItem(51, new ItemBuilder(Material.FISHING_ROD)
                 .setName("§6Gadgets")

@@ -31,7 +31,7 @@ public class DailyRewardGUIListener implements Listener {
                if (event.getSlot() == 9) {
                     if (RewardAPI.canReward(player, RewardType.PLAYER)) {
                          player.sendMessage(prefix + "§7Du hast §6§l100 Coins §7erhalten.");
-                         CoinsAPI.addCoins(player.getName(), 100);
+                         CoinsAPI.addCoins(player, 100);
                          player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
                          RewardAPI.setUUID(player, RewardType.PLAYER);
                     } else {
@@ -46,7 +46,7 @@ public class DailyRewardGUIListener implements Listener {
                     if (player.hasPermission("Lobby.Hyper")) {
                          if (RewardAPI.canReward(player, RewardType.HYPER)) {
                               player.sendMessage(prefix + "§7Du hast §6§l250 Coins §7erhalten.");
-                              CoinsAPI.addCoins(player.getName(), 250);
+                              CoinsAPI.addCoins(player, 250);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
                               RewardAPI.setUUID(player, RewardType.HYPER);
                          } else {
@@ -64,7 +64,7 @@ public class DailyRewardGUIListener implements Listener {
                     if (player.hasPermission("Lobby.Warrior")) {
                          if (RewardAPI.canReward(player, RewardType.WARRIOR)) {
                               player.sendMessage(prefix + "§7Du hast §6§l500 Coins §7erhalten.");
-                              CoinsAPI.addCoins(player.getName(), 500);
+                              CoinsAPI.addCoins(player, 500);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
                               RewardAPI.setUUID(player, RewardType.WARRIOR);
                          } else {
@@ -81,7 +81,7 @@ public class DailyRewardGUIListener implements Listener {
                     if (player.hasPermission("Lobby.VIP")) {
                          if (RewardAPI.canReward(player, RewardType.VIP)) {
                               player.sendMessage(prefix + "§7Du hast §6§l750 Coins §7erhalten.");
-                              CoinsAPI.addCoins(player.getName(), 750);
+                              CoinsAPI.addCoins(player, 750);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
                               RewardAPI.setUUID(player, RewardType.VIP);
                          } else {
@@ -98,7 +98,7 @@ public class DailyRewardGUIListener implements Listener {
                     if (player.hasPermission("Lobby.Media")) {
                          if (RewardAPI.canReward(player, RewardType.MEDIA)) {
                               player.sendMessage(prefix + "§7Du hast §6§l1000 Coins §7erhalten.");
-                              CoinsAPI.addCoins(player.getName(), 1000);
+                              CoinsAPI.addCoins(player, 1000);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
                               RewardAPI.setUUID(player, RewardType.MEDIA);
                          } else {
