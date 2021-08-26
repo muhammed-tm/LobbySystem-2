@@ -36,33 +36,28 @@ public class CosmeticsListener implements Listener {
                if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
                     player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
                }
-               if (event.getSlot() == 46) {
+               if (event.getSlot() == 48) {
                     player.closeInventory();
                     player.openInventory(CosmeticInventory.PetsInventory());
                     return;
                }
-               if (event.getSlot() == 47) {
-                    player.closeInventory();
-                    player.openInventory(CosmeticInventory.ParticleInventory());
-                    return;
-               }
                if (event.getSlot() == 49) {
-                    player.closeInventory();
-                    player.getInventory().setItem(4, new ItemAPI("§7Gadget §8» §c✖", Material.BARRIER, 1).build());
-                    if(PetsManager.petMap.containsKey(player)) {
-                         PetsManager.removePet(PetsManager.petMap.get(player));
-                    }
-                    BootsPlayer.stopParticle(player);
-                    return;
-               }
-               if (event.getSlot() == 51) {
                     player.closeInventory();
                     player.openInventory(CosmeticInventory.GadgetsInventory());
                     return;
                }
-               if (event.getSlot() == 52) {
+               if (event.getSlot() == 50) {
                     player.closeInventory();
                     player.openInventory(CosmeticInventory.BootsInventory());
+                    return;
+               }
+               if (event.getSlot() == 53) {
+                    player.closeInventory();
+                    player.getInventory().setItem(4, new ItemAPI("§7Gadget §8» §c✖", Material.BARRIER, 1).build());
+                    if (PetsManager.petMap.containsKey(player)) {
+                         PetsManager.removePet(PetsManager.petMap.get(player));
+                    }
+                    BootsPlayer.stopParticle(player);
                     return;
                }
           }

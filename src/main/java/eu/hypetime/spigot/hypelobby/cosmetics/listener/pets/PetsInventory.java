@@ -28,10 +28,10 @@ public class PetsInventory implements Listener {
             Pet pet = Pet.getPetByItem(event.getCurrentItem().getItemMeta().getDisplayName());
             if(pet != null) {
                 if (CosmeticsManager.hasPet(player, pet)) {
-                    player.getInventory().setItem(4, new ItemBuilder(Material.COMMAND_BLOCK).setName("§6Pet §7Einstellungen").toItemStack());
                     player.closeInventory();
                     BootsPlayer.stopParticle(player);
                     PetsManager.createEntityByEntityType(player, pet.getEntityType());
+                    player.getInventory().setItem(4, new ItemBuilder(Material.COMMAND_BLOCK).setName("§6Pet §7Einstellungen").toItemStack());
                 } else {
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
                          + "§7Du besitzt §7dieses §6Pet §cnicht§8. \n§7Möchtest du es dir kaufen§8? §7Schreibe §aJa §7zum Kaufen und §cNein §7zum Abbrechen§8.");

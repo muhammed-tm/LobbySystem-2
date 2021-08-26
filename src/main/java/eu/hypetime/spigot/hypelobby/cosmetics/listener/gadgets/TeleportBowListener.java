@@ -10,7 +10,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scheduler.BukkitTask;
 
 /*
@@ -23,7 +22,9 @@ public class TeleportBowListener implements Listener {
      @EventHandler
      public void onSwapItem(PlayerItemHeldEvent event) {
           if (event.getNewSlot() == 4) {
-               event.getPlayer().getInventory().setItem(9, new ItemBuilder(Material.ARROW).setName("§6Teleport Arrow").toItemStack());
+               if (event.getPlayer().getInventory().getItem(4).getType() == Material.BOW) {
+                    event.getPlayer().getInventory().setItem(9, new ItemBuilder(Material.ARROW).setName("§6Teleport Arrow").toItemStack());
+               }
           } else {
                if (event.getPlayer().getInventory().contains(Material.ARROW)) {
                     event.getPlayer().getInventory().remove(Material.ARROW);
@@ -42,7 +43,7 @@ public class TeleportBowListener implements Listener {
                          BukkitTask task = null;
                          BukkitTask finalTask = task;
                          task = Bukkit.getScheduler().runTaskTimer(HypeLobby.getInstance(), () -> {
-                              if(!arrow.isDead()) {
+                              if (!arrow.isDead()) {
                                    if (arrow.isOnGround()) {
                                         player.teleport(arrow.getLocation());
                                         arrow.remove();

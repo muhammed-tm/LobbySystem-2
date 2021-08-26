@@ -26,7 +26,7 @@ public class CosmeticInventory {
     public static Inventory PetsInventory() {
         Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Cosmetics §8| §6Pets §8«");
         resetEnchantments(inventory);
-        inventory.setItem(46, new ItemBuilder(Material.SPAWNER)
+        inventory.setItem(48, new ItemBuilder(Material.SPAWNER)
                 .setName("§6Pets")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
@@ -41,28 +41,10 @@ public class CosmeticInventory {
         return inventory;
     }
 
-    public static Inventory ParticleInventory() {
-        Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Cosmetics §8| §6Particle §8«");
-        resetEnchantments(inventory);
-        inventory.setItem(47, new ItemBuilder(Material.COCOA_BEANS)
-                .setName("§6Particle")
-                .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
-                .toItemStack());
-        AtomicInteger integer = new AtomicInteger(10);
-        for (Particle particle : Particle.values()) {
-            ItemStack item = particle.getItem();
-            ItemMeta meta = item.getItemMeta();
-            meta.setLore(Lists.newArrayList("§6Preis§8: §6" + particle.getCoins()));
-            item.setItemMeta(meta);
-            inventory.setItem(integer.getAndIncrement(), item);
-        }
-        return inventory;
-    }
-
     public static Inventory GadgetsInventory() {
         Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Cosmetics §8| §6Gadgets §8«");
         resetEnchantments(inventory);
-        inventory.setItem(51, new ItemBuilder(Material.FISHING_ROD)
+        inventory.setItem(49, new ItemBuilder(Material.FISHING_ROD)
                 .setName("§6Gadgets")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
@@ -80,7 +62,7 @@ public class CosmeticInventory {
     public static Inventory BootsInventory() {
         Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Cosmetics §8| §6Boots §8«");
         resetEnchantments(inventory);
-        inventory.setItem(52, new ItemBuilder(Material.LEATHER_BOOTS)
+        inventory.setItem(50, new ItemBuilder(Material.LEATHER_BOOTS)
                 .setName("§6Boots")
                 .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                 .toItemStack());
@@ -99,20 +81,17 @@ public class CosmeticInventory {
         for (int i = 0; i < inventory.getSize(); i++) {
             inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
         }
-        inventory.setItem(46, new ItemBuilder(Material.SPAWNER)
-                .setName("§6Tiere")
-                .toItemStack());
-        inventory.setItem(47, new ItemBuilder(Material.COCOA_BEANS)
-                .setName("§6Partikel")
-                .toItemStack());
-        inventory.setItem(49, new ItemBuilder(Material.BARRIER)
-                .setName("§7Gadget §cablegen")
-                .toItemStack());
-        inventory.setItem(51, new ItemBuilder(Material.FISHING_ROD)
+        inventory.setItem(48, new ItemBuilder(Material.SPAWNER)
+             .setName("§6Tiere")
+             .toItemStack());
+        inventory.setItem(49, new ItemBuilder(Material.FISHING_ROD)
                 .setName("§6Gadgets")
                 .toItemStack());
-        inventory.setItem(52, new ItemBuilder(Material.LEATHER_BOOTS)
+        inventory.setItem(50, new ItemBuilder(Material.LEATHER_BOOTS)
                 .setName("§6Schuhe")
                 .toItemStack());
+        inventory.setItem(53, new ItemBuilder(Material.BARRIER)
+             .setName("§7Gadget §cablegen")
+             .toItemStack());
     }
 }
