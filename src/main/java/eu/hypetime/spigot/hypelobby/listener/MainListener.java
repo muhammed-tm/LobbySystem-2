@@ -22,6 +22,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerItemDamageEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 import org.bukkit.potion.PotionEffect;
@@ -73,5 +74,11 @@ public class MainListener implements Listener {
      public void onFood(FoodLevelChangeEvent event) {
           event.setCancelled(true);
           event.setFoodLevel(20);
+     }
+
+     @EventHandler
+     public void onItemDamage(PlayerItemDamageEvent event) {
+          event.setDamage(0);
+          event.setCancelled(true);
      }
 }

@@ -34,6 +34,7 @@ public class ItemAPI {
 		itemStack = new ItemStack(material, amount);
 		itemMeta = itemStack.getItemMeta();
 		itemMeta.setDisplayName(displayname);
+		itemMeta.setUnbreakable(true);
 	}
 
 	public ItemAPI(String displayname, Material material, byte subid, int amount, Enchantment enchantment, int lvl) {
