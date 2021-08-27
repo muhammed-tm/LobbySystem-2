@@ -50,9 +50,7 @@ public class FriendSQL {
                     String friendsResult = result.getString("playerFriends");
                     if (friendsResult != null)
                          for (String s : friendsResult.split(";")) {
-                              System.out.println("Debug: " + s);
                               if (!Objects.equals(s.trim(), "")) {
-                                   System.out.println("Debug_2" + s);
                                    friends.add(UUID.fromString(s));
                               }
                          }

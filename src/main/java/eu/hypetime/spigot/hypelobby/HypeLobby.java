@@ -15,6 +15,9 @@ import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsInventory;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsListener;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.RenameListener;
 import eu.hypetime.spigot.hypelobby.listener.*;
+import eu.hypetime.spigot.hypelobby.profile.listener.FriendInteractListener;
+import eu.hypetime.spigot.hypelobby.profile.manager.FriendManager;
+import eu.hypetime.spigot.hypelobby.profile.sql.FriendSQL;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -43,6 +46,7 @@ public class HypeLobby extends JavaPlugin {
      public boolean broadcast;
      private Config config;
      private Constants constants;
+     private FriendManager friendManager;
 
      public static HypeLobby getInstance() {
           return instance;
@@ -60,6 +64,7 @@ public class HypeLobby extends JavaPlugin {
 
           config = new Config(getDataFolder().getAbsolutePath(), "config.yml");
           constants = new Constants(this);
+          friendManager = new FriendManager(new FriendSQL());
 
           executorService = Executors.newCachedThreadPool();
 
@@ -122,6 +127,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new NPCListener(), this);
           pluginManager.registerEvents(new SitCommand(), this);
           pluginManager.registerEvents(new DoubleJumpListener(), this);
+          pluginManager.registerEvents(new FriendInteractListener(), this);
 
           //Cosmetics
           pluginManager.registerEvents(new CosmeticsListener(), this);
@@ -155,4 +161,7 @@ public class HypeLobby extends JavaPlugin {
           getCommand("sit").setExecutor(new SitCommand());
      }
 
+     public FriendManager getFriendManager() {
+          return friendManager;
+     }
 }

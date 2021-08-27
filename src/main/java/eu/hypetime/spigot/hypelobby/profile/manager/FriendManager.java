@@ -46,6 +46,17 @@ public class FriendManager {
           return this.mysql.getPlayer(uuid);
      }
 
+     public void removeFriend(FriendPlayer requester, FriendPlayer target) {
+          if (!requester.getFriends().contains(target.getUuid()))
+               return;
+          target.getFriends().remove(requester.getUuid());
+          requester.getFriends().remove(target.getUuid());
+          this.mysql.setPlayer(target);
+          this.mysql.setPlayer(requester);
+          return;
+     }
+
+
      public FriendSQL getMysql() {
           return this.mysql;
      }
