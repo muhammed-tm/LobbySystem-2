@@ -32,11 +32,10 @@ public class ScoreAPI {
                obj = sb.registerNewObjective("aaa", "bbb", "ccc");
           }
           obj.setDisplayName(" §7» §6HypeTimeEU §7« ");
-
           obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
           for (Player online : Bukkit.getOnlinePlayers()) {
-               IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
+               IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(online.getUniqueId());
                String group = CloudNetDriver.getInstance().getPermissionManagement().getHighestPermissionGroup(user).getName().toLowerCase();
                PlayerInventory inventory = player.getInventory();
                rang.put(player, group);
@@ -79,7 +78,6 @@ public class ScoreAPI {
           obj.getScore("§7» §6ts.HypeTime.eu").setScore(1);
           obj.getScore("    ").setScore(0);
           player.setScoreboard(sb);
-
      }
 
      public static void registerTeamEntry(Scoreboard sb, String Team, @Nonnull ChatColor prefixColor, String prefix, String suffix, Player player) {
