@@ -23,12 +23,12 @@ public class BannerPattern {
           return this.pattern;
      }
 
-     public DyeColor getColor() {
-          return this.color;
-     }
-
      public void setPattern(PatternType pattern) {
           this.pattern = pattern;
+     }
+
+     public DyeColor getColor() {
+          return this.color;
      }
 
      public void setColor(DyeColor color) {

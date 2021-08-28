@@ -1,7 +1,6 @@
 package eu.hypetime.spigot.hypelobby.tictactoe.utils;
 
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
-import eu.hypetime.spigot.hypelobby.utils.banner.BannerPattern;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -10,7 +9,6 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -49,7 +47,7 @@ public class Game {
 
           games.put(player1, this);
           games.put(player2, this);
-      }
+     }
 
      public static HashMap<Player, Game> getGames() {
           return games;
@@ -87,13 +85,13 @@ public class Game {
           return current;
      }
 
-     public Player getWinner() {
-          return winner;
-     }
-
      public void setCurrent(Player current) {
           this.current = current;
           current.playSound(current.getLocation(), Sound.BLOCK_NOTE_BLOCK_BELL, 1f, 1f);
+     }
+
+     public Player getWinner() {
+          return winner;
      }
 
      public boolean isFull() {
@@ -107,7 +105,7 @@ public class Game {
      }
 
      public void changePlayer() {
-          if(this.current == player1) {
+          if (this.current == player1) {
                setCurrent(player2);
           } else {
                setCurrent(player1);
@@ -118,7 +116,7 @@ public class Game {
      public boolean placeMark(Player player, int slot) {
           if (slot >= 0 && slot <= 8 && (
                this.inventory.getItem(slot) == null || this.inventory.getItem(slot).getType() == Material.AIR)) {
-               if(current == player1) {
+               if (current == player1) {
                     getInventory().setItem(slot, player1Item);
                     changePlayer();
                } else {
@@ -143,7 +141,7 @@ public class Game {
 
      public void checkWin(Game game, int slot) {
           Inventory inv = game.getInventory();
-          if(check(inv, slot)) {
+          if (check(inv, slot)) {
                if (checkT(inv, slot)) {
 
                }
@@ -151,7 +149,7 @@ public class Game {
      }
 
      public void endGame() {
-          if(isFinished) {
+          if (isFinished) {
                Player winner = this.winner;
                this.getPlayer1().closeInventory();
                this.getPlayer2().closeInventory();

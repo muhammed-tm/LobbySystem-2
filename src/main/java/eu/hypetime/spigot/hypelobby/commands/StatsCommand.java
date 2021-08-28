@@ -34,7 +34,7 @@ public class StatsCommand implements CommandExecutor {
                try {
                     try {
                          String target = SQLStats.getInstance().getPlayerFromRank(Integer.parseInt(args[0]) - 1);
-                         if(!target.equals("null")) {
+                         if (!target.equals("null")) {
                               player.sendMessage("§8§m          §8[§aStats§8]§8§m          ");
                               player.sendMessage("§7Spieler§8: §a" + target);
                               player.sendMessage("§7Kills§8: §a" + StatsManager.getKills(target));

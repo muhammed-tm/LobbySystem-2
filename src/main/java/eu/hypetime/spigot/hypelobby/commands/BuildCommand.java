@@ -1,7 +1,6 @@
 package eu.hypetime.spigot.hypelobby.commands;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
-import eu.hypetime.spigot.hypelobby.utils.Constants;
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -21,29 +20,29 @@ import java.util.List;
 */
 public class BuildCommand implements CommandExecutor {
 
-     String prefix = HypeLobby.getInstance().getConstants().getPrefix();
      public static List<Player> build = new ArrayList<>();
+     String prefix = HypeLobby.getInstance().getConstants().getPrefix();
 
      @Override
      public boolean onCommand(@Nonnull CommandSender sender, @Nonnull Command command, @Nonnull String label, @Nonnull String[] args) {
-          if(!(sender instanceof Player)) {
+          if (!(sender instanceof Player)) {
                sender.sendMessage(prefix + "Dies kann nur ein Spieler§8.");
                return false;
           }
           Player player = (Player) sender;
-          if(!player.hasPermission("system.build")) {
+          if (!player.hasPermission("system.build")) {
                player.sendMessage(prefix + "§cNicht §7genug Rechte§8.");
                return false;
           }
 
 
-          if(player.getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())) {
+          if (player.getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())) {
                player.sendMessage(prefix + "Dieser Befehl kann §cnicht §7in der PVP Welt ausgeführt werden§8.");
                return false;
           }
 
-          if(args.length == 0) {
-               if(build.contains(player)) {
+          if (args.length == 0) {
+               if (build.contains(player)) {
                     build.remove(player);
                     player.sendMessage(prefix + "Du hast den §6Baumodus §7erfolgreich §cverlassen§8.");
                     player.setGameMode(GameMode.SURVIVAL);
@@ -54,13 +53,13 @@ public class BuildCommand implements CommandExecutor {
                     player.getInventory().clear();
                     player.setGameMode(GameMode.CREATIVE);
                }
-          } else if(args.length == 1) {
+          } else if (args.length == 1) {
                Player target = Bukkit.getPlayer(args[0]);
-               if(target == null) {
+               if (target == null) {
                     player.sendMessage(prefix + "Dieser Spieler ist aktuell §cnicht §7online§8.");
                     return false;
                }
-               if(build.contains(target)) {
+               if (build.contains(target)) {
                     build.remove(target);
                     player.sendMessage(prefix + "Du hast den §6Baumodus §7erfolgreich §cverlassen§8.");
                     Inventories.mainInventory(target);

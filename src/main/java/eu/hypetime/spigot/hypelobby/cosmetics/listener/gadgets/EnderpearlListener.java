@@ -5,19 +5,13 @@ import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.*;
 import org.bukkit.entity.EnderPearl;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.event.vehicle.VehicleExitEvent;
-import org.spigotmc.event.entity.EntityDismountEvent;
-import org.spigotmc.event.entity.EntityMountEvent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,9 +23,9 @@ import java.util.HashMap;
 */
 public class EnderpearlListener implements Listener {
 
-     public HashMap<Player, EnderPearl> enderpearls = new HashMap<>();
      public static ArrayList<Player> useEnderpearl = new ArrayList<>();
      static EnderPearl enderPearl;
+     public HashMap<Player, EnderPearl> enderpearls = new HashMap<>();
 
      @EventHandler
      public void onEnderpearlListener(PlayerInteractEvent event) {
@@ -67,7 +61,7 @@ public class EnderpearlListener implements Listener {
 
                @Override
                public void run() {
-                    if(player.getInventory().getItem(4) == null) return;
+                    if (player.getInventory().getItem(4) == null) return;
                     if (player.getInventory().getItem(4)
                          .isSimilar(new ItemAPI("§7Loading...", Material.FIREWORK_STAR, 1).build())) {
                          player.getInventory().setItem(4, new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build());
@@ -93,9 +87,9 @@ public class EnderpearlListener implements Listener {
                     event.getVehicle().remove();
                     Player player = (Player) event.getExited();
                     Location spawn = WarpAPI.getLocation("Spawn");
-                    if(player.getLocation().getY() < -5 || (player.getLocation().getY() <= spawn.getY() && player.getLocation().subtract(0, -2, 0).distanceSquared(spawn) <= 8)) {
+                    if (player.getLocation().getY() < -5 || (player.getLocation().getY() <= spawn.getY() && player.getLocation().subtract(0, -2, 0).distanceSquared(spawn) <= 8)) {
                          WarpAPI.tpWarp(player, "Spawn");
-                    } else if(player.getLocation().getBlock().getType() != Material.AIR
+                    } else if (player.getLocation().getBlock().getType() != Material.AIR
                          || player.getLocation().subtract(0, 1, 0).getBlock().getType() != Material.AIR
                          || player.getLocation().add(0, 1, 0).getBlock().getType() != Material.AIR) {
                          WarpAPI.tpWarp(player, "Spawn");
@@ -108,7 +102,7 @@ public class EnderpearlListener implements Listener {
      public void onTeleport(PlayerTeleportEvent event) {
           Player player = event.getPlayer();
           if (event.getCause() == PlayerTeleportEvent.TeleportCause.ENDER_PEARL) {
-               if(player.getVehicle() == null) {
+               if (player.getVehicle() == null) {
                     event.setCancelled(true);
                } else {
                     player.teleport(event.getTo().add(0, 2, 0));

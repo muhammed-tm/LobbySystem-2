@@ -1,6 +1,5 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.listener.pets;
 
-import eu.hypetime.spigot.hypelobby.cosmetics.utils.enums.Pet;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -19,7 +18,7 @@ public class PetsManager {
      public static Map<Player, PetEntity> petMap = new HashMap<>();
 
      public static PetEntity getPet(Player player) {
-          if(petMap.containsKey(player)) {
+          if (petMap.containsKey(player)) {
                return petMap.get(player);
           } else {
                return null;
@@ -35,15 +34,15 @@ public class PetsManager {
      public static PetEntity createEntityByEntityType(Player player, EntityType type) {
           Class<?> craftCreatureClass = getOrgEntityClass("CraftCreature");
           Class<?> craftPetClass = getOrgEntityClass("Craft" + type.getEntityClass().getSimpleName());
-          if(!craftCreatureClass.isAssignableFrom(craftPetClass)) {
+          if (!craftCreatureClass.isAssignableFrom(craftPetClass)) {
                try {
                     throw new UnsupportedEntityException("Ungültiger PetType: " + type.toString());
-               } catch(UnsupportedEntityException exception) {
+               } catch (UnsupportedEntityException exception) {
                     exception.printStackTrace();
                }
                return null;
           }
-          if(petMap.containsKey(player)) {
+          if (petMap.containsKey(player)) {
                removePet(petMap.get(player));
           }
           PetEntity created = new PetEntity(player, type);
@@ -56,7 +55,7 @@ public class PetsManager {
           Class<?> clazz = null;
           try {
                clazz = Class.forName(fullName);
-          } catch(Exception exception) {
+          } catch (Exception exception) {
                exception.printStackTrace();
           }
           return clazz;

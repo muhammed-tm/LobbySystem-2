@@ -1,18 +1,10 @@
 package eu.hypetime.spigot.hypelobby.utils;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.collect.LinkedHashMultimap;
-import com.xxmicloxx.NoteBlockAPI.songplayer.RadioSongPlayer;
-import com.xxmicloxx.NoteBlockAPI.utils.NBSDecoder;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import org.bukkit.entity.Player;
 
-import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class RewardAPI {
 
@@ -31,7 +23,7 @@ public class RewardAPI {
           }
           if (!isExist) {
                HypeLobby.sp.addPlayer(player);
-               if(!HypeLobby.sp.isPlaying()) {
+               if (!HypeLobby.sp.isPlaying()) {
                     HypeLobby.sp.setPlaying(true);
                }
                player.sendTitle("§aWillkommen!", "§aauf §6§lHypeTime", 20, 40, 20);
@@ -39,7 +31,7 @@ public class RewardAPI {
                     "VALUES ('" + player.getUniqueId() + "', '0', '0', '0', '0', '0')");
                System.out.println("Player created");
           } else {
-               if(HypeLobby.sp.getPlayerUUIDs().contains(player.getUniqueId())) {
+               if (HypeLobby.sp.getPlayerUUIDs().contains(player.getUniqueId())) {
                     HypeLobby.sp.removePlayer(player);
                }
           }

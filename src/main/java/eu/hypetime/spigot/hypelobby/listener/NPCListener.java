@@ -2,7 +2,6 @@ package eu.hypetime.spigot.hypelobby.listener;
 
 import com.github.juliarn.npc.NPC;
 import com.github.juliarn.npc.event.PlayerNPCInteractEvent;
-import de.dytanic.cloudnet.driver.CloudNetDriver;
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
 import org.bukkit.Material;
 import org.bukkit.Sound;

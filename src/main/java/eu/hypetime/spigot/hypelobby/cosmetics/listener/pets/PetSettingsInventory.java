@@ -24,7 +24,7 @@ public class PetSettingsInventory implements Listener {
           guiBuilder.setSlot(0, new ItemBuilder(Material.SADDLE).setName("§6Reiten").toItemStack(), event -> {
                player.closeInventory();
                Entity entity = PetsManager.getPet(player).getEntity();
-               if(!entity.getPassengers().contains(player)) {
+               if (!entity.getPassengers().contains(player)) {
                     entity.addPassenger(player);
                } else {
                     entity.removePassenger(player);
@@ -45,7 +45,7 @@ public class PetSettingsInventory implements Listener {
      public void onEntityClick(PlayerInteractAtEntityEvent event) {
           Player player = event.getPlayer();
           Entity entity = event.getRightClicked();
-          if(PetsManager.petMap.containsKey(player)) {
+          if (PetsManager.petMap.containsKey(player)) {
                if (entity.getCustomName() != null) {
                     if (entity.equals(PetsManager.getPet(player).getEntity())) {
                          openPetSettings(player);
@@ -57,10 +57,10 @@ public class PetSettingsInventory implements Listener {
      @EventHandler
      public void onUse(PlayerInteractEvent event) {
           ItemStack item = event.getItem();
-          if(item == null) return;
-          if(item.getItemMeta() == null) return;
-          if(item.getItemMeta().getDisplayName() == null) return;
-          if(item.getItemMeta().getDisplayName().equalsIgnoreCase("§6Pet §7Einstellungen")) {
+          if (item == null) return;
+          if (item.getItemMeta() == null) return;
+          if (item.getItemMeta().getDisplayName() == null) return;
+          if (item.getItemMeta().getDisplayName().equalsIgnoreCase("§6Pet §7Einstellungen")) {
                openPetSettings(event.getPlayer());
           }
      }

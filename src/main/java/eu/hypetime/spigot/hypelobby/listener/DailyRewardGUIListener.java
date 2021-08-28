@@ -20,8 +20,8 @@ public class DailyRewardGUIListener implements Listener {
           String prefix = HypeLobby.getInstance().getConstants().getPrefix();
           Player player = (Player) event.getWhoClicked();
           if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Daily Rewards §8«")) {
-               if(event.getCurrentItem() == null) return;
-               if(event.getCurrentItem().getType() == Material.AIR) return;
+               if (event.getCurrentItem() == null) return;
+               if (event.getCurrentItem().getType() == Material.AIR) return;
                event.setCancelled(true);
                if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
                     player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);

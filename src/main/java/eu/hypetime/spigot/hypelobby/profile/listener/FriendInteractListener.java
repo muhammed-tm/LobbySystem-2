@@ -1,8 +1,6 @@
 package eu.hypetime.spigot.hypelobby.profile.listener;
 
-import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.ext.bridge.player.ICloudPlayer;
-import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.profile.utils.ProfileInventory;
 import org.bukkit.Material;
@@ -46,7 +44,7 @@ public class FriendInteractListener implements Listener {
                     player.closeInventory();
                     player.openInventory(ProfileInventory.PlayerInventory(player, event.getCurrentItem().getItemMeta().getDisplayName().replace("§6", "")));
                }
-          } else if (player.getOpenInventory().getTitle().contains("§7Freund Einstellugen§8: §6")) {
+          } else if (player.getOpenInventory().getTitle().contains("§7Freund Einstellungen§8: §6")) {
                event.setCancelled(true);
                if (event.getCurrentItem() == null) return;
                if (event.getCurrentItem().getType() == null) return;
@@ -54,8 +52,8 @@ public class FriendInteractListener implements Listener {
                if (event.getCurrentItem().getType() == Material.ENDER_PEARL) {
                     ICloudPlayer target = ProfileInventory.playerManager
                          .getOnlinePlayer(HypeLobby.getInstance().getFriendManager().getMysql()
-                              .getUniqueId(player.getOpenInventory().getTitle().replace("§7Freund Einstellugen§8: §6", "")));
-                    if(target.getConnectedService() != null) {
+                              .getUniqueId(player.getOpenInventory().getTitle().replace("§7Freund Einstellungen§8: §6", "")));
+                    if (target.getConnectedService() != null) {
                          sendPlayer(player, target.getConnectedService().getServerName());
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Der Spieler ist aktuell §coffline§8.");
@@ -64,7 +62,7 @@ public class FriendInteractListener implements Listener {
                     return;
                }
                if (event.getCurrentItem().getType() == Material.BARRIER) {
-                    String name = player.getOpenInventory().getTitle().replace("§7Freund Einstellugen§8: §6", "");
+                    String name = player.getOpenInventory().getTitle().replace("§7Freund Einstellungen§8: §6", "");
                     UUID targetUUID = HypeLobby.getInstance().getFriendManager().getMysql()
                          .getUniqueId(name);
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Du hast die Freundschaft mit §6" + name + " §7aufgelöst");

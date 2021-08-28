@@ -1,4 +1,4 @@
-package eu.hypetime.spigot.hypelobby.listener;
+/*package eu.hypetime.spigot.hypelobby.listener;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
@@ -21,11 +21,6 @@ import org.bukkit.scoreboard.Scoreboard;
 
 import java.util.HashMap;
 
-/*
-    Created by Andre
-    At 01:04 Uhr | 11. Apr.. 2021
-    Project HypeLobbySpigot
-*/
 public class PVPListener implements Listener {
 
      public static HashMap<Player, Integer> pvp = new HashMap<>();
@@ -106,4 +101,4 @@ public class PVPListener implements Listener {
           player.teleport(WarpAPI.getLocation("LobbyPVP"));
           Inventories.pvpInventory(player);
      }
-}
+}*/

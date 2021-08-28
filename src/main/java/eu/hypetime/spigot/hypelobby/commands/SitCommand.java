@@ -18,64 +18,64 @@ import java.util.Set;
 import java.util.UUID;
 
 public class SitCommand implements CommandExecutor, Listener {
-    public static final Set < UUID > sitting = new HashSet();
+     public static final Set<UUID> sitting = new HashSet();
 
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage("§cOnly players can execute this command!");
-            return true;
-        }
+     @Override
+     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+          if (!(sender instanceof Player)) {
+               sender.sendMessage("§cOnly players can execute this command!");
+               return true;
+          }
 
-        Player player = ( Player ) sender;
+          Player player = (Player) sender;
 
-        if (sitting.contains(player.getUniqueId())) {
-            sitting.remove(player.getUniqueId());
+          if (sitting.contains(player.getUniqueId())) {
+               sitting.remove(player.getUniqueId());
 
-            if (player.getVehicle() != null)
-                player.getVehicle().eject();
+               if (player.getVehicle() != null)
+                    player.getVehicle().eject();
 
-            return true;
-        }
+               return true;
+          }
 
-        if (!player.isOnGround()) {
-            player.sendMessage("§cYou need to be on the ground to be able to sit!");
-            return true;
-        }
+          if (!player.isOnGround()) {
+               player.sendMessage("§cYou need to be on the ground to be able to sit!");
+               return true;
+          }
 
-        Location location = player.getLocation();
-        World world = location.getWorld();
-        ArmorStand chair = ( ArmorStand ) world.spawnEntity(location.subtract(0, 1.6, 0), EntityType.ARMOR_STAND);
+          Location location = player.getLocation();
+          World world = location.getWorld();
+          ArmorStand chair = (ArmorStand) world.spawnEntity(location.subtract(0, 1.6, 0), EntityType.ARMOR_STAND);
 
-        chair.setGravity(false);
-        chair.setVisible(false);
-        chair.setInvulnerable(true);
-        chair.addPassenger(player);
+          chair.setGravity(false);
+          chair.setVisible(false);
+          chair.setInvulnerable(true);
+          chair.addPassenger(player);
 
-        sitting.add(player.getUniqueId());
+          sitting.add(player.getUniqueId());
 
-        return true;
-    }
+          return true;
+     }
 
-    @EventHandler
-    public void onDismount(EntityDismountEvent event) {
-        Entity entity = event.getEntity();
+     @EventHandler
+     public void onDismount(EntityDismountEvent event) {
+          Entity entity = event.getEntity();
 
-        if (!(entity instanceof Player))
-            return;
+          if (!(entity instanceof Player))
+               return;
 
-        Player player = ( Player ) entity;
+          Player player = (Player) entity;
 
-        if (!(event.getDismounted() instanceof ArmorStand))
-            return;
+          if (!(event.getDismounted() instanceof ArmorStand))
+               return;
 
-        if (!sitting.contains(player.getUniqueId()))
-            return;
+          if (!sitting.contains(player.getUniqueId()))
+               return;
 
-        Entity vehicle = event.getDismounted();
-        vehicle.eject();
+          Entity vehicle = event.getDismounted();
+          vehicle.eject();
 
-        sitting.remove(player.getUniqueId());
-    }
+          sitting.remove(player.getUniqueId());
+     }
 
 }

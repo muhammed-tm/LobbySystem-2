@@ -6,7 +6,6 @@
 
 package eu.hypetime.spigot.hypelobby.profile.sql;
 
-import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.profile.utils.FriendPlayer;
 import eu.hypetime.spigot.hypelobby.utils.MySQL;
 

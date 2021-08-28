@@ -20,7 +20,7 @@ public class RodListener implements Listener {
      public void onRodListener(PlayerFishEvent event) {
           Player player = event.getPlayer();
           FishHook hook = event.getHook();
-          if(player.getInventory().getItem(4).getType() == Material.FISHING_ROD) {
+          if (player.getInventory().getItem(4).getType() == Material.FISHING_ROD) {
                if (hook.getLocation().subtract(0, 1, 0).getBlock().getType() != Material.AIR) {
                     Location playerLocation = player.getLocation();
                     Location hookLocation = hook.getLocation();

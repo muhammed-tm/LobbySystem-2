@@ -6,45 +6,45 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 public enum Gadget {
-    ROD("Rod", new ItemAPI("§8» §5Grappling hook", Material.FISHING_ROD, 1).build(), 125, GadgetCategory.GADGETS),
-    ENDER_PEARL("Enderpearl", new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build(), 125, GadgetCategory.GADGETS),
-    TELEPORT_BOW("Teleport Bow", new ItemAPI("§8» §5Teleport Bow", Material.BOW, 1).addHideFlag().build(), 125, GadgetCategory.GADGETS),
-    FLIGHT_FEATHER("Flight feather", new ItemAPI("§8» §5Flight feather", Material.FEATHER, 1).build(), 125, GadgetCategory.GADGETS);
-    private String name;
-    private ItemStack item;
-    private int coins;
-    private GadgetCategory category;
+     ROD("Rod", new ItemAPI("§8» §5Grappling hook", Material.FISHING_ROD, 1).build(), 125, GadgetCategory.GADGETS),
+     ENDER_PEARL("Enderpearl", new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build(), 125, GadgetCategory.GADGETS),
+     TELEPORT_BOW("Teleport Bow", new ItemAPI("§8» §5Teleport Bow", Material.BOW, 1).addHideFlag().build(), 125, GadgetCategory.GADGETS),
+     FLIGHT_FEATHER("Flight feather", new ItemAPI("§8» §5Flight feather", Material.FEATHER, 1).build(), 125, GadgetCategory.GADGETS);
+     private String name;
+     private ItemStack item;
+     private int coins;
+     private GadgetCategory category;
 
-    Gadget(String name, ItemStack item, int coins, GadgetCategory category) {
-        this.name = name;
-        this.item = item;
-        this.coins = coins;
-        this.category = category;
-    }
+     Gadget(String name, ItemStack item, int coins, GadgetCategory category) {
+          this.name = name;
+          this.item = item;
+          this.coins = coins;
+          this.category = category;
+     }
 
-    public String getName() {
-        return name;
-    }
+     public static Gadget getGadgetByItem(String name) {
+          Gadget gadget = null;
+          for (Gadget value : Gadget.values()) {
+               if (value.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(name)) {
+                    gadget = value;
+               }
+          }
+          return gadget;
+     }
 
-    public ItemStack getItem() {
-        return item;
-    }
+     public String getName() {
+          return name;
+     }
 
-    public int getCoins() {
-        return coins;
-    }
+     public ItemStack getItem() {
+          return item;
+     }
 
-    public GadgetCategory getCategory() {
-        return category;
-    }
+     public int getCoins() {
+          return coins;
+     }
 
-    public static Gadget getGadgetByItem(String name) {
-        Gadget gadget = null;
-        for (Gadget value : Gadget.values()) {
-            if(value.getItem().getItemMeta().getDisplayName().equalsIgnoreCase(name)) {
-                gadget = value;
-            }
-        }
-        return gadget;
-    }
+     public GadgetCategory getCategory() {
+          return category;
+     }
 }

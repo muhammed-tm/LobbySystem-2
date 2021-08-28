@@ -1,6 +1,5 @@
 package eu.hypetime.spigot.hypelobby.utils.banner;
 
-import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.block.banner.Pattern;
 import org.bukkit.inventory.ItemStack;
@@ -32,10 +31,6 @@ public class BannerAPI {
           this.patterns.add(index - 1, pattern);
      }
 
-     public void setBanner(Material banner) {
-          this.banner = banner;
-     }
-
      public void removePattern() {
           this.patterns.remove(this.patterns.size() - 1);
      }
@@ -46,11 +41,15 @@ public class BannerAPI {
 
      public ItemStack getBanner() {
           ItemStack banner = new ItemStack(this.banner);
-          BannerMeta meta = (BannerMeta)banner.getItemMeta();
+          BannerMeta meta = (BannerMeta) banner.getItemMeta();
           for (BannerPattern p : this.patterns)
                meta.addPattern(new Pattern(p.getColor(), p.getPattern()));
-          banner.setItemMeta((ItemMeta)meta);
+          banner.setItemMeta((ItemMeta) meta);
           return banner;
+     }
+
+     public void setBanner(Material banner) {
+          this.banner = banner;
      }
 
 }

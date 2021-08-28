@@ -27,10 +27,10 @@ public class GameListener implements Listener {
      @EventHandler
      public void onInteract(PlayerInteractEvent event) {
           Player player = event.getPlayer();
-          if(event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-               if(event.getClickedBlock().getType() == Material.CRAFTING_TABLE) {
+          if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+               if (event.getClickedBlock().getType() == Material.CRAFTING_TABLE) {
                     event.setCancelled(true);
-                    if(Game.getGames().get(player) == null) {
+                    if (Game.getGames().get(player) == null) {
                          if (!Queue.queue.contains(player)) {
                               Queue.queue.add(player);
                               player.sendTitle("§8» §6TicTimeToe §8«", "§7Warteschlange §abetreten§8", 3, 60, 3);
@@ -57,7 +57,7 @@ public class GameListener implements Listener {
                return;
           event.setCancelled(true);
 
-          Player player = (Player)event.getWhoClicked();
+          Player player = (Player) event.getWhoClicked();
 
           if ((event.getCurrentItem() == null || event.getCurrentItem().getType() == Material.AIR) && event.getSlot() >= 0 && event.getSlot() <= 8) {
                Game game = Game.getGames().get(player);
@@ -85,7 +85,7 @@ public class GameListener implements Listener {
                          Bukkit.broadcastMessage(game.getPlayer1().getName());
                          Bukkit.broadcastMessage(game.getPlayer2().getName());
                          Game.getGames().remove(game);
-                         if(game != null) {
+                         if (game != null) {
                               Bukkit.broadcastMessage("" + Game.getGames().containsValue(game));
                          } else {
                               Bukkit.broadcastMessage("Game ist null");
@@ -100,7 +100,7 @@ public class GameListener implements Listener {
 
      @EventHandler
      public void onInventoryClose(InventoryCloseEvent event) {
-          final Player player = (Player)event.getPlayer();
+          final Player player = (Player) event.getPlayer();
           Inventory inventory = event.getInventory();
 
           if (inventory.getType() == InventoryType.DISPENSER &&
@@ -111,21 +111,21 @@ public class GameListener implements Listener {
                     if (game == null || game.isFinished())
                          return;
                     player.openInventory(game.getInventory());
-               },  10L);
+               }, 10L);
           }
      }
 
      @EventHandler
      public void onQuit(PlayerQuitEvent event) {
           Player player = event.getPlayer();
-          if(Queue.queue.contains(player)) {
+          if (Queue.queue.contains(player)) {
                Queue.queue.remove(player);
           }
-          if(Game.getGames().containsKey(player)) {
-               if(Game.getGames().get(player).getPlayer1() == player) {
+          if (Game.getGames().containsKey(player)) {
+               if (Game.getGames().get(player).getPlayer1() == player) {
                     Game.getGames().get(player).getPlayer2().closeInventory();
                     Game.getGames().get(player).getPlayer2().sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Du hast §agewonnen§8.");
-               } else if(Game.getGames().get(player).getPlayer2() == player) {
+               } else if (Game.getGames().get(player).getPlayer2() == player) {
                     Game.getGames().get(player).getPlayer1().closeInventory();
                     Game.getGames().get(player).getPlayer1().sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Du hast §agewonnen§8.");
                }

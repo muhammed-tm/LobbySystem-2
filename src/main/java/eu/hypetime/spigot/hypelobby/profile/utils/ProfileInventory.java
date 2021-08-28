@@ -42,7 +42,7 @@ public class ProfileInventory {
      }
 
      public static Inventory PlayerInventory(Player player, String name) {
-          Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§7Freund Einstellugen§8: §6" + name);
+          Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§7Freund Einstellungen§8: §6" + name);
           for (int i = 0; i < 9; i++) {
                inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
           }
@@ -77,15 +77,13 @@ public class ProfileInventory {
      }
 
      public static HashMap<String, List<String>> getList(UUID uuid) {
-          Set<UUID> friendlist = HypeLobby.getInstance().getFriendManager().getPlayer(uuid).getFriends();
+          Set<UUID> friendList = HypeLobby.getInstance().getFriendManager().getPlayer(uuid).getFriends();
           List<String> fl = new ArrayList<>();
-          for (UUID friend : friendlist) {
+          for (UUID friend : friendList) {
                fl.add(HypeLobby.getInstance().getFriendManager().getMysql().getName(friend));
           }
-
           List<String> offline = new ArrayList<>();
           List<String> online = new ArrayList<>();
-
           for (String entry : fl) {
                if (playerManager.getOnlinePlayers(entry).size() != 0) {
                     online.add(entry);
@@ -93,16 +91,12 @@ public class ProfileInventory {
                     offline.add(entry);
                }
           }
-
-
           Collections.sort(online);
           Collections.sort(offline);
 
           HashMap<String, List<String>> hash = new HashMap<>();
-
           hash.put("online", online);
           hash.put("offline", offline);
-
           return hash;
      }
 }

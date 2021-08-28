@@ -21,7 +21,7 @@ public class RenameListener implements Listener {
      @EventHandler
      public void onChat(AsyncPlayerChatEvent event) {
           Player player = event.getPlayer();
-          if(renameMap.containsKey(player)) {
+          if (renameMap.containsKey(player)) {
                event.setCancelled(true);
                Entity entity = renameMap.get(player);
                entity.setCustomName(event.getMessage().replace("&", "§"));

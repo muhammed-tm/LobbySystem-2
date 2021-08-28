@@ -120,7 +120,6 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new NavListener(), this);
           pluginManager.registerEvents(new MainListener(), this);
           pluginManager.registerEvents(new BuildListener(), this);
-          pluginManager.registerEvents(new PVPListener(), this);
           pluginManager.registerEvents(lobbySwitcherListener, this);
           pluginManager.registerEvents(new DailyRewardListener(), this);
           pluginManager.registerEvents(new DailyRewardGUIListener(), this);

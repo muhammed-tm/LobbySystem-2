@@ -5,7 +5,7 @@ package eu.hypetime.spigot.hypelobby.cosmetics.listener.pets;
     At 14:10 Uhr | 25. Aug.. 2021
     Project HypeLobbySpigot
 */
-public class UnsupportedEntityException extends Exception{
+public class UnsupportedEntityException extends Exception {
 
      public UnsupportedEntityException(String message) {
           super(message);
