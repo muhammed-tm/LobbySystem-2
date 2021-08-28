@@ -29,9 +29,6 @@ public class JoinListener implements Listener {
      public void onJoin(PlayerJoinEvent event) {
           Player player = event.getPlayer();
           event.joinMessage(null);
-          for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-               ScoreAPI.setScoreboard(onlinePlayer);
-          }
           Inventories.mainInventory(player);
           RewardAPI.createIfNotExist(player);
           StatsManager.updatePlayer(player);
@@ -40,6 +37,10 @@ public class JoinListener implements Listener {
           player.setGameMode(GameMode.SURVIVAL);
           player.teleport(WarpAPI.getLocation("Spawn"));
           player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F);
+
+          for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+               ScoreAPI.setScoreboard(onlinePlayer);
+          }
      }
 
      @EventHandler
