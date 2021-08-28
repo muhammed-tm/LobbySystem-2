@@ -128,9 +128,9 @@ public class LobbySwitcherListener implements Listener {
      public void onClick(InventoryClickEvent event) {
           Player player = (Player) event.getWhoClicked();
           if (player.getOpenInventory().getTitle().equals("§8» §6LobbySwitcher")) {
-               if (event.getCurrentItem().getType() == Material.GRAY_STAINED_GLASS_PANE) return;
                event.setCancelled(true);
                if (event.getCurrentItem() == null) return;
+               if (event.getCurrentItem().getType() == Material.GRAY_STAINED_GLASS_PANE) return;
                player.closeInventory();
                player.sendTitle("", "§eVerbinde§7...", 2, 50, 2);
                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0F, 1.0F);

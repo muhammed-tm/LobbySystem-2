@@ -3,15 +3,10 @@ package eu.hypetime.spigot.hypelobby.utils;
 import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.driver.permission.IPermissionUser;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
-import eu.hypetime.spigot.hypelobby.utils.banner.BannerAPI;
-import eu.hypetime.spigot.hypelobby.utils.banner.BannerPattern;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.DyeColor;
-import org.bukkit.Material;
-import org.bukkit.block.banner.PatternType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -40,67 +35,34 @@ public class ScoreAPI {
 
           obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-          IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
-          String group = CloudNetDriver.getInstance().getPermissionManagement().getHighestPermissionGroup(user).getName().toLowerCase();
-          PlayerInventory inventory = player.getInventory();
-          BannerAPI banner = null;
-          rang.put(player, group);
-          if (group.equals("administrator")) {
-               registerTeamEntry(sb, "0001Admin", ChatColor.DARK_RED, "§4Admin §8× ", "§7", player);
-               banner = new BannerAPI(Material.RED_WALL_BANNER);
-          } else if (group.equals("manager")) {
-               registerTeamEntry(sb, "0002Manager", ChatColor.DARK_RED, "§4Manager §8× ", "§7", player);
-               banner = new BannerAPI(Material.RED_WALL_BANNER);
-          } else if (group.equals("srstaff")) {
-               registerTeamEntry(sb, "0003SrStaff", ChatColor.RED, "§cSrStaff §8× ", "§7", player);
-               banner = new BannerAPI(Material.RED_BANNER);
-          } else if (group.equals("staff")) {
-               registerTeamEntry(sb, "0004Staff", ChatColor.RED, "§cStaff §8× ", "§7", player);
-               banner = new BannerAPI(Material.RED_BANNER);
-          } else if (group.equals("partner")) {
-               registerTeamEntry(sb, "0005Partner", ChatColor.GREEN, "§aPartner §8× ", "§7", player);
-               banner = new BannerAPI(Material.GREEN_BANNER);
-          } else if (group.equals("mediaplus")) {
-               BannerPattern pattern;
-               banner = new BannerAPI(Material.BLACK_BANNER);
-               switch (count) {
-                    case 0:
-                         banner = new BannerAPI(Material.RED_BANNER);
-                    case 1:
-                         banner = new BannerAPI(Material.BLACK_BANNER);
-                         break;
-                    case 2:
-                         banner = new BannerAPI(Material.BLACK_BANNER);
-                         pattern = new BannerPattern(PatternType.BORDER, DyeColor.RED);
-                         banner.addPattern(pattern);
-                         break;
-                    case 3:
-                         banner = new BannerAPI(Material.RED_BANNER);
-                         pattern = new BannerPattern(PatternType.BORDER, DyeColor.BLACK);
-                         banner.addPattern(pattern);
-                         break;
+          for (Player online : Bukkit.getOnlinePlayers()) {
+               IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
+               String group = CloudNetDriver.getInstance().getPermissionManagement().getHighestPermissionGroup(user).getName().toLowerCase();
+               PlayerInventory inventory = player.getInventory();
+               rang.put(player, group);
+               if (group.equals("administrator")) {
+                    registerTeamEntry(sb, "0001Admin", ChatColor.DARK_RED, "§4Admin §8× ", "§7", online);
+               } else if (group.equals("manager")) {
+                    registerTeamEntry(sb, "0002Manager", ChatColor.DARK_RED, "§4Manager §8× ", "§7", online);
+               } else if (group.equals("srstaff")) {
+                    registerTeamEntry(sb, "0003SrStaff", ChatColor.RED, "§cSrStaff §8× ", "§7", online);
+               } else if (group.equals("staff")) {
+                    registerTeamEntry(sb, "0004Staff", ChatColor.RED, "§cStaff §8× ", "§7", online);
+               } else if (group.equals("partner")) {
+                    registerTeamEntry(sb, "0005Partner", ChatColor.GREEN, "§aPartner §8× ", "§7", online);
+               } else if (group.equals("mediaplus")) {
+                    registerTeamEntry(sb, "0006MediaPlus", ChatColor.BLACK, "§0Media+ §8× ", "§7", online);
+               } else if (group.equals("media")) {
+                    registerTeamEntry(sb, "0007Media", ChatColor.DARK_PURPLE, "§5Media §8× ", "§7", online);
+               } else if (group.equals("vip")) {
+                    registerTeamEntry(sb, "0008Vip", ChatColor.GOLD, "§6VIP §8× ", "§7", online);
+               } else if (group.equals("warrior")) {
+                    registerTeamEntry(sb, "0009Warrior", ChatColor.LIGHT_PURPLE, "§dWarrior §8× ", "§7", online);
+               } else if (group.equals("hyper")) {
+                    registerTeamEntry(sb, "0010Hyper", ChatColor.YELLOW, "§eHyper §8× ", "§7", online);
+               } else if (group.equals("default")) {
+                    registerTeamEntry(sb, "0011Spieler", ChatColor.GRAY, "§7Player §8× ", "§7", online);
                }
-               registerTeamEntry(sb, "0006MediaPlus", ChatColor.BLACK, "§0Media+ §8× ", "§7", player);
-
-          } else if (group.equals("media")) {
-               registerTeamEntry(sb, "0007Media", ChatColor.DARK_PURPLE, "§5Media §8× ", "§7", player);
-               banner = new BannerAPI(Material.PURPLE_BANNER);
-          } else if (group.equals("vip")) {
-               registerTeamEntry(sb, "0008Vip", ChatColor.GOLD, "§6VIP §8× ", "§7", player);
-               banner = new BannerAPI(Material.ORANGE_BANNER);
-          } else if (group.equals("warrior")) {
-               registerTeamEntry(sb, "0009Warrior", ChatColor.LIGHT_PURPLE, "§dWarrior §8× ", "§7", player);
-               banner = new BannerAPI(Material.PINK_BANNER);
-          } else if (group.equals("hyper")) {
-               registerTeamEntry(sb, "0010Hyper", ChatColor.YELLOW, "§eHyper §8× ", "§7", player);
-               banner = new BannerAPI(Material.YELLOW_BANNER);
-          } else if (group.equals("default")) {
-               registerTeamEntry(sb, "0011Spieler", ChatColor.GRAY, "§7Player §8× ", "§7", player);
-               banner = new BannerAPI(Material.LIGHT_GRAY_BANNER);
-          }
-
-          if (banner != null) {
-               inventory.setHelmet(banner.getBanner());
           }
 
           obj.getScore("").setScore(12);
@@ -117,10 +79,11 @@ public class ScoreAPI {
           obj.getScore("§7» §6ts.HypeTime.eu").setScore(1);
           obj.getScore("    ").setScore(0);
           player.setScoreboard(sb);
+
      }
 
      public static void registerTeamEntry(Scoreboard sb, String Team, @Nonnull ChatColor prefixColor, String prefix, String suffix, Player player) {
-          Team team = sb.getTeam(Team);
+          org.bukkit.scoreboard.Team team = sb.getTeam(Team);
           if (team == null) {
                team = sb.registerNewTeam(Team);
           }

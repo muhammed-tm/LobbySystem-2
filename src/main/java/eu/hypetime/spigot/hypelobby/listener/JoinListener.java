@@ -38,9 +38,8 @@ public class JoinListener implements Listener {
           player.teleport(WarpAPI.getLocation("Spawn"));
           player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F);
 
-          for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+          for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                ScoreAPI.setScoreboard(onlinePlayer);
-          }
      }
 
      @EventHandler
