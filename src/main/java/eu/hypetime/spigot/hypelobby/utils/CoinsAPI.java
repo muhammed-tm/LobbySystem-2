@@ -38,7 +38,7 @@ public class CoinsAPI {
      public static void addCoins(Player player, int coins) {
           try {
                int newCoins = ((getCoins(player)) + (coins));
-               setCoins(player, coins);
+               setCoins(player, newCoins);
           } catch (Exception ex) {
                ex.printStackTrace();
           }
@@ -47,7 +47,7 @@ public class CoinsAPI {
      public static void removeCoins(Player player, int coins) {
           try {
                int newCoins = ((getCoins(player)) - (coins));
-               setCoins(player, coins);
+               setCoins(player, newCoins);
           } catch (Exception ex) {
                ex.printStackTrace();
           }
