@@ -91,7 +91,7 @@ public class DailyRewardGUIListener implements Listener {
                          }
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                              + "Du benötigst mindestens den §eHyper Rang §7um dieses Belohnung abzuholen");
+                              + "Du benötigst mindestens den §6VIP Rang §7um dieses Belohnung abzuholen");
                     }
                }
                if (event.getSlot() == 17) {
