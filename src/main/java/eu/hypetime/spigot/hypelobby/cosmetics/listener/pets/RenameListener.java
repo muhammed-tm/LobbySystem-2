@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,5 +27,10 @@ public class RenameListener implements Listener {
                Entity entity = renameMap.get(player);
                entity.setCustomName(event.getMessage().replace("&", "§"));
           }
+     }
+
+     @EventHandler
+     public void onQuit(PlayerQuitEvent event) {
+          renameMap.remove(event.getPlayer());
      }
 }

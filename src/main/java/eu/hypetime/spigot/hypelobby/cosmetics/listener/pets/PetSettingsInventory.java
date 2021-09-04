@@ -3,6 +3,7 @@ package eu.hypetime.spigot.hypelobby.cosmetics.listener.pets;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.GuiBuilder;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -36,6 +37,12 @@ public class PetSettingsInventory implements Listener {
                Entity entity = PetsManager.getPet(player).getEntity();
                RenameListener.renameMap.put(player, entity);
                player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Bitte schreibe den Namen für dein Pet in den Chat§8.");
+               Bukkit.getScheduler().runTaskLater(HypeLobby.getInstance(), () -> {
+                    if(RenameListener.renameMap.containsKey(player)) {
+                         player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Du hast zu lange gebraucht um den Namen deines Pets zu ändern§8. §7Der Rename Vorgang wurde abgebrochen§8.");
+                         RenameListener.renameMap.remove(player);
+                    }
+               }, 600);
                return;
           });
           guiBuilder.openInventory(player);

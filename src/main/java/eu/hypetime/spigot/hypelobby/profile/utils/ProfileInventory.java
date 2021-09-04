@@ -11,7 +11,8 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
-import java.util.*;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class ProfileInventory {
 
@@ -25,18 +26,26 @@ public class ProfileInventory {
      }
 
      public static Inventory FriendInventory(Player player) {
-          Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Profile §8| §6Freunde §8«");
+          Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Freunde §8| §6Seite 1 §8«");
           resetEnchantments(inventory);
           inventory.setItem(45, new ItemBuilder(Material.GOLDEN_HELMET)
                .setName("§6Freunde")
                .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                .toItemStack());
-          for (String online : getList(player.getUniqueId()).get("online")) {
-               inventory.addItem(new ItemBuilder(Material.PLAYER_HEAD).setName("§6" + online).setSkullOwner(online).addLoreLine("§aOnline §7auf §6" +
-                    playerManager.getOnlinePlayer(HypeLobby.getInstance().getFriendManager().getMysql().getUniqueId(online)).getConnectedService().getServerName()).toItemStack());
-          }
-          for (String offline : getList(player.getUniqueId()).get("offline")) {
-               inventory.addItem(new ItemBuilder(Material.PLAYER_HEAD).setName("§6" + offline).setSkullOwner(offline).addLoreLine("§cOffline").toItemStack());
+
+          FriendPlayer fPlayer = HypeLobby.getInstance().getFriendManager().getPlayer(player.getUniqueId());
+          for (int i = 0; i < fPlayer.getFriends().size(); i++) {
+               UUID uuid = fPlayer.getFriends().stream().collect(Collectors.toList()).get(i);
+               String name = HypeLobby.getInstance().getFriendManager().getMysql().getName(fPlayer.getFriends().stream().collect(Collectors.toList()).get(i));
+               if (i < 37) {
+                    /*if (ProfileInventory.playerManager.getOnlinePlayer(uuid) != null) {
+                         inventory.setItem(i, new ItemBuilder(Material.PLAYER_HEAD).setName("§6" + name).setSkullOwner(name).addLoreLine("§aOnline §7auf §6" +
+                              playerManager.getOnlinePlayer(uuid).getConnectedService().getServerName()).toItemStack());
+                    } else {
+                         inventory.setItem(i, new ItemBuilder(Material.PLAYER_HEAD).setName("§6" + name).setSkullOwner(name).addLoreLine("§cOffline").toItemStack());
+                    }*/
+                    inventory.setItem(i, new ItemBuilder(Material.PLAYER_HEAD).setName("§6" + name).setSkullOwner(name).toItemStack());
+               }
           }
           return inventory;
      }
@@ -76,7 +85,7 @@ public class ProfileInventory {
                .toItemStack());
      }
 
-     public static HashMap<String, List<String>> getList(UUID uuid) {
+     /*public static HashMap<String, List<String>> getList(UUID uuid) {
           Set<UUID> friendList = HypeLobby.getInstance().getFriendManager().getPlayer(uuid).getFriends();
           List<String> fl = new ArrayList<>();
           for (UUID friend : friendList) {
@@ -98,5 +107,5 @@ public class ProfileInventory {
           hash.put("online", online);
           hash.put("offline", offline);
           return hash;
-     }
+     }*/
 }

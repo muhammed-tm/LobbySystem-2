@@ -5,6 +5,7 @@ import eu.hypetime.spigot.hypelobby.commands.SitCommand;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.boots.BootsPlayer;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsManager;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticsManager;
+import eu.hypetime.spigot.hypelobby.profile.manager.FriendManager;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -33,6 +34,7 @@ public class JoinListener implements Listener {
           RewardAPI.createIfNotExist(player);
           StatsManager.updatePlayer(player);
           CosmeticsManager.createPlayer(player);
+          HypeLobby.getInstance().getFriendManager().loadPlayer(player.getUniqueId(), player.getName());
 
           player.setGameMode(GameMode.SURVIVAL);
           player.teleport(WarpAPI.getLocation("Spawn"));

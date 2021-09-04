@@ -36,7 +36,7 @@ public class FriendInteractListener implements Listener {
      @EventHandler
      public void onClick(InventoryClickEvent event) {
           Player player = (Player) event.getWhoClicked();
-          if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Profile §8| §6Freunde §8«")) {
+          if (player.getOpenInventory().getTitle().contains("§8» §6Freunde §8| §6Seite ")) {
                event.setCancelled(true);
                if (event.getCurrentItem() == null) return;
                if (event.getCurrentItem().getType() == null) return;

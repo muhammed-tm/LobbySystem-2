@@ -71,8 +71,8 @@ public class ScoreAPI {
           obj.getScore("§7Rang§8:").setScore(8);
           obj.getScore("§7»§6 " + player.getDisplayName().split(" ")[0]).setScore(7);
           obj.getScore("  ").setScore(6);
-          obj.getScore("§7Discord§7:").setScore(5);
-          obj.getScore("§7»§6 TTaMD4u").setScore(4);
+          obj.getScore("§7Coins§7:").setScore(5);
+          obj.getScore("§7»§6 " + CoinsAPI.getCoins(player)).setScore(4);
           obj.getScore("   ").setScore(3);
           obj.getScore("§7TeamSpeak§7:").setScore(2);
           obj.getScore("§7» §6ts.HypeTime.eu").setScore(1);
