@@ -58,6 +58,7 @@ public class JoinListener implements Listener {
                PetsManager.removePet(PetsManager.getPet(event.getPlayer()));
           }
           if (BootsPlayer.bootsPlayers.containsKey(event.getPlayer())) {
+               BootsPlayer.stopParticle(event.getPlayer());
                BootsPlayer.bootsPlayers.remove(event.getPlayer());
           }
           BootsPlayer.stopParticle(event.getPlayer());
