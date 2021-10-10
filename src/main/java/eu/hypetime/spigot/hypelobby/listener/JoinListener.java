@@ -34,7 +34,7 @@ public class JoinListener implements Listener {
           RewardAPI.createIfNotExist(player);
           StatsManager.updatePlayer(player);
           CosmeticsManager.createPlayer(player);
-          HypeLobby.getInstance().getFriendManager().loadPlayer(player.getUniqueId(), player.getName());
+          //HypeLobby.getInstance().getFriendManager().loadPlayer(player.getUniqueId(), player.getName());
 
           player.setGameMode(GameMode.SURVIVAL);
           player.teleport(WarpAPI.getLocation("Spawn"));

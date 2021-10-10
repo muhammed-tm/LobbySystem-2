@@ -19,7 +19,7 @@ public class ProfileInventory {
      public static IPlayerManager playerManager = CloudNetDriver.getInstance().getServicesRegistry()
           .getFirstService(IPlayerManager.class);
 
-     public static Inventory ProfileInventory() {
+     /*public static Inventory ProfileInventory() {
           Inventory inventory = Bukkit.createInventory(null, 9 * 6, "§8» §6Profile §8«");
           resetEnchantments(inventory);
           return inventory;
@@ -38,12 +38,12 @@ public class ProfileInventory {
                UUID uuid = fPlayer.getFriends().stream().collect(Collectors.toList()).get(i);
                String name = HypeLobby.getInstance().getFriendManager().getMysql().getName(fPlayer.getFriends().stream().collect(Collectors.toList()).get(i));
                if (i < 37) {
-                    /*if (ProfileInventory.playerManager.getOnlinePlayer(uuid) != null) {
+                    ///if (ProfileInventory.playerManager.getOnlinePlayer(uuid) != null) {
                          inventory.setItem(i, new ItemBuilder(Material.PLAYER_HEAD).setName("§6" + name).setSkullOwner(name).addLoreLine("§aOnline §7auf §6" +
                               playerManager.getOnlinePlayer(uuid).getConnectedService().getServerName()).toItemStack());
                     } else {
                          inventory.setItem(i, new ItemBuilder(Material.PLAYER_HEAD).setName("§6" + name).setSkullOwner(name).addLoreLine("§cOffline").toItemStack());
-                    }*/
+                    }///
                     inventory.setItem(i, new ItemBuilder(Material.PLAYER_HEAD).setName("§6" + name).setSkullOwner(name).toItemStack());
                }
           }
@@ -85,7 +85,7 @@ public class ProfileInventory {
                .toItemStack());
      }
 
-     /*public static HashMap<String, List<String>> getList(UUID uuid) {
+     public static HashMap<String, List<String>> getList(UUID uuid) {
           Set<UUID> friendList = HypeLobby.getInstance().getFriendManager().getPlayer(uuid).getFriends();
           List<String> fl = new ArrayList<>();
           for (UUID friend : friendList) {

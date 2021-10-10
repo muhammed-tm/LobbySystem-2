@@ -19,7 +19,7 @@ import java.util.UUID;
 */
 public class FriendInteractListener implements Listener {
 
-     @EventHandler
+     /*@EventHandler
      public void onInteract(PlayerInteractEvent event) {
           Player player = event.getPlayer();
           if (event.getItem() == null) return;
@@ -31,9 +31,9 @@ public class FriendInteractListener implements Listener {
                     player.openInventory(ProfileInventory.FriendInventory(player));
                }
           }
-     }
+     }*/
 
-     @EventHandler
+     /*@EventHandler
      public void onClick(InventoryClickEvent event) {
           Player player = (Player) event.getWhoClicked();
           if (player.getOpenInventory().getTitle().contains("§8» §6Freunde §8| §6Seite ")) {
@@ -72,7 +72,7 @@ public class FriendInteractListener implements Listener {
                     return;
                }
           }
-     }
+     }*/
 
      public void sendPlayer(Player player, String server) {
           ProfileInventory.playerManager.getPlayerExecutor(player.getUniqueId()).connect(server);
