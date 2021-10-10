@@ -8,8 +8,8 @@ import org.bukkit.inventory.ItemStack;
 public enum Gadget {
      ROD("Rod", new ItemAPI("§8» §5Grappling hook", Material.FISHING_ROD, 1).build(), 125, GadgetCategory.GADGETS),
      ENDER_PEARL("Enderpearl", new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build(), 125, GadgetCategory.GADGETS),
-     TELEPORT_BOW("Teleport Bow", new ItemAPI("§8» §5Teleport Bow", Material.BOW, 1).addHideFlag().build(), 125, GadgetCategory.GADGETS),
-     FLIGHT_FEATHER("Flight feather", new ItemAPI("§8» §5Flight feather", Material.FEATHER, 1).build(), 125, GadgetCategory.GADGETS);
+     TELEPORT_BOW("Teleport Bow", new ItemAPI("§8» §5Teleport Bow", Material.BOW, 1).addHideFlag().build(), 125, GadgetCategory.GADGETS);
+
      private String name;
      private ItemStack item;
      private int coins;

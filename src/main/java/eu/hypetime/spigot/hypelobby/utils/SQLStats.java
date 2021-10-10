@@ -30,7 +30,7 @@ public class SQLStats {
      public static void sendTop5List(Player player) {
           player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Liste der Top §65 §7Spieler in GunBattle§8:");
           if (instance.listSize() >= 5) {
-               for (int i = 0; i < 6; i++) {
+               for (int i = 0; i < 5; i++) {
                     String name = instance.getPlayerFromRank(i);
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Rank§8: §6" + (i + 1) +
                          " §8| §7Spieler§8: §6" + name +

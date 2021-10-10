@@ -35,6 +35,9 @@ public class PetSettingsInventory implements Listener {
           guiBuilder.setSlot(1, new ItemBuilder(Material.NAME_TAG).setName("§6Umbenennen").toItemStack(), event -> {
                player.closeInventory();
                Entity entity = PetsManager.getPet(player).getEntity();
+               if(RenameListener.renameMap.containsKey(player)) {
+                    RenameListener.renameMap.remove(player);
+               }
                RenameListener.renameMap.put(player, entity);
                player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Bitte schreibe den Namen für dein Pet in den Chat§8.");
                Bukkit.getScheduler().runTaskLater(HypeLobby.getInstance(), () -> {

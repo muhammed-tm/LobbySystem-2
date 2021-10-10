@@ -10,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitTask;
 
 /*
@@ -47,6 +48,7 @@ public class TeleportBowListener implements Listener {
                                    if (arrow.isOnGround()) {
                                         player.teleport(arrow.getLocation());
                                         arrow.remove();
+                                        player.getInventory().setItem(9, new ItemBuilder(Material.ARROW).setName("§6Teleport Arrow").toItemStack());
                                         Bukkit.getScheduler().cancelTask(finalTask.getTaskId());
                                         return;
                                    }

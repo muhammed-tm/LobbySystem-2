@@ -3,7 +3,6 @@ plugins {
     id 'java'
     id 'idea'
 }
-
 group 'eu.hypetime.spigot.hypelobby'
 version '1.0-SNAPSHOT'
 
@@ -46,5 +45,5 @@ jar {
     archiveBaseName.set("HypeLobby")
     archiveClassifier.set("SNAPSHOT")
     archiveVersion.set("1.0")
-    destinationDir("D:\\Muhammed\\programming\\Minecraft\\Localhost\\Paper-VIP\\plugins" as File)
+    destinationDir("C:\\Users\\Muhammed\\Desktop\\LobbySystem" as File)
 }
