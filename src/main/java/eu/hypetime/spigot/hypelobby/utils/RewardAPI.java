@@ -33,6 +33,7 @@ public class RewardAPI {
           } else {
                if (HypeLobby.sp.getPlayerUUIDs().contains(player.getUniqueId())) {
                     HypeLobby.sp.removePlayer(player);
+
                }
           }
      }

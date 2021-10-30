@@ -20,12 +20,12 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 /*
-    Created by Andre
+    Created by HypeTime Dev Team
     At 23:09 Uhr | 10. Apr.. 2021
     Project HypeLobbySpigot
 */
 public class MainListener implements Listener {
-
+/*
      @EventHandler
      public void onSneak(PlayerToggleSneakEvent event) {
           if (!event.getPlayer().isSneaking()) {
@@ -33,7 +33,7 @@ public class MainListener implements Listener {
           } else {
                event.getPlayer().removePotionEffect(PotionEffectType.INVISIBILITY);
           }
-     }
+     }*/
 
      @EventHandler
      public void onMove(EntityMoveEvent event) {
