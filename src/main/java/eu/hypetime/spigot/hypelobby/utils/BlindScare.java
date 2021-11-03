@@ -18,7 +18,7 @@ public class BlindScare {
             players.playEffect(EntityEffect.HURT);
             players.playEffect(EntityEffect.HURT);
             players.playSound(players.getLocation(), Sound.ENTITY_GHAST_SCREAM, 2.0f, 3.0f);
-            player.sendTitle("§7Willkommen!", "§6Happy Halloween§l!", 10, 40, 10);
+            player.sendTitle("§7Willkommen!", "§6Happy §cHalloween§l!", 30, 40, 30);
         }
     }
 }
