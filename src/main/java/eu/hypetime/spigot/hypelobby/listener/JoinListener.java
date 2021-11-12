@@ -38,8 +38,8 @@ public class JoinListener implements Listener {
 
           player.setGameMode(GameMode.SURVIVAL);
           player.teleport(WarpAPI.getLocation("Spawn"));
-          player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F);
-
+          //activate when halloween is over  player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F);
+          BlindScare.updatePlayer(player); //for halloween
           for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                ScoreAPI.setScoreboard(onlinePlayer);
      }

@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 
 public enum Boots {
 
-     MUSIC_BOOTS("Music", new ItemAPI("§8» §5Music Boots", Material.LEATHER_BOOTS, 1).build(), 500, GadgetCategory.BOOTS, Particle.NOTE);
+     MUSIC_BOOTS("Music", new ItemAPI("§8» §5Music Boots §7(§cSoon§7)", Material.LEATHER_BOOTS, 1).build(), 500, GadgetCategory.BOOTS, Particle.NOTE);
 
      private String name;
      private ItemStack item;
