@@ -36,7 +36,7 @@ public class PetsManager {
           Class<?> craftPetClass = getOrgEntityClass("Craft" + type.getEntityClass().getSimpleName());
           if (!craftCreatureClass.isAssignableFrom(craftPetClass)) {
                try {
-                    throw new UnsupportedEntityException("Ungültiger PetType: " + type.toString());
+                    throw new UnsupportedEntityException("Ungültiger PetType: " + type);
                } catch (UnsupportedEntityException exception) {
                     exception.printStackTrace();
                }

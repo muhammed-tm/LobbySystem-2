@@ -14,7 +14,7 @@ public class NameMCReward {
      public static boolean check(Player player) {
           try {
                final URL url = new URL(
-                    "https://api.namemc.com/server/hypetime.eu/likes?profile=" + player.getUniqueId().toString());
+                    "https://api.namemc.com/server/hypetime.eu/likes?profile=" + player.getUniqueId());
                try {
                     final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
@@ -46,7 +46,7 @@ public class NameMCReward {
      public static boolean hasAccept(Player player) {
           ResultSet result = null;
           try {
-               result = MySQL.getResult("SELECT * FROM proxy_Rewards WHERE UUID = '" + player.getUniqueId().toString() + "'");
+               result = MySQL.getResult("SELECT * FROM proxy_Rewards WHERE UUID = '" + player.getUniqueId() + "'");
                assert result != null;
                if (result.next()) {
                     return result.getString("NameMC").equalsIgnoreCase("true");
