@@ -124,6 +124,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new NPCListener(), this);
           pluginManager.registerEvents(new SitCommand(), this);
           pluginManager.registerEvents(new DoubleJumpListener(), this);
+          pluginManager.registerEvents(new ClickSignListener(), this);
           //pluginManager.registerEvents(new FriendInteractListener(), this);
 
           //Cosmetics
@@ -136,6 +137,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new RodListener(), this);
           pluginManager.registerEvents(new EnderpearlListener(), this);
           pluginManager.registerEvents(new TeleportBowListener(), this);
+          //pluginManager.registerEvents(new TrailGunListener(), this);
 
           //Pets
           pluginManager.registerEvents(new PetsInventory(), this);
@@ -156,6 +158,7 @@ public class HypeLobby extends JavaPlugin {
           getCommand("stats").setExecutor(new StatsCommand());
           getCommand("top5").setExecutor(new Top5Command());
           getCommand("sit").setExecutor(new SitCommand());
+          getCommand("patchnodes").setExecutor(new PatchNodesCommand());
      }
 
     /*public FriendManager getFriendManager() {

@@ -38,8 +38,17 @@ public class JoinListener implements Listener {
 
           player.setGameMode(GameMode.SURVIVAL);
           player.teleport(WarpAPI.getLocation("Spawn"));
-          //activate when halloween is over  player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F);
-          BlindScare.updatePlayer(player); //for halloween
+          player.sendTitle("§6Update v2.5", "§6/patchnodes §7um die Updates zu sehen");
+          player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
+          //BlindScare.updatePlayer(player); //for halloween
+          if(player.getName().equals("quele")) {
+              player.getWorld().strikeLightningEffect(player.getLocation());
+          }
+          /*if(TrailGunListener.blocks.size() > 0) {
+               TrailGunListener.blocks.forEach((location, material) -> {
+                    location.getBlock().setType(material);
+               });
+          }*/
           for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                ScoreAPI.setScoreboard(onlinePlayer);
      }

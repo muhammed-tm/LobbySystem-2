@@ -13,6 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 
 public class BootsInventory implements Listener {
 
@@ -32,9 +33,9 @@ public class BootsInventory implements Listener {
                          if (PetsManager.petMap.containsKey(player)) {
                               PetsManager.removePet(PetsManager.petMap.get(player));
                          }
-                         player.getInventory().setItem(EquipmentSlot.FEET, boots.getItem());
-                         player.getInventory().setItem(4, new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §6Schuhe").toItemStack());
                          BootsPlayer.stopParticle(player);
+                         player.getInventory().setItem(4, new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §6Schuhe").toItemStack());
+                         player.getInventory().setItem(EquipmentSlot.FEET, boots.getItem());
                          new BootsPlayer(player, boots.getParticle());
                          player.closeInventory();
                     } else {

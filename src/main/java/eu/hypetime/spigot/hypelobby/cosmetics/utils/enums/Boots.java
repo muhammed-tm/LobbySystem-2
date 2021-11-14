@@ -2,13 +2,18 @@ package eu.hypetime.spigot.hypelobby.cosmetics.utils.enums;
 
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.GadgetCategory;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
+import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.inventory.ItemStack;
 
 public enum Boots {
 
-     MUSIC_BOOTS("Music", new ItemAPI("§8» §5Music Boots §7(§cSoon§7)", Material.LEATHER_BOOTS, 1).build(), 500, GadgetCategory.BOOTS, Particle.NOTE);
+     MUSIC_BOOTS("Music", new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §5Music Boots").setArmorColor(Color.GRAY).toItemStack(), 500, GadgetCategory.BOOTS, Particle.NOTE),
+     IceBoots("Ice", new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §6Ice Boots").setArmorColor(Color.BLUE).toItemStack(), 500, GadgetCategory.BOOTS, Particle.DRIP_WATER),
+     FIRE_BOOTS("Fire", new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §5Fire Boots").setArmorColor(Color.fromRGB(100, 0, 0)).toItemStack(), 500, GadgetCategory.BOOTS, Particle.LAVA),
+     LOVE_BOOTS("Love", new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §5Love Boots").setArmorColor(Color.fromRGB(200, 0, 0)).toItemStack(), 500, GadgetCategory.BOOTS, Particle.HEART);
 
      private String name;
      private ItemStack item;
