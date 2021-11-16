@@ -11,7 +11,7 @@ import org.bukkit.entity.Player;
     At 22:05 Uhr | 13. Nov.. 2021
     Project HypeLobbySpigot
 */
-public class PatchNodesCommand implements CommandExecutor {
+public class PatchNotesCommand implements CommandExecutor {
 
      @Override
      public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

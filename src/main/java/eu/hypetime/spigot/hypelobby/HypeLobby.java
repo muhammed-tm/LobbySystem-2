@@ -15,7 +15,6 @@ import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsInventory;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsListener;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.RenameListener;
 import eu.hypetime.spigot.hypelobby.listener.*;
-import eu.hypetime.spigot.hypelobby.profile.listener.FriendInteractListener;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -158,7 +157,7 @@ public class HypeLobby extends JavaPlugin {
           getCommand("stats").setExecutor(new StatsCommand());
           getCommand("top5").setExecutor(new Top5Command());
           getCommand("sit").setExecutor(new SitCommand());
-          getCommand("patchnodes").setExecutor(new PatchNodesCommand());
+          getCommand("patchnotes").setExecutor(new PatchNotesCommand());
      }
 
     /*public FriendManager getFriendManager() {

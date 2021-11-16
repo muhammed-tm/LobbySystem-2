@@ -17,5 +17,5 @@ commands:
     description: GunBattle Stats
   sit:
     description: sit command
-  patchnodes:
-    description: Patchnodes command
+  patchnotes:
+    description: Patchnotses command
