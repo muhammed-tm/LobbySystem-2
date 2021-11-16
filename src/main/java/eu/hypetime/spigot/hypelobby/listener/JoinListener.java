@@ -38,7 +38,7 @@ public class JoinListener implements Listener {
 
           player.setGameMode(GameMode.SURVIVAL);
           player.teleport(WarpAPI.getLocation("Spawn"));
-          player.sendTitle("§6Update v2.5", "§6/patchnodes §7um die Updates zu sehen");
+          player.sendTitle("§6Update v2.5", "§6/patchnotes §7um die Updates zu sehen");
           player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
           //BlindScare.updatePlayer(player); //for halloween
           if(player.getName().equals("quele")) {
