@@ -16,10 +16,11 @@ public class PatchNotesCommand implements CommandExecutor {
      @Override
      public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
           if (sender instanceof Player player) {
-               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Update§8: §6v2.5\n" +
+               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Update§8: §6v2.5.1\n" +
                     "§6§lLobby\n" +
                     "§8➥ §7Halloween Feature entfernt\n" +
                     "§8➥ §7Cosmetics hinzugefügt\n" +
+                    "§8➥ §7Profile + Settings System hinzugefügt\n" +
                     "§6§lGunBattle \n" +
                     "§8➥ §7GunBattle Event System hinzugefügt\n" +
                     "§8➥ §7GunBattle bug fixes\n" +

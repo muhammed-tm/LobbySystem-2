@@ -19,6 +19,9 @@ repositories {
     maven {
         url 'https://jitpack.io'
     }
+    maven {
+        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+    }
     flatDir {
         dirs 'build/libs'
     }
@@ -45,5 +48,5 @@ jar {
     archiveBaseName.set("HypeLobby")
     archiveClassifier.set("SNAPSHOT")
     archiveVersion.set("1.0")
-    //destinationDir("C:\\Users\\Muhammed\\Desktop\\LobbySystem" as File)
+    destinationDir("C:\\Users\\funda\\OneDrive\\Desktop\\programming" as File)
 }

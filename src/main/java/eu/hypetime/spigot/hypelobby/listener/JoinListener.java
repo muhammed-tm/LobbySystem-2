@@ -16,6 +16,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.util.Set;
+import java.util.UUID;
+
 
 
 /*
@@ -37,12 +40,28 @@ public class JoinListener implements Listener {
           //HypeLobby.getInstance().getFriendManager().loadPlayer(player.getUniqueId(), player.getName());
 
           player.setGameMode(GameMode.SURVIVAL);
-          player.teleport(WarpAPI.getLocation("Spawn"));
+          if(SettingConfig.getspawnposition(player) == false) {
+               player.teleport(WarpAPI.getLocation("Spawn"));
+          }
+          if(SettingConfig.getsichtbarkeit(player) == true) {
+                    for (Player all : Bukkit.getOnlinePlayers()) {
+                         event.getPlayer().hidePlayer(HypeLobby.getInstance(), all);
+               }
+          }else {
+               for (UUID all : HypeLobby.getNonplayersvisible()) {
+                    if (Bukkit.getPlayer(all) != null) {
+                         Bukkit.getPlayer(all).hidePlayer(HypeLobby.getInstance(), event.getPlayer());
+                    }
+               }
+          }
           player.sendTitle("§6Update v2.5", "§6/patchnotes §7um die Updates zu sehen");
           player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
           //BlindScare.updatePlayer(player); //for halloween
           if(player.getName().equals("quele")) {
               player.getWorld().strikeLightningEffect(player.getLocation());
+          }
+          if(player.getName().equals("DasAkkusativer")) {
+               player.sendMessage("§4§lAKKU_GHG WAS GHGT???");
           }
           /*if(TrailGunListener.blocks.size() > 0) {
                TrailGunListener.blocks.forEach((location, material) -> {

@@ -24,6 +24,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -52,12 +53,14 @@ public class HypeLobby extends JavaPlugin {
      public static ExecutorService getExecutorService() {
           return executorService;
      }
+     private static ArrayList<UUID> noplayersvisible;
 
      @Override
      public void onEnable() {
           instance = this;
           s = NBSDecoder.parse(new File(getDataFolder(), "Song.nbs"));
           sp = new RadioSongPlayer(s);
+
 
           config = new Config(getDataFolder().getAbsolutePath(), "config.yml");
           constants = new Constants(this);
@@ -115,6 +118,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new JoinListener(), this);
           pluginManager.registerEvents(new ChatListener(), this);
           pluginManager.registerEvents(new NavListener(), this);
+          pluginManager.registerEvents(new ProfilListener(), this);
           pluginManager.registerEvents(new MainListener(), this);
           pluginManager.registerEvents(new BuildListener(), this);
           pluginManager.registerEvents(lobbySwitcherListener, this);
@@ -163,4 +167,8 @@ public class HypeLobby extends JavaPlugin {
     /*public FriendManager getFriendManager() {
           return friendManager;
      }*/
+
+     public static ArrayList<UUID> getNonplayersvisible() {
+          return noplayersvisible;
+     }
 }

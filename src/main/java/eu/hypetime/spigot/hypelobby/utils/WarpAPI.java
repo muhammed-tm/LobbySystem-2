@@ -18,7 +18,7 @@ import org.bukkit.util.Vector;
 */
 public class WarpAPI {
 
-     public static Config location = new Config(HypeLobby.getInstance().getDataFolder().getAbsolutePath(), "location.yml");
+     public static Config location = new Config("../../../local/templates/Lobbys/default/plugins/HypeLobby/", "location.yml");
 
      public static void setLocation(Player player, String name) {
           Location playerLoc = player.getLocation();
@@ -46,11 +46,16 @@ public class WarpAPI {
           }
           Particle particle = Particle.FLAME;
 
-          player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1f, 1f);
-          player.setVelocity(new Vector(0, 2.5, 0));
-          PacketPlayOutWorldParticles packet1 = new PacketPlayOutWorldParticles(CraftParticle.toNMS(Particle.MOB_APPEARANCE), false, 0, 0, 0f, 0f, 0f, 0f, 0, 1);
-          ((CraftPlayer) player).getHandle().b.sendPacket(packet1);
-          Bukkit.getScheduler().runTaskLater(HypeLobby.getInstance(), () -> player.teleport(loc), 15L);
+          if (SettingConfig.gettpanimation(player) == true) {
+               player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1f, 1f);
+               player.setVelocity(new Vector(0, 2.5, 0));
+               PacketPlayOutWorldParticles packet1 = new PacketPlayOutWorldParticles(CraftParticle.toNMS(Particle.MOB_APPEARANCE), false, 0, 0, 0f, 0f, 0f, 0f, 0, 1);
+               ((CraftPlayer) player).getHandle().b.sendPacket(packet1);
+               Bukkit.getScheduler().runTaskLater(HypeLobby.getInstance(), () -> player.teleport(loc), 15L);
+          }else {
+               player.teleport(loc);
+               player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F);
+          }
      }
 
      public static Location getLocation(String name) {

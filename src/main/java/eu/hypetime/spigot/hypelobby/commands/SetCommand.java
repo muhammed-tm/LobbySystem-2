@@ -42,7 +42,8 @@ public class SetCommand implements CommandExecutor {
           }
           if (!args[0].equalsIgnoreCase("Spawn")
                && !args[0].equalsIgnoreCase("GunBattle")
-               && !args[0].equalsIgnoreCase("LobbyPVP")
+                  && !args[0].equalsIgnoreCase("HypeSMP")
+                  && !args[0].equalsIgnoreCase("LobbyPVP")
                && !args[0].equalsIgnoreCase("Belohnung")
                && !args[0].equalsIgnoreCase("1")
                && !args[0].equalsIgnoreCase("2")

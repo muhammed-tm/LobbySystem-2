@@ -39,7 +39,7 @@ public class NavListener implements Listener {
                if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
                     player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
                }
-               /*if(event.getSlot() == 11) {
+               /*if(event.getSlot() == 10) {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "LobbyPVP");
                }*/
@@ -51,7 +51,10 @@ public class NavListener implements Listener {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "GunBattle");
                }
-
+               if (event.getSlot() == 16) {
+                    player.closeInventory();
+                    WarpAPI.tpWarp(player, "HypeSMP");
+               }
           }
      }
 }
