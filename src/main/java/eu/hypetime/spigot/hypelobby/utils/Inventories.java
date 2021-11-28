@@ -229,12 +229,12 @@ public class Inventories {
           }else {
                inventory.setItem(11, new ItemBuilder(Material.NETHER_STAR).setName("§6Teleport Animation").addLoreLine("§aaktiviert").toItemStack());
 
-          }
+          }/*
           if(SettingConfig.getsichtbarkeit(player) == false) {
                inventory.setItem(13, new ItemBuilder(Material.LEGACY_STAINED_CLAY).setName("§6Sichtbarkeit").addLoreLine("§aalle").toItemStack());
           }else {
                inventory.setItem(13, new ItemBuilder(Material.LEGACY_STAINED_CLAY).setName("§6Sichtbarkeit").addLoreLine("§ckeine").toItemStack());
-          }
+          }*/
           if(SettingConfig.getspawnposition(player) == false) {
                inventory.setItem(15, new ItemBuilder(Material.COMPASS).setName("§6Spawn-Position").addLoreLine("§7Aktuell §8» §6Spawn").toItemStack());
           }else {

@@ -43,17 +43,6 @@ public class JoinListener implements Listener {
           if(SettingConfig.getspawnposition(player) == false) {
                player.teleport(WarpAPI.getLocation("Spawn"));
           }
-          if(SettingConfig.getsichtbarkeit(player) == true) {
-                    for (Player all : Bukkit.getOnlinePlayers()) {
-                         event.getPlayer().hidePlayer(HypeLobby.getInstance(), all);
-               }
-          }else {
-               for (UUID all : HypeLobby.getNonplayersvisible()) {
-                    if (Bukkit.getPlayer(all) != null) {
-                         Bukkit.getPlayer(all).hidePlayer(HypeLobby.getInstance(), event.getPlayer());
-                    }
-               }
-          }
           player.sendTitle("§6Update v2.5", "§6/patchnotes §7um die Updates zu sehen");
           player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
           //BlindScare.updatePlayer(player); //for halloween
