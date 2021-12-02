@@ -16,10 +16,11 @@ public class NPCListener implements Listener {
      public void handleNPCInteract(PlayerNPCInteractEvent event) {
           Player player = event.getPlayer();
           NPC npc = event.getNPC();
-
-          if (event.getUseAction() == PlayerNPCInteractEvent.EntityUseAction.INTERACT_AT) {
-               if (npc.getProfile().hasName() && npc.isLookAtPlayer() && !npc.isImitatePlayer()) {
-                    Inventories.NameMCInventory(player);
+          if (npc.getProfile().getName().equalsIgnoreCase("§eRang Shop")) {
+               if (event.getUseAction() == PlayerNPCInteractEvent.EntityUseAction.INTERACT_AT) {
+                    if (npc.getProfile().hasName() && npc.isLookAtPlayer() && !npc.isImitatePlayer()) {
+                         Inventories.NameMCInventory(player);
+                    }
                }
           }
      }
@@ -27,7 +28,7 @@ public class NPCListener implements Listener {
      @EventHandler
      public void onClick(InventoryClickEvent event) {
           Player player = (Player) event.getWhoClicked();
-          if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6NameMC §8«")) {
+               if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6NameMC §8«")) {
                event.setCancelled(true);
                if (event.getCurrentItem() == null) return;
                if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {

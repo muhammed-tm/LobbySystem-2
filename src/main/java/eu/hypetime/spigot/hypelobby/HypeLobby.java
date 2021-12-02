@@ -134,9 +134,13 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new CosmeticsListener(), this);
           pluginManager.registerEvents(new BuyListener(), this);
 
+
+          //SHOP
+          pluginManager.registerEvents(new RankShopListener(), this);
+
+
           //Gadgets
           pluginManager.registerEvents(new GadgetsInventory(), this);
-
           pluginManager.registerEvents(new RodListener(), this);
           pluginManager.registerEvents(new EnderpearlListener(), this);
           pluginManager.registerEvents(new TeleportBowListener(), this);

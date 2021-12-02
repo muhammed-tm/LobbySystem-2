@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 public enum Boots {
 
      MUSIC_BOOTS("Music", new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §5Music Boots").setArmorColor(Color.GRAY).toItemStack(), 500, GadgetCategory.BOOTS, Particle.NOTE),
-     IceBoots("Ice", new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §6Ice Boots").setArmorColor(Color.BLUE).toItemStack(), 500, GadgetCategory.BOOTS, Particle.DRIP_WATER),
+     WaterBoots("Water", new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §5Water Boots").setArmorColor(Color.BLUE).toItemStack(), 500, GadgetCategory.BOOTS, Particle.DRIP_WATER),
      FIRE_BOOTS("Fire", new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §5Fire Boots").setArmorColor(Color.fromRGB(100, 0, 0)).toItemStack(), 500, GadgetCategory.BOOTS, Particle.LAVA),
      LOVE_BOOTS("Love", new ItemBuilder(Material.LEATHER_BOOTS).setName("§8» §5Love Boots").setArmorColor(Color.fromRGB(200, 0, 0)).toItemStack(), 500, GadgetCategory.BOOTS, Particle.HEART);
 

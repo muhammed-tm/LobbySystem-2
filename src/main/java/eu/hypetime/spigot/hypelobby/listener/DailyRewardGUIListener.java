@@ -56,7 +56,7 @@ public class DailyRewardGUIListener implements Listener {
                          }
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                              + "Du benötigst mindestens den §eHyper Rang §7um dieses Belohnung abzuholen");
+                              + "Du benötigst mindestens den §eHyper Rang §7um dieses Belohnung abzuholen.");
                     }
                }
 
@@ -74,7 +74,7 @@ public class DailyRewardGUIListener implements Listener {
                          }
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                              + "Du benötigst mindestens den §dWarrior Rang §7um dieses Belohnung abzuholen");
+                              + "Du benötigst mindestens den §dWarrior Rang §7um dieses Belohnung abzuholen.");
                     }
                }
                if (event.getSlot() == 15) {
@@ -91,7 +91,7 @@ public class DailyRewardGUIListener implements Listener {
                          }
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                              + "Du benötigst mindestens den §6VIP Rang §7um dieses Belohnung abzuholen");
+                              + "Du benötigst mindestens den §6VIP Rang §7um dieses Belohnung abzuholen.");
                     }
                }
                if (event.getSlot() == 17) {
@@ -108,7 +108,7 @@ public class DailyRewardGUIListener implements Listener {
                          }
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
-                              + "Du benötigst mindestens den §5Media Rang §7um dieses Belohnung abzuholen");
+                              + "Du benötigst mindestens den §5Media Rang §7um dieses Belohnung abzuholen.");
                     }
                }
           }
