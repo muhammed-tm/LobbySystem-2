@@ -18,10 +18,12 @@ import eu.hypetime.spigot.hypelobby.listener.*;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -61,7 +63,7 @@ public class HypeLobby extends JavaPlugin {
           s = NBSDecoder.parse(new File(getDataFolder(), "Song.nbs"));
           sp = new RadioSongPlayer(s);
 
-
+          loadFiles();
           config = new Config(getDataFolder().getAbsolutePath(), "config.yml");
           constants = new Constants(this);
           //friendManager = new FriendManager(new FriendSQL());
@@ -138,6 +140,8 @@ public class HypeLobby extends JavaPlugin {
           //SHOP
           pluginManager.registerEvents(new RankShopListener(), this);
 
+          //Present System
+          pluginManager.registerEvents(new PresentInteractListener(), this);
 
           //Gadgets
           pluginManager.registerEvents(new GadgetsInventory(), this);
@@ -166,12 +170,20 @@ public class HypeLobby extends JavaPlugin {
           getCommand("top5").setExecutor(new Top5Command());
           getCommand("sit").setExecutor(new SitCommand());
           getCommand("patchnotes").setExecutor(new PatchNotesCommand());
+          getCommand("createpresent").setExecutor(new PresentSetupCommand());
+          getCommand("presents").setExecutor(new PresentCommand());
      }
 
     /*public FriendManager getFriendManager() {
           return friendManager;
      }*/
-
+    private void loadFiles() {
+         try {
+              (new PlayerDataPresents()).loadFile();
+         } catch (IOException e) {
+              e.printStackTrace();
+         }
+    }
      public static ArrayList<UUID> getNonplayersvisible() {
           return noplayersvisible;
      }

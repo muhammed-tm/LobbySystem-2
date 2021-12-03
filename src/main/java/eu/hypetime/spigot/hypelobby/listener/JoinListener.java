@@ -43,7 +43,7 @@ public class JoinListener implements Listener {
           if(SettingConfig.getspawnposition(player) == false) {
                player.teleport(WarpAPI.getLocation("Spawn"));
           }
-          player.sendTitle("§6Update v2.5", "§6/patchnotes §7um die Updates zu sehen");
+          player.sendTitle("§6Weihnachten", "§6Suche alle Geschenke.");
           player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
           //BlindScare.updatePlayer(player); //for halloween
           if(player.getName().equals("quele")) {
@@ -59,6 +59,8 @@ public class JoinListener implements Listener {
           }*/
           for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                ScoreAPI.setScoreboard(onlinePlayer);
+          if (!PlayerDataPresents.existsPlayer(player))
+               (new PlayerDataPresents()).createPlayer(player);
      }
 
      @EventHandler

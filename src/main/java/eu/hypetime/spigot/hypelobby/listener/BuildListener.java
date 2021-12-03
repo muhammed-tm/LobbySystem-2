@@ -5,6 +5,7 @@ import eu.hypetime.spigot.hypelobby.commands.BuildCommand;
 import eu.hypetime.spigot.hypelobby.commands.SetCommand;
 import eu.hypetime.spigot.hypelobby.commands.SitCommand;
 import eu.hypetime.spigot.hypelobby.utils.MaterialLists;
+import eu.hypetime.spigot.hypelobby.utils.PlayerDataPresents;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -51,6 +52,7 @@ public class BuildListener implements Listener {
 
      @EventHandler
      public void onPlace(BlockPlaceEvent event) {
+          Player player = event.getPlayer();
           if (!build.contains(event.getPlayer())) {
                if (event.getPlayer().getWorld().getName().equalsIgnoreCase(HypeLobby.getInstance().getConstants().getPVPWorld())) {
                     if (event.getItemInHand().getType() != Material.PLAYER_HEAD) {
@@ -66,6 +68,10 @@ public class BuildListener implements Listener {
                     }
                } else {
                     event.setCancelled(true);
+               }
+               if (player.hasPermission("presents.create")) {
+                    Location blockLoc = event.getBlock().getLocation();
+                    (new PlayerDataPresents()).addPresent((int) blockLoc.getX(), (int) blockLoc.getY(), (int) blockLoc.getZ());
                }
           }
      }
