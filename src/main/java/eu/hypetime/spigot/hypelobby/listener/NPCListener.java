@@ -16,7 +16,7 @@ public class NPCListener implements Listener {
      public void handleNPCInteract(PlayerNPCInteractEvent event) {
           Player player = event.getPlayer();
           NPC npc = event.getNPC();
-          if (npc.getProfile().getName().equalsIgnoreCase("§eRang Shop")) {
+          if (npc.getProfile().getName().equalsIgnoreCase("§6NameMC Reward")) {
                if (event.getUseAction() == PlayerNPCInteractEvent.EntityUseAction.INTERACT_AT) {
                     if (npc.getProfile().hasName() && npc.isLookAtPlayer() && !npc.isImitatePlayer()) {
                          Inventories.NameMCInventory(player);

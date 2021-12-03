@@ -4,10 +4,8 @@ import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.CoinsAPI;
 import eu.hypetime.spigot.hypelobby.utils.RewardAPI;
 import eu.hypetime.spigot.hypelobby.utils.RewardType;
-import org.bukkit.Instrument;
-import org.bukkit.Material;
-import org.bukkit.Note;
-import org.bukkit.Sound;
+import eu.hypetime.spigot.hypelobby.utils.ScoreAPI;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -34,6 +32,8 @@ public class DailyRewardGUIListener implements Listener {
                          CoinsAPI.addCoins(player, 100);
                          player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
                          RewardAPI.setUUID(player, RewardType.PLAYER);
+                         for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+                              ScoreAPI.setScoreboard(onlinePlayer);
                     } else {
                          player.closeInventory();
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -49,6 +49,8 @@ public class DailyRewardGUIListener implements Listener {
                               CoinsAPI.addCoins(player, 250);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
                               RewardAPI.setUUID(player, RewardType.HYPER);
+                              for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+                                   ScoreAPI.setScoreboard(onlinePlayer);
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -67,6 +69,8 @@ public class DailyRewardGUIListener implements Listener {
                               CoinsAPI.addCoins(player, 500);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
                               RewardAPI.setUUID(player, RewardType.WARRIOR);
+                              for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+                                   ScoreAPI.setScoreboard(onlinePlayer);
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -84,6 +88,8 @@ public class DailyRewardGUIListener implements Listener {
                               CoinsAPI.addCoins(player, 750);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
                               RewardAPI.setUUID(player, RewardType.VIP);
+                              for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+                                   ScoreAPI.setScoreboard(onlinePlayer);
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
@@ -101,6 +107,8 @@ public class DailyRewardGUIListener implements Listener {
                               CoinsAPI.addCoins(player, 1000);
                               player.playNote(player.getLocation(), Instrument.PIANO, Note.flat(0, Note.Tone.E));
                               RewardAPI.setUUID(player, RewardType.MEDIA);
+                              for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+                                   ScoreAPI.setScoreboard(onlinePlayer);
                          } else {
                               player.closeInventory();
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()

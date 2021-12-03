@@ -57,7 +57,7 @@ public class RankShopListener implements Listener {
 
 
                 } else {
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDu hast bereits diesen Rang oder einen höheren.");
+                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDu hast bereits diesen Rang oder einen Höheren.");
                 }
             }
             if (event.getSlot() == 15) {
@@ -93,7 +93,7 @@ public class RankShopListener implements Listener {
 
 
                 } else {
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDu hast bereits diesen Rang oder einen höheren.");
+                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDu hast bereits diesen Rang oder einen Höheren.");
                 }
             }
 
