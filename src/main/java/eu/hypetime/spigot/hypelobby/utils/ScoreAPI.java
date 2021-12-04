@@ -63,6 +63,7 @@ public class ScoreAPI {
                     registerTeamEntry(sb, "0011Spieler", ChatColor.GRAY, "§7Player §8× ", "§7", online);
                }
           }
+          int presents = new PlayerDataPresents().getOpenedPresentCountForPlayer(player);
 
           obj.getScore("").setScore(12);
           obj.getScore("§7Profil§7:").setScore(11);
@@ -74,8 +75,10 @@ public class ScoreAPI {
           obj.getScore("§7Coins§7:").setScore(5);
           obj.getScore("§7»§6 " + CoinsAPI.getCoins(player)).setScore(4);
           obj.getScore("   ").setScore(3);
-          obj.getScore("§7TeamSpeak§7:").setScore(2);
-          obj.getScore("§7» §6ts.HypeTime.eu").setScore(1);
+          //obj.getScore("§7TeamSpeak§7:").setScore(2);
+          //obj.getScore("§7» §6ts.HypeTime.eu").setScore(1);
+          obj.getScore("§7Geschenke§7:").setScore(2);
+          obj.getScore("§7»§6 " + presents + "/100").setScore(1);
           obj.getScore("    ").setScore(0);
           player.setScoreboard(sb);
      }

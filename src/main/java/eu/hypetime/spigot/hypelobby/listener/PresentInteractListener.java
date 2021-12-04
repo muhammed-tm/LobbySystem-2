@@ -56,9 +56,14 @@ public class PresentInteractListener implements Listener {
                         player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§e(+2000 Coins)");
                         player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§8§m---------------------------");
                         IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
+                        if(!(player.hasPermission("lobby.warrior"))) {
                         user.getGroups().clear();
                         player.sendTitle("§6Neuen Rang", "§dWarrior Rang (30d)");
                         user.addGroup("Warrior", 30, TimeUnit.DAYS);
+                    }else {
+                            player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Da du bereits einen §dWarrior Rang §7oder einen Höheren hast, erhälst du §6+5000 Coins");
+                            CoinsAPI.addCoins(player, 5000);
+                        }
                         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                             ScoreAPI.setScoreboard(onlinePlayer);
                             onlinePlayer.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + player.getPlayer().getDisplayName() + " hat 100 Geschenke gefunden!");
