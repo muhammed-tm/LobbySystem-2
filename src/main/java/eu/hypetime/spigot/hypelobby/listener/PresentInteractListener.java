@@ -30,29 +30,7 @@ public class PresentInteractListener implements Listener {
                 player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDu hast dieses Geschenk bereits gefunden.");
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 3, 1);
             } else {
-                if (presents == 100) {
-                    new PlayerDataPresents().setOpened(player, (int) e.getClickedBlock().getX(), (int) e.getClickedBlock().getY(), (int) e.getClickedBlock().getZ());
-                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3, 1);
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§8§m---------------------------");
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Du hast ein neues Geschenk");
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7gefunden. Wir gratulieren");
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7dir herzlich.");
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Du hast jetzt §e" + new PlayerDataPresents().getOpenedPresentCountForPlayer(player));
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7gefundene Geschenke.");
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§e(+2000 Coins)");
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§8§m---------------------------");
-                    IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
-                    user.getGroups().clear();
-                    player.sendTitle("§6Neuen Rang", "§dWarrior Rang (30d)");
-                    user.addGroup("Warrior", 30, TimeUnit.DAYS);
-                    for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
-                        ScoreAPI.setScoreboard(onlinePlayer);
-                        onlinePlayer.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + player.getPlayer().getDisplayName() + " hat 100 Geschenke gefunden!");
-                    }
-                    CoinsAPI.addCoins(player, 2000);
-                    for (Player onlinePlayer : Bukkit.getOnlinePlayers())
-                        ScoreAPI.setScoreboard(onlinePlayer);
-                } else {
+                if (presents != 100) {
                     new PlayerDataPresents().setOpened(player, (int) e.getClickedBlock().getX(), (int) e.getClickedBlock().getY(), (int) e.getClickedBlock().getZ());
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3, 1);
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§8§m---------------------------");
@@ -66,9 +44,31 @@ public class PresentInteractListener implements Listener {
                     CoinsAPI.addCoins(player, 50);
                     for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                         ScoreAPI.setScoreboard(onlinePlayer);
-                    }
+                }else {
+                        new PlayerDataPresents().setOpened(player, (int) e.getClickedBlock().getX(), (int) e.getClickedBlock().getY(), (int) e.getClickedBlock().getZ());
+                        player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3, 1);
+                        player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§8§m---------------------------");
+                        player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Du hast ein neues Geschenk");
+                        player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7gefunden. Wir gratulieren");
+                        player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7dir herzlich.");
+                        player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Du hast jetzt §e" + new PlayerDataPresents().getOpenedPresentCountForPlayer(player));
+                        player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7gefundene Geschenke.");
+                        player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§e(+2000 Coins)");
+                        player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§8§m---------------------------");
+                        IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
+                        user.getGroups().clear();
+                        player.sendTitle("§6Neuen Rang", "§dWarrior Rang (30d)");
+                        user.addGroup("Warrior", 30, TimeUnit.DAYS);
+                        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+                            ScoreAPI.setScoreboard(onlinePlayer);
+                            onlinePlayer.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + player.getPlayer().getDisplayName() + " hat 100 Geschenke gefunden!");
+                        }
+                        CoinsAPI.addCoins(player, 2000);
+                        for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+                            ScoreAPI.setScoreboard(onlinePlayer);
                 }
             }
+        }
         }
     }
 
