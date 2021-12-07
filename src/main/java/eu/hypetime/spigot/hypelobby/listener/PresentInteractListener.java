@@ -29,7 +29,7 @@ public class PresentInteractListener implements Listener {
                 e.setCancelled(true);
                 player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDu hast dieses Geschenk bereits gefunden.");
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 3, 1);
-                return;s
+                return;
             } else {
                 if (presents != 100) {
                     new PlayerDataPresents().setOpened(player, (int) e.getClickedBlock().getX(), (int) e.getClickedBlock().getY(), (int) e.getClickedBlock().getZ());
