@@ -19,7 +19,7 @@ commands:
     description: sit command
   patchnotes:
     description: Patchnotses command
-  presents:
-    description: present sys
-  createpresent:
-    description: present sys
+  #presents:
+    #description: present sys
+  #createpresent:
+    #description: present sys

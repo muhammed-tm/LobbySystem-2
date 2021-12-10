@@ -141,7 +141,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new RankShopListener(), this);
 
           //Present System
-          pluginManager.registerEvents(new PresentInteractListener(), this);
+          //pluginManager.registerEvents(new PresentInteractListener(), this);
 
           //Gadgets
           pluginManager.registerEvents(new GadgetsInventory(), this);
@@ -170,8 +170,8 @@ public class HypeLobby extends JavaPlugin {
           getCommand("top5").setExecutor(new Top5Command());
           getCommand("sit").setExecutor(new SitCommand());
           getCommand("patchnotes").setExecutor(new PatchNotesCommand());
-          getCommand("createpresent").setExecutor(new PresentSetupCommand());
-          getCommand("presents").setExecutor(new PresentCommand());
+          //getCommand("createpresent").setExecutor(new PresentSetupCommand());
+          //getCommand("presents").setExecutor(new PresentCommand());
      }
 
     /*public FriendManager getFriendManager() {

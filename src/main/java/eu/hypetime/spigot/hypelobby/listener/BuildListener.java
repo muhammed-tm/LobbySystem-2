@@ -69,10 +69,10 @@ public class BuildListener implements Listener {
                } else {
                     event.setCancelled(true);
                }
-               if (player.hasPermission("presents.create")) {
+               /*if (player.hasPermission("presents.create")) {
                     Location blockLoc = event.getBlock().getLocation();
-                    (new PlayerDataPresents()).addPresent((int) blockLoc.getX(), (int) blockLoc.getY(), (int) blockLoc.getZ());
-               }
+                    (new PlayerDataPresents()).addPresent(blockLoc);
+               }*/
           }
      }
 

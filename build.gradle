@@ -48,5 +48,4 @@ jar {
     archiveBaseName.set("HypeLobby")
     archiveClassifier.set("SNAPSHOT")
     archiveVersion.set("1.0")
-    destinationDir("C:\\Users\\funda\\OneDrive\\Desktop\\programming" as File)
 }

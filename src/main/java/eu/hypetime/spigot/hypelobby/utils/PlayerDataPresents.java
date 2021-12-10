@@ -1,5 +1,7 @@
 package eu.hypetime.spigot.hypelobby.utils;
 
+import org.apache.logging.log4j.core.config.Reconfigurable;
+import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
@@ -7,9 +9,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class PlayerDataPresents {
+
+    public static File presentsfile;
+    public static YamlConfiguration presentcfg;
+
     public void loadFile() throws IOException {
         File file = new File("../../../local/templates/Lobbys/default/plugins/HypeLobby/Presents", "playerData.yml");
-        File presentsfile = new File("../../../local/templates/Lobbys/default/plugins/HypeLobby/Presents", "presents.yml");
+        presentsfile = new File("../../../local/templates/Lobbys/default/plugins/HypeLobby/Presents", "presents.yml");
         if (!file.exists()) {
             File folder = new File("../../../local/templates/Lobbys/default/plugins/HypeLobby/Presents");
             if (!folder.exists())
@@ -25,6 +31,7 @@ public class PlayerDataPresents {
             cfg.set("Presents.Count", Integer.valueOf(0));
             saveFile(cfg, presentsfile);
         }
+        presentcfg = YamlConfiguration.loadConfiguration(presentsfile);
     }
 
     public int getPresentCount() {
@@ -33,19 +40,12 @@ public class PlayerDataPresents {
         return cfg.getInt("Presents.Count");
     }
 
-    public void addPresent(int x, int y, int z) {
+    public void addPresent(Location loc) {
         File file = new File("../../../local/templates/Lobbys/default/plugins/HypeLobby/Presents", "presents.yml");
         YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
         int count = getPresentCount() + 1;
         cfg.set("Presents.Count", Integer.valueOf(count));
-        cfg.set("Presents." + x + "-" + y + "-" + z + ".X", Integer.valueOf(x));
-        cfg.set("Presents." + x + "-" + y + "-" + z + ".Y", Integer.valueOf(y));
-        cfg.set("Presents." + x + "-" + y + "-" + z + ".Z", Integer.valueOf(z));
-        cfg.set("Presents." + x + "-" + y + "-" + z + ".ID", Integer.valueOf(count));
-        cfg.set("Presents." + count + ".X", Integer.valueOf(x));
-        cfg.set("Presents." + count + ".Y", Integer.valueOf(y));
-        cfg.set("Presents." + count + ".Z", Integer.valueOf(z));
-        cfg.set("Presents." + count + ".ID", Integer.valueOf(count));
+        cfg.set("Presents." + count, loc);
         saveFile(cfg, file);
     }
 
@@ -98,7 +98,16 @@ public class PlayerDataPresents {
     public int getPresentID(int x, int y, int z) {
         File file = new File("../../../local/templates/Lobbys/default/plugins/HypeLobby/Presents", "presents.yml");
         YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
-        return cfg.getInt("Presents." + x + "-" + y + "-" + z + ".ID");
+        int id = 0;
+        for(int i = 0; i < 101; i++) {
+            if(Integer.parseInt(cfg.getString("Presents." + i + ".X")) == x
+                && Integer.parseInt(cfg.getString("Presents." + i + ".Y")) == y
+                && Integer.parseInt(cfg.getString("Presents." + i + ".Z")) == z) {
+                id = i;
+                break;
+            }
+        }
+        return id;
     }
 
     private void saveFile(YamlConfiguration cfg, File file) {
