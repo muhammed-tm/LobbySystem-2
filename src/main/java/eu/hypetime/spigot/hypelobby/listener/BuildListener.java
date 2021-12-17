@@ -4,9 +4,7 @@ import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.commands.BuildCommand;
 import eu.hypetime.spigot.hypelobby.commands.SetCommand;
 import eu.hypetime.spigot.hypelobby.commands.SitCommand;
-import eu.hypetime.spigot.hypelobby.utils.MaterialLists;
-import eu.hypetime.spigot.hypelobby.utils.PlayerDataPresents;
-import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
+import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -22,7 +20,9 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.hanging.HangingPlaceEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.player.*;
+import org.bukkit.inventory.Inventory;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -132,7 +132,6 @@ public class BuildListener implements Listener {
                event.setCancelled(true);
           }
      }
-
      @EventHandler
      public void onInteract(PlayerInteractEntityEvent event) {
           Player player = event.getPlayer();

@@ -263,7 +263,28 @@ public class Inventories {
             }
             player.openInventory(inventory);
         }
+    public static void DSGVOInventory (Player player) {
+        Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§8» §6DSGVO §8«");
+        for (int i = 0; i < inventory.getSize(); i++) {
+            inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
+            inventory.setItem(10, new ItemBuilder(Material.PLAYER_HEAD)
+                    .setName("§aAkzeptieren")
+                    .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTkyZTMxZmZiNTljOTBhYjA4ZmM5ZGMxZmUyNjgwMjAzNWEzYTQ3YzQyZmVlNjM0MjNiY2RiNDI2MmVjYjliNiJ9fX0=")
+                    .toItemStack());
 
+            inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD)
+                    .setName("§6Lesen?")
+                    .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTAzNWM1MjgwMzZiMzg0YzUzYzljOGExYTEyNTY4NWUxNmJmYjM2OWMxOTdjYzlmMDNkZmEzYjgzNWIxYWE1NSJ9fX0=")
+                    .addLoreLine("§ehttps://www.hypetime.eu/privacy-policy")
+                    .toItemStack());
+
+            inventory.setItem(16, new ItemBuilder(Material.PLAYER_HEAD)
+                    .setName("§cAblehnen")
+                    .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTdmOWM2ZmVmMmFkOTZiM2E1NDY1NjQyYmE5NTQ2NzFiZTFjNDU0M2UyZTI1ZTU2YWVmMGE0N2Q1ZjFmIn19fQ==")
+                    .toItemStack());
+            player.openInventory(inventory);
+        }
+    }
         public static void ProfilSettingsInventory (Player player){
             Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§8» §6Einstellungen §8«");
             for (int i = 0; i < inventory.getSize(); i++) {

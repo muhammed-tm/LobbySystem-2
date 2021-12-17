@@ -39,6 +39,8 @@ dependencies {
     compileOnly 'com.github.koca2000:NoteBlockAPI:1.6.1'
     compileOnly group: 'com.github.juliarn', name: 'npc-lib', version: 'development-SNAPSHOT'
     implementation 'com.elmakers.mine.bukkit:EffectLib:9.3'
+    compileOnly 'com.github.LabyMod:labymod-server-api:1.0'
+    implementation 'com.github.LabyMod:widgets:1.1.1'
 }
 
 compileJava.options.encoding = 'UTF-8'

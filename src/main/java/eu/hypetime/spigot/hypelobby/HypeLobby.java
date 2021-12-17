@@ -143,6 +143,9 @@ public class HypeLobby extends JavaPlugin {
           //Present System
           //pluginManager.registerEvents(new PresentInteractListener(), this);
 
+          //DSGVO
+          pluginManager.registerEvents(new DSGVOListener(), this);
+
           //Gadgets
           pluginManager.registerEvents(new GadgetsInventory(), this);
           pluginManager.registerEvents(new RodListener(), this);

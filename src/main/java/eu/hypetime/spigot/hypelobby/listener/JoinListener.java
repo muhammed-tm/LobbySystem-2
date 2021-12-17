@@ -1,5 +1,8 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
+import de.dytanic.cloudnet.CloudNet;
+import de.dytanic.cloudnet.driver.CloudNetDriver;
+import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.commands.SitCommand;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.boots.BootsPlayer;
@@ -43,7 +46,7 @@ public class JoinListener implements Listener {
           if(SettingConfig.getspawnposition(player) == false) {
                player.teleport(WarpAPI.getLocation("Spawn"));
           }
-          player.sendTitle("§6Weihnachten", "§6Suche alle Geschenke.");
+          player.sendTitle("§6Willkommen", player.getName());
           player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
           //BlindScare.updatePlayer(player); //for halloween
           if(player.getName().equals("quele")) {
@@ -57,10 +60,15 @@ public class JoinListener implements Listener {
                     location.getBlock().setType(material);
                });
           }*/
+          player.setFoodLevel(20);
+
           for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                ScoreAPI.setScoreboard(onlinePlayer);
           if (!PlayerDataPresents.existsPlayer(player))
                (new PlayerDataPresents()).createPlayer(player);
+          if (!PlayerManager.hasAccept(player)) {
+               Inventories.DSGVOInventory(player);
+          }
      }
 
      @EventHandler
