@@ -2,6 +2,7 @@ package eu.hypetime.spigot.hypelobby.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -81,34 +82,76 @@ public class Inventories {
     }
 
     public static void navigatorInventory(Player player) {
-        Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§8» §6Navigator §8«");
+        Inventory inventory = Bukkit.createInventory(null, 9 * 5, "§8» §6Navigator §8«");
         for (int i = 0; i < inventory.getSize(); i++) {
             inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
         }
 
-        inventory.setItem(10, new ItemBuilder(Material.PLAYER_HEAD)
+        inventory.setItem(19, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§cSoon")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==")
                 .toItemStack());
 
-        inventory.setItem(12, new ItemBuilder(Material.PLAYER_HEAD)
+        inventory.setItem(21, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§6Spawn")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGViMDdlZWEzODBhZjU4ZGM5MWVlZWUxNWQ5NWQ4NzkwYTA3ODFjNjk1ZWMwYThmZDhmZTMxZDQ4MzljYTU2MiJ9fX0=")
                 .toItemStack());
 
-        inventory.setItem(14, new ItemBuilder(Material.PLAYER_HEAD)
+        inventory.setItem(23, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§6GunBattle")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTBkZmM4YTM1NjNiZjk5NmY1YzFiNzRiMGIwMTViMmNjZWIyZDA0Zjk0YmJjZGFmYjIyOTlkOGE1OTc5ZmFjMSJ9fX0=")
                 .toItemStack());
 
-        inventory.setItem(16, new ItemBuilder(Material.PLAYER_HEAD)
+        inventory.setItem(25, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§6HypeSMP")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjNmNGQ1NTVmYjNiOTM1N2FmNzU4MmYyNzM4MDBmMWRhNGFjNjliMDQyMTBjM2FhMzRlNjNkYjJhNDIzNWJiZiJ9fX0=")
                 .addLoreLine("§aNEU §8(§61.17.1§8)")
                 .toItemStack());
 
+        inventory.setItem(40, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§6Warps")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWJlMDNjYjZmYWVhOTFhNjlhNDY4NGIzMGRkNjJmMWJlZjRmODM0N2NhMjAzNmQxMjhhNzAxMWE1YTUyZDA3OSJ9fX0=")
+                .addLoreLine("")
+                .addLoreLine("§8§m-------------")
+                .addLoreLine("§6» §7Rang Shop")
+                .addLoreLine("§6» §7NameMC Reward")
+                .addLoreLine("§6» §7Top3 GunBattle")
+                .addLoreLine("§8§m-------------")
+                .toItemStack());
+
         player.openInventory(inventory);
 
+
+    }
+
+    public static void WarpNavigator(Player player) {
+        Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§8» §6Warps §8«");
+        for (int i = 0; i < inventory.getSize(); i++) {
+            inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
+        }
+
+        inventory.setItem(11, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§6Rang Shop")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmY3NWQxYjc4NWQxOGQ0N2IzZWE4ZjBhN2UwZmQ0YTFmYWU5ZTdkMzIzY2YzYjEzOGM4Yzc4Y2ZlMjRlZTU5In19fQ==")
+                .toItemStack());
+
+        inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§6NameMC Reward")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTZjYjY1NzM4MWVlOTZmNWVhZGU0YzczMGVlMWExYjE0NTUyNzY1ZjFkZWUyYmNmZGFlMTc1NzkyYjAxNmZiIn19fQ==")
+                .toItemStack());
+
+        inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§6Top3 GunBattle")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzZjYmFlNzI0NmNjMmM2ZTg4ODU4NzE5OGM3OTU5OTc5NjY2YjRmNWE0MDg4ZjI0ZTI2ZTA3NWYxNDBhZTZjMyJ9fX0=")
+                .toItemStack());
+
+        inventory.setItem(18, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§cZurück")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=")
+                .toItemStack());
+
+        player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3.0F, 1.0F);
+        player.openInventory(inventory);
 
     }
 

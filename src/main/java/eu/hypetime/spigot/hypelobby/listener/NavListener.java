@@ -17,44 +17,71 @@ import org.bukkit.event.player.PlayerInteractEvent;
 */
 public class NavListener implements Listener {
 
-     @EventHandler
-     public void onInteract(PlayerInteractEvent event) {
-          if (event.getItem() == null) return;
-          if (event.getItem().getType() == Material.AIR) return;
-          if (event.getItem().getType() == Material.MUSIC_DISC_13) {
-               if (!event.getItem().hasItemMeta()) return;
-               if (!event.getItem().getItemMeta().hasDisplayName()) return;
-               if (event.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §6Navigator")) {
-                    Inventories.navigatorInventory(event.getPlayer());
-               }
-          }
-     }
+    @EventHandler
+    public void onInteract(PlayerInteractEvent event) {
+        if (event.getItem() == null) return;
+        if (event.getItem().getType() == Material.AIR) return;
+        if (event.getItem().getType() == Material.MUSIC_DISC_13) {
+            if (!event.getItem().hasItemMeta()) return;
+            if (!event.getItem().getItemMeta().hasDisplayName()) return;
+            if (event.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §6Navigator")) {
+                Inventories.navigatorInventory(event.getPlayer());
+            }
+        }
+    }
 
-     @EventHandler
-     public void onClick(InventoryClickEvent event) {
-          Player player = (Player) event.getWhoClicked();
-          if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Navigator §8«")) {
-               event.setCancelled(true);
-               if (event.getCurrentItem() == null) return;
-               if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
-                    player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
-               }
+    @EventHandler
+    public void onClick(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+        if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Navigator §8«")) {
+            event.setCancelled(true);
+            if (event.getCurrentItem() == null) return;
+            if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
+                player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
+            }
                /*if(event.getSlot() == 10) {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "LobbyPVP");
                }*/
-               if (event.getSlot() == 12) {
-                    player.closeInventory();
-                    WarpAPI.tpWarp(player, "Spawn");
-               }
-               if (event.getSlot() == 14) {
-                    player.closeInventory();
-                    WarpAPI.tpWarp(player, "GunBattle");
-               }
-               if (event.getSlot() == 16) {
-                    player.closeInventory();
-                    WarpAPI.tpWarp(player, "HypeSMP");
-               }
-          }
-     }
+            if (event.getSlot() == 21) {
+                player.closeInventory();
+                WarpAPI.tpWarp(player, "Spawn");
+            }
+            if (event.getSlot() == 23) {
+                player.closeInventory();
+                WarpAPI.tpWarp(player, "GunBattle");
+            }
+            if (event.getSlot() == 25) {
+                player.closeInventory();
+                WarpAPI.tpWarp(player, "HypeSMP");
+            }
+            if (event.getSlot() == 40) {
+                player.closeInventory();
+                Inventories.WarpNavigator(player);
+            }
+        }
+        if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Warps §8«")) {
+            event.setCancelled(true);
+            if (event.getCurrentItem() == null) return;
+            if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
+                player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
+            }
+            if (event.getSlot() == 11) {
+                player.closeInventory();
+                WarpAPI.tpWarp(player, "RangShop");
+            }
+            if (event.getSlot() == 13) {
+                player.closeInventory();
+                WarpAPI.tpWarp(player, "NameMCReward");
+            }
+            if (event.getSlot() == 15) {
+                player.closeInventory();
+                WarpAPI.tpWarp(player, "GunBattle");
+            }
+            if (event.getSlot() == 18) {
+                player.closeInventory();
+                Inventories.navigatorInventory(player);
+            }
+        }
+    }
 }
