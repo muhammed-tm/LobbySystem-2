@@ -12,29 +12,29 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 
 public class NPCListener implements Listener {
 
-     @EventHandler
-     public void handleNPCInteract(PlayerNPCInteractEvent event) {
-          Player player = event.getPlayer();
-          NPC npc = event.getNPC();
-          if (npc.getProfile().getName().equalsIgnoreCase("§6NameMC Reward")) {
-               if (event.getUseAction() == PlayerNPCInteractEvent.EntityUseAction.INTERACT_AT) {
-                    if (npc.getProfile().hasName() && npc.isLookAtPlayer() && !npc.isImitatePlayer()) {
-                         Inventories.NameMCInventory(player);
-                    }
-               }
-          }
-     }
+    @EventHandler
+    public void handleNPCInteract(PlayerNPCInteractEvent event) {
+        Player player = event.getPlayer();
+        NPC npc = event.getNPC();
+        if (npc.getProfile().getName().equalsIgnoreCase("§6NameMC Reward")) {
+            if (event.getUseAction() == PlayerNPCInteractEvent.EntityUseAction.INTERACT_AT) {
+                if (npc.getProfile().hasName() && npc.isLookAtPlayer() && !npc.isImitatePlayer()) {
+                    Inventories.NameMCInventory(player);
+                }
+            }
+        }
+    }
 
-     @EventHandler
-     public void onClick(InventoryClickEvent event) {
-          Player player = (Player) event.getWhoClicked();
-               if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6NameMC §8«")) {
-               event.setCancelled(true);
-               if (event.getCurrentItem() == null) return;
-               if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
-                    player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
-               }
-          }
-     }
+    @EventHandler
+    public void onClick(InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+        if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6NameMC §8«")) {
+            event.setCancelled(true);
+            if (event.getCurrentItem() == null) return;
+            if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
+                player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
+            }
+        }
+    }
 
 }

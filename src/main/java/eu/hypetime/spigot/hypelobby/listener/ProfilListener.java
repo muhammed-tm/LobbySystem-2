@@ -3,12 +3,10 @@ package eu.hypetime.spigot.hypelobby.listener;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
 import eu.hypetime.spigot.hypelobby.utils.SettingConfig;
-import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Spellcaster;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -22,12 +20,13 @@ public class ProfilListener implements Listener {
     public void onInteract(PlayerInteractEvent event) {
         if (event.getItem() == null) return;
         if (event.getItem().getType() == Material.AIR) return;
-            if (!event.getItem().hasItemMeta()) return;
-            if (!event.getItem().getItemMeta().hasDisplayName()) return;
-            if (event.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §6Profil")) {
-                Inventories.ProfilInventory(event.getPlayer());
+        if (!event.getItem().hasItemMeta()) return;
+        if (!event.getItem().getItemMeta().hasDisplayName()) return;
+        if (event.getItem().getItemMeta().getDisplayName().equalsIgnoreCase("§8» §6Profil")) {
+            Inventories.ProfilInventory(event.getPlayer());
         }
     }
+
     @EventHandler
     public void onClick(InventoryClickEvent event) throws IOException {
         Player player = (Player) event.getWhoClicked();
@@ -44,6 +43,8 @@ public class ProfilListener implements Listener {
 
         }
         if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Einstellungen §8«")) {
+            if(event.getCurrentItem() == null) return;
+            if(event.getCurrentItem().getItemMeta() == null) return;
             if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Teleport Animation")) {
                 SettingConfig.settpanimation(player, !SettingConfig.gettpanimation(player));
                 Inventories.ProfilSettingsInventory(player);
@@ -75,7 +76,7 @@ public class ProfilListener implements Listener {
                     }
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2F, 3F);
                 }
-                }
+            }
         }
     }
 

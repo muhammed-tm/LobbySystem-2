@@ -280,33 +280,34 @@ public class Inventories {
 
         if (!player.hasPermission("lobby.warrior")) {
 
-             if (player.hasPermission("lobby.hyper")) {
+            if (player.hasPermission("lobby.hyper")) {
 
-                  inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
-                          .setName("§dWarrior Rang")
-                          .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjllM2NkMDEwZGNiZWQ0OTI4Njk5OGI0ZmIxNDRkMzM3YmFkZjI2ZGZlZDg3NWRiM2ViYzZkZDEwMjkxYWY4YSJ9fX0=")
-                          .addLoreLine("§6Kosten §8| §8| §c§m25000§l✘§a 20000 Coins")
-                          .addLoreLine("§4§lPERMANENT")
-                          .toItemStack());
+                inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
+                        .setName("§dWarrior Rang")
+                        .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjllM2NkMDEwZGNiZWQ0OTI4Njk5OGI0ZmIxNDRkMzM3YmFkZjI2ZGZlZDg3NWRiM2ViYzZkZDEwMjkxYWY4YSJ9fX0=")
+                        .addLoreLine("§6Kosten §8| §8| §c§m25000§l✘§a 20000 Coins")
+                        .addLoreLine("§4§lPERMANENT")
+                        .toItemStack());
 
-             }else if(!player.hasPermission("lobby.warrior")) {
-                  inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
-                          .setName("§dWarrior Rang")
-                          .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjllM2NkMDEwZGNiZWQ0OTI4Njk5OGI0ZmIxNDRkMzM3YmFkZjI2ZGZlZDg3NWRiM2ViYzZkZDEwMjkxYWY4YSJ9fX0=")
-                          .addLoreLine("§6Kosten §8| §8| §625000 Coins")
-                          .addLoreLine("§4§lPERMANENT")
-                          .toItemStack());
-             }
-        } else {
-             inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
-                     .setName("§dWarrior Rang")
-                     .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjllM2NkMDEwZGNiZWQ0OTI4Njk5OGI0ZmIxNDRkMzM3YmFkZjI2ZGZlZDg3NWRiM2ViYzZkZDEwMjkxYWY4YSJ9fX0=")
-                     .addLoreLine("§aVorhanden")
-                     .toItemStack());
+            } else if (!player.hasPermission("lobby.warrior")) {
+                inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
+                        .setName("§dWarrior Rang")
+                        .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjllM2NkMDEwZGNiZWQ0OTI4Njk5OGI0ZmIxNDRkMzM3YmFkZjI2ZGZlZDg3NWRiM2ViYzZkZDEwMjkxYWY4YSJ9fX0=")
+                        .addLoreLine("§6Kosten §8| §8| §625000 Coins")
+                        .addLoreLine("§4§lPERMANENT")
+                        .toItemStack());
             }
-            player.openInventory(inventory);
+        } else {
+            inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
+                    .setName("§dWarrior Rang")
+                    .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjllM2NkMDEwZGNiZWQ0OTI4Njk5OGI0ZmIxNDRkMzM3YmFkZjI2ZGZlZDg3NWRiM2ViYzZkZDEwMjkxYWY4YSJ9fX0=")
+                    .addLoreLine("§aVorhanden")
+                    .toItemStack());
         }
-    public static void DSGVOInventory (Player player) {
+        player.openInventory(inventory);
+    }
+
+    public static void DSGVOInventory(Player player) {
         Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§8» §6DSGVO §8«");
         for (int i = 0; i < inventory.getSize(); i++) {
             inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
@@ -328,31 +329,32 @@ public class Inventories {
             player.openInventory(inventory);
         }
     }
-        public static void ProfilSettingsInventory (Player player){
-            Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§8» §6Einstellungen §8«");
-            for (int i = 0; i < inventory.getSize(); i++) {
-                inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
-            }
-            if (SettingConfig.gettpanimation(player) == false) {
-                inventory.setItem(11, new ItemBuilder(Material.NETHER_STAR).setName("§6Teleport Animation").addLoreLine("§cdeaktiviert").toItemStack());
-            } else {
-                inventory.setItem(11, new ItemBuilder(Material.NETHER_STAR).setName("§6Teleport Animation").addLoreLine("§aaktiviert").toItemStack());
 
-            }/*
+    public static void ProfilSettingsInventory(Player player) {
+        Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§8» §6Einstellungen §8«");
+        for (int i = 0; i < inventory.getSize(); i++) {
+            inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
+        }
+        if (SettingConfig.gettpanimation(player) == false) {
+            inventory.setItem(11, new ItemBuilder(Material.NETHER_STAR).setName("§6Teleport Animation").addLoreLine("§cdeaktiviert").toItemStack());
+        } else {
+            inventory.setItem(11, new ItemBuilder(Material.NETHER_STAR).setName("§6Teleport Animation").addLoreLine("§aaktiviert").toItemStack());
+
+        }/*
           if(SettingConfig.getsichtbarkeit(player) == false) {
                inventory.setItem(13, new ItemBuilder(Material.LEGACY_STAINED_CLAY).setName("§6Sichtbarkeit").addLoreLine("§aalle").toItemStack());
           }else {
                inventory.setItem(13, new ItemBuilder(Material.LEGACY_STAINED_CLAY).setName("§6Sichtbarkeit").addLoreLine("§ckeine").toItemStack());
           }*/
-            if (SettingConfig.getspawnposition(player) == false) {
-                inventory.setItem(15, new ItemBuilder(Material.COMPASS).setName("§6Spawn-Position").addLoreLine("§7Aktuell §8» §6Spawn").toItemStack());
-            } else {
-                inventory.setItem(15, new ItemBuilder(Material.COMPASS).setName("§6Spawn-Position").addLoreLine("§7Aktuell §8» §6Letzte Position").toItemStack());
-            }
-            inventory.setItem(18, new ItemBuilder(Material.PLAYER_HEAD)
-                    .setName("§cZurück")
-                    .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=")
-                    .toItemStack());
-            player.openInventory(inventory);
+        if (SettingConfig.getspawnposition(player) == false) {
+            inventory.setItem(15, new ItemBuilder(Material.COMPASS).setName("§6Spawn-Position").addLoreLine("§7Aktuell §8» §6Spawn").toItemStack());
+        } else {
+            inventory.setItem(15, new ItemBuilder(Material.COMPASS).setName("§6Spawn-Position").addLoreLine("§7Aktuell §8» §6Letzte Position").toItemStack());
         }
+        inventory.setItem(18, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§cZurück")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=")
+                .toItemStack());
+        player.openInventory(inventory);
     }
+}

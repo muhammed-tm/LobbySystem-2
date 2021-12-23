@@ -2,14 +2,12 @@ package eu.hypetime.spigot.hypelobby.commands;
 
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
-import eu.hypetime.spigot.hypelobby.utils.PlayerDataPresents;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 public class PresentSetupCommand implements CommandExecutor {
 
@@ -24,14 +22,14 @@ public class PresentSetupCommand implements CommandExecutor {
                             .addLoreLine("§aPlatziere mich")
                             .toItemStack());
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Du hast ein Geschenk erhalten. Platziere es um es hinzuzufügen");
-                            player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3.0F, 1.0F);
+                    player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 3.0F, 1.0F);
                 } else {
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cEs ist nur ein Argument erlaubt.");
                 }
             } else {
                 player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDazu hast du keine Rechte.");
             }
-    }
+        }
         return false;
     }
 }

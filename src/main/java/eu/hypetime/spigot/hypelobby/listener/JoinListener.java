@@ -1,14 +1,10 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
-import de.dytanic.cloudnet.CloudNet;
-import de.dytanic.cloudnet.driver.CloudNetDriver;
-import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.commands.SitCommand;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.boots.BootsPlayer;
 import eu.hypetime.spigot.hypelobby.cosmetics.listener.pets.PetsManager;
 import eu.hypetime.spigot.hypelobby.cosmetics.utils.CosmeticsManager;
-import eu.hypetime.spigot.hypelobby.profile.manager.FriendManager;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -18,9 +14,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-
-import java.util.Set;
-import java.util.UUID;
 
 
 
@@ -32,63 +25,58 @@ import java.util.UUID;
 
 public class JoinListener implements Listener {
 
-     @EventHandler
-     public void onJoin(PlayerJoinEvent event) {
-          Player player = event.getPlayer();
-          event.joinMessage(null);
-          Inventories.mainInventory(player);
-          RewardAPI.createIfNotExist(player);
-          StatsManager.updatePlayer(player);
-          CosmeticsManager.createPlayer(player);
-          //HypeLobby.getInstance().getFriendManager().loadPlayer(player.getUniqueId(), player.getName());
+    @EventHandler
+    public void onJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        event.joinMessage(null);
+        Inventories.mainInventory(player);
+        RewardAPI.createIfNotExist(player);
+        StatsManager.updatePlayer(player);
+        CosmeticsManager.createPlayer(player);
 
-          player.setGameMode(GameMode.SURVIVAL);
-          if(SettingConfig.getspawnposition(player) == false) {
-               player.teleport(WarpAPI.getLocation("Spawn"));
-          }
-          player.sendTitle("§6Willkommen", player.getName());
-          player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
-          //BlindScare.updatePlayer(player); //for halloween
-          if(player.getName().equals("quele")) {
-              player.getWorld().strikeLightningEffect(player.getLocation());
-          }
-          if(player.getName().equals("DasAkkusativer")) {
-               player.sendMessage("§4§lAKKU_GHG WAS GHGT???");
-          }
-          /*if(TrailGunListener.blocks.size() > 0) {
-               TrailGunListener.blocks.forEach((location, material) -> {
-                    location.getBlock().setType(material);
-               });
-          }*/
-          player.setFoodLevel(20);
+        player.setGameMode(GameMode.SURVIVAL);
 
-          for (Player onlinePlayer : Bukkit.getOnlinePlayers())
-               ScoreAPI.setScoreboard(onlinePlayer);
-          if (!PlayerDataPresents.existsPlayer(player))
-               (new PlayerDataPresents()).createPlayer(player);
-          if (!PlayerManager.hasAccept(player)) {
-               Inventories.DSGVOInventory(player);
-          }
-     }
+        if (SettingConfig.getspawnposition(player) == false)
+             player.teleport(WarpAPI.getLocation("Spawn"));
 
-     @EventHandler
-     public void onQuit(PlayerQuitEvent event) {
-          event.quitMessage(null);
-          if (SitCommand.sitting.contains(event.getPlayer().getUniqueId())) {
-               SitCommand.sitting.remove(event.getPlayer().getUniqueId());
-               event.getPlayer().getVehicle().remove();
-          }
-          if (HypeLobby.sp.getPlayerUUIDs().contains(event.getPlayer().getUniqueId())) {
-               HypeLobby.sp.removePlayer(event.getPlayer());
-          }
-          if (PetsManager.petMap.containsKey(event.getPlayer())) {
-               PetsManager.removePet(PetsManager.getPet(event.getPlayer()));
-          }
-          if (BootsPlayer.bootsPlayers.containsKey(event.getPlayer())) {
-               BootsPlayer.stopParticle(event.getPlayer());
-               BootsPlayer.bootsPlayers.remove(event.getPlayer());
-          }
-          BootsPlayer.stopParticle(event.getPlayer());
-     }
+        player.sendTitle("§6Willkommen", player.getName());
+        player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+            ScoreAPI.setScoreboard(onlinePlayer);
+        if (!PlayerDataPresents.existsPlayer(player))
+            (new PlayerDataPresents()).createPlayer(player);
+        if (!PlayerManager.hasAccept(player))
+            Inventories.DSGVOInventory(player);
+        if (player.getName().equals("quele"))
+            player.getWorld().strikeLightningEffect(player.getLocation());
+        if (player.getName().equals("DasAkkusativer"))
+            player.sendMessage("§4§lAKKU_GHG WAS GHGT???");
+         player.setFoodLevel(20);
+
+
+          /* Halloween Update <>
+          BlindScare.updatePlayer(player);
+          Halloween Update <> */
+    }
+
+    @EventHandler
+    public void onQuit(PlayerQuitEvent event) {
+        event.quitMessage(null);
+        if (SitCommand.sitting.contains(event.getPlayer().getUniqueId())) {
+            SitCommand.sitting.remove(event.getPlayer().getUniqueId());
+            event.getPlayer().getVehicle().remove();
+        }
+        if (HypeLobby.sp.getPlayerUUIDs().contains(event.getPlayer().getUniqueId()))
+            HypeLobby.sp.removePlayer(event.getPlayer());
+
+        if (PetsManager.petMap.containsKey(event.getPlayer()))
+            PetsManager.removePet(PetsManager.getPet(event.getPlayer()));
+
+        if (BootsPlayer.bootsPlayers.containsKey(event.getPlayer())) {
+            BootsPlayer.stopParticle(event.getPlayer());
+            BootsPlayer.bootsPlayers.remove(event.getPlayer());
+        }
+        BootsPlayer.stopParticle(event.getPlayer());
+    }
 
 }

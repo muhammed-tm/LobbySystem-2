@@ -14,20 +14,20 @@ import org.bukkit.entity.Player;
 */
 public class Top5Command implements CommandExecutor {
 
-     @Override
-     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-          if (!(sender instanceof Player)) {
-               sender.sendMessage("Fehler");
-               return false;
-          }
-          Player player = (Player) sender;
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!(sender instanceof Player)) {
+            sender.sendMessage("Fehler");
+            return false;
+        }
+        Player player = (Player) sender;
 
-          if (args.length != 0) {
-               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Nutze §6/top5");
-               return false;
-          }
-          SQLStats.sendTop5List(player);
+        if (args.length != 0) {
+            player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Nutze §6/top5");
+            return false;
+        }
+        SQLStats.sendTop5List(player);
 
-          return false;
-     }
+        return false;
+    }
 }

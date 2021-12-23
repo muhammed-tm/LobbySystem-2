@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-    Created by Andre
+    Created by HypeTime-Team
     At 00:14 Uhr | 11. Apr.. 2021
     Project HypeLobbySpigot
 */
