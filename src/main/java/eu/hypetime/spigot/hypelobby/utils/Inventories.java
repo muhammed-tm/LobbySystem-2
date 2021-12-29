@@ -86,6 +86,11 @@ public class Inventories {
         for (int i = 0; i < inventory.getSize(); i++) {
             inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
         }
+        inventory.setItem(4, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§6Village Defense")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2NiZjc4ZWE4ZTE0NGM4NjIxNGU5NTMwNDM2ZWI1MDZlNTM0YTMzZGQzMjZjNDI1MGVmMjc5ZDE5NDI0ZGMxZSJ9fX0=")
+                .addLoreLine("§aNEU §8(§61.17.1§8)")
+                .toItemStack());
 
         inventory.setItem(19, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§cSoon")

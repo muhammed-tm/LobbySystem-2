@@ -47,10 +47,13 @@ public class JoinListener implements Listener {
             (new PlayerDataPresents()).createPlayer(player);
         if (!PlayerManager.hasAccept(player))
             Inventories.DSGVOInventory(player);
+
         if (player.getName().equals("quele"))
             player.getWorld().strikeLightningEffect(player.getLocation());
         if (player.getName().equals("DasAkkusativer"))
             player.sendMessage("§4§lAKKU_GHG WAS GHGT???");
+        if (player.getName().equals("McRafy"))
+            player.sendMessage("§4§lHaste heute Sport gemacht???");
          player.setFoodLevel(20);
 
 

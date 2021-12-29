@@ -43,6 +43,12 @@ public class NavListener implements Listener {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "LobbyPVP");
                }*/
+
+
+            if (event.getSlot() == 4) {
+                player.closeInventory();
+                WarpAPI.tpWarp(player, "VillageDefense");
+            }
             if (event.getSlot() == 21) {
                 player.closeInventory();
                 WarpAPI.tpWarp(player, "Spawn");

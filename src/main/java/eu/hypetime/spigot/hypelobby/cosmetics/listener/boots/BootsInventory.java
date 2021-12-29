@@ -38,6 +38,8 @@ public class BootsInventory implements Listener {
                          player.getInventory().setItem(EquipmentSlot.FEET, boots.getItem());
                          new BootsPlayer(player, boots.getParticle());
                          player.closeInventory();
+                         player.playSound(player.getLocation(), Sound.BLOCK_END_PORTAL_SPAWN, 3.0F, 1.0F);
+
                     } else {
                          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix()
                               + "§7Du besitzt §7diese §6Boots §cnicht§8. \n§7Möchtest du es dir kaufen§8? §7Schreibe §aJa §7zum Kaufen und §cNein §7zum Abbrechen§8.");
