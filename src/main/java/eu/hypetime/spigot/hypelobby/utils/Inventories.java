@@ -93,8 +93,9 @@ public class Inventories {
                 .toItemStack());
 
         inventory.setItem(19, new ItemBuilder(Material.PLAYER_HEAD)
-                .setName("§cSoon")
-                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViNTg4YjIxYTZmOThhZDFmZjRlMDg1YzU1MmRjYjA1MGVmYzljYWI0MjdmNDYwNDhmMThmYzgwMzQ3NWY3In19fQ==")
+                .setName("§cKitPVP")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzNmZjQxNmFhOGJlYzE2NjViOTI3MDFmYmU2OGE0ZWZmZmYzZDA2ZWQ5MTQ3NDU0ZmE3NzcxMmRkNjA3OWIzMyJ9fX0=")
+                .addLoreLine("§aNEU §8(§61.17.1 empfohlen§8)")
                 .toItemStack());
 
         inventory.setItem(21, new ItemBuilder(Material.PLAYER_HEAD)
@@ -110,7 +111,6 @@ public class Inventories {
         inventory.setItem(25, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§6HypeSMP")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjNmNGQ1NTVmYjNiOTM1N2FmNzU4MmYyNzM4MDBmMWRhNGFjNjliMDQyMTBjM2FhMzRlNjNkYjJhNDIzNWJiZiJ9fX0=")
-                .addLoreLine("§aNEU §8(§61.17.1§8)")
                 .toItemStack());
 
         inventory.setItem(40, new ItemBuilder(Material.PLAYER_HEAD)
