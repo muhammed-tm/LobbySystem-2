@@ -21,10 +21,12 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
@@ -47,6 +49,7 @@ public class HypeLobby extends JavaPlugin {
      private Config config;
      private Constants constants;
      //private FriendManager friendManager;
+     public HashMap<Player, BukkitRunnable> run = new HashMap<>();
 
      public static HypeLobby getInstance() {
           return instance;
@@ -130,11 +133,14 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new SitCommand(), this);
           pluginManager.registerEvents(new DoubleJumpListener(), this);
           pluginManager.registerEvents(new ClickSignListener(), this);
+          //pluginManager.registerEvents(new SneakListener(), this);
           //pluginManager.registerEvents(new FriendInteractListener(), this);
 
           //Cosmetics
           pluginManager.registerEvents(new CosmeticsListener(), this);
           pluginManager.registerEvents(new BuyListener(), this);
+
+          pluginManager.registerEvents(new SchildListener(), this);
 
 
           //SHOP
@@ -152,6 +158,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new EnderpearlListener(), this);
           pluginManager.registerEvents(new TeleportBowListener(), this);
           //pluginManager.registerEvents(new TrailGunListener(), this);
+          pluginManager.registerEvents(new RaketenWerfer(), this);
 
           //Pets
           pluginManager.registerEvents(new PetsInventory(), this);

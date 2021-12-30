@@ -40,6 +40,33 @@ public class Inventories {
         inventory.setItem(8, new ItemBuilder(Material.PLAYER_HEAD).setName("§8» §6Profil").setSkullOwner(player.getName()).toItemStack());
     }
 
+    public static void main2Inventory(Player player) {
+        PlayerInventory inventory = player.getInventory();
+        inventory.setChestplate(new ItemStack(Material.AIR));
+        inventory.setLeggings(new ItemStack(Material.AIR));
+        inventory.setBoots(new ItemStack(Material.AIR));
+
+        inventory.setItem(0, new ItemAPI("§8» §6Navigator", Material.MUSIC_DISC_13, 1).build());
+        inventory.setItem(1, new ItemAPI("§8» §6LobbySwitcher", Material.BEACON, 1).build());
+          /*int random = new Random().nextInt(2);
+          switch (random) {
+               case 0:
+                    inventory.setItem(6, new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build());
+                    break;
+               case 1:
+                    inventory.setItem(6, new ItemAPI("§8» §5Grappling hook", Material.FISHING_ROD, 1).build());
+                    break;
+
+          }*/
+        inventory.setItem(7, new ItemAPI("§8» §6Cosmetics", Material.CHEST, 1).build());
+        inventory.setItem(8, new ItemBuilder(Material.PLAYER_HEAD).setName("§8» §6Profil").setSkullOwner(player.getName()).toItemStack());
+    }
+
+    public static void sneakInventory(Player player) {
+        PlayerInventory inventory = player.getInventory();
+
+        inventory.setItem(1, new ItemAPI("§5Schild", Material.ENDER_EYE, 1).build());
+    }
     public static void pvpInventory(Player player) {
         PlayerInventory inventory = player.getInventory();
         inventory.clear();

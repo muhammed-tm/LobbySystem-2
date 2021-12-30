@@ -16,19 +16,12 @@ public class PatchNotesCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player player) {
-            player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Update§8: §6v2.5.1\n" +
-                    "§6§lLobby\n" +
-                    "§8➥ §7Winter Update hinzugefügt\n" +
-                    "§8➥ §7Halloween Feature entfernt\n" +
-                    "§8➥ §7Cosmetics hinzugefügt\n" +
-                    "§8➥ §7Profile + Settings System hinzugefügt\n" +
-                    "§6§lGunBattle \n" +
-                    "§8➥ §7GunBattle Event System hinzugefügt\n" +
-                    "§8➥ §7GunBattle bug fixes\n" +
-                    "§8➥ §7GunBattle Killstreak verbessert\n" +
-                    "§6§lSonstiges\n" +
-                    "§8➥ §7AntiCheat update\n" +
-                    "§8➥ §7Discord Commands hinzugefügt (ht!status, ht!top5)");
+            player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Update§8: §6v2.6\n" +
+                    "§6§lNetzwerk\n" +
+                    "§8➥ §7Village Defense wurde hinzugefügt\n" +
+                    "§8➥ §7KitPVP wurde hinzugefügt\n" +
+                    "§8➥ §7AntiCrash Update\n" +
+                    "§8➥ §7Neues Forum\n");
         }
         return false;
     }

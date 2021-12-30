@@ -5,6 +5,7 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -19,8 +20,12 @@ public class ChatListener implements Listener {
 
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
+        String msg = event.getMessage();
+        Player player = event.getPlayer();
+
         if (PlayerManager.hasAccept(event.getPlayer())) {
             event.setFormat(event.getPlayer().getDisplayName() + "§8: §7" + event.getMessage());
+
         } else {
             TextComponent message = new TextComponent("Du musst davor die §lDatenschutz-Grundverordnung §7Akzeptieren. §7(§a§l/dsgvo accept§7)§8.");
             message.setFont("minecraft:uniform");
@@ -31,4 +36,5 @@ public class ChatListener implements Listener {
             event.setCancelled(true);
         }
     }
+
 }
