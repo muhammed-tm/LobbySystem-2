@@ -62,7 +62,6 @@ public class JoinListener implements Listener {
         player.setFoodLevel(20);
         player.setExp(0.99f);
 
-
           /* Halloween Update <>
           BlindScare.updatePlayer(player);
           Halloween Update <> */

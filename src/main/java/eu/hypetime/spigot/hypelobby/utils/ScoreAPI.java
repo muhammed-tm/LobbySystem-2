@@ -131,7 +131,7 @@ public class ScoreAPI {
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§c§lW§f§lE§c§lI§f§lH§c§lN§f§lA§c§lC§f§lH§c§lT§f§lS §7- §c§lU§f§lP§c§lD§f§lA§c§lT§f§lE"));
                               on.setLevel(countServiceInfoSnapshotPlayerCount());
                          case 6:
-                              on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6HypeTime.EU §8| §7Version §62.5"));
+                              on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6HypeTime.EU §8| §7Version §62.6"));
                               on.setLevel(countServiceInfoSnapshotPlayerCount());
                               break;
                          case 5:

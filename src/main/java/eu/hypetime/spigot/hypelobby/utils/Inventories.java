@@ -1,5 +1,6 @@
 package eu.hypetime.spigot.hypelobby.utils;
 
+import eu.hypetime.spigot.hypelobby.HypeLobby;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -15,6 +16,7 @@ import org.bukkit.potion.PotionEffectType;
     Project HypeLobbySpigot
 */
 public class Inventories {
+
 
     public static void mainInventory(Player player) {
         PlayerInventory inventory = player.getInventory();
@@ -65,7 +67,7 @@ public class Inventories {
     public static void sneakInventory(Player player) {
         PlayerInventory inventory = player.getInventory();
 
-        inventory.setItem(1, new ItemAPI("§5Schild", Material.ENDER_EYE, 1).build());
+        inventory.setItem(1, new ItemAPI("§6Schild", Material.ENDER_EYE, 1).build());
     }
     public static void pvpInventory(Player player) {
         PlayerInventory inventory = player.getInventory();
@@ -186,6 +188,7 @@ public class Inventories {
         player.openInventory(inventory);
 
     }
+
 
     public static void DailyRewardInventory(Player player) {
         Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§8» §6Daily Rewards §8«");

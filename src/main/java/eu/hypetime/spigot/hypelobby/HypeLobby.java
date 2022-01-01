@@ -134,7 +134,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new SitCommand(), this);
           pluginManager.registerEvents(new DoubleJumpListener(), this);
           pluginManager.registerEvents(new ClickSignListener(), this);
-          //pluginManager.registerEvents(new SneakListener(), this);
+          pluginManager.registerEvents(new SneakListener(), this);
           //pluginManager.registerEvents(new FriendInteractListener(), this);
 
           //Cosmetics
@@ -195,6 +195,7 @@ public class HypeLobby extends JavaPlugin {
               e.printStackTrace();
          }
     }
+
      public static ArrayList<UUID> getNonplayersvisible() {
           return noplayersvisible;
      }

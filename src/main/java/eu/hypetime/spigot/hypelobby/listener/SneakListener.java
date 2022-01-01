@@ -11,9 +11,11 @@ public class SneakListener implements Listener {
     @EventHandler
     public void onPlayerToggleSneakEvent(PlayerToggleSneakEvent event) {
         Player player = event.getPlayer();
-        if(!player.isSneaking()) {
-            Inventories.sneakInventory(player);
-        }else {
+        if (!player.isSneaking()) {
+            if (player.hasPermission("lobby.shield")) {
+                Inventories.sneakInventory(player);
+            }
+        } else {
             Inventories.main2Inventory(player);
         }
     }
