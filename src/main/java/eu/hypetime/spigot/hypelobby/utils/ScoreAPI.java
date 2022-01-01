@@ -33,7 +33,7 @@ public class ScoreAPI {
           if (obj == null) {
                obj = sb.registerNewObjective("aaa", "bbb", "ccc");
           }
-          obj.setDisplayName("§7» §cH§fy§cp§fe§cT§fi§cm§fe §7«");
+          obj.setDisplayName("§7» §6HypeTime §7«");
           obj.setDisplaySlot(DisplaySlot.SIDEBAR);
 
           for (Player online : Bukkit.getOnlinePlayers()) {

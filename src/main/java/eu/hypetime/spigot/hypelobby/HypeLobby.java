@@ -159,7 +159,7 @@ public class HypeLobby extends JavaPlugin {
           pluginManager.registerEvents(new EnderpearlListener(), this);
           pluginManager.registerEvents(new TeleportBowListener(), this);
           //pluginManager.registerEvents(new TrailGunListener(), this);
-          pluginManager.registerEvents(new RaketenWerfer(), this);
+          pluginManager.registerEvents(new RocketLaunchListener(), this);
 
           //Pets
           pluginManager.registerEvents(new PetsInventory(), this);
