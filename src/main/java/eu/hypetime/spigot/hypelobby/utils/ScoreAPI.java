@@ -2,6 +2,8 @@ package eu.hypetime.spigot.hypelobby.utils;
 
 import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.driver.permission.IPermissionUser;
+import de.dytanic.cloudnet.driver.service.ServiceInfoSnapshot;
+import de.dytanic.cloudnet.ext.bridge.BridgeServiceProperty;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -127,30 +129,55 @@ public class ScoreAPI {
                     switch (count) {
                          case 7:
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§c§lW§f§lE§c§lI§f§lH§c§lN§f§lA§c§lC§f§lH§c§lT§f§lS §7- §c§lU§f§lP§c§lD§f§lA§c§lT§f§lE"));
+                              on.setLevel(countServiceInfoSnapshotPlayerCount());
                          case 6:
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6HypeTime.EU §8| §7Version §62.5"));
+                              on.setLevel(countServiceInfoSnapshotPlayerCount());
                               break;
                          case 5:
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§7Wir suchen §6Teammitglieder"));
+                              on.setLevel(countServiceInfoSnapshotPlayerCount());
                               break;
                          case 4:
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6Hacker? §8| §7/report"));
+                              on.setLevel(countServiceInfoSnapshotPlayerCount());
                               break;
                          case 3:
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§7Wir empfehlen die Version §61.17.1"));
+                              on.setLevel(countServiceInfoSnapshotPlayerCount());
                               break;
                          case 2:
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6TeamSpeak §8| §7ts.HypeTime.eu"));
+                              on.setLevel(countServiceInfoSnapshotPlayerCount());
                               break;
                          case 1:
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§7Wir unterstützen §b§lLabyMod"));
+                              on.setLevel(countServiceInfoSnapshotPlayerCount());
                               break;
                          case 0:
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6Discord §8| §7www.hypetime.eu/discord"));
+                              on.setLevel(countServiceInfoSnapshotPlayerCount());
                               break;
                     }
                }
           }, 100, 100);
      }
+     public static int countServiceInfoSnapshotPlayerCount() {
+          int counter = 0;
 
+          for (ServiceInfoSnapshot serviceInfoSnapshot : CloudNetDriver.getInstance().getCloudServiceProvider()
+                  .getCloudServices("Proxy")) {
+               counter += serviceInfoSnapshot.getProperty(BridgeServiceProperty.ONLINE_COUNT).orElse(0);
+          }
+
+          return counter;
+     }
+/*
+     public static void startLevelBar() {
+          for (Player on : Bukkit.getOnlinePlayers()) {
+               Bukkit.getScheduler().runTaskLater(HypeLobby.getInstance(), () -> {
+                    on.setLevel(countServiceInfoSnapshotPlayerCount());
+               }, 35L);
+          }
+     }*/
 }

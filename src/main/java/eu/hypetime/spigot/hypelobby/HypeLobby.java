@@ -79,6 +79,7 @@ public class HypeLobby extends JavaPlugin {
           registerCommands();
 
           ScoreAPI.startScheduler();
+         // ScoreAPI.startLevelBar();
 
           List<Material> materials = new ArrayList<>();
           materials.add(Material.TERRACOTTA);

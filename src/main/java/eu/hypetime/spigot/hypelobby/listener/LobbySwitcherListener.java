@@ -139,6 +139,7 @@ public class LobbySwitcherListener implements Listener {
             } else {
                 Bukkit.getScheduler().runTaskLater(HypeLobby.getInstance(), () -> {
                     new CloudServer().sendPlayer(player, event.getCurrentItem().getItemMeta().getDisplayName().replace("§7", ""));
+
                 }, 35L);
             }
         }
