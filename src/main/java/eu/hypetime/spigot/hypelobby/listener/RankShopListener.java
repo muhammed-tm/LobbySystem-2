@@ -64,8 +64,8 @@ public class RankShopListener implements Listener {
                 player.closeInventory();
                 if (!player.hasPermission("lobby.warrior")) {
                     if (player.hasPermission("lobby.hyper")) {
-                        if (CoinsAPI.getCoins(player) >= 20000) {
-                            CoinsAPI.removeCoins(player, 20000);
+                        if (CoinsAPI.getCoins(player) >= 25000) {
+                            CoinsAPI.removeCoins(player, 25000);
                             IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
                             user.getGroups().clear();
                             player.sendTitle("§6Neuen Rang", "§dWarrior Rang");
