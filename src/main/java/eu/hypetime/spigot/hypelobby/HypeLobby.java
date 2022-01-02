@@ -172,6 +172,7 @@ public class HypeLobby extends JavaPlugin {
 
           //Particle
           pluginManager.registerEvents(new ParticleInventory(), this);
+          pluginManager.registerEvents(new Lottery(), this);
      }
 
      private void registerCommands() {

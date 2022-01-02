@@ -48,9 +48,9 @@ public class RankShopListener implements Listener {
                         IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
                         user.getGroups().clear();
                         player.sendTitle("§6Neuen Rang", "§eHyper Rang");
-                            user.addGroup("Hyper");
-                            for (Player onlinePlayer : Bukkit.getOnlinePlayers())
-                                ScoreAPI.setScoreboard(onlinePlayer);
+                        user.addGroup("Hyper");
+                        for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+                            ScoreAPI.setScoreboard(onlinePlayer);
                     } else {
                         player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDu hast nicht genug Coins!");
                     }
@@ -69,9 +69,9 @@ public class RankShopListener implements Listener {
                             IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
                             user.getGroups().clear();
                             player.sendTitle("§6Neuen Rang", "§dWarrior Rang");
-                                user.addGroup("Warrior");
-                                for (Player onlinePlayer : Bukkit.getOnlinePlayers())
-                                    ScoreAPI.setScoreboard(onlinePlayer);
+                            user.addGroup("Warrior");
+                            for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+                                ScoreAPI.setScoreboard(onlinePlayer);
                         } else {
                             player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDu hast nicht genug Coins!");
 
@@ -82,9 +82,9 @@ public class RankShopListener implements Listener {
                             IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
                             user.getGroups().clear();
                             player.sendTitle("§6Neuen Rang", "§dWarrior Rang");
-                                user.addGroup("Warrior");
-                                for (Player onlinePlayer : Bukkit.getOnlinePlayers())
-                                    ScoreAPI.setScoreboard(onlinePlayer);
+                            user.addGroup("Warrior");
+                            for (Player onlinePlayer : Bukkit.getOnlinePlayers())
+                                ScoreAPI.setScoreboard(onlinePlayer);
                         } else {
                             player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDu hast nicht genug Coins!");
 

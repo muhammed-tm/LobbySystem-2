@@ -17,6 +17,9 @@ repositories {
         url 'https://repo.cloudnetservice.eu/repository/releases/'
     }
     maven {
+        url "https://repo.codemc.io/repository/maven-public/"
+    }
+    maven {
         url 'https://jitpack.io'
     }
     maven {
@@ -41,6 +44,7 @@ dependencies {
     implementation 'com.elmakers.mine.bukkit:EffectLib:9.3'
     compileOnly 'com.github.LabyMod:labymod-server-api:1.0'
     implementation 'com.github.LabyMod:widgets:1.1.1'
+    implementation 'com.gmail.filoghost.holographicdisplays:holographicdisplays-api:2.4.9'
 }
 
 compileJava.options.encoding = 'UTF-8'

@@ -86,19 +86,27 @@ public class CosmeticsManager {
      }
 
      public static void addGadget(Player player, Gadget gadget) {
-          MySQL.update("UPDATE lobby_gadgets SET " + gadget.getCategory().getName() + " = '" + getList(player, gadget.getCategory()) + ";" + gadget.getName() + "'");
+          StringBuilder builder = new StringBuilder(getList(player, gadget.getCategory()));
+          builder.append(";" + gadget.getName());
+          MySQL.update("UPDATE lobby_gadgets SET " + gadget.getCategory().getName() + " = '" + builder.toString() + "' WHERE UUID = '" + player.getUniqueId().toString());
      }
 
      public static void addPet(Player player, Pet pet) {
-          MySQL.update("UPDATE lobby_gadgets SET " + pet.getCategory().getName() + " = '" + getList(player, pet.getCategory()) + ";" + pet.getName() + "'");
+          StringBuilder builder = new StringBuilder(getList(player, pet.getCategory()));
+          builder.append(";" + pet.getName());
+          MySQL.update("UPDATE lobby_gadgets SET " + pet.getCategory().getName() + " = '" + builder.toString() + "' WHERE UUID = '" + player.getUniqueId().toString());
      }
 
      public static void addParticle(Player player, Particle particle) {
-          MySQL.update("UPDATE lobby_gadgets SET " + particle.getCategory().getName() + " = '" + getList(player, particle.getCategory()) + ";" + particle.getName() + "'");
+          StringBuilder builder = new StringBuilder(getList(player, particle.getCategory()));
+          builder.append(";" + particle.getName());
+          MySQL.update("UPDATE lobby_gadgets SET " + particle.getCategory().getName() + " = '" + builder.toString() + "' WHERE UUID = '" + player.getUniqueId().toString());
      }
 
      public static void addBoots(Player player, Boots boots) {
-          MySQL.update("UPDATE lobby_gadgets SET " + boots.getCategory().getName() + " = '" + getList(player, boots.getCategory()) + ";" + boots.getName() + "'");
+          StringBuilder builder = new StringBuilder(getList(player, boots.getCategory()));
+          builder.append(";" + boots.getName());
+          MySQL.update("UPDATE lobby_gadgets SET " + boots.getCategory().getName() + " = '" + builder.toString() + "' WHERE UUID = '" + player.getUniqueId().toString());
      }
 
 }

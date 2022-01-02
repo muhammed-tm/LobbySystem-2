@@ -3,24 +3,19 @@ package eu.hypetime.spigot.hypelobby.listener;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.ItemAPI;
 import eu.hypetime.spigot.hypelobby.utils.ItemBuilder;
-import eu.hypetime.spigot.hypelobby.utils.SchutzSchildManager;
 import org.bukkit.*;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class SchildListener implements Listener {
 
@@ -35,11 +30,15 @@ public class SchildListener implements Listener {
     int time;
 
     BukkitRunnable task;
+
     @EventHandler
     public void onInteract(PlayerInteractEvent event) {
         Player p = event.getPlayer();
-        if (event.getItem().getItemMeta().getDisplayName().equals("§6Schild")) {
-            if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR) {
+        if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR) {
+            if (event.getItem() == null) return;
+            if (event.getItem().getItemMeta() == null) return;
+            if (event.getItem().getItemMeta().getDisplayName() == null) return;
+            if (event.getItem().getItemMeta().getDisplayName().equals("§6Schild")) {
                 SchildInventory(p);
             }
         }
@@ -50,14 +49,14 @@ public class SchildListener implements Listener {
         final Player player = (Player) event.getWhoClicked();
         if (player.getOpenInventory().getTitle().equals("§8» §6Schild")) {
             if (event.getCurrentItem() == null) return;
-                if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§c§lDEAKTIVIEREN")) {
-                    if (player.hasPermission("lobby.shield")) {
-                        if (schutzschild.contains(player)) {
-                            schutzschild.remove(player);
-                            SchutzSchildManager(p);
-                            player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Das Schild wurde §cdeaktiviert");
-                            player.closeInventory();
-                        }
+            if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§c§lDEAKTIVIEREN")) {
+                if (player.hasPermission("lobby.shield")) {
+                    if (schutzschild.contains(player)) {
+                        schutzschild.remove(player);
+                        SchutzSchildManager(p);
+                        player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Das Schild wurde §cdeaktiviert");
+                        player.closeInventory();
+                    }
                 }
                 player.closeInventory();
             } else if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§a§lAKTIVIEREN")) {
@@ -92,23 +91,25 @@ public class SchildListener implements Listener {
             inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
         }
         if (schutzschild.contains(player)) {
-                inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD)
-                        .setName("§c§lDEAKTIVIEREN")
-                        .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWZkZTNiZmNlMmQ4Y2I3MjRkZTg1NTZlNWVjMjFiN2YxNWY1ODQ2ODRhYjc4NTIxNGFkZDE2NGJlNzYyNGIifX19")
-                        .toItemStack());
+            inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD)
+                    .setName("§c§lDEAKTIVIEREN")
+                    .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWZkZTNiZmNlMmQ4Y2I3MjRkZTg1NTZlNWVjMjFiN2YxNWY1ODQ2ODRhYjc4NTIxNGFkZDE2NGJlNzYyNGIifX19")
+                    .toItemStack());
 
-            } else {
-                inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD)
-                        .setName("§a§lAKTIVIEREN\n")
-                        .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTllNGJkY2YxNzJkNWRjNzdjMmJkNGUzN2FkOTg1Mzk5YTlmMmNkZWJmNzI0NjM5MjllYTRiNjY2ZWY2ZjgwIn19fQ==")
-                        .toItemStack());
-                player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 3.0F, 1.0F);
-            }
+        } else {
+            inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD)
+                    .setName("§a§lAKTIVIEREN\n")
+                    .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTllNGJkY2YxNzJkNWRjNzdjMmJkNGUzN2FkOTg1Mzk5YTlmMmNkZWJmNzI0NjM5MjllYTRiNjY2ZWY2ZjgwIn19fQ==")
+                    .toItemStack());
+            player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 3.0F, 1.0F);
+        }
         player.openInventory(inventory);
     }
+
     public ArrayList<Player> schutzschild() {
         return this.schutzschild;
     }
+
     public void SchutzSchildManager(final Player p) {
         int multiply = 2;
         double hight = 1.0D;

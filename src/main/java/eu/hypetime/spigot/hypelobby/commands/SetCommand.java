@@ -1,6 +1,10 @@
 package eu.hypetime.spigot.hypelobby.commands;
 
+import com.gmail.filoghost.holographicdisplays.api.Hologram;
+import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
+import eu.hypetime.spigot.hypelobby.listener.Lottery;
+import eu.hypetime.spigot.hypelobby.utils.MySQL;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -52,9 +56,10 @@ public class SetCommand implements CommandExecutor {
                 && !args[0].equalsIgnoreCase("NameMCReward")
                 && !args[0].equalsIgnoreCase("VillageDefense")
                 && !args[0].equalsIgnoreCase("KitPVP")
+                && !args[0].equalsIgnoreCase("Lotto")
                 && !args[0].equalsIgnoreCase("rgbblocks")) {
             player.sendMessage(prefix + "Bitte gebe eine gültige Location an§8. §6Locations§8:");
-            player.sendMessage("§6Spawn\n§6GunBattle\n§6LobbyPVP\n§6Belohnung\n§61\n§62\n§63\n§6RangShop\n§6NameMCReward\nVillageDefense\nKitPVP\n§6RGBBlocks");
+            player.sendMessage("§6Spawn\n§6GunBattle\n§6LobbyPVP\n§6Belohnung\n§61\n§62\n§63\n§6RangShop\n§6NameMCReward\n§6VillageDefense\n§6KitPVP\n§6Lotto\n§6RGBBlocks");
             return false;
         }
 
@@ -80,6 +85,12 @@ public class SetCommand implements CommandExecutor {
                 armorStand.getEquipment().setBoots(new ItemStack(Material.IRON_BOOTS));
                 armorStand.setInvulnerable(true);
                 armorStand.addDisabledSlots(EquipmentSlot.values());
+            }
+            if (args[0].equalsIgnoreCase("Lotto")) {
+                player.getLocation().getBlock().setType(Material.CHEST);
+               /* Hologram holo = HologramsAPI.createHologram(HypeLobby.getInstance(), player.getLocation().add(0, 2, 0));
+                holo.appendTextLine("§6Lotto Tickets(" + MySQL.getFreeTickets(player.getUniqueId()) + ")");
+                holo.appendItemLine(new ItemStack(Material.GOLD_BLOCK));*/
             }
         }
 
