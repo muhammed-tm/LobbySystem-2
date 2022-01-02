@@ -26,6 +26,9 @@ public class RocketLaunchListener implements Listener {
         Player player = event.getPlayer();
 
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.RIGHT_CLICK_AIR) {
+            if(event.getItem() == null) return;
+            if(event.getItem().getItemMeta() == null) return;
+            if(event.getItem().getItemMeta().getDisplayName() == null) return;
             if (event.getItem().getItemMeta().getDisplayName().equals("§6RaketenWerfer")) {
                 event.setCancelled(true);
                 if (!cooldown.contains(player)) {

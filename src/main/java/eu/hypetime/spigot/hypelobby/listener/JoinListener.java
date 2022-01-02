@@ -15,8 +15,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import static eu.hypetime.spigot.hypelobby.utils.ScoreAPI.countServiceInfoSnapshotPlayerCount;
-
 
 
 /*
@@ -26,7 +24,6 @@ import static eu.hypetime.spigot.hypelobby.utils.ScoreAPI.countServiceInfoSnapsh
 */
 
 public class JoinListener implements Listener {
-    int counter = 0;
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
@@ -40,27 +37,22 @@ public class JoinListener implements Listener {
         player.setGameMode(GameMode.SURVIVAL);
 
         if (SettingConfig.getspawnposition(player) == false)
-            player.teleport(WarpAPI.getLocation("Spawn"));
+             player.teleport(WarpAPI.getLocation("Spawn"));
 
-        player.sendTitle("§6Willkommen", "§7" + player.getName());
+        player.sendTitle("§6Willkommen", player.getName());
         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
+        for (Player onlinePlayer : Bukkit.getOnlinePlayers())
             ScoreAPI.setScoreboard(onlinePlayer);
-            onlinePlayer.setLevel(countServiceInfoSnapshotPlayerCount());
-        }
         if (!PlayerDataPresents.existsPlayer(player))
             (new PlayerDataPresents()).createPlayer(player);
         if (!PlayerManager.hasAccept(player))
             Inventories.DSGVOInventory(player);
-
         if (player.getName().equals("quele"))
             player.getWorld().strikeLightningEffect(player.getLocation());
         if (player.getName().equals("DasAkkusativer"))
             player.sendMessage("§4§lAKKU_GHG WAS GHGT???");
-        if (player.getName().equals("McRafy"))
-            player.sendMessage("§4§lHaste heute Sport gemacht???");
-        player.setFoodLevel(20);
-        player.setExp(0.99f);
+         player.setFoodLevel(20);
+
 
           /* Halloween Update <>
           BlindScare.updatePlayer(player);
@@ -70,9 +62,6 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         event.quitMessage(null);
-        for (Player onlinePlayer : Bukkit.getOnlinePlayers())
-            onlinePlayer.setLevel(countServiceInfoSnapshotPlayerCount());
-
         if (SitCommand.sitting.contains(event.getPlayer().getUniqueId())) {
             SitCommand.sitting.remove(event.getPlayer().getUniqueId());
             event.getPlayer().getVehicle().remove();
@@ -89,6 +78,5 @@ public class JoinListener implements Listener {
         }
         BootsPlayer.stopParticle(event.getPlayer());
     }
-
 
 }
