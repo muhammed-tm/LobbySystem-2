@@ -21,6 +21,11 @@ public class PatchNotesCommand implements CommandExecutor {
                     "§8➥ §7Village Defense wurde hinzugefügt\n" +
                     "§8➥ §7KitPVP wurde hinzugefügt\n" +
                     "§8➥ §7AntiCrash Update\n" +
+                    "§8➥ §7Neues Gadget\n" +
+                    "§8➥ §7Winterlobby entfernt\n" +
+                    "§8➥ §7Schneeflocken entfernt\n" +
+                    "§8➥ §7Geschenke entfernt in der Lobby\n" +
+                    "§8➥ §7ClanSystem wurde hinzugefügt\n" +
                     "§8➥ §7Neues Forum\n");
         }
         return false;
