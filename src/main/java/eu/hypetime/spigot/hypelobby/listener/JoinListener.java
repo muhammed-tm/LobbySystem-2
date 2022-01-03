@@ -77,6 +77,11 @@ public class JoinListener implements Listener {
             BootsPlayer.bootsPlayers.remove(event.getPlayer());
         }
         BootsPlayer.stopParticle(event.getPlayer());
+
+        if(Lottery.lottery.contains(event.getPlayer())) {
+            CoinsAPI.addCoins(event.getPlayer(), Lottery.currentCoins.get(event.getPlayer()));
+            Lottery.lottery.remove(event.getPlayer());
+        }
     }
 
 }
