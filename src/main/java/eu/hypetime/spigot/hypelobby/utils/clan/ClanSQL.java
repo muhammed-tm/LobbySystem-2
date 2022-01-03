@@ -117,46 +117,50 @@ public class ClanSQL {
      }
 
      public static void promote(Player player, String clanname, String name) {
-          if (getAllUser(clanname).contains(name)) {
-               if (!getModList(clanname).contains(name)) {
-                    removeMember(clanname, name);
-                    addMod(clanname, name);
-                    if (Bukkit.getPlayer(name) != null) {
-                         Player target = Bukkit.getPlayer(name);
-                         message(target, "§7Du wurdest zu §cMod §ahochgestuft§8. §aClan§8: §e" + clanname);
-                         title(target, "§7Du wurdest zu §cMod", "§ahochgestuft");
-                    }
-                    message(player, "§7Du hast den Spieler §aerfolgreich §7zu §cMod §ahochgestuft§8.");
-                    title(player, "§7Du hast §e" + name + " §7zu §cMod", "§ahochgestuft");
+          if (getMemberList(clanname).contains(name)) {
+               removeMember(clanname, name);
+               addMod(clanname, name);
+               player.sendMessage(getMemberList(clanname).toString());
+               player.sendMessage(getModList(clanname).toString());
+               if (Bukkit.getPlayer(name) != null) {
+                    Player target = Bukkit.getPlayer(name);
+                    message(target, "§7Du wurdest zu §cMod §ahochgestuft§8. §aClan§8: §e" + clanname);
+                    title(target, "§7Du wurdest zu §cMod", "§ahochgestuft");
+               }
+               message(player, "§7Du hast den Spieler §aerfolgreich §7zu §cMod §ahochgestuft§8.");
+               title(player, "§7Du hast §e" + name + " §7zu §cMod", "§ahochgestuft");
+          } else {
+               if (getModList(clanname).contains(name)) {
+                    message(player, "§7Diesen §7Spieler §7kannst §7du §cnicht §7demoten §7da §7er bereits §cMod §7ist§8.");
                } else if (isPlayerLeader(name, clanname)) {
                     message(player, "§7Du kannst dich nicht selbst promoten§8.");
                } else {
-                    message(player, "§7Der Spieler ist §cbereits §7Mod§8.");
+                    message(player, "§7Dieser Spieler ist §cnicht §7in deinem Clan§8.");
                }
-          } else {
-               message(player, "§7Dieser Spieler ist §cnicht §7in deinem Clan§8.");
           }
      }
 
      public static void demote(Player player, String clanname, String name) {
-          if (getAllUser(clanname).contains(name)) {
-               if (getModList(clanname).contains(name)) {
-                    removeMod(clanname, name);
-                    addMember(clanname, name);
-                    if (Bukkit.getPlayer(name) != null) {
-                         Player target = Bukkit.getPlayer(name);
-                         message(target, "§7Du wurdest zu Member §cdegradiert§8.\n §aClan§8: §e" + clanname);
-                         title(target, "§7Du wurdest zu Member", "§cdegradiert");
-                    }
-                    message(player, "§7Du hast den Spieler §aerfolgreich §7zu Member §cdegradiert§8.");
-                    title(player, "§7Du hast §e" + name + " §7zu Member", "§cdegradiert");
-               } else if (isPlayerLeader(name, clanname)) {
-                    message(player, "§7Du kannst dich nicht selbst promoten§8.");
-               } else {
-                    message(player, "§7Der Spieler ist §ckein §7Mod§8.");
+          if (getModList(clanname).contains(name)) {
+               removeMod(clanname, name);
+               addMember(clanname, name);
+               player.sendMessage(getMemberList(clanname).toString());
+               player.sendMessage(getModList(clanname).toString());
+               if (Bukkit.getPlayer(name) != null) {
+                    Player target = Bukkit.getPlayer(name);
+                    message(target, "§7Du wurdest zu Member §cdegradiert§8.\n §aClan§8: §e" + clanname);
+                    title(target, "§7Du wurdest zu Member", "§cdegradiert");
                }
+               message(player, "§7Du hast den Spieler §aerfolgreich §7zu Member §cdegradiert§8.");
+               title(player, "§7Du hast §e" + name + " §7zu Member", "§cdegradiert");
           } else {
-               message(player, "§7Dieser Spieler ist §cnicht §7in deinem Clan§8.");
+               if (getMemberList(clanname).contains(name)) {
+                    message(player, "§7Diesen §7Spieler §7kannst §7du §cnicht §7demoten §7da §7er kein §cMod §7ist§8.");
+               } else if (isPlayerLeader(name, clanname)) {
+                    message(player, "§7Du kannst dich nicht selbst demoten§8.");
+               } else {
+                    message(player, "§7Dieser Spieler ist §cnicht §7in deinem Clan§8.");
+               }
           }
      }
 
@@ -177,6 +181,8 @@ public class ClanSQL {
                     message(player, "§7Diesen §7Spieler §7kannst §7du §cnicht §7kicken §7da §7er §cMod §7ist§8.");
                } else if (isPlayerLeader(name, clanname)) {
                     message(player, "§7Du kannst dich nicht selbst kicken§8.");
+               } else {
+                    message(player, "§7Dieser Spieler ist §cnicht §7in deinem Clan§8.");
                }
           }
      }

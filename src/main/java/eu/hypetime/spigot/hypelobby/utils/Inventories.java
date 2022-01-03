@@ -179,6 +179,7 @@ public class Inventories {
           Inventory inventory;
           if (PlayerClanSQL.getClanNameExact(player) == "Kein Clan") {
                inventory = Bukkit.createInventory(null, 45, "§6Clan §8| §7Mitglieder");
+               inventory.clear();
                for (int i = 0; i < 9; i++) {
                     inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
                }
@@ -197,6 +198,7 @@ public class Inventories {
                inventory.setItem(22, new ItemBuilder(Material.BARRIER).setName("§cKein Clan").toItemStack());
           } else {
                inventory = Bukkit.createInventory(null, 54, "§6Clan §8| §7Mitglieder");
+               inventory.clear();
                for (int i = 0; i < 9; i++) {
                     inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
                }

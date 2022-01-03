@@ -44,7 +44,11 @@ public class ProfilListener implements Listener {
                }
                if (event.getSlot() == 31) {
                     player.closeInventory();
-                    Inventories.ClanInventory(player);
+                    if(player.getName().equalsIgnoreCase("quele") || player.getName().equalsIgnoreCase("QuadrixYT")) {
+                         Inventories.ClanInventory(player);
+                    } else {
+                         player.sendMessage("§7Diese Funktion folgt in kürze§8.");
+                    }
                }
           }
           if (event.getView().getTitle().equalsIgnoreCase("§6Clan §8| §7Menu")) {
@@ -74,13 +78,13 @@ public class ProfilListener implements Listener {
                && !event.getView().getTitle().contains("Menu")) {
                event.setCancelled(true);
                if (event.getSlot() == 11) {
-                    ClanSQL.promote(player, PlayerClanSQL.getClanNameExact(player), event.getView().getTitle().replace("§7", "").split(" ")[1]);
+                    ClanSQL.promote(player, PlayerClanSQL.getClanNameExact(player), event.getView().getTitle().replace("§7", "").split(" ")[2]);
                }
                if (event.getSlot() == 13) {
-                    ClanSQL.demote(player, PlayerClanSQL.getClanNameExact(player), event.getView().getTitle().replace("§7", "").split(" ")[1]);
+                    ClanSQL.demote(player, PlayerClanSQL.getClanNameExact(player), event.getView().getTitle().replace("§7", "").split(" ")[2]);
                }
                if (event.getSlot() == 15) {
-                    ClanSQL.kick(player, PlayerClanSQL.getClanNameExact(player), event.getView().getTitle().replace("§7", "").split(" ")[1]);
+                    ClanSQL.kick(player, PlayerClanSQL.getClanNameExact(player), event.getView().getTitle().replace("§7", "").split(" ")[2]);
                }
           }
           if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Einstellungen §8«")) {
