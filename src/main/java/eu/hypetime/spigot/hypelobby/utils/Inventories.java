@@ -215,11 +215,13 @@ public class Inventories {
                }
                String leadername = ClanSQL.getLeader(PlayerClanSQL.getClanNameExact(player));
                String clanname = PlayerClanSQL.getClanNameExact(player);
+               String[] dateLeader = PlayerClanSQL.getEnteredDate(leadername);
+               String dateFormattedLeader = "Am " + dateLeader[0] + "." + dateLeader[1] + "." + dateLeader[2] + " um " + dateLeader[3] + ":" + dateLeader[4];
                inventory.setItem(10, new ItemBuilder(Material.PLAYER_HEAD)
                     .setName("§6" + leadername)
                     .setSkullOwner(leadername)
                     .addLoreLine("§6Clan-Rang§8: §4Admin")
-                    .addLoreLine("§6Beigetreten§8: §a" + PlayerClanSQL.getEntered(player))
+                    .addLoreLine("§6Beigetreten§8: §a" + dateFormattedLeader)
                     .toItemStack());
 
                ArrayList<String> mods = ClanSQL.getModList(clanname);
@@ -227,15 +229,17 @@ public class Inventories {
                ArrayList<String> allUser = ClanSQL.getAllUser(clanname);
                int skip = inventory.firstEmpty();
                for (int i = 0; i < 54; i++) {
-                    if (allUser.size() > 0) {
+                    if (allUser.size() - 1 > 0) {
                          if (inventory.getItem(i) == null) {
                               String user = allUser.get(0);
+                              String[] date = PlayerClanSQL.getEnteredDate(user);
+                              String dateFormatted = "Am " + date[0] + "." + date[1] + "." + date[2] + " um " + date[3] + ":" + date[4];
                               if(mods.contains(user)) {
                                    inventory.setItem(i, new ItemBuilder(Material.PLAYER_HEAD)
                                         .setName("§6" + user)
                                         .setSkullOwner(user)
                                         .addLoreLine("§6Clan-Rang§8: §cMod")
-                                        .addLoreLine("§6Beigetreten§8: §a" + PlayerClanSQL.getEntered(user))
+                                        .addLoreLine("§6Beigetreten§8: §a" + dateFormatted)
                                         .toItemStack());
                                    allUser.remove(0);
                               } else {
@@ -243,7 +247,7 @@ public class Inventories {
                                         .setName("§6" + user)
                                         .setSkullOwner(user)
                                         .addLoreLine("§6Clan-Rang§8: §7Member")
-                                        .addLoreLine("§6Beigetreten§8: §a" + PlayerClanSQL.getEntered(user))
+                                        .addLoreLine("§6Beigetreten§8: §a" + dateFormatted)
                                         .toItemStack());
                                    allUser.remove(0);
                               }
@@ -252,11 +256,29 @@ public class Inventories {
                          skip++;
                     }
                }
-               player.openInventory(inventory);
           }
-
+          player.openInventory(inventory);
      }
 
+     public static void ClanUserManageInventory(Player player, String name) {
+          Inventory inventory = Bukkit.createInventory(null, 27, "§6Clan §8| §7" + name);
+
+          inventory.setItem(11, new ItemBuilder(Material.DIAMOND_BLOCK)
+               .setName("§aPromoten")
+               .toItemStack());
+
+
+          inventory.setItem(13, new ItemBuilder(Material.REDSTONE_BLOCK)
+               .setName("§cDemoten")
+               .toItemStack());
+
+
+          inventory.setItem(15, new ItemBuilder(Material.BARRIER)
+               .setName("§4Kicken")
+               .toItemStack());
+
+          player.openInventory(inventory);
+     }
 
      public static void WarpNavigator(Player player) {
           Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§8» §6Warps §8«");

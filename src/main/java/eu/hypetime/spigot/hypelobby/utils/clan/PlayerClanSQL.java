@@ -1,6 +1,7 @@
 package eu.hypetime.spigot.hypelobby.utils.clan;
 
 import eu.hypetime.spigot.hypelobby.utils.MySQL;
+import eu.hypetime.spigot.hypelobby.utils.UUIDFetcher;
 import org.bukkit.entity.Player;
 
 import java.sql.ResultSet;
@@ -13,7 +14,6 @@ import java.util.Date;
 public class PlayerClanSQL {
 
      public static void registerPlayer(Player player) {
-
           if (!existPlayer(player.getUniqueId().toString())) {
                MySQL.update(
                     "INSERT INTO clansystem_PLAYERCLAN (PLAYER, UUID, CLAN, ENTERED, REQUESTS) VALUES ('" + player.getName() + "', '" + player.getUniqueId() + "', '', ';', ';');");
@@ -21,7 +21,16 @@ public class PlayerClanSQL {
                MySQL.update("UPDATE clansystem_PLAYERCLAN SET PLAYER = '" + player.getName() + "' WHERE UUID = '"
                     + player.getUniqueId() + "';");
           }
+     }
 
+     public static void registerPlayer(String name) {
+          if (!existPlayer(UUIDFetcher.getUUID(name).toString())) {
+               MySQL.update(
+                    "INSERT INTO clansystem_PLAYERCLAN (PLAYER, UUID, CLAN, ENTERED, REQUESTS) VALUES ('" + name + "', '" + UUIDFetcher.getUUID(name) + "', '', ';', ';');");
+          } else {
+               MySQL.update("UPDATE clansystem_PLAYERCLAN SET PLAYER = '" + name + "' WHERE UUID = '"
+                    + UUIDFetcher.getUUID(name) + "';");
+          }
      }
 
      public static String getClanName(Player player) {
@@ -114,6 +123,11 @@ public class PlayerClanSQL {
                + player.getUniqueId() + "';");
      }
 
+     public static void resetEntered(String name) {
+          MySQL.update("UPDATE clansystem_PLAYERCLAN SET ENTERED = ';' WHERE UUID = '"
+               + UUIDFetcher.getUUID(name) + "';");
+     }
+
      public static String getEntered(Player player) {
           try {
                ResultSet rs = MySQL.getResult("SELECT * FROM clansystem_PLAYERCLAN WHERE UUID = '" + player.getUniqueId() + "';");
@@ -194,6 +208,14 @@ public class PlayerClanSQL {
           }
           MySQL.update("UPDATE clansystem_PLAYERCLAN SET CLAN = '' WHERE UUID = '"
                + player.getUniqueId() + "';");
+     }
+
+     public static void resetClan(String name) {
+          if (!existPlayer(UUIDFetcher.getUUID(name).toString())) {
+               registerPlayer(name);
+          }
+          MySQL.update("UPDATE clansystem_PLAYERCLAN SET CLAN = '' WHERE UUID = '"
+               + UUIDFetcher.getUUID(name) + "';");
      }
 
      public static String getRequestsListRaw(String name) {

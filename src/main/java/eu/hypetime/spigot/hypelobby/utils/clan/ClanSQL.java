@@ -1,5 +1,6 @@
 package eu.hypetime.spigot.hypelobby.utils.clan;
 
+import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.utils.MySQL;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ClanSQL {
+
 
      public static void createClan(Player player, String clanname, String clantag) {
           MySQL.update(
@@ -98,6 +100,79 @@ public class ClanSQL {
           all.addAll(getModList(name));
           all.addAll(getMemberList(name));
           return all;
+     }
+
+     public static void promote(Player player, String clanname, String name) {
+          if (!ClanSQL.getModList(clanname).contains(name)) {
+               if (ClanSQL.getMemberList(clanname).contains(name)) {
+                    ClanSQL.removeMember(clanname, name);
+                    ClanSQL.addMod(clanname, name);
+                    if (Bukkit.getPlayer(name) != null) {
+                         Player target = Bukkit.getPlayer(name);
+                         message(target, "§7Du wurdest zu §cMod §ahochgestuft§8. §aClan§8: §e" + clanname);
+                         title(target, "§7Du wurdest zu §cMod", "§ahochgestuft");
+                    }
+                    message(player, "§7Du hast den Spieler §aerfolgreich §7zu §cMod §ahochgestuft§8.");
+                    title(player, "§7Du hast §e" + name + " §7zu §cMod", "§ahochgestuft");
+               } else if(isPlayerLeader(player, clanname)) {
+                    message(player, "§7Du kannst dich nicht selbst promoten§8.");
+               } else {
+                    message(player, "§7Dieser Spieler ist §cnicht §7in deinem Clan§8.");
+               }
+          } else {
+               message(player, "§7Der Spieler ist §cbereits §7Mod§8.");
+          }
+     }
+
+     public static void demote(Player player, String clanname, String name) {
+          if (ClanSQL.getModList(clanname).contains(name)) {
+               if (!ClanSQL.getMemberList(clanname).contains(name)) {
+                    ClanSQL.removeMod(clanname, name);
+                    ClanSQL.addMember(clanname, name);
+                    if (Bukkit.getPlayer(name) != null) {
+                         Player target = Bukkit.getPlayer(name);
+                         message(target, "§7Du wurdest zu Member §cdegradiert§8.\n §aClan§8: §e" + clanname);
+                         title(target, "§7Du wurdest zu Member", "§cdegradiert");
+                    }
+                    message(player, "§7Du hast den Spieler §aerfolgreich §7zu Member §cdegradiert§8.");
+                    title(player, "§7Du hast §e" + name + " §7zu Member", "§cdegradiert");
+               } else if(isPlayerLeader(player, clanname)) {
+                    message(player, "§7Du kannst dich nicht selbst promoten§8.");
+               } else {
+                    message(player, "§7Dieser Spieler ist §cnicht §7in deinem Clan§8.");
+               }
+          } else {
+               message(player, "§7Der Spieler ist §ckein §7Mod§8.");
+          }
+     }
+
+     public static void kick(Player player, String clanname, String name) {
+          if (ClanSQL.getMemberList(clanname).contains(name)) {
+               PlayerClanSQL.resetClan(name);
+               PlayerClanSQL.resetEntered(name);
+               ClanSQL.removeMember(clanname, name);
+               if(Bukkit.getPlayer(name) != null) {
+                    Player target = Bukkit.getPlayer(name);
+                    message(target, "§7Du §7wurdest §7aus §7dem §7Clan §cgekickt§8.");
+                    title(target, "§7Du §7wurdest §7aus §7dem §7Clan", "§cgekickt");
+               }
+               message(player, "§7Du §7hast §7den §7Spieler §aerfolgreich §cgekickt§8.");
+               title(player, "§7Du §7hast §7den §7Spieler §aerfolgreich", "§cgekickt");
+          } else {
+               if (ClanSQL.getModList(clanname).contains(name)) {
+                    message(player, "§7Diesen §7Spieler §7kannst §7du §cnicht §7kicken §7da §7er §cMod §7ist§8.");
+               } else if(isPlayerLeader(player, clanname)) {
+                    message(player, "§7Du kannst dich nicht selbst kicken§8.");
+               }
+          }
+     }
+
+     public static void title(Player player, String title, String subtitle) {
+          player.sendTitle(title, subtitle);
+     }
+
+     public static void message(Player player, String message) {
+          player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + message);
      }
 
      public static void addMember(String name, String member) {
