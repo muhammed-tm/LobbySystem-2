@@ -21,6 +21,8 @@ public class DailyRewardListener implements Listener {
                     if (event.getRightClicked().getCustomName() != null) {
                          if (event.getRightClicked().getCustomName().equalsIgnoreCase("§6Daily Rewards")) {
                               Inventories.DailyRewardInventory(event.getPlayer());
+                         } else if(event.getRightClicked().getCustomName().equalsIgnoreCase("§6Lotto")) {
+                              Lottery.openLottoInventory(player);
                          } else if (event.getRightClicked().getCustomName().contains("§6") && !event.getRightClicked().getCustomName().contains("Aktuelle")) {
                               String target = event.getRightClicked().getCustomName().replace("§6", "");
                               player.sendMessage("§8§m          §8[§aStats§8]§8§m          ");

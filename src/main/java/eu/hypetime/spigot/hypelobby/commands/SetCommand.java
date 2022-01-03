@@ -88,9 +88,6 @@ public class SetCommand implements CommandExecutor {
             }
             if (args[0].equalsIgnoreCase("Lotto")) {
                 player.getLocation().getBlock().setType(Material.CHEST);
-               /* Hologram holo = HologramsAPI.createHologram(HypeLobby.getInstance(), player.getLocation().add(0, 2, 0));
-                holo.appendTextLine("§6Lotto Tickets(" + MySQL.getFreeTickets(player.getUniqueId()) + ")");
-                holo.appendItemLine(new ItemStack(Material.GOLD_BLOCK));*/
             }
         }
 

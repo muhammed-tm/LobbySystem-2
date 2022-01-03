@@ -37,17 +37,15 @@ public class Lottery implements Listener {
           Player p = e.getPlayer();
           if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
                if (e.getClickedBlock().getType() == Material.CHEST) {
+                    e.setCancelled(true);
                     if (e.getClickedBlock().getLocation().equals(WarpAPI.getLocation("Lotto"))) {
-                         //if(!.contains(p)){
-                         e.setCancelled(true);
                          openLottoInventory(p);
                     }
-                    // }
                }
           }
      }
 
-     public void openLottoInventory(Player player) {
+     public static void openLottoInventory(Player player) {
           Inventory inv = Bukkit.createInventory(null, 9 * 3, "§aLotto");
           ArrayList<String> lore1 = new ArrayList<>();
           lore1.add("§7§m--------");
@@ -125,7 +123,13 @@ public class Lottery implements Listener {
                          player.closeInventory();
                          CoinsAPI.addCoins(player, currentCoins.get(player));
                          ScoreAPI.setScoreboard(player);
-                         player.sendTitle("§6Lottery", "§c+ §7 " + currentCoins.get(player) + " Coins", 20, 40, 20);
+                         int win = 0;
+                         win = currentCoins.get(player) - 500;
+                         if(win > 0) {
+                              player.sendTitle("§6Lottery", "§7Coins§8: §6" + currentCoins.get(player) + " §8| §c+ §7" + win + " Coins", 20, 40, 20);
+                         } else {
+                              player.sendTitle("§6Lottery", "§7Coins§8: §6" + currentCoins.get(player) + " §8| §7" + win + " Coins", 20, 40, 20);
+                         }
                          currentCoins.put(player, 0);
                          Bukkit.getScheduler().scheduleSyncDelayedTask(HypeLobby.getInstance(), new Runnable() {
                               @Override

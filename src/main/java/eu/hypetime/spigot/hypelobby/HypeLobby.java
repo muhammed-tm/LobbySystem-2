@@ -18,7 +18,14 @@ import eu.hypetime.spigot.hypelobby.listener.*;
 import eu.hypetime.spigot.hypelobby.utils.*;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.block.data.Directional;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -103,6 +110,32 @@ public class HypeLobby extends JavaPlugin {
                WarpAPI.getLocation("rgbblock." + i[0]).getBlock().setType(materials.get(i2[0]));
                i[0] += 1;
           }, 5, 5);
+          Bukkit.getScheduler().scheduleSyncDelayedTask(this, () -> {
+               Block block = WarpAPI.getLocation("Lotto").getBlock();
+               block.setType(Material.CHEST);
+               ((Directional) block.getBlockData()).setFacing(BlockFace.SOUTH);
+               WarpAPI.getLocation("Lotto").getBlock().setType(Material.CHEST);
+               ArmorStand armorStand = WarpAPI.getLocation("Lotto").getWorld().spawn(WarpAPI.getLocation("Lotto").add(0.5, -0.5, 0.5), ArmorStand.class);
+               armorStand.setCustomName("§6Lotto");
+               armorStand.setCustomNameVisible(true);
+               armorStand.setArms(true);
+               armorStand.setBasePlate(false);
+               armorStand.setInvisible(true);
+               armorStand.setInvulnerable(true);
+               armorStand.addDisabledSlots(EquipmentSlot.values());
+
+               ArmorStand reward = WarpAPI.getLocation("Belohnung").getWorld().spawn(WarpAPI.getLocation("Belohnung"), ArmorStand.class);
+               reward.setCustomName("§6Daily Rewards");
+               reward.setCustomNameVisible(true);
+               reward.setArms(true);
+               reward.setBasePlate(false);
+               reward.getEquipment().setHelmet(new ItemStack(Material.TURTLE_HELMET));
+               reward.getEquipment().setChestplate(new ItemStack(Material.NETHERITE_CHESTPLATE));
+               reward.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
+               reward.getEquipment().setBoots(new ItemStack(Material.IRON_BOOTS));
+               reward.setInvulnerable(true);
+               reward.addDisabledSlots(EquipmentSlot.values());
+          }, 20);
 
           getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
      }

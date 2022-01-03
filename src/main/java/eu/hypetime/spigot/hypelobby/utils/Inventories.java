@@ -135,12 +135,14 @@ public class Inventories {
         inventory.setItem(23, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§6GunBattle")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTBkZmM4YTM1NjNiZjk5NmY1YzFiNzRiMGIwMTViMmNjZWIyZDA0Zjk0YmJjZGFmYjIyOTlkOGE1OTc5ZmFjMSJ9fX0=")
+                .addLoreLine("§6Version§8: §61.8.8-1.18.X")
                 .toItemStack());
 
         inventory.setItem(25, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§6HypeSMP")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjNmNGQ1NTVmYjNiOTM1N2FmNzU4MmYyNzM4MDBmMWRhNGFjNjliMDQyMTBjM2FhMzRlNjNkYjJhNDIzNWJiZiJ9fX0=")
-                .toItemStack());
+                .addLoreLine("§6Version§8: §61.17.1")
+             .toItemStack());
 
         inventory.setItem(40, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§6Warps")
