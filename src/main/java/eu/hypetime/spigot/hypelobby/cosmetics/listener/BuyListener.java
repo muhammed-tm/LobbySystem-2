@@ -91,8 +91,11 @@ public class BuyListener implements Listener {
                          }
                          return;
                     }
-               } else {
+               } else if(event.getMessage().equalsIgnoreCase("Nein")){
                     player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Der §6Kauf §7wurde abgebrochen§8.");
+                    buy.remove(player);
+               } else {
+
                }
           } else {
 
