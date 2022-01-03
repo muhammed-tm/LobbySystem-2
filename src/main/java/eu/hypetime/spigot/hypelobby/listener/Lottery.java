@@ -21,140 +21,142 @@ import java.util.*;
 
 public class Lottery implements Listener {
 
-    public static HashMap<Player, Integer> chests = new HashMap<>();
-    public static HashMap<Player, Integer> currentCoins = new HashMap<>();
-    public static ArrayList<Player> lottery = new ArrayList<>();
+     public static HashMap<Player, Integer> chests = new HashMap<>();
+     public static HashMap<Player, Integer> currentCoins = new HashMap<>();
+     public static ArrayList<Player> lottery = new ArrayList<>();
 
-    @EventHandler
-    public void JoinEvent(PlayerJoinEvent event) {
-        Player p = event.getPlayer();
-        chests.put(p, 0);
-        currentCoins.put(p, 0);
-    }
+     @EventHandler
+     public void JoinEvent(PlayerJoinEvent event) {
+          Player p = event.getPlayer();
+          chests.put(p, 0);
+          currentCoins.put(p, 0);
+     }
 
-    @EventHandler
-    public void onPlayerInteractEvent(PlayerInteractEvent e) {
-        Player p = e.getPlayer();
-        if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-            if (e.getClickedBlock().getType() == Material.CHEST) {
-                //if(!.contains(p)){
-                e.setCancelled(true);
-                openLottoInventory(p);
+     @EventHandler
+     public void onPlayerInteractEvent(PlayerInteractEvent e) {
+          Player p = e.getPlayer();
+          if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+               if (e.getClickedBlock().getType() == Material.CHEST) {
+                    if (e.getClickedBlock().getLocation().equals(WarpAPI.getLocation("Lotto"))) {
+                         //if(!.contains(p)){
+                         e.setCancelled(true);
+                         openLottoInventory(p);
+                    }
+                    // }
+               }
+          }
+     }
 
-                // }
-            }
-        }
-    }
+     public void openLottoInventory(Player player) {
+          Inventory inv = Bukkit.createInventory(null, 9 * 3, "§aLotto");
+          ArrayList<String> lore1 = new ArrayList<>();
+          lore1.add("§7§m--------");
+          lore1.add("");
+          lore1.add("§e" + MySQL.getFreeTickets(player.getUniqueId()) + " §6§lLose");
+          lore1.add("");
+          lore1.add("§7§m--------");
 
-    public void openLottoInventory(Player player) {
-        Inventory inv = Bukkit.createInventory(null, 9 * 3, "§aLotto");
-        ArrayList<String> lore1 = new ArrayList<>();
-        lore1.add("§7§m--------");
-        lore1.add("");
-        lore1.add("§e" + MySQL.getFreeTickets(player.getUniqueId()) + " §6§lLose");
-        lore1.add("");
-        lore1.add("§7§m--------");
+          inv.setItem(12, utils.createlore(Material.PAPER, 1, 0, "§6Los einlösen", lore1));
+          // §7§m------ \n \n §e500 §7Coins \n \n §7§m------
+          ArrayList<String> lore = new ArrayList<>();
+          lore.add("§7§m--------");
+          lore.add("");
+          lore.add("§6500 §7Coins");
+          lore.add("");
+          lore.add("§7§m--------");
 
-        inv.setItem(12, utils.createlore(Material.PAPER, 1, 0, "§6Los einlösen", lore1));
-        // §7§m------ \n \n §e500 §7Coins \n \n §7§m------
-        ArrayList<String> lore = new ArrayList<>();
-        lore.add("§7§m--------");
-        lore.add("");
-        lore.add("§6500 §7Coins");
-        lore.add("");
-        lore.add("§7§m--------");
-
-        inv.setItem(14, utils.createlore(Material.BARRIER, 1, 0, "§aLos kaufen", lore));
+          inv.setItem(14, utils.createlore(Material.BARRIER, 1, 0, "§aLos kaufen", lore));
 
 
-        player.openInventory(inv);
-    }
+          player.openInventory(inv);
+     }
 
-    @EventHandler
-    public void on(InventoryClickEvent event) {
-        Player player = (Player) event.getWhoClicked();
-        try {
-            if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aLos kaufen") && event.getView().getTitle().equalsIgnoreCase("§aLotto")) {
-                if (CoinsAPI.getCoins(player) > 499) {
-                    MySQL.addFreeTickets(player.getUniqueId(), 1);
-                    CoinsAPI.removeCoins(player, 500);
-                    ArrayList<String> lore1 = new ArrayList<>();
-                    lore1.add("§7§m--------");
-                    lore1.add("");
-                    lore1.add("§e" + MySQL.getFreeTickets(player.getUniqueId()) + " §6§lLose");
-                    lore1.add("");
-                    lore1.add("§7§m--------");
+     @EventHandler
+     public void on(InventoryClickEvent event) {
+          Player player = (Player) event.getWhoClicked();
+          try {
+               if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aLos kaufen") && event.getView().getTitle().equalsIgnoreCase("§aLotto")) {
+                    if (CoinsAPI.getCoins(player) > 499) {
+                         MySQL.addFreeTickets(player.getUniqueId(), 1);
+                         CoinsAPI.removeCoins(player, 500);
+                         ArrayList<String> lore1 = new ArrayList<>();
+                         lore1.add("§7§m--------");
+                         lore1.add("");
+                         lore1.add("§e" + MySQL.getFreeTickets(player.getUniqueId()) + " §6§lLose");
+                         lore1.add("");
+                         lore1.add("§7§m--------");
 
-                    event.getInventory().setItem(12, utils.createlore(Material.PAPER, 1, 0, "§6Los einlösen", lore1));
-                } else {
-                    player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Du hast nicht genügend Coins um dir ein Los zu kaufen");
-                }
-            } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Los einlösen") && MySQL.getFreeTickets(player.getUniqueId()) > 0) {
-                Inventory inv = Bukkit.createInventory(null, 9 * 1, "§c§lLos einlösen");
-                inv.setItem(0, new ItemBuilder(Material.LEGACY_STAINED_CLAY).setDyeColor(DyeColor.RED).setName("§a§lLos einlösen").toItemStack());
-                inv.setItem(4, new ItemBuilder(Material.PAPER).setName("§6Los").toItemStack());
-                inv.setItem(8, new ItemBuilder(Material.LEGACY_STAINED_CLAY).setName("§c§lKauf abbrechen").toItemStack());
-                player.openInventory(inv);
-            } else if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§a§lLos einlösen")) {
-                MySQL.removeFreeTickets(player.getUniqueId(), 1);
-                player.closeInventory();
-
-                // Reward
-                player.openInventory(getInv());
-                lottery.add(player);
-            } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§c§lKauf abbrechen")) {
-                player.closeInventory();
-            } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aLos kaufen") && event.getView().getTitle().equalsIgnoreCase("§c§lLos einlösen")) {
-                event.setCancelled(true);
-            } else if (event.getCurrentItem().getType() == Material.ENDER_CHEST) {
-                if (chests.get(player) < 6) {
-                    chests.put(player, chests.get(player) + 1);
-                    List<Integer> coins = getList();
-                    currentCoins.put(player, currentCoins.get(player) + coins.get(event.getSlot()));
-                    ItemStack itemStack = new ItemStack(Material.PAPER);
-                    ItemMeta meta = itemStack.getItemMeta();;
-                    meta.setDisplayName("§6" + coins.get(event.getSlot()));
-                    itemStack.setItemMeta(meta);
-                    event.getInventory().setItem(event.getSlot(), itemStack);
-                }
-                if (chests.get(player) == 5) {
-                    chests.put(player, 0);
-                    lottery.remove(player);
+                         event.getInventory().setItem(12, utils.createlore(Material.PAPER, 1, 0, "§6Los einlösen", lore1));
+                    } else {
+                         player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Du hast nicht genügend Coins um dir ein Los zu kaufen");
+                    }
+               } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Los einlösen") && MySQL.getFreeTickets(player.getUniqueId()) > 0) {
+                    Inventory inv = Bukkit.createInventory(null, 9 * 1, "§c§lLos einlösen");
+                    inv.setItem(0, new ItemBuilder(Material.LEGACY_STAINED_CLAY).setDyeColor(DyeColor.RED).setName("§a§lLos einlösen").toItemStack());
+                    inv.setItem(4, new ItemBuilder(Material.PAPER).setName("§6Los").toItemStack());
+                    inv.setItem(8, new ItemBuilder(Material.LEGACY_STAINED_CLAY).setName("§c§lKauf abbrechen").toItemStack());
+                    player.openInventory(inv);
+               } else if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§a§lLos einlösen")) {
+                    MySQL.removeFreeTickets(player.getUniqueId(), 1);
                     player.closeInventory();
-                    CoinsAPI.addCoins(player, currentCoins.get(player));
-                    ScoreAPI.setScoreboard(player);
-                    player.sendTitle("§6Lottery", "§c+ §7 " + currentCoins.get(player) + " Coins", 20, 40, 20);
-                    currentCoins.put(player, 0);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(HypeLobby.getInstance(), new Runnable() {
-                        @Override
-                        public void run() {
-                            Firework fire = player.getWorld().spawn(player.getLocation(), Firework.class);
 
-                            FireworkMeta meta = fire.getFireworkMeta();
-                            meta.addEffect(FireworkEffect.builder().withFade(Color.BLUE).flicker(true).withColor(Color.GREEN).with(FireworkEffect.Type.BALL_LARGE).flicker(true).build());
-                            meta.setPower(2);
+                    // Reward
+                    player.openInventory(getInv());
+                    lottery.add(player);
+               } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§c§lKauf abbrechen")) {
+                    player.closeInventory();
+               } else if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aLos kaufen") && event.getView().getTitle().equalsIgnoreCase("§c§lLos einlösen")) {
+                    event.setCancelled(true);
+               } else if (event.getCurrentItem().getType() == Material.ENDER_CHEST) {
+                    if (chests.get(player) < 6) {
+                         chests.put(player, chests.get(player) + 1);
+                         List<Integer> coins = getList();
+                         currentCoins.put(player, currentCoins.get(player) + coins.get(event.getSlot()));
+                         ItemStack itemStack = new ItemStack(Material.PAPER);
+                         ItemMeta meta = itemStack.getItemMeta();
+                         ;
+                         meta.setDisplayName("§6" + coins.get(event.getSlot()));
+                         itemStack.setItemMeta(meta);
+                         event.getInventory().setItem(event.getSlot(), itemStack);
+                    }
+                    if (chests.get(player) == 5) {
+                         chests.put(player, 0);
+                         lottery.remove(player);
+                         player.closeInventory();
+                         CoinsAPI.addCoins(player, currentCoins.get(player));
+                         ScoreAPI.setScoreboard(player);
+                         player.sendTitle("§6Lottery", "§c+ §7 " + currentCoins.get(player) + " Coins", 20, 40, 20);
+                         currentCoins.put(player, 0);
+                         Bukkit.getScheduler().scheduleSyncDelayedTask(HypeLobby.getInstance(), new Runnable() {
+                              @Override
+                              public void run() {
+                                   Firework fire = player.getWorld().spawn(player.getLocation(), Firework.class);
 
-                            fire.setFireworkMeta(meta);
+                                   FireworkMeta meta = fire.getFireworkMeta();
+                                   meta.addEffect(FireworkEffect.builder().withFade(Color.BLUE).flicker(true).withColor(Color.GREEN).with(FireworkEffect.Type.BALL_LARGE).flicker(true).build());
+                                   meta.setPower(2);
 
-                        }
-                    }, 0);
-                }
-            }
-        } catch (Exception ex) {
-        }
-    }
+                                   fire.setFireworkMeta(meta);
 
-    @EventHandler
-    public void onCloseInventory(InventoryCloseEvent event) {
-        Inventory inventory = event.getInventory();
-        if(event.getView().getTitle().equalsIgnoreCase("§6§lLottery")) {
-            if(lottery.contains(event.getPlayer())) {
-                Bukkit.getScheduler().scheduleSyncDelayedTask(HypeLobby.getInstance(), () -> {
-                    event.getPlayer().openInventory(inventory);
-                }, 1L);
-            }
-        }
-    }
+                              }
+                         }, 0);
+                    }
+               }
+          } catch (Exception ex) {
+          }
+     }
+
+     @EventHandler
+     public void onCloseInventory(InventoryCloseEvent event) {
+          Inventory inventory = event.getInventory();
+          if (event.getView().getTitle().equalsIgnoreCase("§6§lLottery")) {
+               if (lottery.contains(event.getPlayer())) {
+                    Bukkit.getScheduler().scheduleSyncDelayedTask(HypeLobby.getInstance(), () -> {
+                         event.getPlayer().openInventory(inventory);
+                    }, 1L);
+               }
+          }
+     }
 
 	/*
 	 * Random r = new Random();
@@ -187,46 +189,46 @@ public class Lottery implements Listener {
 				}
 	 */
 
-    public Inventory getInv() {
-        Inventory inv = Bukkit.createInventory(null, 54, "§6§lLottery");
+     public Inventory getInv() {
+          Inventory inv = Bukkit.createInventory(null, 54, "§6§lLottery");
 
-        ItemStack i = new ItemStack(Material.ENDER_CHEST);
-        ItemMeta m = i.getItemMeta();
-        m.setDisplayName("§6§lKlick mich");
-        i.setItemMeta(m);
+          ItemStack i = new ItemStack(Material.ENDER_CHEST);
+          ItemMeta m = i.getItemMeta();
+          m.setDisplayName("§6§lKlick mich");
+          i.setItemMeta(m);
 
-        for (int i1 = 0; i1 < inv.getSize(); i1++) {
-            inv.setItem(i1, i);
-        }
-        return inv;
-    }
+          for (int i1 = 0; i1 < inv.getSize(); i1++) {
+               inv.setItem(i1, i);
+          }
+          return inv;
+     }
 
-    public List<Integer> getList() {
-        List<Integer> list = new LinkedList<>();
+     public List<Integer> getList() {
+          List<Integer> list = new LinkedList<>();
 
-        for (int i = 0; i < 54; i++) {
-            list.add(randomCoins());
-        }
+          for (int i = 0; i < 54; i++) {
+               list.add(randomCoins());
+          }
 
-        Collections.shuffle(list);
-        return list;
-    }
+          Collections.shuffle(list);
+          return list;
+     }
 
-    public Integer randomCoins() {
-        HashMap<Integer, Integer> randoms = new HashMap<>();
+     public Integer randomCoins() {
+          HashMap<Integer, Integer> randoms = new HashMap<>();
 
-        randoms.put((int) Math.ceil(Math.random() * 300), 100);
-        randoms.put((int) Math.ceil(Math.random() * 10000), 1);
+          randoms.put((int) Math.ceil(Math.random() * 300), 100);
+          randoms.put((int) Math.ceil(Math.random() * 10000), 1);
 
-        List<Integer> arrayList = new ArrayList<>();
+          List<Integer> arrayList = new ArrayList<>();
 
-        for (int coins : randoms.keySet()) {
-            for (int i = 0; i < (randoms.get(coins) * 10); i++) {
-                arrayList.add(coins);
-            }
-        }
-        Collections.shuffle(arrayList);
-        int r = new Random().nextInt(arrayList.size());
-        return arrayList.get(r);
-    }
+          for (int coins : randoms.keySet()) {
+               for (int i = 0; i < (randoms.get(coins) * 10); i++) {
+                    arrayList.add(coins);
+               }
+          }
+          Collections.shuffle(arrayList);
+          int r = new Random().nextInt(arrayList.size());
+          return arrayList.get(r);
+     }
 }
