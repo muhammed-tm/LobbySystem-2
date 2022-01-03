@@ -1,6 +1,7 @@
 package eu.hypetime.spigot.hypelobby.utils.clan;
 
 import eu.hypetime.spigot.hypelobby.utils.MySQL;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.sql.ResultSet;
@@ -76,12 +77,11 @@ public class ClanSQL {
      }
 
      public static ArrayList<String> getMemberList(String name) {
-          String memberList = getMemberListRaw(name);
-          ArrayList<String> toreturn = new ArrayList<String>();
-          if (memberList.isEmpty())
+          String[] memberlist = getMemberListRawSplited(name);
+          ArrayList<String> toreturn = new ArrayList<>();
+          if (memberlist.length == 0)
                return toreturn;
-          String[] member = memberList.split(";");
-          toreturn.addAll(Arrays.asList(member));
+          toreturn.addAll(Arrays.asList(memberlist));
           return toreturn;
      }
 
@@ -91,6 +91,13 @@ public class ClanSQL {
                return 0;
           String[] member = memberList.split(";");
           return member.length;
+     }
+
+     public static ArrayList<String> getAllUser(String name) {
+          ArrayList<String> all = new ArrayList<>();
+          all.addAll(getModList(name));
+          all.addAll(getMemberList(name));
+          return all;
      }
 
      public static void addMember(String name, String member) {
@@ -150,7 +157,6 @@ public class ClanSQL {
      }
 
      public static Object get(String whereresult, String where, String select, String database) {
-
           ResultSet rs = MySQL.getResult("SELECT " + select + " FROM " + database + " WHERE " + where + "='" + whereresult + "'");
           try {
                assert rs != null;

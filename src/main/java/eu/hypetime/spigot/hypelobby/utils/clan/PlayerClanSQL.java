@@ -136,6 +136,28 @@ public class PlayerClanSQL {
           return "§7Aktuell ist der Spieler in §ckeinem §7Clan§8.";
      }
 
+     public static String getEntered(String name) {
+          try {
+               ResultSet rs = MySQL.getResult("SELECT * FROM clansystem_PLAYERCLAN WHERE PLAYER = '" + name + "';");
+
+               if (rs != null) {
+                    if (rs.next()) {
+                         if (!rs.getString("ENTERED").equals(";")) {
+                              String[] date = rs.getString("ENTERED").split("\\.");
+                              return "§7Der Spieler ist am §a" + date[0] + "§8.§a" + date[1] + "§8.§a" + date[2] + " §7um §a" + date[3] + "§8:§a" + date[4] + " §7dem Clan beigetreten";
+                         } else {
+                              return "§7Aktuell ist der Spieler in §ckeinem §7Clan§8.";
+                         }
+                    } else {
+                         return "§7Aktuell ist der Spieler in §ckeinem §7Clan§8.";
+                    }
+               }
+          } catch (SQLException ignored) {
+
+          }
+          return "§7Aktuell ist der Spieler in §ckeinem §7Clan§8.";
+     }
+
      public static String[] getEnteredDate(String name) {
           try {
                ResultSet rs = MySQL.getResult("SELECT * FROM clansystem_PLAYERCLAN WHERE PLAYER = '" + name + "';");

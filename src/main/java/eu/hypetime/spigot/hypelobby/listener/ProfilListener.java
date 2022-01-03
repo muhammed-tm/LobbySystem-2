@@ -30,7 +30,7 @@ public class ProfilListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent event) throws IOException {
         Player player = (Player) event.getWhoClicked();
-        if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Profil §8«")) {
+        if (event.getView().getTitle().equalsIgnoreCase("§8» §6Profil §8«")) {
             event.setCancelled(true);
             if (event.getCurrentItem() == null) return;
             if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
@@ -40,9 +40,22 @@ public class ProfilListener implements Listener {
                 player.closeInventory();
                 Inventories.ProfilSettingsInventory(player);
             }
-
+            if(event.getSlot() == 31) {
+                player.closeInventory();
+                Inventories.ClanInventory(player);
+            }
+        }
+        if(event.getView().getTitle().equalsIgnoreCase("§6Clan §8| §7Menu")) {
+            event.setCancelled(true);
+            if(event.getCurrentItem() == null) return;
+            if(event.getCurrentItem().getItemMeta() == null) return;
+            if(event.getSlot() == 13) {
+                player.closeInventory();
+                Inventories.ClanUserInventory(player);
+            }
         }
         if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6Einstellungen §8«")) {
+            event.setCancelled(true);
             if(event.getCurrentItem() == null) return;
             if(event.getCurrentItem().getItemMeta() == null) return;
             if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Teleport Animation")) {
