@@ -70,29 +70,30 @@ public class NavListener implements Listener {
                          player.closeInventory();
                          Inventories.WarpNavigator(player);
                     }
-                    if (event.getView().getTitle().equalsIgnoreCase("§8» §6Warps §8«")) {
-                         event.setCancelled(true);
-                         if (event.getCurrentItem() == null) return;
-                         if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
-                              player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
-                         }
-                         if (event.getSlot() == 11) {
-                              player.closeInventory();
-                              WarpAPI.tpWarp(player, "RangShop");
-                         }
-                         if (event.getSlot() == 13) {
-                              player.closeInventory();
-                              WarpAPI.tpWarp(player, "NameMCReward");
-                         }
-                         if (event.getSlot() == 15) {
-                              player.closeInventory();
-                              WarpAPI.tpWarp(player, "GunBattle");
-                         }
-                         if (event.getSlot() == 18) {
-                              player.closeInventory();
-                              Inventories.navigatorInventory(player);
-                         }
-                    }
+               }
+          }
+          if (event.getView().getTitle().equalsIgnoreCase("§8» §6Warps §8«")) {
+               event.setCancelled(true);
+               if (event.getCurrentItem() == null) return;
+               if(event.getClickedInventory() == player.getInventory()) return;
+               if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE) {
+                    player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
+               }
+               if (event.getSlot() == 11) {
+                    player.closeInventory();
+                    WarpAPI.tpWarp(player, "RangShop");
+               }
+               if (event.getSlot() == 13) {
+                    player.closeInventory();
+                    WarpAPI.tpWarp(player, "NameMCReward");
+               }
+               if (event.getSlot() == 15) {
+                    player.closeInventory();
+                    WarpAPI.tpWarp(player, "GunBattle");
+               }
+               if (event.getSlot() == 18) {
+                    player.closeInventory();
+                    Inventories.navigatorInventory(player);
                }
           }
      }

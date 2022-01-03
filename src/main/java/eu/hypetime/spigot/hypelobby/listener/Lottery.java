@@ -25,26 +25,6 @@ public class Lottery implements Listener {
      public static HashMap<Player, Integer> currentCoins = new HashMap<>();
      public static ArrayList<Player> lottery = new ArrayList<>();
 
-     @EventHandler
-     public void JoinEvent(PlayerJoinEvent event) {
-          Player p = event.getPlayer();
-          chests.put(p, 0);
-          currentCoins.put(p, 0);
-     }
-
-     @EventHandler
-     public void onPlayerInteractEvent(PlayerInteractEvent e) {
-          Player p = e.getPlayer();
-          if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
-               if (e.getClickedBlock().getType() == Material.CHEST) {
-                    e.setCancelled(true);
-                    if (e.getClickedBlock().getLocation().equals(WarpAPI.getLocation("Lotto"))) {
-                         openLottoInventory(p);
-                    }
-               }
-          }
-     }
-
      public static void openLottoInventory(Player player) {
           Inventory inv = Bukkit.createInventory(null, 9 * 3, "§aLotto");
           ArrayList<String> lore1 = new ArrayList<>();
@@ -67,6 +47,26 @@ public class Lottery implements Listener {
 
 
           player.openInventory(inv);
+     }
+
+     @EventHandler
+     public void JoinEvent(PlayerJoinEvent event) {
+          Player p = event.getPlayer();
+          chests.put(p, 0);
+          currentCoins.put(p, 0);
+     }
+
+     @EventHandler
+     public void onPlayerInteractEvent(PlayerInteractEvent e) {
+          Player p = e.getPlayer();
+          if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+               if (e.getClickedBlock().getType() == Material.CHEST) {
+                    e.setCancelled(true);
+                    if (e.getClickedBlock().getLocation().equals(WarpAPI.getLocation("Lotto"))) {
+                         openLottoInventory(p);
+                    }
+               }
+          }
      }
 
      @EventHandler
@@ -112,7 +112,6 @@ public class Lottery implements Listener {
                          currentCoins.put(player, currentCoins.get(player) + coins.get(event.getSlot()));
                          ItemStack itemStack = new ItemStack(Material.PAPER);
                          ItemMeta meta = itemStack.getItemMeta();
-                         ;
                          meta.setDisplayName("§6" + coins.get(event.getSlot()));
                          itemStack.setItemMeta(meta);
                          event.getInventory().setItem(event.getSlot(), itemStack);
@@ -125,7 +124,7 @@ public class Lottery implements Listener {
                          ScoreAPI.setScoreboard(player);
                          int win = 0;
                          win = currentCoins.get(player) - 500;
-                         if(win > 0) {
+                         if (win > 0) {
                               player.sendTitle("§6Lottery", "§7Coins§8: §6" + currentCoins.get(player) + " §8| §c+ §7" + win + " Coins", 20, 40, 20);
                          } else {
                               player.sendTitle("§6Lottery", "§7Coins§8: §6" + currentCoins.get(player) + " §8| §7" + win + " Coins", 20, 40, 20);
