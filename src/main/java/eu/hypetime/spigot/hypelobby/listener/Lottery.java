@@ -39,7 +39,7 @@ public class Lottery implements Listener {
           ArrayList<String> lore = new ArrayList<>();
           lore.add("§7§m--------");
           lore.add("");
-          lore.add("§6500 §7Coins");
+          lore.add("§61000 §7Coins");
           lore.add("");
           lore.add("§7§m--------");
 
@@ -74,9 +74,9 @@ public class Lottery implements Listener {
           Player player = (Player) event.getWhoClicked();
           try {
                if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§aLos kaufen") && event.getView().getTitle().equalsIgnoreCase("§aLotto")) {
-                    if (CoinsAPI.getCoins(player) > 499) {
+                    if (CoinsAPI.getCoins(player) >= 1000) {
                          MySQL.addFreeTickets(player.getUniqueId(), 1);
-                         CoinsAPI.removeCoins(player, 500);
+                         CoinsAPI.removeCoins(player, 1000);
                          ArrayList<String> lore1 = new ArrayList<>();
                          lore1.add("§7§m--------");
                          lore1.add("");
@@ -123,7 +123,7 @@ public class Lottery implements Listener {
                          CoinsAPI.addCoins(player, currentCoins.get(player));
                          ScoreAPI.setScoreboard(player);
                          int win = 0;
-                         win = currentCoins.get(player) - 500;
+                         win = currentCoins.get(player) - 1000;
                          if (win > 0) {
                               player.sendTitle("§6Lottery", "§7Coins§8: §6" + currentCoins.get(player) + " §8| §c+ §7" + win + " Coins", 20, 40, 20);
                          } else {
