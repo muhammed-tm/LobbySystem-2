@@ -16,17 +16,15 @@ public class PatchNotesCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (sender instanceof Player player) {
-            player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Update§8: §6v2.6\n" +
+            player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Update§8: §6v2.6.3\n" +
                     "§6§lNetzwerk\n" +
-                    "§8➥ §7Village Defense wurde hinzugefügt\n" +
-                    "§8➥ §7KitPVP wurde hinzugefügt\n" +
-                    "§8➥ §7AntiCrash Update\n" +
-                    "§8➥ §7Neues Gadget\n" +
-                    "§8➥ §7Winterlobby entfernt\n" +
-                    "§8➥ §7Schneeflocken entfernt\n" +
-                    "§8➥ §7Geschenke entfernt in der Lobby\n" +
-                    "§8➥ §7ClanSystem wurde hinzugefügt\n" +
-                    "§8➥ §7Neues Forum\n");
+                    "§8➥ §7Lottery wurde hinzugefügt\n" +
+                    "§8➥ §7KitPVP Fähigkeit wurden angepasst\n" +
+                    "§8➥ §7Clansystem wurde hinzugefügt\n" +
+                    "§8➥ §7Clansystem GUI wurde angefangen\n" +
+                    "§8➥ §7Lobby Cosmetic Bug wurde behoben\n" +
+                    "§8➥ §7Lobby Warp Bug wurde behoben §7(§adanke an Infinity_dev für den Bug report§7)\n" +
+                    "§8➥ §7Rang Preise wurden angepasst\n");
         }
         return false;
     }

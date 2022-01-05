@@ -43,8 +43,8 @@ public class RankShopListener implements Listener {
             if (event.getSlot() == 11) {
                 player.closeInventory();
                 if (!player.hasPermission("lobby.hyper")) {
-                    if (CoinsAPI.getCoins(player) >= 5000) {
-                        CoinsAPI.removeCoins(player, 5000);
+                    if (CoinsAPI.getCoins(player) >= 75000) {
+                        CoinsAPI.removeCoins(player, 75000);
                         IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
                         user.getGroups().clear();
                         player.sendTitle("§6Neuen Rang", "§eHyper Rang");
@@ -64,8 +64,8 @@ public class RankShopListener implements Listener {
                 player.closeInventory();
                 if (!player.hasPermission("lobby.warrior")) {
                     if (player.hasPermission("lobby.hyper")) {
-                        if (CoinsAPI.getCoins(player) >= 25000) {
-                            CoinsAPI.removeCoins(player, 25000);
+                        if (CoinsAPI.getCoins(player) >= 150000) {
+                            CoinsAPI.removeCoins(player, 150000);
                             IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
                             user.getGroups().clear();
                             player.sendTitle("§6Neuen Rang", "§dWarrior Rang");
@@ -77,11 +77,12 @@ public class RankShopListener implements Listener {
 
                         }
                     } else {
-                        if (CoinsAPI.getCoins(player) >= 25000) {
-                            CoinsAPI.removeCoins(player, 25000);
+                        if (CoinsAPI.getCoins(player) >= 150000) {
+                            CoinsAPI.removeCoins(player, 150000);
                             IPermissionUser user = CloudNetDriver.getInstance().getPermissionManagement().getUser(player.getUniqueId());
                             user.getGroups().clear();
                             player.sendTitle("§6Neuen Rang", "§dWarrior Rang");
+                            user.removeGroup("Hyper");
                             user.addGroup("Warrior");
                             for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                                 ScoreAPI.setScoreboard(onlinePlayer);

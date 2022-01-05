@@ -427,7 +427,7 @@ public class Inventories {
                inventory.setItem(11, new ItemBuilder(Material.PLAYER_HEAD)
                     .setName("§eHyper Rang")
                     .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NiNjQ5YTAzYjM0OTAzODA2ZDk5N2YxZDg2ZWZkMTMxMTMyOTliYmY5NTVmNTAzMWQ1MmYwNTFiMmZmNjIxZCJ9fX0=")
-                    .addLoreLine("§6Kosten §8| §65000 Coins")
+                    .addLoreLine("§6Kosten §8| §675000 Coins")
                     .addLoreLine("§4§lPERMANENT")
                     .toItemStack());
           } else {
@@ -453,7 +453,7 @@ public class Inventories {
                     inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
                          .setName("§dWarrior Rang")
                          .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjllM2NkMDEwZGNiZWQ0OTI4Njk5OGI0ZmIxNDRkMzM3YmFkZjI2ZGZlZDg3NWRiM2ViYzZkZDEwMjkxYWY4YSJ9fX0=")
-                         .addLoreLine("§6Kosten §8| §8| §625000 Coins")
+                         .addLoreLine("§6Kosten §8| §8| §6150000 Coins")
                          .addLoreLine("§4§lPERMANENT")
                          .toItemStack());
                }
