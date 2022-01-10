@@ -39,7 +39,7 @@ public class JoinListener implements Listener {
         if (SettingConfig.getspawnposition(player) == false)
              player.teleport(WarpAPI.getLocation("Spawn"));
 
-        player.sendTitle("§6Neue Updates", "§6§l/pachnotes §7(§av2.6.3§7)");
+        player.sendTitle("§6Neue Updates", "§6§l/patchnotes §7(§av2.6.3§7)");
         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
         for (Player onlinePlayer : Bukkit.getOnlinePlayers())
             ScoreAPI.setScoreboard(onlinePlayer);

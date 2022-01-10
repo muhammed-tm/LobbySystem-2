@@ -18,6 +18,7 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Lottery implements Listener {
 
@@ -218,19 +219,20 @@ public class Lottery implements Listener {
      }
 
      public Integer randomCoins() {
-          HashMap<Integer, Integer> randoms = new HashMap<>();
-
-          randoms.put((int) Math.ceil(Math.random() * 300), 100);
-          randoms.put((int) Math.ceil(Math.random() * 10000), 1);
-
           List<Integer> arrayList = new ArrayList<>();
 
-          for (int coins : randoms.keySet()) {
-               for (int i = 0; i < (randoms.get(coins) * 10); i++) {
-                    arrayList.add(coins);
-               }
+          for (int i = 0; i < 60; i++) {
+               arrayList.add(ThreadLocalRandom.current().nextInt(250) + 25);
           }
-          Collections.shuffle(arrayList);
+
+          for (int i = 0; i < 30; i++) {
+               arrayList.add(ThreadLocalRandom.current().nextInt(500) + 25);
+          }
+          for (int i = 0; i < 10; i++) {
+               arrayList.add(ThreadLocalRandom.current().nextInt(750) + 25);
+          }
+          arrayList.add(1500);
+
           int r = new Random().nextInt(arrayList.size());
           return arrayList.get(r);
      }
