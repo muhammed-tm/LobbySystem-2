@@ -49,6 +49,7 @@ public class RankShopListener implements Listener {
                         user.getGroups().clear();
                         player.sendTitle("§6Neuen Rang", "§eHyper Rang");
                         user.addGroup("Hyper");
+                        player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1f, 1f);
                         for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                             ScoreAPI.setScoreboard(onlinePlayer);
                     } else {
@@ -70,6 +71,7 @@ public class RankShopListener implements Listener {
                             user.getGroups().clear();
                             player.sendTitle("§6Neuen Rang", "§dWarrior Rang");
                             user.addGroup("Warrior");
+                            player.playSound(player.getLocation(), Sound.ENTITY_WANDERING_TRADER_YES, 1f, 1f);
                             for (Player onlinePlayer : Bukkit.getOnlinePlayers())
                                 ScoreAPI.setScoreboard(onlinePlayer);
                         } else {

@@ -8,13 +8,15 @@ import org.bukkit.inventory.ItemStack;
 
 public enum Pet {
 
-     COW("Kuh", new ItemAPI("§8» §5Cow", Material.COW_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.COW),
-     SHEEP("Schaf", new ItemAPI("§8» §5Sheep", Material.SHEEP_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.SHEEP),
-     BLAZE("Blaze", new ItemAPI("§8» §5Blaze", Material.BLAZE_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.BLAZE),
-     FOX("Fuchs", new ItemAPI("§8» §5Fox", Material.FOX_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.FOX),
-     CREEPER("Creeper", new ItemAPI("§8» §5Creeper", Material.CREEPER_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.CREEPER),
-     WOLF("Wolf", new ItemAPI("§8» §5Wolf", Material.WOLF_SPAWN_EGG, 1).build(), 500, GadgetCategory.PETS, EntityType.WOLF),
-     ENDERMAN("Enderman", new ItemAPI("§8» §5Enderman", Material.ENDERMAN_SPAWN_EGG, 1).build(), 100, GadgetCategory.PETS, EntityType.ENDERMAN);
+     COW("Kuh", new ItemAPI("§8» §5Cow", Material.COW_SPAWN_EGG, 1).build(), 3000, GadgetCategory.PETS, EntityType.COW),
+     SHEEP("Schaf", new ItemAPI("§8» §5Sheep", Material.SHEEP_SPAWN_EGG, 1).build(), 3000, GadgetCategory.PETS, EntityType.SHEEP),
+     BLAZE("Blaze", new ItemAPI("§8» §5Blaze", Material.BLAZE_SPAWN_EGG, 1).build(), 5000, GadgetCategory.PETS, EntityType.BLAZE),
+     FOX("Fuchs", new ItemAPI("§8» §5Fox", Material.FOX_SPAWN_EGG, 1).build(), 5000, GadgetCategory.PETS, EntityType.FOX),
+     CREEPER("Creeper", new ItemAPI("§8» §5Creeper", Material.CREEPER_SPAWN_EGG, 1).build(), 5000, GadgetCategory.PETS, EntityType.CREEPER),
+     WOLF("Wolf", new ItemAPI("§8» §5Wolf", Material.WOLF_SPAWN_EGG, 1).build(), 5000, GadgetCategory.PETS, EntityType.WOLF),
+     ENDERMAN("Enderman", new ItemAPI("§8» §5Enderman", Material.ENDERMAN_SPAWN_EGG, 1).build(), 6000, GadgetCategory.PETS, EntityType.ENDERMAN),
+     GUARDIAN("Guardian", new ItemAPI("§8» §5Guardian", Material.GUARDIAN_SPAWN_EGG, 1).build(), 8000, GadgetCategory.PETS, EntityType.GUARDIAN),
+     ELDERGUARDIAN("Elder Guardian", new ItemAPI("§8» §5Elder Guardian", Material.ELDER_GUARDIAN_SPAWN_EGG, 1).build(), 15000, GadgetCategory.PETS, EntityType.ELDER_GUARDIAN);
 
      private String name;
      private ItemStack item;
