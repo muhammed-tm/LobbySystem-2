@@ -124,8 +124,8 @@ public class HypeLobby extends JavaPlugin {
                armorStand.setInvulnerable(true);
                armorStand.addDisabledSlots(EquipmentSlot.values());
 
-               ArmorStand reward = WarpAPI.getLocation("Belohnung").getWorld().spawn(WarpAPI.getLocation("Belohnung"), ArmorStand.class);
-               reward.setCustomName("§6Daily Rewards");
+               //rmorStand reward = WarpAPI.getLocation("Belohnung").getWorld().spawn(WarpAPI.getLocation("Belohnung"), ArmorStand.class);
+               /*reward.setCustomName("§6Daily Rewards");
                reward.setCustomNameVisible(true);
                reward.setArms(true);
                reward.setBasePlate(false);
@@ -134,7 +134,7 @@ public class HypeLobby extends JavaPlugin {
                reward.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
                reward.getEquipment().setBoots(new ItemStack(Material.IRON_BOOTS));
                reward.setInvulnerable(true);
-               reward.addDisabledSlots(EquipmentSlot.values());
+               reward.addDisabledSlots(EquipmentSlot.values());*/
           }, 20);
 
           getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
