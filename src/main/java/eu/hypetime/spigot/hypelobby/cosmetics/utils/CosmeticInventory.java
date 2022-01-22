@@ -31,11 +31,16 @@ public class CosmeticInventory {
                .toItemStack());
           AtomicInteger integer = new AtomicInteger(10);
           for (Pet pet : Pet.values()) {
-               ItemStack item = pet.getItem();
-               ItemMeta meta = item.getItemMeta();
-               meta.setLore(Lists.newArrayList("§6Preis§8: §6" + pet.getCoins()));
-               item.setItemMeta(meta);
-               inventory.setItem(integer.getAndIncrement(), item);
+               if (inventory.getItem(integer.get()) == null || inventory.getItem(integer.get()).getType() == Material.AIR) {
+                    ItemStack item = pet.getItem();
+                    ItemMeta meta = item.getItemMeta();
+                    meta.setLore(Lists.newArrayList("§6Preis§8: §6" + pet.getCoins()));
+                    item.setItemMeta(meta);
+                    inventory.setItem(integer.get(), item);
+                    integer.getAndAdd(1);
+               } else {
+                    integer.getAndAdd(1);
+               }
           }
           return inventory;
      }
@@ -49,11 +54,16 @@ public class CosmeticInventory {
                .toItemStack());
           AtomicInteger integer = new AtomicInteger(10);
           for (Gadget gadget : Gadget.values()) {
-               ItemStack item = gadget.getItem();
-               ItemMeta meta = item.getItemMeta();
-               meta.setLore(Lists.newArrayList("§6Preis§8: §6" + gadget.getCoins()));
-               item.setItemMeta(meta);
-               inventory.setItem(integer.getAndIncrement(), item);
+               if (inventory.getItem(integer.get()) == null || inventory.getItem(integer.get()).getType() == Material.AIR) {
+                    ItemStack item = gadget.getItem();
+                    ItemMeta meta = item.getItemMeta();
+                    meta.setLore(Lists.newArrayList("§6Preis§8: §6" + gadget.getCoins()));
+                    item.setItemMeta(meta);
+                    inventory.setItem(integer.get(), item);
+                    integer.getAndAdd(1);
+               } else {
+                    integer.getAndAdd(1);
+               }
           }
           return inventory;
      }
@@ -67,29 +77,47 @@ public class CosmeticInventory {
                .toItemStack());
           AtomicInteger integer = new AtomicInteger(10);
           for (Boots boots : Boots.values()) {
-               ItemStack item = boots.getItem();
-               ItemMeta meta = item.getItemMeta();
-               meta.setLore(Lists.newArrayList("§6Preis§8: §6" + boots.getCoins()));
-               item.setItemMeta(meta);
-               inventory.setItem(integer.getAndIncrement(), item);
+               if (inventory.getItem(integer.get()) == null || inventory.getItem(integer.get()).getType() == Material.AIR) {
+                    ItemStack item = boots.getItem();
+                    ItemMeta meta = item.getItemMeta();
+                    meta.setLore(Lists.newArrayList("§6Preis§8: §6" + boots.getCoins()));
+                    item.setItemMeta(meta);
+                    inventory.setItem(integer.get(), item);
+                    integer.getAndAdd(1);
+               } else {
+                    integer.getAndAdd(1);
+               }
           }
           return inventory;
      }
 
-     public static void resetEnchantments(Inventory inventory) {
-          for (int i = 0; i < inventory.getSize(); i++) {
-               inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
+     public static void resetEnchantments(Inventory inv) {
+          ItemStack glass = new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build();
+          for (int i = 0; i < 9; i++) {
+               inv.setItem(i, glass);
           }
-          inventory.setItem(48, new ItemBuilder(Material.SPAWNER)
+          inv.setItem(9, glass);
+          inv.setItem(18, glass);
+          inv.setItem(27, glass);
+          inv.setItem(36, glass);
+
+          inv.setItem(17, glass);
+          inv.setItem(26, glass);
+          inv.setItem(35, glass);
+          inv.setItem(44, glass);
+          for (int i = 45; i < 53; i++) {
+               inv.setItem(i, glass);
+          }
+          inv.setItem(48, new ItemBuilder(Material.SPAWNER)
                .setName("§6Tiere")
                .toItemStack());
-          inventory.setItem(49, new ItemBuilder(Material.FISHING_ROD)
+          inv.setItem(49, new ItemBuilder(Material.FISHING_ROD)
                .setName("§6Gadgets")
                .toItemStack());
-          inventory.setItem(50, new ItemBuilder(Material.LEATHER_BOOTS)
+          inv.setItem(50, new ItemBuilder(Material.LEATHER_BOOTS)
                .setName("§6Schuhe")
                .toItemStack());
-          inventory.setItem(53, new ItemBuilder(Material.BARRIER)
+          inv.setItem(53, new ItemBuilder(Material.BARRIER)
                .setName("§7Gadget §cablegen")
                .toItemStack());
      }
