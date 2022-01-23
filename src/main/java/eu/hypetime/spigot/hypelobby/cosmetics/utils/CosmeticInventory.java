@@ -13,6 +13,8 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class CosmeticInventory {
@@ -29,17 +31,18 @@ public class CosmeticInventory {
                .setName("§6Pets")
                .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                .toItemStack());
-          AtomicInteger integer = new AtomicInteger(10);
-          for (Pet pet : Pet.values()) {
-               if (inventory.getItem(integer.get()) == null || inventory.getItem(integer.get()).getType() == Material.AIR) {
-                    ItemStack item = pet.getItem();
-                    ItemMeta meta = item.getItemMeta();
-                    meta.setLore(Lists.newArrayList("§6Preis§8: §6" + pet.getCoins()));
-                    item.setItemMeta(meta);
-                    inventory.setItem(integer.get(), item);
-                    integer.getAndAdd(1);
-               } else {
-                    integer.getAndAdd(1);
+          ArrayList<Pet> pets = new ArrayList<Pet>(Arrays.asList(Pet.values()));
+          int pet = 0;
+          for (int i = 0; i < inventory.getSize(); i++) {
+               if(pet < pets.size()) {
+                    if (inventory.getItem(i) == null || inventory.getItem(i).getType() == Material.AIR) {
+                         ItemStack item = pets.get(pet).getItem();
+                         ItemMeta meta = item.getItemMeta();
+                         meta.setLore(Lists.newArrayList("§6Preis§8: §6" + pets.get(pet).getCoins()));
+                         item.setItemMeta(meta);
+                         inventory.setItem(i, item);
+                         pet++;
+                    }
                }
           }
           return inventory;
@@ -53,16 +56,18 @@ public class CosmeticInventory {
                .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                .toItemStack());
           AtomicInteger integer = new AtomicInteger(10);
-          for (Gadget gadget : Gadget.values()) {
-               if (inventory.getItem(integer.get()) == null || inventory.getItem(integer.get()).getType() == Material.AIR) {
-                    ItemStack item = gadget.getItem();
-                    ItemMeta meta = item.getItemMeta();
-                    meta.setLore(Lists.newArrayList("§6Preis§8: §6" + gadget.getCoins()));
-                    item.setItemMeta(meta);
-                    inventory.setItem(integer.get(), item);
-                    integer.getAndAdd(1);
-               } else {
-                    integer.getAndAdd(1);
+          ArrayList<Gadget> gadgets = new ArrayList<Gadget>(Arrays.asList(Gadget.values()));
+          int gadget = 0;
+          for (int i = 0; i < inventory.getSize(); i++) {
+               if(gadget < gadgets.size()) {
+                    if (inventory.getItem(i) == null || inventory.getItem(i).getType() == Material.AIR) {
+                         ItemStack item = gadgets.get(gadget).getItem();
+                         ItemMeta meta = item.getItemMeta();
+                         meta.setLore(Lists.newArrayList("§6Preis§8: §6" + gadgets.get(gadget).getCoins()));
+                         item.setItemMeta(meta);
+                         inventory.setItem(i, item);
+                         gadget++;
+                    }
                }
           }
           return inventory;
@@ -76,16 +81,18 @@ public class CosmeticInventory {
                .addUnsafeEnchantment(Enchantment.ARROW_INFINITE, 1)
                .toItemStack());
           AtomicInteger integer = new AtomicInteger(10);
-          for (Boots boots : Boots.values()) {
-               if (inventory.getItem(integer.get()) == null || inventory.getItem(integer.get()).getType() == Material.AIR) {
-                    ItemStack item = boots.getItem();
-                    ItemMeta meta = item.getItemMeta();
-                    meta.setLore(Lists.newArrayList("§6Preis§8: §6" + boots.getCoins()));
-                    item.setItemMeta(meta);
-                    inventory.setItem(integer.get(), item);
-                    integer.getAndAdd(1);
-               } else {
-                    integer.getAndAdd(1);
+          ArrayList<Boots> boots = new ArrayList<Boots>(Arrays.asList(Boots.values()));
+          int boot = 0;
+          for (int i = 0; i < inventory.getSize(); i++) {
+               if(boot < boots.size()) {
+                    if (inventory.getItem(i) == null || inventory.getItem(i).getType() == Material.AIR) {
+                         ItemStack item = boots.get(boot).getItem();
+                         ItemMeta meta = item.getItemMeta();
+                         meta.setLore(Lists.newArrayList("§6Preis§8: §6" + boots.get(boot).getCoins()));
+                         item.setItemMeta(meta);
+                         inventory.setItem(i, item);
+                         boot++;
+                    }
                }
           }
           return inventory;
