@@ -9,7 +9,7 @@ public enum Gadget {
      ROD("Rod", new ItemAPI("§8» §5Grappling hook", Material.FISHING_ROD, 1).build(), 500, GadgetCategory.GADGETS),
      ENDER_PEARL("Enderpearl", new ItemAPI("§8» §5Enderpearl", Material.ENDER_PEARL, 1).build(), 500, GadgetCategory.GADGETS),
      TELEPORT_BOW("Teleport Bow", new ItemAPI("§8» §5Teleport Bow", Material.BOW, 1).addHideFlag().build(), 500, GadgetCategory.GADGETS),
-     RAKETEN_WERFER("Raketenwerfer", new ItemAPI("§6RaketenWerfer", Material.TNT, 1).addHideFlag().build(), 750, GadgetCategory.GADGETS);
+     RAKETEN_WERFER("Rocketlauncher", new ItemAPI("§6Rocketlauncher", Material.FIREWORK_ROCKET, 1).addHideFlag().build(), 500, GadgetCategory.GADGETS);
      //SCHNOWBALLCANON("SchneeballKanone", new ItemAPI("§fSchneeballKanone", Material.SNOW_BLOCK, 1).addHideFlag().build(), 500, GadgetCategory.GADGETS);
 
      //TRAIL_GUN("Trail Gun", new ItemAPI("§8» §5Trail Gun", Material.SNOWBALL, 1).addHideFlag().build(), 125, GadgetCategory.GADGETS)

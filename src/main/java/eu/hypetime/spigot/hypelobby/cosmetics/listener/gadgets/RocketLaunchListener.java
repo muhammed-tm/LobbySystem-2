@@ -29,7 +29,7 @@ public class RocketLaunchListener implements Listener {
             if(event.getItem() == null) return;
             if(event.getItem().getItemMeta() == null) return;
             if(event.getItem().getItemMeta().getDisplayName() == null) return;
-            if (event.getItem().getItemMeta().getDisplayName().equals("§6RaketenWerfer")) {
+            if (event.getItem().getItemMeta().getDisplayName().equals("§6Rocketlauncher")) {
                 event.setCancelled(true);
                 if (!cooldown.contains(player)) {
                     cooldown.add(player);
@@ -52,7 +52,7 @@ public class RocketLaunchListener implements Listener {
                     Bukkit.getScheduler().scheduleSyncDelayedTask(HypeLobby.getInstance(), () -> {
                         cooldown.remove(player);
                         if(player.getInventory().getItem(4).equals(new ItemAPI("§8Loading...", Material.FIREWORK_STAR, 1).build()))
-                            player.getInventory().setItem(4, new ItemAPI("§6RaketenWerfer", Material.TNT, 1).build());
+                            player.getInventory().setItem(4, new ItemAPI("§6Rocketlauncher", Material.FIREWORK_ROCKET, 1).build());
                     }, 100L);
                 }
             }
