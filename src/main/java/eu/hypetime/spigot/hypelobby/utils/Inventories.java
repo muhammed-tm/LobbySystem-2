@@ -126,7 +126,7 @@ public class Inventories {
                 .addLoreLine("")
                 .addLoreLine("§7Kämpfe mit Spielern auf verschiedenen Weisen gegen §6Zombies, beweise §6deine Stärke!")
                 .addLoreLine("§7Nach neuen Wellen erscheinen die §6verschiedensten Zombies§7, die deine Dorfbewohner ermorden möchten.")
-                .addLoreLine("§aNEU §8(§61.16-1.18.X§8)")
+                .addLoreLine("§61.16-1.18.X§8")
                 .toItemStack());
 
         inventory.setItem(19, new ItemBuilder(Material.PLAYER_HEAD)
@@ -134,7 +134,9 @@ public class Inventories {
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzNmZjQxNmFhOGJlYzE2NjViOTI3MDFmYmU2OGE0ZWZmZmYzZDA2ZWQ5MTQ3NDU0ZmE3NzcxMmRkNjA3OWIzMyJ9fX0=")
                 .addLoreLine("§8» §7FFA")
                 .addLoreLine("")
-                .addLoreLine("§aNEU §8(§61.16-1.18.X§8)")
+                .addLoreLine("§7Kämpfe gegen Spielern mit den")
+                .addLoreLine("§7verschiedensten §6Kits §7die du dir §6freischalten §7kannst!")
+                .addLoreLine("§61.16-1.18.X")
                 .toItemStack());
 
         inventory.setItem(21, new ItemBuilder(Material.PLAYER_HEAD)
