@@ -45,6 +45,7 @@ dependencies {
     compileOnly 'com.github.LabyMod:labymod-server-api:1.0'
     implementation 'com.github.LabyMod:widgets:1.1.1'
     implementation 'com.gmail.filoghost.holographicdisplays:holographicdisplays-api:2.4.9'
+    implementation 'me.phantom.bananimations.BanAnimations:BanAnimations:1.0.1'
 }
 
 compileJava.options.encoding = 'UTF-8'

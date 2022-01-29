@@ -46,27 +46,27 @@ public class NavListener implements Listener {
 
 
                if (event.getClickedInventory() != player.getInventory()) {
-                    if (event.getSlot() == 4) {
+                    if (event.getSlot() == 13) {
                          player.closeInventory();
                          WarpAPI.tpWarp(player, "VillageDefense");
                     }
-                    if (event.getSlot() == 19) {
+                    if (event.getSlot() == 14) {
                          player.closeInventory();
                          WarpAPI.tpWarp(player, "KitPVP");
                     }
-                    if (event.getSlot() == 21) {
+                    if (event.getSlot() == 10) {
                          player.closeInventory();
                          WarpAPI.tpWarp(player, "Spawn");
                     }
-                    if (event.getSlot() == 23) {
+                    if (event.getSlot() == 12) {
                          player.closeInventory();
                          WarpAPI.tpWarp(player, "GunBattle");
                     }
-                    if (event.getSlot() == 25) {
+                    if (event.getSlot() == 15) {
                          player.closeInventory();
                          WarpAPI.tpWarp(player, "HypeSMP");
                     }
-                    if (event.getSlot() == 40) {
+                    if (event.getSlot() == 19) {
                          player.closeInventory();
                          Inventories.WarpNavigator(player);
                     }

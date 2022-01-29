@@ -115,60 +115,66 @@ public class Inventories {
     }
 
     public static void navigatorInventory(Player player) {
-        Inventory inventory = Bukkit.createInventory(null, 9 * 5, "§8» §6Navigator §8«");
+        Inventory inventory = Bukkit.createInventory(null, 9 * 4, "§8» §6Navigator §8«");
         for (int i = 0; i < inventory.getSize(); i++) {
             inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
         }
-        inventory.setItem(4, new ItemBuilder(Material.PLAYER_HEAD)
-                .setName("§6Village Defense")
+        inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§aVillage Defense")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2NiZjc4ZWE4ZTE0NGM4NjIxNGU5NTMwNDM2ZWI1MDZlNTM0YTMzZGQzMjZjNDI1MGVmMjc5ZDE5NDI0ZGMxZSJ9fX0=")
-                .addLoreLine("§8» §7Zombies §cvs §7Player")
+                .addLoreLine("§8» §7§lZombies §c§lvs §7§lPlayer")
                 .addLoreLine("")
-                .addLoreLine("§7Kämpfe mit Spielern auf verschiedenen Weisen gegen §6Zombies, beweise §6deine Stärke!")
-                .addLoreLine("§7Nach neuen Wellen erscheinen die §6verschiedensten Zombies§7, die deine Dorfbewohner ermorden möchten.")
+                .addLoreLine("§7Kämpfe mit Spielern auf verschiedenen Weisen")
+                .addLoreLine("§7gegen §aZombies§7, beweise §adeine Stärke!")
+                .addLoreLine("§7Nach neuen Wellen erscheinen die §averschiedensten Zombies§7,")
+                .addLoreLine("§7die deine Dorfbewohner ermorden möchten.")
+                .addLoreLine("")
                 .addLoreLine("§61.16-1.18.X§8")
                 .toItemStack());
 
-        inventory.setItem(19, new ItemBuilder(Material.PLAYER_HEAD)
+        inventory.setItem(14, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§cKitPVP")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzNmZjQxNmFhOGJlYzE2NjViOTI3MDFmYmU2OGE0ZWZmZmYzZDA2ZWQ5MTQ3NDU0ZmE3NzcxMmRkNjA3OWIzMyJ9fX0=")
-                .addLoreLine("§8» §7FFA")
+                .addLoreLine("§8» §c§lFFA")
                 .addLoreLine("")
                 .addLoreLine("§7Kämpfe gegen Spielern mit den")
-                .addLoreLine("§7verschiedensten §6Kits §7die du dir §6freischalten §7kannst!")
+                .addLoreLine("§7verschiedensten §cKits §7die du dir §cfreischalten §7kannst!")
+                .addLoreLine("")
                 .addLoreLine("§61.16-1.18.X")
                 .toItemStack());
 
-        inventory.setItem(21, new ItemBuilder(Material.PLAYER_HEAD)
+        inventory.setItem(10, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§6Spawn")
-                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGViMDdlZWEzODBhZjU4ZGM5MWVlZWUxNWQ5NWQ4NzkwYTA3ODFjNjk1ZWMwYThmZDhmZTMxZDQ4MzljYTU2MiJ9fX0=")
-                .addLoreLine("Erkunde gerne unsere große Lobby")
-                .addLoreLine("und finde verschiedenste secrets")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWY0YzIxZDE3YWQ2MzYzODdlYTNjNzM2YmZmNmFkZTg5NzMxN2UxMzc0Y2Q1ZDliMWMxNWU2ZTg5NTM0MzIifX19")
+                .addLoreLine("§7Erkunde unsere §6große Lobby")
+                .addLoreLine("§7und finde verschiedenste secrets")
                 .toItemStack());
 
-        inventory.setItem(23, new ItemBuilder(Material.PLAYER_HEAD)
+        inventory.setItem(12, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§6GunBattle")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTBkZmM4YTM1NjNiZjk5NmY1YzFiNzRiMGIwMTViMmNjZWIyZDA0Zjk0YmJjZGFmYjIyOTlkOGE1OTc5ZmFjMSJ9fX0=")
-                .addLoreLine("§8» §7FFA")
+                .addLoreLine("§8» §6§lFFA")
                 .addLoreLine("")
-                .addLoreLine("Kämpfe mit anderen Spielern auf verschiedenen Weisen und beweise,")
-                .addLoreLine("dass du der beste Schütze oder Schwert Kämpfer auf dem Netzwerk bist!")
+                .addLoreLine("§7Kämpfe mit anderen Spielern auf §6verschiedenen Weisen §7und beweise,")
+                .addLoreLine("§7dass du der beste Schütze oder Schwert Kämpfer auf dem Netzwerk bist!")
+                .addLoreLine("")
                 .addLoreLine("§6Version§8: §61.8.8-1.18.X")
                 .toItemStack());
 
-        inventory.setItem(25, new ItemBuilder(Material.PLAYER_HEAD)
-                .setName("§6HypeSMP")
+        inventory.setItem(15, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§bHypeSMP")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjNmNGQ1NTVmYjNiOTM1N2FmNzU4MmYyNzM4MDBmMWRhNGFjNjliMDQyMTBjM2FhMzRlNjNkYjJhNDIzNWJiZiJ9fX0=")
-                .addLoreLine("§8» §7Survival")
+                .addLoreLine("§8» §b§lSurvival")
                 .addLoreLine("")
-                .addLoreLine("§7Spiele mit anderen §6Minecraft Survival")
+                .addLoreLine("§7Spiele mit anderen §bMinecraft Survival")
                 .addLoreLine("§7welches aber einzigartige Sonderfunktionen,")
-                .addLoreLine("§7wie ein §6Levelsystem§7, von unseren Plugins ermöglicht")
+                .addLoreLine("§7wie ein §bLevelsystem§7, von unseren Plugins ermöglicht")
+                .addLoreLine("")
                 .addLoreLine("§6Version§8: §61.17.1")
 
                 .toItemStack());
 
-        inventory.setItem(40, new ItemBuilder(Material.PLAYER_HEAD)
+        inventory.setItem(19, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§6Warps")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWJlMDNjYjZmYWVhOTFhNjlhNDY4NGIzMGRkNjJmMWJlZjRmODM0N2NhMjAzNmQxMjhhNzAxMWE1YTUyZDA3OSJ9fX0=")
                 .addLoreLine("")
@@ -516,16 +522,18 @@ public class Inventories {
             inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
         }
         if (SettingConfig.gettpanimation(player) == false) {
-            inventory.setItem(11, new ItemBuilder(Material.NETHER_STAR).setName("§6Teleport Animation").addLoreLine("§cdeaktiviert").toItemStack());
-        } else {
             inventory.setItem(11, new ItemBuilder(Material.NETHER_STAR).setName("§6Teleport Animation").addLoreLine("§aaktiviert").toItemStack());
+        } else {
+            inventory.setItem(11, new ItemBuilder(Material.NETHER_STAR).setName("§6Teleport Animation").addLoreLine("§cdeaktiviert").toItemStack());
 
-        }/*
-          if(SettingConfig.getsichtbarkeit(player) == false) {
-               inventory.setItem(13, new ItemBuilder(Material.LEGACY_STAINED_CLAY).setName("§6Sichtbarkeit").addLoreLine("§aalle").toItemStack());
-          }else {
-               inventory.setItem(13, new ItemBuilder(Material.LEGACY_STAINED_CLAY).setName("§6Sichtbarkeit").addLoreLine("§ckeine").toItemStack());
-          }*/
+        }
+        if (SettingConfig.getDoublejump(player) == false) {
+            inventory.setItem(13, new ItemBuilder(Material.FEATHER).setName("§6Double Jump").addLoreLine("§aaktiviert").toItemStack());
+        } else {
+            inventory.setItem(13, new ItemBuilder(Material.FEATHER).setName("§6Double Jump").addLoreLine("§cdeaktiviert").toItemStack());
+            player.setAllowFlight(false);
+            player.setFlying(false);
+        }
         if (SettingConfig.getspawnposition(player) == false) {
             inventory.setItem(15, new ItemBuilder(Material.COMPASS).setName("§6Spawn-Position").addLoreLine("§7Aktuell §8» §6Spawn").toItemStack());
         } else {

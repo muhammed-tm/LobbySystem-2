@@ -29,6 +29,10 @@ public class SettingConfig {
         config.set(p.getName() + ".spawnposition", navigator);
         save();
     }
+    public static void setDoublejump(Player p, Boolean doublejump) throws IOException {
+        config.set(p.getName() + ".doublejump", doublejump);
+        save();
+    }
     public static void setsichtbarkeit(Player p, Boolean blindness) throws IOException {
         config.set(p.getName() + ".sichtbarkeit", blindness);
         save();
@@ -59,6 +63,10 @@ public class SettingConfig {
     }
     public static Boolean getsichtbarkeit(Player p) {
         return config.getBoolean(p.getName() + ".sichtbarkeit");
+
+    }
+    public static Boolean getDoublejump(Player p) {
+        return config.getBoolean(p.getName() + ".doublejump");
 
     }
     public static Boolean getxpleiste(Player p) {

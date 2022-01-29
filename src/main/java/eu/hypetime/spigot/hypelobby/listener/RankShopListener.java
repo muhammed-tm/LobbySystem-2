@@ -5,9 +5,14 @@ import com.github.juliarn.npc.event.PlayerNPCInteractEvent;
 import de.dytanic.cloudnet.driver.CloudNetDriver;
 import de.dytanic.cloudnet.driver.permission.IPermissionUser;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
-import eu.hypetime.spigot.hypelobby.utils.CoinsAPI;
-import eu.hypetime.spigot.hypelobby.utils.Inventories;
-import eu.hypetime.spigot.hypelobby.utils.ScoreAPI;
+import eu.hypetime.spigot.hypelobby.utils.*;
+import me.phantom.bananimations.AnimationType;
+import me.phantom.bananimations.BanAnimations;
+import me.phantom.bananimations.animations.FreezeAnimation;
+import me.phantom.bananimations.animations.SwordFallAnimation;
+import me.phantom.bananimations.events.AnimationStartEvent;
+import me.phantom.bananimations.listeners.AnimationListeners;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -22,12 +27,12 @@ public class RankShopListener implements Listener {
     public void handleNPCInteract(PlayerNPCInteractEvent event) {
         Player player = event.getPlayer();
         NPC npc = event.getNPC();
-
         // checking if the player hit the NPC
         if (npc.getProfile().getName().equalsIgnoreCase("§eRang Shop")) {
             if (event.getUseAction() == PlayerNPCInteractEvent.EntityUseAction.INTERACT_AT) {
                 Inventories.RankShopInventory(player);
             }
+
 
         }
     }

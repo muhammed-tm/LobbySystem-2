@@ -3,6 +3,7 @@ package eu.hypetime.spigot.hypelobby.listener;
 import com.github.juliarn.npc.NPC;
 import com.github.juliarn.npc.event.PlayerNPCInteractEvent;
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
+import eu.hypetime.spigot.hypelobby.utils.PlayerManager;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -16,6 +17,12 @@ public class NPCListener implements Listener {
     public void handleNPCInteract(PlayerNPCInteractEvent event) {
         Player player = event.getPlayer();
         NPC npc = event.getNPC();
+            if (!PlayerManager.hasAccept(event.getPlayer())) {
+                player.sendTitle("§4§lAchtung", "§cBitte die Regeln akzeptieren");
+                event.getPlayer().sendMessage("\n§7« §6HypeTimeEU §7»\n\n§7Bitte §cakzeptiere §7erst unsere §6DSGVO §7um das Netzwerk komplett nutzen zu können§8.\n§7Nutze dazu §6/dsgvo accept");
+                Inventories.DSGVOInventory(player);
+                return;
+        }
         if (npc.getProfile().getName().equalsIgnoreCase("§6NameMC Reward")) {
             if (event.getUseAction() == PlayerNPCInteractEvent.EntityUseAction.INTERACT_AT) {
                 if (npc.getProfile().hasName() && npc.isLookAtPlayer() && !npc.isImitatePlayer()) {

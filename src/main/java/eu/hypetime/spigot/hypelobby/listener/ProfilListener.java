@@ -99,16 +99,17 @@ public class ProfilListener implements Listener {
                     SettingConfig.setspawnposition(player, !SettingConfig.getspawnposition(player));
                     Inventories.ProfilSettingsInventory(player);
                }
-               if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Sichtbarkeit")) {
-                    SettingConfig.setsichtbarkeit(player, !SettingConfig.getsichtbarkeit(player));
+               if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Double Jump")) {
+                    SettingConfig.setDoublejump(player, !SettingConfig.getDoublejump(player));
                     Inventories.ProfilSettingsInventory(player);
+                    player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
                }
                if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cZurück")) {
                     Inventories.ProfilInventory(player);
 
                }
-               if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Sichtbarkeit")) {
-                    if (SettingConfig.getsichtbarkeit(player) == true) {
+               /*if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Sichtbarkeit")) {
+                    if (SettingConfig.getDoublejump(player) == true) {
                          HypeLobby.getNonplayersvisible().remove(player.getUniqueId());
                          for (Player all : Bukkit.getOnlinePlayers()) {
                               player.showPlayer(HypeLobby.getInstance(), all);
@@ -122,7 +123,7 @@ public class ProfilListener implements Listener {
                          }
                          player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 2F, 3F);
                     }
-               }
+               }*/
           }
      }
 

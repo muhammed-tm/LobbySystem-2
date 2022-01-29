@@ -46,7 +46,7 @@ public class WarpAPI {
           }
           Particle particle = Particle.FLAME;
 
-          if (SettingConfig.gettpanimation(player) == true) {
+          if (SettingConfig.gettpanimation(player) == false) {
                player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1f, 1f);
                player.setVelocity(new Vector(0, 2.5, 0));
                PacketPlayOutWorldParticles packet1 = new PacketPlayOutWorldParticles(CraftParticle.toNMS(Particle.MOB_APPEARANCE), false, 0, 0, 0f, 0f, 0f, 0f, 0, 1);

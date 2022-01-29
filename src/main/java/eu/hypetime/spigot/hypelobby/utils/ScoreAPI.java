@@ -79,11 +79,11 @@ public class ScoreAPI {
           obj.getScore("   ").setScore(3);
           obj.getScore("§7Discord§7:").setScore(2);
           obj.getScore("§7» §6hypetime.eu/discord").setScore(1);
-          //obj.getScore("§7Geschenke§7:").setScore(2);
-          //obj.getScore("§7»§6 " + presents + "/100").setScore(1);
+     //obj.getScore("§7Geschenke§7:").setScore(2);
+     //obj.getScore("§7»§6 " + presents + "/100").setScore(1);
           obj.getScore("    ").setScore(0);
           player.setScoreboard(sb);
-     }
+}
 
      public static void registerTeamEntry(Scoreboard sb, String Team, @Nonnull ChatColor prefixColor, String prefix, String suffix, Player player) {
           org.bukkit.scoreboard.Team team = sb.getTeam(Team);
@@ -149,6 +149,7 @@ public class ScoreAPI {
                          case 2:
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§6TeamSpeak §8| §7ts.HypeTime.eu"));
                               on.setLevel(countServiceInfoSnapshotPlayerCount());
+
                               break;
                          case 1:
                               on.spigot().sendMessage(ChatMessageType.ACTION_BAR, UUID.randomUUID(), TextComponent.fromLegacyText("§7Wir unterstützen §b§lLabyMod"));
