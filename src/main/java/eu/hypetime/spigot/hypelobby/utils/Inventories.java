@@ -433,12 +433,18 @@ public class Inventories {
         inventory.setItem(13, new ItemBuilder(Material.PLAYER_HEAD).setName("§7" + player.getName()).setSkullOwner(player.getName()).toItemStack());
         inventory.setItem(21, new ItemBuilder(Material.GOLD_BLOCK).setName("§7Deine §6Coins").setSkullOwner(player.getName()).addLoreLine("§6§l" + CoinsAPI.getCoins(player) + " §7Coins").toItemStack());
         inventory.setItem(22, new ItemBuilder(Material.COMPARATOR).setName("§6Einstellungen").toItemStack());
-        inventory.setItem(23, new ItemBuilder(Material.PLAYER_HEAD)
-                .setName("§6Subtitles")
-                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzkyNjc1Yjc0ZGFlZmQ3ZWU4NjA0NWZjNjU4MGZiNmFhNmM2NGY5NzlhMTI1YjIwZmY2ZjhlYTk0OTZjZSJ9fX0=")
-                .addLoreLine("§cSoon")
-                .toItemStack());
-        inventory.setItem(31, new ItemBuilder(Material.RED_BANNER).setName("§6Clan").toItemStack());
+        if (player.hasPermission("lobby.staff"))
+            inventory.setItem(23, new ItemBuilder(Material.PLAYER_HEAD)
+                    .setName("§cStaff Einstellungen")
+                    .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzkyNjc1Yjc0ZGFlZmQ3ZWU4NjA0NWZjNjU4MGZiNmFhNmM2NGY5NzlhMTI1YjIwZmY2ZjhlYTk0OTZjZSJ9fX0=")
+                    .toItemStack());
+        else
+            inventory.setItem(23, new ItemBuilder(Material.PLAYER_HEAD)
+                    .setName("§6Subtitles")
+                    .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzkyNjc1Yjc0ZGFlZmQ3ZWU4NjA0NWZjNjU4MGZiNmFhNmM2NGY5NzlhMTI1YjIwZmY2ZjhlYTk0OTZjZSJ9fX0=")
+                    .addLoreLine("§cSoon")
+                    .toItemStack());
+        inventory.setItem(31, new ItemBuilder(Material.RED_BANNER).setName("§6Clan").addLoreLine("§cSoon").toItemStack());
 
 
         player.openInventory(inventory);
@@ -539,6 +545,21 @@ public class Inventories {
         } else {
             inventory.setItem(15, new ItemBuilder(Material.COMPASS).setName("§6Spawn-Position").addLoreLine("§7Aktuell §8» §6Letzte Position").toItemStack());
         }
+        inventory.setItem(18, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§cZurück")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=")
+                .toItemStack());
+        player.openInventory(inventory);
+    }
+
+    public static void ProfilStaffSettingsInventory(Player player) {
+        Inventory inventory = Bukkit.createInventory(null, 9 * 3, "§8» §6S-Einstellungen §8«");
+        for (int i = 0; i < inventory.getSize(); i++) {
+            inventory.setItem(i, new ItemAPI("§7", Material.BLACK_STAINED_GLASS_PANE, 1).addHideFlag().build());
+        }
+        inventory.setItem(11, new ItemBuilder(Material.NETHER_STAR).setName("§4§lStop Server").addLoreLine("§cDie Lobby §7wird gestoppt").toItemStack());
+        inventory.setItem(13, new ItemBuilder(Material.BARRIER).setName("§cSoon").toItemStack());
+        inventory.setItem(15, new ItemBuilder(Material.BARRIER).setName("§cSoon").toItemStack());
         inventory.setItem(18, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§cZurück")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjg0ZjU5NzEzMWJiZTI1ZGMwNThhZjg4OGNiMjk4MzFmNzk1OTliYzY3Yzk1YzgwMjkyNWNlNGFmYmEzMzJmYyJ9fX0=")

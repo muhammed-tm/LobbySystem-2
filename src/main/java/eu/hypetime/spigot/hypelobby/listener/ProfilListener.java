@@ -42,6 +42,13 @@ public class ProfilListener implements Listener {
                     player.closeInventory();
                     Inventories.ProfilSettingsInventory(player);
                }
+               if (event.getSlot() == 23) {
+                    player.closeInventory();
+                    if(player.hasPermission("lobby.staff"))
+                    Inventories.ProfilStaffSettingsInventory(player);
+                    else
+                         player.sendMessage("§7Diese Funktion folgt in kürze§8.");
+               }
                if (event.getSlot() == 31) {
                     player.closeInventory();
                     if(player.getName().equalsIgnoreCase("quele") || player.getName().equalsIgnoreCase("QuadrixYT")) {
@@ -50,6 +57,7 @@ public class ProfilListener implements Listener {
                          player.sendMessage("§7Diese Funktion folgt in kürze§8.");
                     }
                }
+
           }
           if (event.getView().getTitle().equalsIgnoreCase("§6Clan §8| §7Menu")) {
                event.setCancelled(true);
@@ -91,18 +99,23 @@ public class ProfilListener implements Listener {
                event.setCancelled(true);
                if (event.getCurrentItem() == null) return;
                if (event.getCurrentItem().getItemMeta() == null) return;
+               if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE)
+                    player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
+
                if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Teleport Animation")) {
                     SettingConfig.settpanimation(player, !SettingConfig.gettpanimation(player));
                     Inventories.ProfilSettingsInventory(player);
+                    player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
                }
                if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Spawn-Position")) {
                     SettingConfig.setspawnposition(player, !SettingConfig.getspawnposition(player));
                     Inventories.ProfilSettingsInventory(player);
+                    player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
                }
                if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§6Double Jump")) {
                     SettingConfig.setDoublejump(player, !SettingConfig.getDoublejump(player));
                     Inventories.ProfilSettingsInventory(player);
-                    player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
+                    player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_YES, 1f, 1f);
                }
                if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§cZurück")) {
                     Inventories.ProfilInventory(player);
@@ -125,6 +138,32 @@ public class ProfilListener implements Listener {
                     }
                }*/
           }
-     }
+          if (player.getOpenInventory().getTitle().equalsIgnoreCase("§8» §6S-Einstellungen §8«")) {
+               event.setCancelled(true);
+               if (event.getCurrentItem() == null) return;
+               if (event.getCurrentItem().getItemMeta() == null) return;
+               if (event.getCurrentItem().getType() == Material.BLACK_STAINED_GLASS_PANE)
+                    player.playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_BREAK, 1f, 1f);
 
+               if (event.getCurrentItem().getItemMeta().getDisplayName().equalsIgnoreCase("§4§lStop Server")) {
+                    if(player.hasPermission("lobby.srstaff")) {
+                    if((Bukkit.getOnlinePlayers().size() <= 4)) {
+                         Bukkit.shutdown();
+                         Bukkit.shutdownMessage();
+                    }else {
+                         if(player.hasPermission("lobby.manager")) {
+                              Bukkit.shutdown();
+                              Bukkit.shutdownMessage();
+                         }else {
+                              player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDiese Funktion ist erst ab den Manager Rang möglich, da zu viele Spieler auf der Lobby sind.");
+
+                         }
+                         }
+                    }else {
+                         player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDiese Funktion ist erst ab den SrStaff Rang möglich");
+                    }
+               }
+
+          }
+}
 }
