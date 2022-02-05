@@ -57,9 +57,10 @@ public class SetCommand implements CommandExecutor {
                 && !args[0].equalsIgnoreCase("VillageDefense")
                 && !args[0].equalsIgnoreCase("KitPVP")
                 && !args[0].equalsIgnoreCase("Lotto")
+                && !args[0].equalsIgnoreCase("Soon")
                 && !args[0].equalsIgnoreCase("rgbblocks")) {
             player.sendMessage(prefix + "Bitte gebe eine gültige Location an§8. §6Locations§8:");
-            player.sendMessage("§6Spawn\n§6GunBattle\n§6LobbyPVP\n§6Belohnung\n§61\n§62\n§63\n§6RangShop\n§6NameMCReward\n§6VillageDefense\n§6KitPVP\n§6Lotto\n§6RGBBlocks");
+            player.sendMessage("§6Spawn\n§6GunBattle\n§6LobbyPVP\n§6Belohnung\n§61\n§62\n§63\n§6RangShop\n§6NameMCReward\n§cSoon\n§6VillageDefense\n§6KitPVP\n§6Lotto\n§6RGBBlocks");
             return false;
         }
 

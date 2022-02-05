@@ -185,6 +185,16 @@ public class Inventories {
                 .addLoreLine("§8§m-------------")
                 .toItemStack());
 
+        inventory.setItem(21, new ItemBuilder(Material.PLAYER_HEAD)
+                .setName("§cSoon")
+                .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2VkMWFiYTczZjYzOWY0YmM0MmJkNDgxOTZjNzE1MTk3YmUyNzEyYzNiOTYyYzk3ZWJmOWU5ZWQ4ZWZhMDI1In19fQ==")
+                .addLoreLine("§8» §c§kSoon")
+                .addLoreLine("")
+                .addLoreLine("§c???")
+                .addLoreLine("")
+                .addLoreLine("§6Version§8: §6§kllll")
+                .toItemStack());
+
         player.openInventory(inventory);
 
 
@@ -442,7 +452,6 @@ public class Inventories {
             inventory.setItem(23, new ItemBuilder(Material.PLAYER_HEAD)
                     .setName("§6Subtitles")
                     .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzkyNjc1Yjc0ZGFlZmQ3ZWU4NjA0NWZjNjU4MGZiNmFhNmM2NGY5NzlhMTI1YjIwZmY2ZjhlYTk0OTZjZSJ9fX0=")
-                    .addLoreLine("§cSoon")
                     .toItemStack());
         inventory.setItem(31, new ItemBuilder(Material.RED_BANNER).setName("§6Clan").addLoreLine("§cSoon").toItemStack());
 

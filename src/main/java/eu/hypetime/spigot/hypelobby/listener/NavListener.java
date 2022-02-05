@@ -70,6 +70,10 @@ public class NavListener implements Listener {
                          player.closeInventory();
                          Inventories.WarpNavigator(player);
                     }
+                    if (event.getSlot() == 21) {
+                         player.closeInventory();
+                         WarpAPI.tpWarp(player, "Soon");
+                    }
                }
           }
           if (event.getView().getTitle().equalsIgnoreCase("§8» §6Warps §8«")) {
