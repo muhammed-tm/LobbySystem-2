@@ -5,7 +5,7 @@ import de.dytanic.cloudnet.ext.bridge.player.IPlayerManager;
 import org.bukkit.entity.Player;
 
 public class CloudServer {
-     public void sendPlayer(Player player, String server) {
+     public static void sendPlayer(Player player, String server) {
           ((IPlayerManager) CloudNetDriver.getInstance().getServicesRegistry().getFirstService(IPlayerManager.class))
                .getPlayerExecutor(player.getUniqueId())
                .connect(server);

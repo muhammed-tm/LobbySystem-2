@@ -1,5 +1,6 @@
 package eu.hypetime.spigot.hypelobby.listener;
 
+import eu.hypetime.spigot.hypelobby.utils.CloudServer;
 import eu.hypetime.spigot.hypelobby.utils.Inventories;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
 import org.bukkit.Material;
@@ -74,6 +75,12 @@ public class NavListener implements Listener {
                          player.closeInventory();
                          WarpAPI.tpWarp(player, "Soon");
                     }
+                    if (event.getSlot() == 22) {
+                         if(player.hasPermission("lobby.bauserver")) {
+                              player.closeInventory();
+                              CloudServer.sendPlayer(player, "Bauserver-1");
+                         }
+                    }
                }
           }
           if (event.getView().getTitle().equalsIgnoreCase("§8» §6Warps §8«")) {
@@ -95,7 +102,7 @@ public class NavListener implements Listener {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "GunBattle");
                }
-               if (event.getSlot() == 18) {
+               if (event.getSlot() == 31) {
                     player.closeInventory();
                     Inventories.navigatorInventory(player);
                }
