@@ -75,7 +75,7 @@ public class NavListener implements Listener {
                          player.closeInventory();
                          WarpAPI.tpWarp(player, "Soon");
                     }
-                    if (event.getSlot() == 22) {
+                    if (event.getSlot() == 35) {
                          if(player.hasPermission("lobby.bauserver")) {
                               player.closeInventory();
                               CloudServer.sendPlayer(player, "Bauserver-1");
@@ -102,7 +102,7 @@ public class NavListener implements Listener {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "GunBattle");
                }
-               if (event.getSlot() == 35) {
+               if (event.getSlot() == 18) {
                     player.closeInventory();
                     Inventories.navigatorInventory(player);
                }
