@@ -199,7 +199,7 @@ public class Inventories {
                 .toItemStack());
 
         if(player.hasPermission("lobby.bauserver"))
-        inventory.setItem(31, new ItemBuilder(Material.PLAYER_HEAD)
+        inventory.setItem(35, new ItemBuilder(Material.PLAYER_HEAD)
                 .setName("§4§lTeam §8| §4Bauserver")
                 .setSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2RkMzExMzA0ODkxYzZiZWU5MmQ2M2E5ZDlhMWE3OGUzNjU0YmU1NmUxNWRkYzExMTE5YTcwODYyNWM5MDUwOCJ9fX0=")
                 .addLoreLine("§8» §c§kBauserver")

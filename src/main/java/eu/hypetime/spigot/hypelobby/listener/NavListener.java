@@ -102,7 +102,7 @@ public class NavListener implements Listener {
                     player.closeInventory();
                     WarpAPI.tpWarp(player, "GunBattle");
                }
-               if (event.getSlot() == 31) {
+               if (event.getSlot() == 35) {
                     player.closeInventory();
                     Inventories.navigatorInventory(player);
                }
