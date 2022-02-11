@@ -129,7 +129,9 @@ public class Inventories {
                 .addLoreLine("§7Nach neuen Wellen erscheinen die §averschiedensten Zombies§7,")
                 .addLoreLine("§7die deine Dorfbewohner ermorden möchten.")
                 .addLoreLine("")
-                .addLoreLine("§61.16-1.18.X§8")
+                //.addLoreLine("§61.16-1.18.X§8")
+                .addLoreLine("§4§lWARTUNGEN")
+
                 .toItemStack());
 
         inventory.setItem(14, new ItemBuilder(Material.PLAYER_HEAD)
@@ -170,7 +172,8 @@ public class Inventories {
                 .addLoreLine("§7welches aber einzigartige Sonderfunktionen,")
                 .addLoreLine("§7wie ein §bLevelsystem§7, von unseren Plugins ermöglicht")
                 .addLoreLine("")
-                .addLoreLine("§6Version§8: §61.17.1")
+                //.addLoreLine("§6Version§8: §61.17.1")
+                .addLoreLine("§4§lWARTUNGEN")
 
                 .toItemStack());
 
