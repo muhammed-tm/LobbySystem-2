@@ -31,6 +31,13 @@ public class PatchNotesCommand implements CommandExecutor {
                     "§8➥ §7Gadget Preise angepasst\n" +
                     "§8➥ §7Neue Pets hinzugefügt\n" +
                     "§8➥ §7Lobby Armorstands überarbeitet\n");
+            player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§7Update§8: §6v2.6.5\n" +
+                    "§8➥ §7Max player angepasst\n" +
+                    "§8➥ §7Motd design angepasst\n" +
+                    "§8➥ §7Paper native version auf 1.18.1\n" +
+                    "§8➥ §7GunBattle player tracker hinzugefügt\n" +
+                    "§8➥ §7Performance updates\n" +
+                    "§8➥ §7Clanchat auch nun mit /cc möglich\n");
 
         }
         return false;
