@@ -199,6 +199,7 @@ public class BuildListener implements Listener {
                 int i = Objects.requireNonNullElse(WarpAPI.getInt("rgbblocks"), 0);
                 WarpAPI.setLocation(event.getClickedBlock().getLocation(), "rgbblock." + i);
                 WarpAPI.location.setValue("rgbblocks", (i + 1));
+                WarpAPI.location.save();
             }
         }
     }

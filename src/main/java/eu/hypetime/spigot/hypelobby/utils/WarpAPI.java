@@ -49,8 +49,6 @@ public class WarpAPI {
           if (SettingConfig.gettpanimation(player) == false) {
                player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1f, 1f);
                player.setVelocity(new Vector(0, 2.5, 0));
-               PacketPlayOutWorldParticles packet1 = new PacketPlayOutWorldParticles(CraftParticle.toNMS(Particle.MOB_APPEARANCE), false, 0, 0, 0f, 0f, 0f, 0f, 0, 1);
-               ((CraftPlayer) player).getHandle().b.sendPacket(packet1);
                Bukkit.getScheduler().runTaskLater(HypeLobby.getInstance(), () -> player.teleport(loc), 15L);
           }else {
                player.teleport(loc);
