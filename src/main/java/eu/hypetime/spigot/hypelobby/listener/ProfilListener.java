@@ -149,11 +149,9 @@ public class ProfilListener implements Listener {
                     if(player.hasPermission("lobby.srstaff")) {
                     if((Bukkit.getOnlinePlayers().size() <= 4)) {
                          Bukkit.shutdown();
-                         Bukkit.shutdownMessage();
                     }else {
                          if(player.hasPermission("lobby.manager")) {
                               Bukkit.shutdown();
-                              Bukkit.shutdownMessage();
                          }else {
                               player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDiese Funktion ist erst ab den Manager Rang möglich, da zu viele Spieler auf der Lobby sind.");
 

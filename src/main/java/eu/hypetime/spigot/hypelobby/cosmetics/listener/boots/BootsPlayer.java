@@ -29,7 +29,7 @@ public class BootsPlayer {
           this.player = player;
           this.particle = particle;
           this.task = Bukkit.getScheduler().scheduleSyncRepeatingTask(HypeLobby.getInstance(), () -> {
-               particle.builder().count(1).location(player.getLocation()).spawn();
+               player.getWorld().spawnParticle(particle, player.getLocation(), 10, 0.1, 0.5, 0.1);
           }, 0, 0L);
           bootsPlayers.put(player, this);
      }

@@ -19,6 +19,7 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityChangeBlockEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 import org.bukkit.event.hanging.HangingPlaceEvent;
 import org.bukkit.event.player.*;
@@ -97,8 +98,9 @@ public class BuildListener implements Listener {
     }
 
     @EventHandler
-    public void onPickUp(PlayerAttemptPickupItemEvent event) {
-        if (!build.contains(event.getPlayer())) {
+    public void onPickUp(EntityPickupItemEvent event) {
+        if(event.getEntity() instanceof Player player)
+        if (!build.contains(player)) {
             event.setCancelled(true);
         }
     }

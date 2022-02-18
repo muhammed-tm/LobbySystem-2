@@ -3,7 +3,7 @@ package eu.hypetime.spigot.hypelobby.cosmetics.listener.pets;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftCreature;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftCreature;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
@@ -75,7 +75,7 @@ public class PetEntity {
           } else {
                CraftCreature creature = (CraftCreature) entity;
                Location loc = player.getLocation();
-               creature.getHandle().getNavigation().a(loc.getX(), loc.getY(), loc.getZ(), 1.4);
+               creature.getHandle().a(loc.getX(), loc.getY(), loc.getZ());
           }
      }
 }

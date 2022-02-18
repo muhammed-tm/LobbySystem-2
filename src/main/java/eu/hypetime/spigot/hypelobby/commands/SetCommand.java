@@ -85,7 +85,7 @@ public class SetCommand implements CommandExecutor {
                 armorStand.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
                 armorStand.getEquipment().setBoots(new ItemStack(Material.IRON_BOOTS));
                 armorStand.setInvulnerable(true);
-                armorStand.addDisabledSlots(EquipmentSlot.values());
+                armorStand.setPersistent(true);
             }
             if (args[0].equalsIgnoreCase("Lotto")) {
                 player.getLocation().getBlock().setType(Material.CHEST);

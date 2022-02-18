@@ -107,23 +107,29 @@ public class HypeLobby extends JavaPlugin {
                          i2[0] = 0;
                     }
                }
-               WarpAPI.getLocation("rgbblock." + i[0]).getBlock().setType(materials.get(i2[0]));
-               i[0] += 1;
+               if(WarpAPI.getLocation("rgbblock." + i[0]) != null) {
+                    WarpAPI.getLocation("rgbblock." + i[0]).getBlock().setType(materials.get(i2[0]));
+                    i[0] += 1;
+               }
           }, 5, 5);
           Bukkit.getScheduler().scheduleSyncDelayedTask(this, () -> {
-               Block block = WarpAPI.getLocation("Lotto").getBlock();
-               block.setType(Material.CHEST);
-               ((Directional) block.getBlockData()).setFacing(BlockFace.SOUTH);
-               WarpAPI.getLocation("Lotto").getBlock().setType(Material.CHEST);
-               ArmorStand armorStand = WarpAPI.getLocation("Lotto").getWorld().spawn(WarpAPI.getLocation("Lotto").add(0.5, -0.5, 0.5), ArmorStand.class);
-               armorStand.setCustomName("§6Lotto");
-               armorStand.setCustomNameVisible(true);
-               armorStand.setArms(true);
-               armorStand.setBasePlate(false);
-               armorStand.setInvisible(true);
-               armorStand.setInvulnerable(true);
-               armorStand.addDisabledSlots(EquipmentSlot.values());
-
+               if(WarpAPI.getLocation("Lotto") != null) {
+                    Block block = WarpAPI.getLocation("Lotto").getBlock();
+                    block.setType(Material.CHEST);
+                    ((Directional) block.getBlockData()).setFacing(BlockFace.SOUTH);
+                    WarpAPI.getLocation("Lotto").getBlock().setType(Material.CHEST);
+                    ArmorStand armorStand = WarpAPI.getLocation("Lotto").getWorld().spawn(WarpAPI.getLocation("Lotto").add(0.5, -0.5, 0.5), ArmorStand.class);
+                    armorStand.setCustomName("§6Lotto");
+                    armorStand.setCustomNameVisible(true);
+                    armorStand.setArms(true);
+                    armorStand.setBasePlate(false);
+                    armorStand.setInvisible(true);
+                    armorStand.setInvulnerable(true);
+                    for (EquipmentSlot equipmentSlot : EquipmentSlot.values()) {
+                         armorStand.addEquipmentLock(equipmentSlot, ArmorStand.LockType.ADDING_OR_CHANGING);
+                         armorStand.addEquipmentLock(equipmentSlot, ArmorStand.LockType.REMOVING_OR_CHANGING);
+                    }
+               }
                //rmorStand reward = WarpAPI.getLocation("Belohnung").getWorld().spawn(WarpAPI.getLocation("Belohnung"), ArmorStand.class);
                /*reward.setCustomName("§6Daily Rewards");
                reward.setCustomNameVisible(true);

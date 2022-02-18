@@ -32,7 +32,7 @@ public class ChatListener implements Listener {
 
             message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text("Du musst davor die §lDatenschutz-Grundverordnung §7Akzeptieren. §7(§a§l/dsgvo accept§7)§8.")));
             message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/dsgvo accept"));
-            event.getPlayer().sendMessage(message);
+            event.getPlayer().sendMessage(message.toLegacyText());
             event.setCancelled(true);
         }
     }

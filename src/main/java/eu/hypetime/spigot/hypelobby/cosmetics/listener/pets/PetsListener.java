@@ -2,7 +2,9 @@ package eu.hypetime.spigot.hypelobby.cosmetics.listener.pets;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftCreature;
+import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftCreature;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftCreature;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,6 +14,8 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.lang.reflect.Method;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.function.Supplier;
 
 /*
@@ -47,8 +51,10 @@ public class PetsListener implements Listener {
           Player player = event.getPlayer();
           if (event.getAction() == Action.LEFT_CLICK_AIR) {
                if (PetsManager.getPet(player) != null) {
-                    Location loc = player.getTargetBlock(10).getLocation();
-                    ((CraftCreature) PetsManager.getPet(player).getEntity()).getHandle().getNavigation().a(loc.getX(), loc.getY(), loc.getZ(), 1.4);
+                    Set<Material> air = new LinkedHashSet<>();
+                    air.add(Material.AIR);
+                    Location loc = player.getTargetBlock(air, 10).getLocation();
+                    ((CraftCreature) PetsManager.getPet(player).getEntity()).getHandle().a(loc.getX(), loc.getY(), loc.getZ());
                }
           }
      }

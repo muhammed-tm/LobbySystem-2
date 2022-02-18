@@ -3,10 +3,7 @@ package eu.hypetime.spigot.hypelobby.listener;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
 import eu.hypetime.spigot.hypelobby.commands.BuildCommand;
 import eu.hypetime.spigot.hypelobby.utils.WarpAPI;
-import io.papermc.paper.event.entity.EntityMoveEvent;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -17,6 +14,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerItemDamageEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.weather.WeatherChangeEvent;
 
 /*
@@ -36,11 +34,9 @@ public class MainListener implements Listener {
      }*/
 
     @EventHandler
-    public void onMove(EntityMoveEvent event) {
-        if (event.getEntityType() == EntityType.ARMOR_STAND) {
-            if (event.getEntity().getPassengers().size() == 0) {
-                event.setCancelled(true);
-            }
+    public void onMove(PlayerMoveEvent event) {
+        if (event.getPlayer().getPassengers().size() == 0) {
+            event.setCancelled(true);
         }
     }
 

@@ -28,7 +28,7 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        event.joinMessage(null);
+        event.setJoinMessage(null);
         Inventories.mainInventory(player);
         RewardAPI.createIfNotExist(player);
         StatsManager.updatePlayer(player);
@@ -61,7 +61,7 @@ public class JoinListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        event.quitMessage(null);
+        event.setQuitMessage(null);
         if (SitCommand.sitting.contains(event.getPlayer().getUniqueId())) {
             SitCommand.sitting.remove(event.getPlayer().getUniqueId());
             event.getPlayer().getVehicle().remove();
