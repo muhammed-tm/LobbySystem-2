@@ -28,17 +28,4 @@ public class DoubleJumpListener implements Listener {
                }
           }
      }
-
-     @EventHandler
-     public void onMove(PlayerMoveEvent event) {
-          Player player = event.getPlayer();
-               if (player.getGameMode() == GameMode.SURVIVAL) {
-                    if (SettingConfig.getDoublejump(player) == false) {
-                         if (player.getLocation().add(0, -1, 0).getBlock().getType() != Material.AIR) {
-                         player.setAllowFlight(true);
-                         player.setFlying(false);
-                    }
-               }
-          }
-     }
 }

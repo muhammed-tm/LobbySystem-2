@@ -1,10 +1,13 @@
 package eu.hypetime.spigot.hypelobby.cosmetics.listener.pets;
 
+import com.destroystokyo.paper.entity.Pathfinder;
+import com.destroystokyo.paper.event.entity.EntityPathfindEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_18_R1.entity.CraftCreature;
 import org.bukkit.craftbukkit.v1_18_R1.entity.CraftCreature;
+import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +17,7 @@ import org.bukkit.event.entity.EntityTargetEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import java.lang.reflect.Method;
+import java.nio.file.Path;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.function.Supplier;
@@ -53,8 +57,10 @@ public class PetsListener implements Listener {
                if (PetsManager.getPet(player) != null) {
                     Set<Material> air = new LinkedHashSet<>();
                     air.add(Material.AIR);
-                    Location loc = player.getTargetBlock(air, 10).getLocation();
-                    ((CraftCreature) PetsManager.getPet(player).getEntity()).getHandle().a(loc.getX(), loc.getY(), loc.getZ());
+
+                    Location loc = player.getTargetBlock(air, 20).getLocation();
+                    Pathfinder pathfinder = ((Mob) PetsManager.getPet(player).getEntity()).getPathfinder();
+                    pathfinder.moveTo(loc, 1.5);
                }
           }
      }

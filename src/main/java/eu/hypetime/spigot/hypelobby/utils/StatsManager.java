@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 /*
     Created by Andre
@@ -46,7 +47,7 @@ public class StatsManager {
             if (WarpAPI.getLocation("1") != null) {
                 ArmorStand placeholder = (ArmorStand) WarpAPI.getLocation("2").getWorld().spawn(WarpAPI.getLocation("2"), ArmorStand.class);
                 placeholder.setInvisible(true);
-                ArmorStand one = (ArmorStand) placeholder.getNearbyEntities(1.5, 1.5, 1.5).stream().filter(entity -> entity != placeholder).findFirst().get();
+                ArmorStand one = (ArmorStand) placeholder.getNearbyEntities(1.5, 1.5, 1.5).stream().filter(entity -> entity != placeholder).collect(Collectors.toList()).get(0);
                 placeholder.remove();
                 if (!SQLStats.getInstance().getPlayerFromRank(0).equals("null")) {
                     one.setHelmet(new ItemBuilder(Material.PLAYER_HEAD).setSkullOwner(SQLStats.getInstance().getPlayerFromRank(0)).toItemStack());
@@ -59,7 +60,7 @@ public class StatsManager {
             if (WarpAPI.getLocation("2") != null) {
                 ArmorStand placeholder = (ArmorStand) WarpAPI.getLocation("2").getWorld().spawn(WarpAPI.getLocation("2"), ArmorStand.class);
                 placeholder.setInvisible(true);
-                ArmorStand two = (ArmorStand) placeholder.getNearbyEntities(1.5, 1.5, 1.5).stream().filter(entity -> entity != placeholder).findFirst().get();
+                ArmorStand two = (ArmorStand) placeholder.getNearbyEntities(1.5, 1.5, 1.5).stream().filter(entity -> entity != placeholder).collect(Collectors.toList()).get(0);
                 placeholder.remove();
 
                 if (!SQLStats.getInstance().getPlayerFromRank(1).equals("null")) {
@@ -74,7 +75,7 @@ public class StatsManager {
             if (WarpAPI.getLocation("3") != null) {
                 ArmorStand placeholder = (ArmorStand) WarpAPI.getLocation("3").getWorld().spawn(WarpAPI.getLocation("3"), ArmorStand.class);
                 placeholder.setInvisible(true);
-                ArmorStand three = (ArmorStand) placeholder.getNearbyEntities(1.5, 1.5, 1.5).stream().filter(entity -> entity != placeholder).findFirst().get();
+                ArmorStand three = (ArmorStand) placeholder.getNearbyEntities(1.5, 1.5, 1.5).stream().filter(entity -> entity != placeholder).collect(Collectors.toList()).get(0);
                 placeholder.remove();
                 if (!SQLStats.getInstance().getPlayerFromRank(2).equals("null")) {
                     three.setHelmet(new ItemBuilder(Material.PLAYER_HEAD).setSkullOwner(SQLStats.getInstance().getPlayerFromRank(2)).toItemStack());

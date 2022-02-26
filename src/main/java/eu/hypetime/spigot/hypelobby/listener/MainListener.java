@@ -34,13 +34,6 @@ public class MainListener implements Listener {
      }*/
 
     @EventHandler
-    public void onMove(PlayerMoveEvent event) {
-        if (event.getPlayer().getPassengers().size() == 0) {
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
     public void onClick(InventoryClickEvent event) {
         if (event.getWhoClicked().getGameMode() == GameMode.SURVIVAL) {
             event.setCancelled(true);

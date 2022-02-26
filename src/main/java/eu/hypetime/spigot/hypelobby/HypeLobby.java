@@ -130,7 +130,7 @@ public class HypeLobby extends JavaPlugin {
                          armorStand.addEquipmentLock(equipmentSlot, ArmorStand.LockType.REMOVING_OR_CHANGING);
                     }
                }
-               //rmorStand reward = WarpAPI.getLocation("Belohnung").getWorld().spawn(WarpAPI.getLocation("Belohnung"), ArmorStand.class);
+               //ArmorStand reward = WarpAPI.getLocation("Belohnung").getWorld().spawn(WarpAPI.getLocation("Belohnung"), ArmorStand.class);
                /*reward.setCustomName("§6Daily Rewards");
                reward.setCustomNameVisible(true);
                reward.setArms(true);

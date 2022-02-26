@@ -19,14 +19,14 @@ public class PlayerMoveEvent implements Listener {
 
     @EventHandler
     public void onMove(org.bukkit.event.player.PlayerMoveEvent e) {
-        Player p = e.getPlayer();
+        Player player = e.getPlayer();
         if (this.plugin.getConfig().getBoolean("shield")) {
             for (Player players : this.plugin.run.keySet()) {
-                if (p != players && !p.hasPermission("shieldarmor.bypass"))
-                    if (p.getLocation().distance(players.getLocation()) <= 3.0D) {
-                        double Ax = p.getLocation().getX();
-                        double Ay = p.getLocation().getY();
-                        double Az = p.getLocation().getZ();
+                if (player != players && !player.hasPermission("shieldarmor.bypass"))
+                    if (player.getLocation().distance(players.getLocation()) <= 3.0D) {
+                        double Ax = player.getLocation().getX();
+                        double Ay = player.getLocation().getY();
+                        double Az = player.getLocation().getZ();
                         double Bx = players.getLocation().getX();
                         double By = players.getLocation().getY();
                         double Bz = players.getLocation().getZ();
@@ -34,18 +34,18 @@ public class PlayerMoveEvent implements Listener {
                         double y = Ay - By;
                         double z = Az - Bz;
                         Vector v = (new Vector(x, y, z)).normalize().multiply(1.1D).setY(0.6D);
-                        p.setVelocity(v);
+                        player.setVelocity(v);
                     }
             }
-            if (this.plugin.run.containsKey(p))
-                for (Entity entity : p.getNearbyEntities(5.0D, 5.0D, 5.0D)) {
+            if (this.plugin.run.containsKey(player))
+                for (Entity entity : player.getNearbyEntities(5.0D, 5.0D, 5.0D)) {
                     if (entity instanceof Player) {
                         Player target = (Player)entity;
-                        if (p != target)
+                        if (player != target)
                             if (!target.hasPermission("shieldarmor.bypass")) {
-                                double Ax = p.getLocation().getX();
-                                double Ay = p.getLocation().getY();
-                                double Az = p.getLocation().getZ();
+                                double Ax = player.getLocation().getX();
+                                double Ay = player.getLocation().getY();
+                                double Az = player.getLocation().getZ();
                                 double Bx = target.getLocation().getX();
                                 double By = target.getLocation().getY();
                                 double Bz = target.getLocation().getZ();
