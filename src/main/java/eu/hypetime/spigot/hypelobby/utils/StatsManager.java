@@ -7,6 +7,7 @@ import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.stream.Collectors;
@@ -45,45 +46,48 @@ public class StatsManager {
     public static void Top3Scheduler() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(HypeLobby.getInstance(), () -> {
             if (WarpAPI.getLocation("1") != null) {
-                ArmorStand placeholder = (ArmorStand) WarpAPI.getLocation("2").getWorld().spawn(WarpAPI.getLocation("2"), ArmorStand.class);
-                placeholder.setInvisible(true);
-                ArmorStand one = (ArmorStand) placeholder.getNearbyEntities(1.5, 1.5, 1.5).stream().filter(entity -> entity != placeholder).collect(Collectors.toList()).get(0);
-                placeholder.remove();
+                ArmorStand one = (ArmorStand) WarpAPI.getLocation("1").getWorld().spawn(WarpAPI.getLocation("1"), ArmorStand.class);
                 if (!SQLStats.getInstance().getPlayerFromRank(0).equals("null")) {
                     one.setHelmet(new ItemBuilder(Material.PLAYER_HEAD).setSkullOwner(SQLStats.getInstance().getPlayerFromRank(0)).toItemStack());
+                    one.setCustomNameVisible(true);
                     one.setCustomName("§6" + SQLStats.getInstance().getPlayerFromRank(0));
                 } else {
                     one.setHelmet(new ItemBuilder(Material.PLAYER_HEAD).setSkullOwner("MHF_Question").toItemStack());
+                    one.setCustomNameVisible(true);
                     one.setCustomName("§c???");
                 }
+                one.setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));
+                one.setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
+                one.setBoots(new ItemStack(Material.DIAMOND_BOOTS));
             }
             if (WarpAPI.getLocation("2") != null) {
-                ArmorStand placeholder = (ArmorStand) WarpAPI.getLocation("2").getWorld().spawn(WarpAPI.getLocation("2"), ArmorStand.class);
-                placeholder.setInvisible(true);
-                ArmorStand two = (ArmorStand) placeholder.getNearbyEntities(1.5, 1.5, 1.5).stream().filter(entity -> entity != placeholder).collect(Collectors.toList()).get(0);
-                placeholder.remove();
-
+                ArmorStand two = (ArmorStand) WarpAPI.getLocation("2").getWorld().spawn(WarpAPI.getLocation("2"), ArmorStand.class);
                 if (!SQLStats.getInstance().getPlayerFromRank(1).equals("null")) {
-                    two.setHelmet( new ItemBuilder(Material.PLAYER_HEAD).setSkullOwner(SQLStats.getInstance().getPlayerFromRank(1)).toItemStack());
+                    two.setHelmet(new ItemBuilder(Material.PLAYER_HEAD).setSkullOwner(SQLStats.getInstance().getPlayerFromRank(1)).toItemStack());
+                    two.setCustomNameVisible(true);
                     two.setCustomName("§6" + SQLStats.getInstance().getPlayerFromRank(1));
                 } else {
                     two.setHelmet(new ItemBuilder(Material.PLAYER_HEAD).setSkullOwner("MHF_Question").toItemStack());
                     two.setCustomName("§c???");
                 }
-
+                two.setChestplate(new ItemStack(Material.IRON_CHESTPLATE));
+                two.setLeggings(new ItemStack(Material.IRON_LEGGINGS));
+                two.setBoots(new ItemStack(Material.IRON_BOOTS));
             }
             if (WarpAPI.getLocation("3") != null) {
-                ArmorStand placeholder = (ArmorStand) WarpAPI.getLocation("3").getWorld().spawn(WarpAPI.getLocation("3"), ArmorStand.class);
-                placeholder.setInvisible(true);
-                ArmorStand three = (ArmorStand) placeholder.getNearbyEntities(1.5, 1.5, 1.5).stream().filter(entity -> entity != placeholder).collect(Collectors.toList()).get(0);
-                placeholder.remove();
+                ArmorStand three = (ArmorStand) WarpAPI.getLocation("3").getWorld().spawn(WarpAPI.getLocation("3"), ArmorStand.class);
                 if (!SQLStats.getInstance().getPlayerFromRank(2).equals("null")) {
                     three.setHelmet(new ItemBuilder(Material.PLAYER_HEAD).setSkullOwner(SQLStats.getInstance().getPlayerFromRank(2)).toItemStack());
+                    three.setCustomNameVisible(true);
                     three.setCustomName("§6" + SQLStats.getInstance().getPlayerFromRank(2));
                 } else {
                     three.setHelmet(new ItemBuilder(Material.PLAYER_HEAD).setSkullOwner("MHF_Question").toItemStack());
+                    three.setCustomNameVisible(true);
                     three.setCustomName("§c???");
                 }
+                three.setChestplate(new ItemStack(Material.CHAINMAIL_CHESTPLATE));
+                three.setLeggings(new ItemStack(Material.CHAINMAIL_LEGGINGS));
+                three.setBoots(new ItemStack(Material.CHAINMAIL_BOOTS));
             }
         }, 20, 20 * 60 * 15);
     }
