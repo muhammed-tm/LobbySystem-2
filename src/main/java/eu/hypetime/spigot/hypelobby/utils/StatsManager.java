@@ -41,7 +41,7 @@ public class StatsManager {
 
      }
 
-     public static void Top3Scheduler() {
+     /*public static void Top3Scheduler() {
           Bukkit.getScheduler().scheduleSyncRepeatingTask(HypeLobby.getInstance(), () -> {
                if (WarpAPI.getLocation("1") != null) {
                     if (!WarpAPI.getLocation("1").getNearbyEntities(1, 1, 1).stream().filter(entity -> entity.getType() == EntityType.ARMOR_STAND).findFirst().isPresent()) {
@@ -95,5 +95,5 @@ public class StatsManager {
                }
           }, 20, 20 * 60 * 15);
      }
-
+*/
 }
