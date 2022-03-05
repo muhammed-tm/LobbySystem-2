@@ -37,7 +37,7 @@ public class JoinListener implements Listener {
         player.setGameMode(GameMode.SURVIVAL);
 
         if (SettingConfig.getspawnposition(player) == false)
-             player.teleport(WarpAPI.getLocation("Spawn"));
+            player.teleport(WarpAPI.getLocation("Spawn"));
 
         player.sendTitle("§6Neue Updates", "§6§l/patchnotes §7(§av2.6.54§7)");
         player.playSound(player.getLocation(), Sound.ENTITY_ENDERMAN_TELEPORT, 2F, 1F); //activate when halloween is over
@@ -51,7 +51,7 @@ public class JoinListener implements Listener {
             player.getWorld().strikeLightningEffect(player.getLocation());
         if (player.getName().equals("DasAkkusativer"))
             player.sendMessage("§4§lAKKU_GHG WAS GHGT du kleiner Eboy, bad, bad, bad???");
-         player.setFoodLevel(20);
+        player.setFoodLevel(20);
 
 
           /* Halloween Update <>
@@ -78,7 +78,7 @@ public class JoinListener implements Listener {
         }
         BootsPlayer.stopParticle(event.getPlayer());
 
-        if(Lottery.lottery.contains(event.getPlayer())) {
+        if (Lottery.lottery.contains(event.getPlayer())) {
             CoinsAPI.addCoins(event.getPlayer(), Lottery.currentCoins.get(event.getPlayer()));
             Lottery.lottery.remove(event.getPlayer());
         }

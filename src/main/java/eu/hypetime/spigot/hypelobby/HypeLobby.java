@@ -156,7 +156,7 @@ public class HypeLobby extends JavaPlugin {
 
      private void registerListener() {
           new SQLStats();
-          StatsManager.Top3Scheduler();
+          //StatsManager.Top3Scheduler();
 
           PluginManager pluginManager = Bukkit.getPluginManager();
           lobbySwitcherListener = new LobbySwitcherListener();
