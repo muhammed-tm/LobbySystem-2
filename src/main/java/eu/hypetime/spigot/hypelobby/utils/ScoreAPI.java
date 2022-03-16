@@ -5,10 +5,13 @@ import de.dytanic.cloudnet.driver.permission.IPermissionUser;
 import de.dytanic.cloudnet.driver.service.ServiceInfoSnapshot;
 import de.dytanic.cloudnet.ext.bridge.BridgeServiceProperty;
 import eu.hypetime.spigot.hypelobby.HypeLobby;
+import eu.hypetime.spigot.hypelobby.utils.clan.ClanSQL;
+import eu.hypetime.spigot.hypelobby.utils.clan.PlayerClanSQL;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scoreboard.DisplaySlot;
@@ -105,6 +108,15 @@ public class ScoreAPI {
           team.setColor(prefixColor);
           team.addEntry(player.getName());
           player.setDisplayName(ChatColor.translateAlternateColorCodes('&', prefix + prefixColor + player.getName() + suffix));
+          if (PlayerClanSQL.isInClan(player)) {
+               player.setCustomName(String.valueOf(team.getPrefix()) + player.getName());
+               player.setPlayerListName(String.valueOf(team.getPrefix()) + player.getName() + " §7[§e" + PlayerClanSQL.getClanTag(player) + "§7]");
+               team.addPlayer((OfflinePlayer) player);
+          }else {
+               player.setCustomName(String.valueOf(team.getPrefix()) + player.getName());
+               player.setPlayerListName(String.valueOf(team.getPrefix()) + player.getName() + "");
+               team.addPlayer((OfflinePlayer) player);
+          }
      }
 
      public static String updateTeam(Scoreboard sb, String Team, String prefix, String suffix, ChatColor entry) {
