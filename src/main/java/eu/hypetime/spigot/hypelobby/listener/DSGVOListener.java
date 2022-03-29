@@ -27,7 +27,7 @@ public class DSGVOListener implements Listener {
             event.setCancelled(true);
             if (event.getSlot() == 10) {
                 PlayerManager.setAccept(player);
-                player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Du hast nun die DSGVO akzeptiert!");
+                player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "Du hast nun die Datenschutz-Grundverordnung akzeptiert!");
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_CHIME, 1f, 1f);
 
                 player.closeInventory();

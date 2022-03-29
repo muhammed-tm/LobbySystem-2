@@ -17,18 +17,19 @@ public class NPCListener implements Listener {
     public void handleNPCInteract(PlayerNPCInteractEvent event) {
         Player player = event.getPlayer();
         NPC npc = event.getNPC();
-            if (!PlayerManager.hasAccept(event.getPlayer())) {
-                player.sendTitle("§4§lAchtung", "§cBitte die Regeln akzeptieren");
-                event.getPlayer().sendMessage("\n§7« §6HypeTimeEU §7»\n\n§7Bitte §cakzeptiere §7erst unsere §6DSGVO §7um das Netzwerk komplett nutzen zu können§8.\n§7Nutze dazu §6/dsgvo accept");
-                Inventories.DSGVOInventory(player);
-                return;
+        if (!PlayerManager.hasAccept(event.getPlayer())) {
+            player.sendTitle("§4§lAchtung", "§cBitte die Regeln akzeptieren");
+            event.getPlayer().sendMessage("\n§7« §6HypeTimeEU §7»\n\n§7Bitte §cakzeptiere §7erst unsere §6DSGVO §7um das Netzwerk komplett nutzen zu können§8.\n§7Nutze dazu §6/dsgvo accept");
+            Inventories.DSGVOInventory(player);
+            return;
         }
+        // checking if the player hit the NPC
         if (npc.getProfile().getName().equalsIgnoreCase("§6NameMC Reward")) {
             if (event.getUseAction() == PlayerNPCInteractEvent.EntityUseAction.INTERACT_AT) {
-                if (npc.getProfile().hasName() && npc.isLookAtPlayer() && !npc.isImitatePlayer()) {
-                    Inventories.NameMCInventory(player);
-                }
+                Inventories.NameMCInventory(player);
             }
+
+
         }
     }
 

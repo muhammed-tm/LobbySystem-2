@@ -152,8 +152,9 @@ public class ProfilListener implements Listener {
                     }else {
                          if(player.hasPermission("lobby.manager")) {
                               Bukkit.shutdown();
+
                          }else {
-                              player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDiese Funktion ist erst ab den Manager Rang möglich, da zu viele Spieler auf der Lobby sind.");
+                              player.sendMessage(HypeLobby.getInstance().getConstants().getPrefix() + "§cDiese Funktion ist erst ab den Manager Rang möglich, da zu viele Spieler auf der Lobby sind. §7(§6" + Bukkit.getServer().getOnlinePlayers().size()+ " Spieler§7)");
 
                          }
                          }
